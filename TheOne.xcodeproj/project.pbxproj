@@ -7,21 +7,52 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4279A52E1C9675EC00483480 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4279A52D1C9675EC00483480 /* AppDelegate.swift */; };
-		4279A5301C9675EC00483480 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4279A52F1C9675EC00483480 /* ViewController.swift */; };
-		4279A5331C9675EC00483480 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4279A5311C9675EC00483480 /* Main.storyboard */; };
-		4279A5351C9675EC00483480 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4279A5341C9675EC00483480 /* Assets.xcassets */; };
-		4279A5381C9675EC00483480 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4279A5361C9675EC00483480 /* LaunchScreen.storyboard */; };
+		425447E51C96AE68008B74A9 /* TEHomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425447DE1C96AE68008B74A9 /* TEHomeController.swift */; };
+		425447E61C96AE68008B74A9 /* TEMovieController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425447E01C96AE68008B74A9 /* TEMovieController.swift */; };
+		425447E71C96AE68008B74A9 /* TEMusicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425447E21C96AE68008B74A9 /* TEMusicController.swift */; };
+		425447E81C96AE68008B74A9 /* TETabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425447E41C96AE68008B74A9 /* TETabBarController.swift */; };
+		425447EB1C96AF0C008B74A9 /* TEArticleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425447EA1C96AF0C008B74A9 /* TEArticleController.swift */; };
+		425447EF1C96B5B2008B74A9 /* TENavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425447EE1C96B5B2008B74A9 /* TENavigationController.swift */; };
+		4279A5531C96780300483480 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4279A5471C96780300483480 /* Assets.xcassets */; };
+		4279A5541C96780300483480 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4279A5481C96780300483480 /* LaunchScreen.storyboard */; };
+		4279A5551C96780300483480 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4279A54A1C96780300483480 /* Main.storyboard */; };
+		4279A5571C96780300483480 /* Launch.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4279A54E1C96780300483480 /* Launch.xcassets */; };
+		4279A5611C969D2700483480 /* TEConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4279A5601C969D2700483480 /* TEConfigure.swift */; };
+		42CE5F471C96D00300E04AF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F451C96D00300E04AF6 /* AppDelegate.swift */; };
+		42CE5F4B1C96D53100E04AF6 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 42CE5F4A1C96D53100E04AF6 /* Info.plist */; };
+		42CE5F4E1C96E56000E04AF6 /* TESetupPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F4D1C96E56000E04AF6 /* TESetupPresentable.swift */; };
+		42CE5F501C96E8BC00E04AF6 /* TEExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F4F1C96E8BC00E04AF6 /* TEExtension.swift */; };
+		42CE5F531C97AA0900E04AF6 /* TELoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F521C97AA0900E04AF6 /* TELoginController.swift */; };
+		42CE5F551C97AB6100E04AF6 /* TETabbarPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F541C97AB6100E04AF6 /* TETabbarPresentable.swift */; };
+		42CE5F571C97ABBA00E04AF6 /* TENaviPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F561C97ABBA00E04AF6 /* TENaviPresentable.swift */; };
+		42CE5F591C97C65400E04AF6 /* TEMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F581C97C65400E04AF6 /* TEMacro.swift */; };
+		9D1498426A6A09BD45FB64FB /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58C453D8642A474F7D457052 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		425447DE1C96AE68008B74A9 /* TEHomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEHomeController.swift; sourceTree = "<group>"; };
+		425447E01C96AE68008B74A9 /* TEMovieController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMovieController.swift; sourceTree = "<group>"; };
+		425447E21C96AE68008B74A9 /* TEMusicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMusicController.swift; sourceTree = "<group>"; };
+		425447E41C96AE68008B74A9 /* TETabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TETabBarController.swift; sourceTree = "<group>"; };
+		425447EA1C96AF0C008B74A9 /* TEArticleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEArticleController.swift; sourceTree = "<group>"; };
+		425447EE1C96B5B2008B74A9 /* TENavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TENavigationController.swift; sourceTree = "<group>"; };
 		4279A52A1C9675EC00483480 /* TheOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4279A52D1C9675EC00483480 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4279A52F1C9675EC00483480 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4279A5321C9675EC00483480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		4279A5341C9675EC00483480 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4279A5371C9675EC00483480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		4279A5391C9675EC00483480 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4279A5471C96780300483480 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
+		4279A5491C96780300483480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4279A54B1C96780300483480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4279A54E1C96780300483480 /* Launch.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Launch.xcassets; path = ../Launch.xcassets; sourceTree = "<group>"; };
+		4279A5601C969D2700483480 /* TEConfigure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEConfigure.swift; sourceTree = "<group>"; };
+		42CE5F451C96D00300E04AF6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		42CE5F4A1C96D53100E04AF6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42CE5F4D1C96E56000E04AF6 /* TESetupPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TESetupPresentable.swift; sourceTree = "<group>"; };
+		42CE5F4F1C96E8BC00E04AF6 /* TEExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEExtension.swift; sourceTree = "<group>"; };
+		42CE5F521C97AA0900E04AF6 /* TELoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TELoginController.swift; sourceTree = "<group>"; };
+		42CE5F541C97AB6100E04AF6 /* TETabbarPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TETabbarPresentable.swift; sourceTree = "<group>"; };
+		42CE5F561C97ABBA00E04AF6 /* TENaviPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TENaviPresentable.swift; sourceTree = "<group>"; };
+		42CE5F581C97C65400E04AF6 /* TEMacro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMacro.swift; sourceTree = "<group>"; };
+		58C453D8642A474F7D457052 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7AE6124D74F1E1F6D44F0E9A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		E0C59996C27B6DB03DFC2F20 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +60,92 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D1498426A6A09BD45FB64FB /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		286B72007867752C3F0A2238 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E0C59996C27B6DB03DFC2F20 /* Pods.debug.xcconfig */,
+				7AE6124D74F1E1F6D44F0E9A /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		425447DC1C96AE68008B74A9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				42CE5F511C97A9D100E04AF6 /* Login */,
+				425447E31C96AE68008B74A9 /* Tabbar */,
+				425447ED1C96B573008B74A9 /* Navgation */,
+				425447DD1C96AE68008B74A9 /* Home */,
+				425447E91C96AEDD008B74A9 /* Article */,
+				425447E11C96AE68008B74A9 /* Music */,
+				425447DF1C96AE68008B74A9 /* Movie */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		425447DD1C96AE68008B74A9 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				425447DE1C96AE68008B74A9 /* TEHomeController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		425447DF1C96AE68008B74A9 /* Movie */ = {
+			isa = PBXGroup;
+			children = (
+				425447E01C96AE68008B74A9 /* TEMovieController.swift */,
+			);
+			path = Movie;
+			sourceTree = "<group>";
+		};
+		425447E11C96AE68008B74A9 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				425447E21C96AE68008B74A9 /* TEMusicController.swift */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
+		425447E31C96AE68008B74A9 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				425447E41C96AE68008B74A9 /* TETabBarController.swift */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		425447E91C96AEDD008B74A9 /* Article */ = {
+			isa = PBXGroup;
+			children = (
+				425447EA1C96AF0C008B74A9 /* TEArticleController.swift */,
+			);
+			path = Article;
+			sourceTree = "<group>";
+		};
+		425447ED1C96B573008B74A9 /* Navgation */ = {
+			isa = PBXGroup;
+			children = (
+				425447EE1C96B5B2008B74A9 /* TENavigationController.swift */,
+			);
+			name = Navgation;
+			path = Navigation;
+			sourceTree = "<group>";
+		};
 		4279A5211C9675EC00483480 = {
 			isa = PBXGroup;
 			children = (
-				4279A52C1C9675EC00483480 /* TheOne */,
+				4279A5451C96780300483480 /* TheOne */,
 				4279A52B1C9675EC00483480 /* Products */,
+				286B72007867752C3F0A2238 /* Pods */,
+				A6EF4A678E4A1B6EB3AB0FBB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -51,17 +157,112 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4279A52C1C9675EC00483480 /* TheOne */ = {
+		4279A5451C96780300483480 /* TheOne */ = {
 			isa = PBXGroup;
 			children = (
-				4279A52D1C9675EC00483480 /* AppDelegate.swift */,
-				4279A52F1C9675EC00483480 /* ViewController.swift */,
-				4279A5311C9675EC00483480 /* Main.storyboard */,
-				4279A5341C9675EC00483480 /* Assets.xcassets */,
-				4279A5361C9675EC00483480 /* LaunchScreen.storyboard */,
-				4279A5391C9675EC00483480 /* Info.plist */,
+				4279A55B1C96785C00483480 /* Interface */,
+				42CE5F4C1C96D60500E04AF6 /* Extension */,
+				4279A5591C96782400483480 /* Configure */,
+				425447DC1C96AE68008B74A9 /* Controller */,
+				4279A54F1C96780300483480 /* View */,
+				4279A5511C96780300483480 /* ViewModel */,
+				42CE5F441C96CFCB00E04AF6 /* Model */,
+				4279A55F1C969C1300483480 /* Protocol */,
+				4279A55C1C96788300483480 /* Vendor */,
+				4279A55A1C96783A00483480 /* Resource */,
 			);
 			path = TheOne;
+			sourceTree = "<group>";
+		};
+		4279A54F1C96780300483480 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4279A5511C96780300483480 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4279A5591C96782400483480 /* Configure */ = {
+			isa = PBXGroup;
+			children = (
+				42CE5F451C96D00300E04AF6 /* AppDelegate.swift */,
+				4279A5601C969D2700483480 /* TEConfigure.swift */,
+				42CE5F581C97C65400E04AF6 /* TEMacro.swift */,
+				42CE5F4A1C96D53100E04AF6 /* Info.plist */,
+			);
+			path = Configure;
+			sourceTree = "<group>";
+		};
+		4279A55A1C96783A00483480 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				4279A5471C96780300483480 /* Assets.xcassets */,
+				4279A54E1C96780300483480 /* Launch.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		4279A55B1C96785C00483480 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				4279A5481C96780300483480 /* LaunchScreen.storyboard */,
+				4279A54A1C96780300483480 /* Main.storyboard */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		4279A55C1C96788300483480 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		4279A55F1C969C1300483480 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				42CE5F4D1C96E56000E04AF6 /* TESetupPresentable.swift */,
+				42CE5F541C97AB6100E04AF6 /* TETabbarPresentable.swift */,
+				42CE5F561C97ABBA00E04AF6 /* TENaviPresentable.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		42CE5F441C96CFCB00E04AF6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		42CE5F4C1C96D60500E04AF6 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				42CE5F4F1C96E8BC00E04AF6 /* TEExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		42CE5F511C97A9D100E04AF6 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				42CE5F521C97AA0900E04AF6 /* TELoginController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		A6EF4A678E4A1B6EB3AB0FBB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				58C453D8642A474F7D457052 /* Pods.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +272,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4279A53C1C9675EC00483480 /* Build configuration list for PBXNativeTarget "TheOne" */;
 			buildPhases = (
+				CA8662709C0FB4F2D96DF379 /* Check Pods Manifest.lock */,
 				4279A5261C9675EC00483480 /* Sources */,
 				4279A5271C9675EC00483480 /* Frameworks */,
 				4279A5281C9675EC00483480 /* Resources */,
+				32BCE84ACFBDCC445B8C2187 /* Embed Pods Frameworks */,
+				52AA7A2F0054AEACE524A3EE /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -90,6 +294,7 @@
 		4279A5221C9675EC00483480 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = TE;
 				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = Maru;
@@ -123,41 +328,105 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4279A5381C9675EC00483480 /* LaunchScreen.storyboard in Resources */,
-				4279A5351C9675EC00483480 /* Assets.xcassets in Resources */,
-				4279A5331C9675EC00483480 /* Main.storyboard in Resources */,
+				4279A5571C96780300483480 /* Launch.xcassets in Resources */,
+				4279A5551C96780300483480 /* Main.storyboard in Resources */,
+				4279A5531C96780300483480 /* Assets.xcassets in Resources */,
+				42CE5F4B1C96D53100E04AF6 /* Info.plist in Resources */,
+				4279A5541C96780300483480 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		32BCE84ACFBDCC445B8C2187 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		52AA7A2F0054AEACE524A3EE /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA8662709C0FB4F2D96DF379 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4279A5261C9675EC00483480 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4279A5301C9675EC00483480 /* ViewController.swift in Sources */,
-				4279A52E1C9675EC00483480 /* AppDelegate.swift in Sources */,
+				42CE5F551C97AB6100E04AF6 /* TETabbarPresentable.swift in Sources */,
+				425447E71C96AE68008B74A9 /* TEMusicController.swift in Sources */,
+				42CE5F501C96E8BC00E04AF6 /* TEExtension.swift in Sources */,
+				425447E61C96AE68008B74A9 /* TEMovieController.swift in Sources */,
+				42CE5F4E1C96E56000E04AF6 /* TESetupPresentable.swift in Sources */,
+				425447E81C96AE68008B74A9 /* TETabBarController.swift in Sources */,
+				42CE5F531C97AA0900E04AF6 /* TELoginController.swift in Sources */,
+				42CE5F571C97ABBA00E04AF6 /* TENaviPresentable.swift in Sources */,
+				4279A5611C969D2700483480 /* TEConfigure.swift in Sources */,
+				425447EB1C96AF0C008B74A9 /* TEArticleController.swift in Sources */,
+				425447EF1C96B5B2008B74A9 /* TENavigationController.swift in Sources */,
+				42CE5F471C96D00300E04AF6 /* AppDelegate.swift in Sources */,
+				425447E51C96AE68008B74A9 /* TEHomeController.swift in Sources */,
+				42CE5F591C97C65400E04AF6 /* TEMacro.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		4279A5311C9675EC00483480 /* Main.storyboard */ = {
+		4279A5481C96780300483480 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				4279A5321C9675EC00483480 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		4279A5361C9675EC00483480 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4279A5371C9675EC00483480 /* Base */,
+				4279A5491C96780300483480 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		4279A54A1C96780300483480 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4279A54B1C96780300483480 /* Base */,
+			);
+			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -246,6 +515,7 @@
 		};
 		4279A53D1C9675EC00483480 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0C59996C27B6DB03DFC2F20 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TheOne/Info.plist;
@@ -257,6 +527,7 @@
 		};
 		4279A53E1C9675EC00483480 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AE6124D74F1E1F6D44F0E9A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = TheOne/Info.plist;
@@ -285,6 +556,7 @@
 				4279A53E1C9675EC00483480 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
