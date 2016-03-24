@@ -20,7 +20,7 @@ extension TEItemPresentable where Self: UIViewController {
     
     func setupNavigationItem(vc: UIViewController) {
         
-        vc.view.backgroundColor = UIColor.whiteColor()
+        vc.view.backgroundColor = UIColor(red: 0.98, green: 0.99, blue: 1, alpha: 1)
         
     }
 }

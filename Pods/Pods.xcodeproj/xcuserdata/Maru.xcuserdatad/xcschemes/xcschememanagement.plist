@@ -14,7 +14,27 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Gifu.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Kingfisher.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ObjectMapper.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -22,7 +42,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>331CB88B7C0D973DBDB604F0BFE50333</key>
+		<key>40DE5E9AF865C3B228596A1A9A50579C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -32,7 +52,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>AEA56EBE1B518C71721209FB26701898</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C3A04698AAE4D6124C20602D622956E5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C853BCB15954B7599C30292A01666B49</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C8F54543305BD95F34FAB796C9CAAFCA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F91226101ECE8FCFD221A3EC54481F82</key>
 		<dict>
 			<key>primary</key>
 			<true/>
