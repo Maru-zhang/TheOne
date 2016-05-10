@@ -11,7 +11,9 @@ import Alamofire
 import SwiftyJSON
 import Kingfisher
 
-class TEMovieViewModel {
+class TEMovieViewModel: TETableModelType {
+    
+    typealias CellType = TEMovieCardCell
     
     /// DataSource
     var movies: [TEMovieCardModel] = []
@@ -55,7 +57,7 @@ class TEMovieViewModel {
         }
     }
     
-    func updating(cell: TEMovieCardCell,index: NSIndexPath) {
+    func updateCell(cell: CellType, index: NSIndexPath) {
         cell.scorlLable.text = movies[index.row].score
         cell.coverImage.kf_setImageWithURL(NSURL(string: movies[index.row].cover!)!)
     }
@@ -63,4 +65,6 @@ class TEMovieViewModel {
     func cellForHeightAtIndexPath(indexPath: NSIndexPath) -> CGFloat {
         return 190;
     }
+
+    
 }

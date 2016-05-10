@@ -14,21 +14,19 @@ extension UIViewController {
         
         view.backgroundColor = UIColor.whiteColor()
         
-        let meBtn = UIBarButtonItem(image: UIImage(named: "nav_me_default"), landscapeImagePhone: nil, style: .Plain, target: self, action: #selector(UIViewController.showUserCenterController))
-        let musicPlayBtn = UIBarButtonItem(image: UIImage(named: "my_player_stop"), landscapeImagePhone: nil, style: .Plain, target: self, action: #selector(UIViewController.showMusicPlayer))
-
+        let meBtn = UIBarButtonItem(image: UIImage(named: "nav_me_default")?.imageWithRenderingMode(.AlwaysOriginal), landscapeImagePhone: nil, style: .Plain, target: self, action: #selector(UIViewController.showUserCenterController))
+        
         // 取消半透明
         navigationController?.navigationBar.translucent = false
-        navigationItem.rightBarButtonItems = [meBtn,musicPlayBtn]
+        navigationItem.rightBarButtonItems = [meBtn]
         
     }
     
     func showUserCenterController() {
         
-        navigationController?.pushViewController(TESettingController(), animated: true)
+        presentViewController(TESettingController(), animated: true, completion: nil)
+        
     }
     
-    func showMusicPlayer() {
-        print("music")
-    }
+
 }

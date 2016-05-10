@@ -18,12 +18,23 @@ class TESettingController: UITableViewController {
     /// 姓名标签
     let nameTips = UILabel()
     /// 返回按钮
-    var popButton: UIBarButtonItem!
+    var backButton: UIButton!
     /// 登录按钮
     var loginButton: UIButton!
     
 
     var headerImageView: UIImageView!
+    
+    // MARK: - Initialilzer
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        setupHeader()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -33,15 +44,9 @@ class TESettingController: UITableViewController {
     // MARK: - Private Method
     private func setupHeader() {
         
-        // 关闭自动调整
-        automaticallyAdjustsScrollViewInsets = false
-        
-        // 隐藏NavigaionItem
-        navigationController?.navigationBar.setBackgroundImage(TEConfigure.imageHolder, forBarMetrics: UIBarMetrics.Default)
-        navigationController?.navigationBar.shadowImage = TEConfigure.imageHolder
-        navigationController?.navigationBar.translucent = true
-        
-        popButton = UIBarButtonItem(image: UIImage(named: "back_default_wight")?.imageWithRenderingMode(.AlwaysOriginal), style: .Plain, target: self, action: #selector(TESettingController.popAction))
+        backButton = UIButton(type: .Custom)
+        backButton.setImage(UIImage(named: "back_default_wight"), forState: .Normal)
+        backButton.addTarget(self, action: #selector(closeAction), forControlEvents: .TouchUpInside)
         
         headerView.frame = CGRectMake(0, 0, 0, headerView_H)
         headerImageView = UIImageView(image: UIImage(named: "personalBackgroundImage"))
@@ -53,16 +58,17 @@ class TESettingController: UITableViewController {
         loginButton.setImage(UIImage(named: "personal"), forState: .Normal)
         headerImageView.addSubview(loginButton)
         
-        navigationItem.leftBarButtonItem = popButton
-        
         nameTips.textColor = UIColor.whiteColor()
+        nameTips.font = UIFont.systemFontOfSize(14)
         nameTips.text = "请登录"
         headerImageView.addSubview(nameTips)
         
         tableView.tableHeaderView = headerView
+        tableView.addSubview(backButton)
         
         // Layout View
-        constrain(loginButton,nameTips) { loginButton,nameTips in
+        constrain(loginButton,nameTips,backButton) { loginButton,nameTips,back in
+            
             loginButton.width == 60
             loginButton.height == 60
             loginButton.centerX == loginButton.superview!.centerX
@@ -71,14 +77,22 @@ class TESettingController: UITableViewController {
             nameTips.top == loginButton.bottom
             nameTips.height == 30
             nameTips.centerX == loginButton.centerX
+            
+            back.top == back.superview!.top + 20
+            back.left == back.superview!.left + 10
+            back.width == 44
+            back.height == 44
         }
         
         // Add Event
         loginButton.addTarget(self, action: #selector(presentToLoginController), forControlEvents: .TouchUpInside)
     }
     
-    func popAction() {
-        navigationController?.popToRootViewControllerAnimated(true)
+    
+    // MARK: - Private method
+    func closeAction() {
+        
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     func presentToLoginController() {

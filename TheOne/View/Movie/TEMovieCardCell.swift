@@ -55,6 +55,7 @@ class TEMovieCardCell: UITableViewCell {
         addSubview(scorlLable)
         
         backgroundColor = UIColor.clearColor()
+        selectionStyle = .None
         scorlLable.font = TEConfigure.movie_score_font;
         scorlLable.textColor = TEConfigure.movie_score_color
     }

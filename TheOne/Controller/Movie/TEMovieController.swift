@@ -42,6 +42,7 @@ class TEMovieController: UITableViewController {
             { () -> Void in }
     }
     
+    // MARK: - DataSource
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.movies.count
     }
@@ -50,13 +51,19 @@ class TEMovieController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(NSStringFromClass(TEMovieCardCell), forIndexPath: indexPath) as! TEMovieCardCell
         
-        viewModel.updating(cell, index: indexPath)
+        viewModel.updateCell(cell, index: indexPath)
         
         return cell
     }
     
+    // MARK: - TableView Delegate
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return viewModel.cellForHeightAtIndexPath(indexPath)
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        navigationController?.pushViewController(TEMovieDetailController(), animated: true)
     }
     
     

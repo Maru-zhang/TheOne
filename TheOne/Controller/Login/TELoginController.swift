@@ -10,6 +10,7 @@ import UIKit
 
 class TELoginController: UIViewController {
     
+
     // MARK: - Life Cycle
     override func viewDidLoad() {
         setupView()
@@ -23,7 +24,11 @@ class TELoginController: UIViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.translucent = true
         
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "personalBackgroundImage")!.resizableImageWithCapInsets(UIEdgeInsets(top: 0, left: 0, bottom: 200, right: 0)))
+        // 配置背景图片
+        let background = UIImageView(image: UIImage(named: "personalBackgroundImage")!)
+        background.frame = view.bounds
+        view.addSubview(background)
+        view.sendSubviewToBack(background)
         
     }
     

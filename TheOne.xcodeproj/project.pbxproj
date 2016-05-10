@@ -33,6 +33,7 @@
 		42CE5F601C981BA500E04AF6 /* TEPaperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F5F1C981BA500E04AF6 /* TEPaperView.swift */; };
 		42CE5F651C9823C600E04AF6 /* TEMovieCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F641C9823C600E04AF6 /* TEMovieCardModel.swift */; };
 		42CE5F671C9823E800E04AF6 /* TEMovieCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F661C9823E800E04AF6 /* TEMovieCardCell.swift */; };
+		42FAE4F71CB229D900495273 /* TEMovieDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FAE4F61CB229D900495273 /* TEMovieDetailController.swift */; };
 		9D1498426A6A09BD45FB64FB /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58C453D8642A474F7D457052 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		42CE5F6B1C9824B200E04AF6 /* PingFang Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang Regular.ttf"; sourceTree = "<group>"; };
 		42CE5F6C1C9824CE00E04AF6 /* Bradley Hand Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bradley Hand Bold.ttf"; sourceTree = "<group>"; };
 		42CE5F731C9831EF00E04AF6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42FAE4F61CB229D900495273 /* TEMovieDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMovieDetailController.swift; sourceTree = "<group>"; };
 		58C453D8642A474F7D457052 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AE6124D74F1E1F6D44F0E9A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E0C59996C27B6DB03DFC2F20 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				425447E01C96AE68008B74A9 /* TEMovieController.swift */,
+				42FAE4F61CB229D900495273 /* TEMovieDetailController.swift */,
 			);
 			path = Movie;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				42CE5F571C97ABBA00E04AF6 /* TENaviPresentable.swift in Sources */,
 				42CE5F5B1C9818C200E04AF6 /* TEPageable.swift in Sources */,
 				4279A5611C969D2700483480 /* TEConfigure.swift in Sources */,
+				42FAE4F71CB229D900495273 /* TEMovieDetailController.swift in Sources */,
 				4285E9861CA2C4E1005EDF4B /* TETableModelType.swift in Sources */,
 				425447EB1C96AF0C008B74A9 /* TEArticleController.swift in Sources */,
 				425447EF1C96B5B2008B74A9 /* TENavigationController.swift in Sources */,
