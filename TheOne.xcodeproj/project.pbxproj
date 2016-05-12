@@ -13,6 +13,8 @@
 		425447E81C96AE68008B74A9 /* TETabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425447E41C96AE68008B74A9 /* TETabBarController.swift */; };
 		425447EB1C96AF0C008B74A9 /* TEArticleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425447EA1C96AF0C008B74A9 /* TEArticleController.swift */; };
 		425447EF1C96B5B2008B74A9 /* TENavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425447EE1C96B5B2008B74A9 /* TENavigationController.swift */; };
+		426645BE1CE4B874005E21B4 /* TECarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426645BD1CE4B874005E21B4 /* TECarousel.swift */; };
+		426645C11CE4B89E005E21B4 /* AlamofireObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426645C01CE4B89E005E21B4 /* AlamofireObjectMapper.swift */; };
 		4277F66F1C9D803800816434 /* TEMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4277F66E1C9D803800816434 /* TEMovieViewModel.swift */; };
 		4279A5531C96780300483480 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4279A5471C96780300483480 /* Assets.xcassets */; };
 		4279A5541C96780300483480 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4279A5481C96780300483480 /* LaunchScreen.storyboard */; };
@@ -35,7 +37,7 @@
 		42CE5F671C9823E800E04AF6 /* TEMovieCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F661C9823E800E04AF6 /* TEMovieCardCell.swift */; };
 		42E9AF761CE4595300BB8687 /* TENetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E9AF751CE4595300BB8687 /* TENetService.swift */; };
 		42FAE4F71CB229D900495273 /* TEMovieDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FAE4F61CB229D900495273 /* TEMovieDetailController.swift */; };
-		9D1498426A6A09BD45FB64FB /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58C453D8642A474F7D457052 /* Pods.framework */; };
+		DD5C9AE4AF121A1675E1B8EE /* Pods_TheOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEEF2339B6BA212A6E17CE33 /* Pods_TheOne.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		425447E41C96AE68008B74A9 /* TETabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TETabBarController.swift; sourceTree = "<group>"; };
 		425447EA1C96AF0C008B74A9 /* TEArticleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEArticleController.swift; sourceTree = "<group>"; };
 		425447EE1C96B5B2008B74A9 /* TENavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TENavigationController.swift; sourceTree = "<group>"; };
+		426645BD1CE4B874005E21B4 /* TECarousel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TECarousel.swift; sourceTree = "<group>"; };
+		426645C01CE4B89E005E21B4 /* AlamofireObjectMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireObjectMapper.swift; sourceTree = "<group>"; };
 		4277F66E1C9D803800816434 /* TEMovieViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMovieViewModel.swift; sourceTree = "<group>"; };
 		4279A52A1C9675EC00483480 /* TheOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4279A5471C96780300483480 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
@@ -75,8 +79,9 @@
 		42E9AF751CE4595300BB8687 /* TENetService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TENetService.swift; sourceTree = "<group>"; };
 		42FAE4F61CB229D900495273 /* TEMovieDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMovieDetailController.swift; sourceTree = "<group>"; };
 		58C453D8642A474F7D457052 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7AE6124D74F1E1F6D44F0E9A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		E0C59996C27B6DB03DFC2F20 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		61099A783A1A9763F5A58A18 /* Pods-TheOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-TheOne/Pods-TheOne.release.xcconfig"; sourceTree = "<group>"; };
+		89DC4F58B1DF9C35A1386A3F /* Pods-TheOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheOne.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheOne/Pods-TheOne.debug.xcconfig"; sourceTree = "<group>"; };
+		EEEF2339B6BA212A6E17CE33 /* Pods_TheOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,22 +89,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D1498426A6A09BD45FB64FB /* Pods.framework in Frameworks */,
+				DD5C9AE4AF121A1675E1B8EE /* Pods_TheOne.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		286B72007867752C3F0A2238 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E0C59996C27B6DB03DFC2F20 /* Pods.debug.xcconfig */,
-				7AE6124D74F1E1F6D44F0E9A /* Pods.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		425447DC1C96AE68008B74A9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,13 +160,50 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
+		426645BC1CE4B874005E21B4 /* Article */ = {
+			isa = PBXGroup;
+			children = (
+				426645BD1CE4B874005E21B4 /* TECarousel.swift */,
+			);
+			path = Article;
+			sourceTree = "<group>";
+		};
+		426645BF1CE4B884005E21B4 /* AlamofireObjectMapper */ = {
+			isa = PBXGroup;
+			children = (
+				426645C01CE4B89E005E21B4 /* AlamofireObjectMapper.swift */,
+			);
+			path = AlamofireObjectMapper;
+			sourceTree = "<group>";
+		};
+		426B93321CE4624700BB5B96 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		426B93331CE4826700BB5B96 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		426B93341CE48F1300BB5B96 /* Article */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Article;
+			sourceTree = "<group>";
+		};
 		4279A5211C9675EC00483480 = {
 			isa = PBXGroup;
 			children = (
 				4279A5451C96780300483480 /* TheOne */,
 				4279A52B1C9675EC00483480 /* Products */,
-				286B72007867752C3F0A2238 /* Pods */,
 				A6EF4A678E4A1B6EB3AB0FBB /* Frameworks */,
+				5877175B53F0A027EF1E8E5C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -203,6 +236,7 @@
 		4279A54F1C96780300483480 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				426B93331CE4826700BB5B96 /* Component */,
 				42CE5F611C981D2C00E04AF6 /* Movie */,
 				42CE5F5E1C981B8C00E04AF6 /* Home */,
 			);
@@ -212,6 +246,8 @@
 		4279A5511C96780300483480 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				426B93341CE48F1300BB5B96 /* Article */,
+				42E9AF771CE4604B00BB8687 /* Home */,
 				4277F66E1C9D803800816434 /* TEMovieViewModel.swift */,
 			);
 			path = ViewModel;
@@ -254,6 +290,7 @@
 		4279A55C1C96788300483480 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				426645BF1CE4B884005E21B4 /* AlamofireObjectMapper */,
 			);
 			path = Vendor;
 			sourceTree = "<group>";
@@ -273,6 +310,8 @@
 		42CE5F441C96CFCB00E04AF6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				426645BC1CE4B874005E21B4 /* Article */,
+				426B93321CE4624700BB5B96 /* Home */,
 				42CE5F641C9823C600E04AF6 /* TEMovieCardModel.swift */,
 				42CE5F5C1C9819C600E04AF6 /* TEPaperModel.swift */,
 			);
@@ -317,14 +356,30 @@
 			children = (
 				42E9AF751CE4595300BB8687 /* TENetService.swift */,
 			);
-			name = Service;
-			path = Vendor;
+			path = Service;
+			sourceTree = "<group>";
+		};
+		42E9AF771CE4604B00BB8687 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		5877175B53F0A027EF1E8E5C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				89DC4F58B1DF9C35A1386A3F /* Pods-TheOne.debug.xcconfig */,
+				61099A783A1A9763F5A58A18 /* Pods-TheOne.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		A6EF4A678E4A1B6EB3AB0FBB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				58C453D8642A474F7D457052 /* Pods.framework */,
+				EEEF2339B6BA212A6E17CE33 /* Pods_TheOne.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -336,12 +391,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4279A53C1C9675EC00483480 /* Build configuration list for PBXNativeTarget "TheOne" */;
 			buildPhases = (
-				CA8662709C0FB4F2D96DF379 /* Check Pods Manifest.lock */,
+				8450C6755251CB63E7179531 /* 📦 Check Pods Manifest.lock */,
 				4279A5261C9675EC00483480 /* Sources */,
 				4279A5271C9675EC00483480 /* Frameworks */,
 				4279A5281C9675EC00483480 /* Resources */,
-				32BCE84ACFBDCC445B8C2187 /* Embed Pods Frameworks */,
-				52AA7A2F0054AEACE524A3EE /* Copy Pods Resources */,
+				96E1A954757AE13E4E433364 /* 📦 Embed Pods Frameworks */,
+				55FCE3DC19C7B8098D4DBAFF /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -402,49 +457,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		32BCE84ACFBDCC445B8C2187 /* Embed Pods Frameworks */ = {
+		55FCE3DC19C7B8098D4DBAFF /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TheOne/Pods-TheOne-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		52AA7A2F0054AEACE524A3EE /* Copy Pods Resources */ = {
+		8450C6755251CB63E7179531 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		CA8662709C0FB4F2D96DF379 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		96E1A954757AE13E4E433364 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TheOne/Pods-TheOne-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -463,12 +518,14 @@
 				42CE5F4E1C96E56000E04AF6 /* TESetupPresentable.swift in Sources */,
 				425447E81C96AE68008B74A9 /* TETabBarController.swift in Sources */,
 				42CE5F531C97AA0900E04AF6 /* TESettingController.swift in Sources */,
+				426645BE1CE4B874005E21B4 /* TECarousel.swift in Sources */,
 				42CE5F671C9823E800E04AF6 /* TEMovieCardCell.swift in Sources */,
 				42CE5F571C97ABBA00E04AF6 /* TENaviPresentable.swift in Sources */,
 				42CE5F5B1C9818C200E04AF6 /* TEPageable.swift in Sources */,
 				4279A5611C969D2700483480 /* TEConfigure.swift in Sources */,
 				42FAE4F71CB229D900495273 /* TEMovieDetailController.swift in Sources */,
 				4285E9861CA2C4E1005EDF4B /* TETableModelType.swift in Sources */,
+				426645C11CE4B89E005E21B4 /* AlamofireObjectMapper.swift in Sources */,
 				425447EB1C96AF0C008B74A9 /* TEArticleController.swift in Sources */,
 				425447EF1C96B5B2008B74A9 /* TENavigationController.swift in Sources */,
 				42CE5F471C96D00300E04AF6 /* AppDelegate.swift in Sources */,
@@ -588,7 +645,7 @@
 		};
 		4279A53D1C9675EC00483480 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E0C59996C27B6DB03DFC2F20 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 89DC4F58B1DF9C35A1386A3F /* Pods-TheOne.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -602,7 +659,7 @@
 		};
 		4279A53E1C9675EC00483480 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AE6124D74F1E1F6D44F0E9A /* Pods.release.xcconfig */;
+			baseConfigurationReference = 61099A783A1A9763F5A58A18 /* Pods-TheOne.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

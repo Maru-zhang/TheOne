@@ -19,6 +19,7 @@ class TEHomeController: UIViewController {
         setupView()
         
         setupCommonProperty()
+        
     }
     
     

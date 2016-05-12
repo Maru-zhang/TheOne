@@ -20,5 +20,11 @@ class TEArticleController: UIViewController {
     func setupView() {
         
         title = "阅读"
+        
+        TENetService.apiGetArtcleCarousel(withSuccessHandler: { (arr) in
+            
+            }) { (error) in
+            debugPrint(error)
+        }
     }
 }
