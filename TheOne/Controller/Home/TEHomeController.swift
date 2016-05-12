@@ -31,10 +31,11 @@ class TEHomeController: UIViewController {
         // 喜爱更多等Button
         let diary = UIImageView(image: UIImage(named: "diary_default"))
         let like = UIImageView(image: UIImage(named: "like_default"))
-        let more = UIImageView(image: UIImage(named: "more_default"))
+        let more = UIImageView(image: UIImage(named: "shareImage"))
         let likeNum = UILabel()
-        likeNum.textColor = TEConfigure.tabbarFontColor_Selected
-        likeNum.textAlignment = .Left
+        likeNum.textColor = UIColor.lightGrayColor()
+        likeNum.textAlignment = .Center
+        likeNum.font = UIFont.systemFontOfSize(13)
         likeNum.text = "2120"
         
         
@@ -53,7 +54,7 @@ class TEHomeController: UIViewController {
 
             more.width == 44
             more.height == 44
-            more.right == diary.superview!.right + 0
+            more.right == diary.superview!.right - 10
             more.centerY == diary.centerY
 
             likeNum.width == 60

@@ -33,6 +33,7 @@
 		42CE5F601C981BA500E04AF6 /* TEPaperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F5F1C981BA500E04AF6 /* TEPaperView.swift */; };
 		42CE5F651C9823C600E04AF6 /* TEMovieCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F641C9823C600E04AF6 /* TEMovieCardModel.swift */; };
 		42CE5F671C9823E800E04AF6 /* TEMovieCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F661C9823E800E04AF6 /* TEMovieCardCell.swift */; };
+		42E9AF761CE4595300BB8687 /* TENetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E9AF751CE4595300BB8687 /* TENetService.swift */; };
 		42FAE4F71CB229D900495273 /* TEMovieDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FAE4F61CB229D900495273 /* TEMovieDetailController.swift */; };
 		9D1498426A6A09BD45FB64FB /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58C453D8642A474F7D457052 /* Pods.framework */; };
 /* End PBXBuildFile section */
@@ -71,6 +72,7 @@
 		42CE5F6B1C9824B200E04AF6 /* PingFang Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang Regular.ttf"; sourceTree = "<group>"; };
 		42CE5F6C1C9824CE00E04AF6 /* Bradley Hand Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bradley Hand Bold.ttf"; sourceTree = "<group>"; };
 		42CE5F731C9831EF00E04AF6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42E9AF751CE4595300BB8687 /* TENetService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TENetService.swift; sourceTree = "<group>"; };
 		42FAE4F61CB229D900495273 /* TEMovieDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMovieDetailController.swift; sourceTree = "<group>"; };
 		58C453D8642A474F7D457052 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AE6124D74F1E1F6D44F0E9A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				4279A54F1C96780300483480 /* View */,
 				4279A5511C96780300483480 /* ViewModel */,
 				42CE5F441C96CFCB00E04AF6 /* Model */,
+				42E9AF741CE4584200BB8687 /* Service */,
 				4279A55F1C969C1300483480 /* Protocol */,
 				4279A55C1C96788300483480 /* Vendor */,
 				4279A55A1C96783A00483480 /* Resource */,
@@ -307,6 +310,15 @@
 				42CE5F661C9823E800E04AF6 /* TEMovieCardCell.swift */,
 			);
 			path = Movie;
+			sourceTree = "<group>";
+		};
+		42E9AF741CE4584200BB8687 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				42E9AF751CE4595300BB8687 /* TENetService.swift */,
+			);
+			name = Service;
+			path = Vendor;
 			sourceTree = "<group>";
 		};
 		A6EF4A678E4A1B6EB3AB0FBB /* Frameworks */ = {
@@ -464,6 +476,7 @@
 				4277F66F1C9D803800816434 /* TEMovieViewModel.swift in Sources */,
 				42CE5F591C97C65400E04AF6 /* TEMacro.swift in Sources */,
 				42CE5F5D1C9819C600E04AF6 /* TEPaperModel.swift in Sources */,
+				42E9AF761CE4595300BB8687 /* TENetService.swift in Sources */,
 				42CE5F601C981BA500E04AF6 /* TEPaperView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
