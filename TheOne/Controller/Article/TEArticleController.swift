@@ -26,6 +26,10 @@ class TEArticleController: UIViewController {
         
         title = "阅读"
         
+        let a = MARCarousel(frame: CGRectMake(0, 300, view.frame.width, 140))
+        a.images = [UIImage(named: "banner-1")!,UIImage(named: "banner-2")!,UIImage(named: "banner-3")!]
+        view.addSubview(a)
+        
         // 开始轮播资源进行请求
         TENetService.apiGetArtcleCarousel(withSuccessHandler: { (imgResult) in
             
@@ -47,6 +51,10 @@ class TEArticleController: UIViewController {
         }) { (error) in
             debugPrint(error)
         }
+        
+        
+        
+        
         
     }
 }
