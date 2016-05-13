@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import Cartography
+import Kingfisher
+
 
 class TEArticleController: UIViewController {
+    
+    var circleView: CirCleView!
 
     override func viewDidLoad() {
         
@@ -21,10 +26,27 @@ class TEArticleController: UIViewController {
         
         title = "阅读"
         
-        TENetService.apiGetArtcleCarousel(withSuccessHandler: { (arr) in
+        // 开始轮播资源进行请求
+        TENetService.apiGetArtcleCarousel(withSuccessHandler: { (imgResult) in
             
-            }) { (error) in
+            let urls: [NSURL] = imgResult.map{ NSURL(string: $0.cover!)! }
+            
+            ImagePrefetcher(urls: urls, optionsInfo: nil, progressBlock: nil, completionHandler: { (skippedResources, failedResources, completedResources) in
+                
+                
+                let imgs: [UIImage] = skippedResources.map({ (resource) -> UIImage in
+                    return ImageCache.defaultCache.retrieveImageInDiskCacheForKey(resource.cacheKey)!
+                })
+
+                self.circleView = CirCleView(frame: CGRectMake(0, 0, self.view.frame.size.width, 180), imageArray: imgs)
+                
+                self.view.addSubview(self.circleView)
+                
+            }).start()
+            
+        }) { (error) in
             debugPrint(error)
         }
+        
     }
 }

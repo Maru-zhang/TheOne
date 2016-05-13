@@ -31,6 +31,7 @@ class TEMovieController: UITableViewController {
         title = "电影"
         tableView.separatorStyle = .None
         tableView.registerClass(TEMovieCardCell.classForCoder(), forCellReuseIdentifier: NSStringFromClass(TEMovieCardCell))
+        tableView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 9)
     }
     
     

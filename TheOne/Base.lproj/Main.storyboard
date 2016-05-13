@@ -68,7 +68,7 @@
                                 <state key="highlighted" image="weiboLoginHigh"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.078431372550000003" green="0.69803921570000005" blue="0.81568627449999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.25" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="X31-Ru-Teh" firstAttribute="top" secondItem="u23-4d-wyX" secondAttribute="bottom" constant="5" id="Ba6-dc-bMR"/>
                             <constraint firstItem="IgF-N2-Jff" firstAttribute="leading" secondItem="u23-4d-wyX" secondAttribute="leading" id="JWs-iU-cUA"/>

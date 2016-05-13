@@ -13,7 +13,7 @@ import ObjectMapper
 
 class TENetService {
     
-    typealias SuccessHandler = (JSON) -> Void
+    typealias SuccessHandler = ([Any]) -> Void
     typealias FailureHandler = (NSError) -> Void
     
     /// 主机域名
@@ -211,7 +211,7 @@ extension TENetService {
     }
     
     // MARK: - Article Service
-    static func apiGetArtcleCarousel(withSuccessHandler success: SuccessHandler,fail: FailureHandler) {
+    static func apiGetArtcleCarousel(withSuccessHandler success: ([TECarousel]) -> Void,fail: FailureHandler) {
         
         Alamofire.request(.GET, API_Route.Read_Carousel()).responseJSON { (response) in
             
@@ -220,15 +220,13 @@ extension TENetService {
                 
                 let json = JSON(response.result.value!)
                 
-                json["data"].map
+                let modelArr: [TECarousel] = Mapper<TECarousel>().mapArray(json["data"].rawString())!
                 
-                
-                let a = Mapper<TECarousel>().map(json["data"][0].rawString())
-                
-                debugPrint(json.rawString())
+                success(modelArr)
                 
                 break
             case .Failure(_):
+                fail(response.result.error!)
                 break
             }
         }

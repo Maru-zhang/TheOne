@@ -20,6 +20,9 @@ extension TETabbarPresentable where Self: UITabBarController {
     
     func setupTabbar() {
         
+        // 不透明
+        tabBar.translucent = false
+        
         // 配置子控制器
         let homeVC = TENavigationController(rootViewController: TEHomeController())
         let articleVC = TENavigationController(rootViewController: TEArticleController())

@@ -15,6 +15,7 @@
 		425447EF1C96B5B2008B74A9 /* TENavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425447EE1C96B5B2008B74A9 /* TENavigationController.swift */; };
 		426645BE1CE4B874005E21B4 /* TECarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426645BD1CE4B874005E21B4 /* TECarousel.swift */; };
 		426645C11CE4B89E005E21B4 /* AlamofireObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426645C01CE4B89E005E21B4 /* AlamofireObjectMapper.swift */; };
+		426645C41CE59E7F005E21B4 /* CirCleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426645C31CE59E7F005E21B4 /* CirCleView.swift */; };
 		4277F66F1C9D803800816434 /* TEMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4277F66E1C9D803800816434 /* TEMovieViewModel.swift */; };
 		4279A5531C96780300483480 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4279A5471C96780300483480 /* Assets.xcassets */; };
 		4279A5541C96780300483480 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4279A5481C96780300483480 /* LaunchScreen.storyboard */; };
@@ -49,6 +50,7 @@
 		425447EE1C96B5B2008B74A9 /* TENavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TENavigationController.swift; sourceTree = "<group>"; };
 		426645BD1CE4B874005E21B4 /* TECarousel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TECarousel.swift; sourceTree = "<group>"; };
 		426645C01CE4B89E005E21B4 /* AlamofireObjectMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireObjectMapper.swift; sourceTree = "<group>"; };
+		426645C31CE59E7F005E21B4 /* CirCleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CirCleView.swift; sourceTree = "<group>"; };
 		4277F66E1C9D803800816434 /* TEMovieViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMovieViewModel.swift; sourceTree = "<group>"; };
 		4279A52A1C9675EC00483480 /* TheOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4279A5471C96780300483480 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
@@ -176,6 +178,14 @@
 			path = AlamofireObjectMapper;
 			sourceTree = "<group>";
 		};
+		426645C21CE59E7F005E21B4 /* CirCleView */ = {
+			isa = PBXGroup;
+			children = (
+				426645C31CE59E7F005E21B4 /* CirCleView.swift */,
+			);
+			path = CirCleView;
+			sourceTree = "<group>";
+		};
 		426B93321CE4624700BB5B96 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +300,7 @@
 		4279A55C1C96788300483480 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				426645C21CE59E7F005E21B4 /* CirCleView */,
 				426645BF1CE4B884005E21B4 /* AlamofireObjectMapper */,
 			);
 			path = Vendor;
@@ -526,6 +537,7 @@
 				42FAE4F71CB229D900495273 /* TEMovieDetailController.swift in Sources */,
 				4285E9861CA2C4E1005EDF4B /* TETableModelType.swift in Sources */,
 				426645C11CE4B89E005E21B4 /* AlamofireObjectMapper.swift in Sources */,
+				426645C41CE59E7F005E21B4 /* CirCleView.swift in Sources */,
 				425447EB1C96AF0C008B74A9 /* TEArticleController.swift in Sources */,
 				425447EF1C96B5B2008B74A9 /* TENavigationController.swift in Sources */,
 				42CE5F471C96D00300E04AF6 /* AppDelegate.swift in Sources */,
