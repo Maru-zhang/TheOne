@@ -13,8 +13,8 @@ import Kingfisher
 
 class TEArticleController: UIViewController {
     
-    var circleView: CirCleView!
-
+    var circleView: MARCarousel!
+    
     override func viewDidLoad() {
         
         setupCommonProperty()
@@ -26,9 +26,8 @@ class TEArticleController: UIViewController {
         
         title = "阅读"
         
-        let a = MARCarousel(frame: CGRectMake(0, 300, view.frame.width, 140))
-        a.images = [UIImage(named: "banner-1")!,UIImage(named: "banner-2")!,UIImage(named: "banner-3")!]
-        view.addSubview(a)
+        circleView = MARCarousel(frame: CGRectMake(0, 0, view.frame.width, 180))
+        view.addSubview(circleView)
         
         // 开始轮播资源进行请求
         TENetService.apiGetArtcleCarousel(withSuccessHandler: { (imgResult) in
@@ -37,24 +36,16 @@ class TEArticleController: UIViewController {
             
             ImagePrefetcher(urls: urls, optionsInfo: nil, progressBlock: nil, completionHandler: { (skippedResources, failedResources, completedResources) in
                 
-                
                 let imgs: [UIImage] = skippedResources.map({ (resource) -> UIImage in
                     return ImageCache.defaultCache.retrieveImageInDiskCacheForKey(resource.cacheKey)!
                 })
-
-                self.circleView = CirCleView(frame: CGRectMake(0, 0, self.view.frame.size.width, 180), imageArray: imgs)
                 
-                self.view.addSubview(self.circleView)
+                self.circleView.images = imgs
                 
             }).start()
             
         }) { (error) in
             debugPrint(error)
         }
-        
-        
-        
-        
-        
     }
 }

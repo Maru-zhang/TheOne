@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class MARCarousel: UIView,UIScrollViewDelegate {
+public class MARCarousel: UIView {
 
     private enum MARDirection {
         case Left,Right
@@ -20,6 +20,8 @@ public class MARCarousel: UIView,UIScrollViewDelegate {
     private var scrollView: UIScrollView!
     /// Current Image to show
     private var currentImageView: UIImageView!
+    /// Last Image to show
+    private var lastImageView: UIImageView!
     /// Next Image to Show
     private var nextImageView: UIImageView!
     /// The pageIndicator
@@ -77,7 +79,12 @@ public class MARCarousel: UIView,UIScrollViewDelegate {
         currentImageView.contentMode = .ScaleToFill
         currentImageView.clipsToBounds = true
         
-        nextImageView = UIImageView()
+        lastImageView = UIImageView(frame: CGRectMake(0, 0, self.frame.width, self.frame.height))
+        lastImageView.userInteractionEnabled = true
+        lastImageView.contentMode = .ScaleToFill
+        lastImageView.clipsToBounds = true
+        
+        nextImageView = UIImageView(frame: CGRectMake(self.frame.size.width * 2, 0, self.frame.size.width, self.frame.size.height))
         nextImageView.userInteractionEnabled = true
         nextImageView.contentMode = .ScaleToFill
         nextImageView.clipsToBounds = true
@@ -95,14 +102,59 @@ public class MARCarousel: UIView,UIScrollViewDelegate {
         addSubview(scrollView)
         addSubview(pageIndicator)
         scrollView.addSubview(currentImageView)
+        scrollView.addSubview(nextImageView)
+        scrollView.addSubview(lastImageView)
         
         addObserver(self, forKeyPath: "images", options: .New, context: &MAR_Context)
         
     }
     
+    private func beginTimer() {
+        
+        guard images.count > 1 else {
+            return
+        }
+        
+        if timer != nil { stopTimer() }
+        
+        timer = NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+        
+        NSRunLoop.currentRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
+        
+    }
+    
+    private func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
     @objc private func updateTime() {
         
         scrollToSpecifyDirection(.Left)
+    }
+    
+    /**
+     重置图片设置
+     */
+    private func resetImageView() {
+        currentImageView.image = images[indexOfCurrent]
+        nextImageView.image = images[getLastOrNextIndex(false)]
+        lastImageView.image = images[getLastOrNextIndex(true)]
+    }
+    
+    /**
+     获取前一个或者后一个的Index
+     
+     - parameter last:	True为前一个，反之亦然
+     
+     - returns: Index
+     */
+    private func getLastOrNextIndex(last: Bool) -> Int {
+        if last {
+            return (self.indexOfCurrent + self.images.count - 1) % self.images.count
+        }else {
+            return (self.indexOfCurrent + 1) % self.images.count
+        }
     }
     
     /**
@@ -118,31 +170,13 @@ public class MARCarousel: UIView,UIScrollViewDelegate {
         
         if direction == .Left {
             
-            let newIndex = (indexOfCurrent + 1) % images.count
-            
-            nextImageView.image = images[newIndex]
-            
-            scrollView.addSubview(nextImageView)
-            
-            scrollView.setContentOffset(CGPointMake(self.frame.width * 2, 0), animated: true)
-            
-            indexOfCurrent = newIndex
+            self.scrollView.setContentOffset(CGPointMake(self.frame.width * 2, 0), animated: true)
             
         }else {
             
-            let newIndex = (indexOfCurrent + images.count - 1) % images.count
+            self.scrollView.setContentOffset(CGPointMake(0, 0), animated: true)
             
-            nextImageView.image = images[newIndex]
-            
-            scrollView.addSubview(nextImageView)
-
-            scrollView.setContentOffset(CGPointMake(0, 0), animated: true)
-            
-            indexOfCurrent = newIndex
-
         }
-        
-        
         
     }
     
@@ -153,14 +187,12 @@ public class MARCarousel: UIView,UIScrollViewDelegate {
         if (context == &MAR_Context) && (keyPath == "images") {
             
             if let newValue = change![NSKeyValueChangeNewKey]{
-                
-                debugPrint(newValue)
-                
+            
                 let newImages = newValue as! [UIImage]
                 
+                indexOfCurrent = 0
                 pageIndicator.numberOfPages = newImages.count
-                currentImageView.image = images.first
-                nextImageView.removeFromSuperview()
+                resetImageView()
                 scrollView.contentOffset = CGPointMake(self.bounds.width, 0)
                 
             }
@@ -169,12 +201,15 @@ public class MARCarousel: UIView,UIScrollViewDelegate {
             super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
         }
     }
+
     
+}
+
+extension MARCarousel: UIScrollViewDelegate {
     
     // MARK: - UIScrollView Delegate
     public func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        timer?.invalidate()
-        timer = nil
+        stopTimer()
     }
     
     public func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
@@ -186,26 +221,23 @@ public class MARCarousel: UIView,UIScrollViewDelegate {
     
     public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         
-        dispatch_async(dispatch_get_main_queue()) { 
-            
-            self.currentImageView.image = self.images[self.indexOfCurrent]
-            
-            scrollView.contentOffset = CGPointMake(self.frame.width, 0)
-            
-            self.nextImageView.removeFromSuperview()
-            
+        if scrollView.contentOffset.x == 0 {
+            indexOfCurrent = getLastOrNextIndex(true)
+        }else {
+            indexOfCurrent = getLastOrNextIndex(false)
         }
         
+        resetImageView()
         
+        scrollView.setContentOffset(CGPointMake(self.frame.size.width, 0), animated: false)
         
-        //重置计时器
-        if timer == nil {
-            timer = NSTimer.scheduledTimerWithTimeInterval(TimeInterval, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
-        }
+        beginTimer()
     }
+    
     
     public func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
-        self.scrollViewDidEndDecelerating(scrollView)
+        
+        scrollViewDidEndDecelerating(scrollView)
+        
     }
-    
 }

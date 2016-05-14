@@ -16,7 +16,8 @@
 		426645BE1CE4B874005E21B4 /* TECarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426645BD1CE4B874005E21B4 /* TECarousel.swift */; };
 		426645C11CE4B89E005E21B4 /* AlamofireObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426645C01CE4B89E005E21B4 /* AlamofireObjectMapper.swift */; };
 		426645C41CE59E7F005E21B4 /* CirCleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426645C31CE59E7F005E21B4 /* CirCleView.swift */; };
-		426645C61CE5F5B0005E21B4 /* MARCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426645C51CE5F5B0005E21B4 /* MARCarousel.swift */; };
+		426645CF1CE71256005E21B4 /* MARCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426645CD1CE71256005E21B4 /* MARCarousel.swift */; };
+		426645D01CE71256005E21B4 /* TECardPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426645CE1CE71256005E21B4 /* TECardPageView.swift */; };
 		4277F66F1C9D803800816434 /* TEMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4277F66E1C9D803800816434 /* TEMovieViewModel.swift */; };
 		4279A5531C96780300483480 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4279A5471C96780300483480 /* Assets.xcassets */; };
 		4279A5541C96780300483480 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4279A5481C96780300483480 /* LaunchScreen.storyboard */; };
@@ -52,7 +53,8 @@
 		426645BD1CE4B874005E21B4 /* TECarousel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TECarousel.swift; sourceTree = "<group>"; };
 		426645C01CE4B89E005E21B4 /* AlamofireObjectMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireObjectMapper.swift; sourceTree = "<group>"; };
 		426645C31CE59E7F005E21B4 /* CirCleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CirCleView.swift; sourceTree = "<group>"; };
-		426645C51CE5F5B0005E21B4 /* MARCarousel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MARCarousel.swift; sourceTree = "<group>"; };
+		426645CD1CE71256005E21B4 /* MARCarousel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MARCarousel.swift; sourceTree = "<group>"; };
+		426645CE1CE71256005E21B4 /* TECardPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TECardPageView.swift; sourceTree = "<group>"; };
 		4277F66E1C9D803800816434 /* TEMovieViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMovieViewModel.swift; sourceTree = "<group>"; };
 		4279A52A1C9675EC00483480 /* TheOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4279A5471C96780300483480 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
@@ -198,7 +200,8 @@
 		426B93331CE4826700BB5B96 /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				426645C51CE5F5B0005E21B4 /* MARCarousel.swift */,
+				426645CD1CE71256005E21B4 /* MARCarousel.swift */,
+				426645CE1CE71256005E21B4 /* TECardPageView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -529,7 +532,7 @@
 				42CE5F501C96E8BC00E04AF6 /* TEExtension.swift in Sources */,
 				4285E9841CA28F4C005EDF4B /* TELoginController.swift in Sources */,
 				425447E61C96AE68008B74A9 /* TEMovieController.swift in Sources */,
-				426645C61CE5F5B0005E21B4 /* MARCarousel.swift in Sources */,
+				426645CF1CE71256005E21B4 /* MARCarousel.swift in Sources */,
 				42CE5F4E1C96E56000E04AF6 /* TESetupPresentable.swift in Sources */,
 				425447E81C96AE68008B74A9 /* TETabBarController.swift in Sources */,
 				42CE5F531C97AA0900E04AF6 /* TESettingController.swift in Sources */,
@@ -546,6 +549,7 @@
 				425447EF1C96B5B2008B74A9 /* TENavigationController.swift in Sources */,
 				42CE5F471C96D00300E04AF6 /* AppDelegate.swift in Sources */,
 				425447E51C96AE68008B74A9 /* TEHomeController.swift in Sources */,
+				426645D01CE71256005E21B4 /* TECardPageView.swift in Sources */,
 				4277F66F1C9D803800816434 /* TEMovieViewModel.swift in Sources */,
 				42CE5F591C97C65400E04AF6 /* TEMacro.swift in Sources */,
 				42CE5F5D1C9819C600E04AF6 /* TEPaperModel.swift in Sources */,
