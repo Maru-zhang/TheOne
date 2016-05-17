@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MJRefresh
 
 class TEMovieController: UITableViewController {
     
@@ -37,7 +38,11 @@ class TEMovieController: UITableViewController {
     
     private func setupData() {
         
-        viewModel.fetchMovieData({ () -> Void in
+        tableView.mj_footer = MJRefreshAutoFooter(refreshingBlock: {
+            
+        })
+        
+        viewModel.fetchMovieData({ [unowned self] () -> Void in
             self.tableView.reloadData()
             })
             { () -> Void in }

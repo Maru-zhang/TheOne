@@ -237,5 +237,33 @@ extension TENetService {
     
     // MARK: - Movie Service
     
+    /**
+     获取电影的评分列表
+     
+     - parameter page:	页码
+     - parameter success:	成功请求回调
+     - parameter fail:	失败请求回调
+     */
+    static func apiGetSpecifyMoiveList(page: Int,withSuccessHandler success: ([TEMovieCardModel]) -> Void,failureHandler fail: FailureHandler) {
+        
+        Alamofire.request(.GET, API_Route.Movie_List(page)).responseJSON { (response) in
+            
+            switch response.result {
+            case .Success(_):
+                
+                let json = JSON(response.result.value!)
+                
+                let modelArr: [TEMovieCardModel] = Mapper<TEMovieCardModel>().mapArray(json["data"].rawString())!
+                
+                success(modelArr)
+                
+                break
+            case .Failure(_):
+                fail(response.result.error!)
+                break
+            }
+        }
+    }
+    
     
 }

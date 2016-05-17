@@ -39,6 +39,11 @@ class TESettingController: UITableViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         setupHeader()
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
     }
     
     // MARK: - Private Method

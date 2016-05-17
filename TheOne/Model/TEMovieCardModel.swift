@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import ObjectMapper
 
-struct TEMovieCardModel {
+struct TEMovieCardModel: Mappable {
     /// ID
     var id: String?
     /// 标题
@@ -24,4 +25,23 @@ struct TEMovieCardModel {
     /// 封面图片URL
     var cover: String?
     var servertime: String?
+    
+    
+    init?(_ map: Map) {
+        
+    }
+    
+    mutating func mapping(map: Map) {
+        
+        id <- map["id"]
+        title <- map["title"]
+        verse <- map["verse"]
+        verse_en <- map["verse_en"]
+        score <- map["score"]
+        revisedscore <- map["revisedscore"]
+        releasetime <- map["releasetime"]
+        scoretime <- map["scoretime"]
+        cover <- map["cover"]
+        servertime <- map["servertime"]
+    }
 }

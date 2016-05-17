@@ -13,6 +13,8 @@ import Cartography
 let widgetSpace: CFloat = 20
 
 class TEHomeController: UIViewController {
+    
+    var scrollView: UIScrollView!
 
     override func viewDidLoad() {
         
@@ -28,6 +30,17 @@ class TEHomeController: UIViewController {
         
         // 导航栏LOGO
         navigationItem.titleView = UIImageView(image: UIImage(named: "nav_title"))
+        
+        // 配置滑动视图
+        scrollView = UIScrollView(frame: view.bounds)
+        scrollView.bounces = true
+        scrollView.contentSize = CGSizeMake(view.frame.width * 2, view.frame.height)
+        scrollView.backgroundColor = UIColor.whiteColor()
+        view.addSubview(scrollView)
+        
+        // 配置卡片子视图
+        let testCard = TECardPageView(frame: view.bounds)
+        scrollView.addSubview(testCard)
         
         // 喜爱更多等Button
         let diary = UIImageView(image: UIImage(named: "diary_default"))

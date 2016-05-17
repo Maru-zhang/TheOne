@@ -82,6 +82,7 @@
 		42CE5F6B1C9824B200E04AF6 /* PingFang Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang Regular.ttf"; sourceTree = "<group>"; };
 		42CE5F6C1C9824CE00E04AF6 /* Bradley Hand Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Bradley Hand Bold.ttf"; sourceTree = "<group>"; };
 		42CE5F731C9831EF00E04AF6 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42DF37D01CEB132A00F53530 /* Bridge_header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridge_header.h; sourceTree = "<group>"; };
 		42E9AF751CE4595300BB8687 /* TENetService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TENetService.swift; sourceTree = "<group>"; };
 		42FAE4F61CB229D900495273 /* TEMovieDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMovieDetailController.swift; sourceTree = "<group>"; };
 		58C453D8642A474F7D457052 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -276,6 +277,7 @@
 				4279A5601C969D2700483480 /* TEConfigure.swift */,
 				42CE5F581C97C65400E04AF6 /* TEMacro.swift */,
 				42CE5F731C9831EF00E04AF6 /* Info.plist */,
+				42DF37D01CEB132A00F53530 /* Bridge_header.h */,
 			);
 			path = Configure;
 			sourceTree = "<group>";
@@ -673,6 +675,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alloc.TheOne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/Maru/Documents/Projective/TheOne/TheOne/Configure/Bridge_header.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -687,6 +690,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alloc.TheOne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/Maru/Documents/Projective/TheOne/TheOne/Configure/Bridge_header.h;
 			};
 			name = Release;
 		};

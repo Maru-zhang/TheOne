@@ -3,7 +3,20 @@ PODS:
   - Cartography (0.6.0)
   - Gifu (1.0.1)
   - Kingfisher (2.1.0)
+  - MJRefresh (3.1.0)
   - ObjectMapper (1.2.0)
+  - ReactiveCocoa (4.1.0):
+    - ReactiveCocoa/UI (= 4.1.0)
+    - Result (~> 2.0)
+  - ReactiveCocoa/Core (4.1.0):
+    - ReactiveCocoa/no-arc
+    - Result (~> 2.0)
+  - ReactiveCocoa/no-arc (4.1.0):
+    - Result (~> 2.0)
+  - ReactiveCocoa/UI (4.1.0):
+    - ReactiveCocoa/Core
+    - Result (~> 2.0)
+  - Result (2.0.0)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
@@ -11,7 +24,9 @@ DEPENDENCIES:
   - Cartography (~> 0.6.0)
   - Gifu
   - Kingfisher (~> 2.1.0)
+  - MJRefresh
   - ObjectMapper (~> 1.2)
+  - ReactiveCocoa (~> 4.1.0)
   - SwiftyJSON (~> 2.3.2)
 
 SPEC CHECKSUMS:
@@ -19,9 +34,12 @@ SPEC CHECKSUMS:
   Cartography: 70af183a248547694a8cfaa6b989cb7e04589985
   Gifu: bf7a99fe9f20a1dc18c3cb4289aebc922a2ad419
   Kingfisher: 3ac09acad75a25ab22f6d7cef3de10d61dd4792d
+  MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   ObjectMapper: b1e9c7c8a9f6400b72690c80072c131504caa66f
+  ReactiveCocoa: d70004d7a366a7b8e87e60ce2347182c77701949
+  Result: 9e75e1111c774c6ac594e14907b15057053a7959
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-PODFILE CHECKSUM: ce3404126ee6e3e7f8ca9db449a8def091a421e3
+PODFILE CHECKSUM: f97099a181ed9f80fe650add11ba1051a7e2f4d6
 
 COCOAPODS: 1.0.0.rc.1

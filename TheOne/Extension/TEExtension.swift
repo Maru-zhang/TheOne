@@ -26,8 +26,9 @@ extension UIViewController {
     }
     
     func showUserCenterController() {
-        
+
         presentViewController(TESettingController(), animated: true, completion: nil)
+        navigationController?.pushViewController(TESettingController(), animated: true)
         
     }
     
