@@ -11,6 +11,8 @@ import UIKit
 protocol TETableModelType {
     
     associatedtype CellType
+    associatedtype EntityType
+    associatedtype FailureType
 
     
     /**
@@ -27,4 +29,12 @@ protocol TETableModelType {
      - parameter indexPath:	Cell的位置
      */
     func cellForHeightAtIndexPath(indexPath: NSIndexPath) -> CGFloat
+    
+    /**
+     发送网络请求，返回相应的实体数据或者失败回调
+     
+     - parameter success:	成功回调
+     - parameter failure:	失败回调
+     */
+    func fetchRemoteDataWithCallBack(success: ([EntityType]) -> Void,failure: (FailureType) -> Void)
 }

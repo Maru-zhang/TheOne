@@ -8,6 +8,7 @@
 
 import UIKit
 import MJRefresh
+import ReactiveCocoa
 
 class TEMovieController: UITableViewController {
     
@@ -20,11 +21,14 @@ class TEMovieController: UITableViewController {
         
         setupView()
         
+        bindingView()
+        
     }
     
     override func viewDidAppear(animated: Bool) {
         
         setupData()
+        
     }
     
     // MARK: - Private Method
@@ -41,16 +45,27 @@ class TEMovieController: UITableViewController {
         tableView.mj_footer = MJRefreshAutoFooter(refreshingBlock: {
             
         })
+    
+    }
+    
+    private func bindingView() {
         
-        viewModel.fetchMovieData({ [unowned self] () -> Void in
-            self.tableView.reloadData()
+        viewModel.active <~ isActive()
+        
+        viewModel.refreshSignal.startWithNext { [unowned self] in
+            
+            self.viewModel.fetchRemoteRefreshDataWithCallBack({ (entitys) in
+                self.tableView.reloadData()
+                }, failure: { (error) in
+                    debugPrint(error)
             })
-            { () -> Void in }
+        }
+        
     }
     
     // MARK: - DataSource
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.movies.count
+        return viewModel.numberOfMoviesInSection(section)
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

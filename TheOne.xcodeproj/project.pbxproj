@@ -18,7 +18,8 @@
 		426645C41CE59E7F005E21B4 /* CirCleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426645C31CE59E7F005E21B4 /* CirCleView.swift */; };
 		426645CF1CE71256005E21B4 /* MARCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426645CD1CE71256005E21B4 /* MARCarousel.swift */; };
 		426645D01CE71256005E21B4 /* TECardPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426645CE1CE71256005E21B4 /* TECardPageView.swift */; };
-		4277F66F1C9D803800816434 /* TEMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4277F66E1C9D803800816434 /* TEMovieViewModel.swift */; };
+		426ADF5E1CEC2EF500DDBD91 /* UIKit+ReactiveCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426ADF5D1CEC2EF500DDBD91 /* UIKit+ReactiveCocoa.swift */; };
+		426ADF611CEC303800DDBD91 /* TEMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426ADF601CEC303800DDBD91 /* TEMovieViewModel.swift */; };
 		4279A5531C96780300483480 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4279A5471C96780300483480 /* Assets.xcassets */; };
 		4279A5541C96780300483480 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4279A5481C96780300483480 /* LaunchScreen.storyboard */; };
 		4279A5551C96780300483480 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4279A54A1C96780300483480 /* Main.storyboard */; };
@@ -28,7 +29,7 @@
 		4285E9861CA2C4E1005EDF4B /* TETableModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4285E9851CA2C4E1005EDF4B /* TETableModelType.swift */; };
 		42CE5F471C96D00300E04AF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F451C96D00300E04AF6 /* AppDelegate.swift */; };
 		42CE5F4E1C96E56000E04AF6 /* TESetupPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F4D1C96E56000E04AF6 /* TESetupPresentable.swift */; };
-		42CE5F501C96E8BC00E04AF6 /* TEExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F4F1C96E8BC00E04AF6 /* TEExtension.swift */; };
+		42CE5F501C96E8BC00E04AF6 /* UIViewController+MAR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F4F1C96E8BC00E04AF6 /* UIViewController+MAR.swift */; };
 		42CE5F531C97AA0900E04AF6 /* TESettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F521C97AA0900E04AF6 /* TESettingController.swift */; };
 		42CE5F551C97AB6100E04AF6 /* TETabbarPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F541C97AB6100E04AF6 /* TETabbarPresentable.swift */; };
 		42CE5F571C97ABBA00E04AF6 /* TENaviPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F561C97ABBA00E04AF6 /* TENaviPresentable.swift */; };
@@ -55,7 +56,8 @@
 		426645C31CE59E7F005E21B4 /* CirCleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CirCleView.swift; sourceTree = "<group>"; };
 		426645CD1CE71256005E21B4 /* MARCarousel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MARCarousel.swift; sourceTree = "<group>"; };
 		426645CE1CE71256005E21B4 /* TECardPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TECardPageView.swift; sourceTree = "<group>"; };
-		4277F66E1C9D803800816434 /* TEMovieViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMovieViewModel.swift; sourceTree = "<group>"; };
+		426ADF5D1CEC2EF500DDBD91 /* UIKit+ReactiveCocoa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKit+ReactiveCocoa.swift"; sourceTree = "<group>"; };
+		426ADF601CEC303800DDBD91 /* TEMovieViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMovieViewModel.swift; sourceTree = "<group>"; };
 		4279A52A1C9675EC00483480 /* TheOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4279A5471C96780300483480 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		4279A5491C96780300483480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -66,7 +68,7 @@
 		4285E9851CA2C4E1005EDF4B /* TETableModelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TETableModelType.swift; sourceTree = "<group>"; };
 		42CE5F451C96D00300E04AF6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42CE5F4D1C96E56000E04AF6 /* TESetupPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TESetupPresentable.swift; sourceTree = "<group>"; };
-		42CE5F4F1C96E8BC00E04AF6 /* TEExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEExtension.swift; sourceTree = "<group>"; };
+		42CE5F4F1C96E8BC00E04AF6 /* UIViewController+MAR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+MAR.swift"; sourceTree = "<group>"; };
 		42CE5F521C97AA0900E04AF6 /* TESettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TESettingController.swift; sourceTree = "<group>"; };
 		42CE5F541C97AB6100E04AF6 /* TETabbarPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TETabbarPresentable.swift; sourceTree = "<group>"; };
 		42CE5F561C97ABBA00E04AF6 /* TENaviPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TENaviPresentable.swift; sourceTree = "<group>"; };
@@ -191,6 +193,14 @@
 			path = CirCleView;
 			sourceTree = "<group>";
 		};
+		426ADF5F1CEC301600DDBD91 /* Movie */ = {
+			isa = PBXGroup;
+			children = (
+				426ADF601CEC303800DDBD91 /* TEMovieViewModel.swift */,
+			);
+			path = Movie;
+			sourceTree = "<group>";
+		};
 		426B93321CE4624700BB5B96 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,9 +273,9 @@
 		4279A5511C96780300483480 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				426ADF5F1CEC301600DDBD91 /* Movie */,
 				426B93341CE48F1300BB5B96 /* Article */,
 				42E9AF771CE4604B00BB8687 /* Home */,
-				4277F66E1C9D803800816434 /* TEMovieViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -340,7 +350,8 @@
 		42CE5F4C1C96D60500E04AF6 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				42CE5F4F1C96E8BC00E04AF6 /* TEExtension.swift */,
+				426ADF5D1CEC2EF500DDBD91 /* UIKit+ReactiveCocoa.swift */,
+				42CE5F4F1C96E8BC00E04AF6 /* UIViewController+MAR.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -531,7 +542,8 @@
 				42CE5F551C97AB6100E04AF6 /* TETabbarPresentable.swift in Sources */,
 				42CE5F651C9823C600E04AF6 /* TEMovieCardModel.swift in Sources */,
 				425447E71C96AE68008B74A9 /* TEMusicController.swift in Sources */,
-				42CE5F501C96E8BC00E04AF6 /* TEExtension.swift in Sources */,
+				42CE5F501C96E8BC00E04AF6 /* UIViewController+MAR.swift in Sources */,
+				426ADF611CEC303800DDBD91 /* TEMovieViewModel.swift in Sources */,
 				4285E9841CA28F4C005EDF4B /* TELoginController.swift in Sources */,
 				425447E61C96AE68008B74A9 /* TEMovieController.swift in Sources */,
 				426645CF1CE71256005E21B4 /* MARCarousel.swift in Sources */,
@@ -542,6 +554,7 @@
 				42CE5F671C9823E800E04AF6 /* TEMovieCardCell.swift in Sources */,
 				42CE5F571C97ABBA00E04AF6 /* TENaviPresentable.swift in Sources */,
 				42CE5F5B1C9818C200E04AF6 /* TEPageable.swift in Sources */,
+				426ADF5E1CEC2EF500DDBD91 /* UIKit+ReactiveCocoa.swift in Sources */,
 				4279A5611C969D2700483480 /* TEConfigure.swift in Sources */,
 				42FAE4F71CB229D900495273 /* TEMovieDetailController.swift in Sources */,
 				4285E9861CA2C4E1005EDF4B /* TETableModelType.swift in Sources */,
@@ -552,7 +565,6 @@
 				42CE5F471C96D00300E04AF6 /* AppDelegate.swift in Sources */,
 				425447E51C96AE68008B74A9 /* TEHomeController.swift in Sources */,
 				426645D01CE71256005E21B4 /* TECardPageView.swift in Sources */,
-				4277F66F1C9D803800816434 /* TEMovieViewModel.swift in Sources */,
 				42CE5F591C97C65400E04AF6 /* TEMacro.swift in Sources */,
 				42CE5F5D1C9819C600E04AF6 /* TEPaperModel.swift in Sources */,
 				42E9AF761CE4595300BB8687 /* TENetService.swift in Sources */,
