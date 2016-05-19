@@ -14,9 +14,12 @@ import Result
 class TEMovieViewModel {
     
     let active = MutableProperty(false)
-    let refreshSignal: ReactiveCocoa.SignalProducer<Void,NoError>
+    let refreshSignal: SignalProducer<Void,NoError>
+    let loadMoreSignal: Signal<Void,NoError>
     var page: Int = 0
     
+    
+    let loadMoreObserver: Observer<Void,NoError>
     private let refreshObserver: Observer<Void, NoError>
 
     // MARK: - DataSources
@@ -32,12 +35,17 @@ class TEMovieViewModel {
         let (refreshSignal, refreshObserver) = SignalProducer<Void, NoError>.buffer(0)
         self.refreshObserver = refreshObserver
         self.refreshSignal = refreshSignal
+        
+        let (loadMoreSignal,loadMoreObserver) = Signal<Void, NoError>.pipe()
+        self.loadMoreSignal = loadMoreSignal
+        self.loadMoreObserver = loadMoreObserver
+        
 
-        // Trigger refresh when view becomes active
         active.producer
             .filter({ $0 })
             .map({_ in ()})
             .start(refreshObserver)
+        
     }
     
     
@@ -56,13 +64,16 @@ extension TEMovieViewModel: TETableModelType {
     func numberOfMoviesInSection(section: Int) -> Int {
         return movies.count
     }
-    
-    func updateCell(cell: CellType, index: NSIndexPath) {
-        cell.scorlLable.text = movies[index.row].score
-        cell.coverImage.kf_setImageWithURL(NSURL(string: movies[index.row].cover!)!)
+
+    func scoreNumberAtIndexPath(indexPath: NSIndexPath) -> String? {
+        return movies[indexPath.row].score
     }
     
-    func cellForHeightAtIndexPath(indexPath: NSIndexPath) -> CGFloat {
+    func coverImageURLAtIndexPath(indexPath: NSIndexPath) -> NSURL {
+        return NSURL(string: movies[indexPath.row].cover!)!
+    }
+    
+    func heightForCellAtIndexPath(indexPath: NSIndexPath) -> CGFloat {
         return 190;
     }
     
@@ -76,18 +87,28 @@ extension TEMovieViewModel: TETableModelType {
      */
     func fetchRemoteDataWithCallBack(success: () -> Void, failure: (FailureType) -> Void) {
         
-        page += 1
         
         TENetService
             .apiGetSpecifyMoiveListwithResultSignalProducer(page) { [unowned self] (signalProducer) in
             signalProducer.startWithNext({ (entitys) in
-                self.movies = entitys
+                guard !entitys.isEmpty else {
+                    failure(NSError(domain: TEConfigure.mar_domain, code: 0, userInfo: nil))
+                    return
+                }
+                self.movies.appendContentsOf(entitys)
+                self.page = (entitys.last?.id?.toInt())!
                 success()
             })
         }
         
     }
     
+    /**
+     获取最新的数据，即下拉刷新所获取的数据
+     
+     - parameter success:	成功回调
+     - parameter failure:	失败回调
+     */
     func fetchRemoteRefreshDataWithCallBack(success: () -> Void, failure: (FailureType) -> Void) {
         
         page = 0
@@ -96,6 +117,7 @@ extension TEMovieViewModel: TETableModelType {
             .apiGetSpecifyMoiveListwithResultSignalProducer(page) { [unowned self] (signalProducer) in
                 signalProducer.startWithNext({ (entitys) in
                     self.movies = entitys
+                    self.page = (entitys.last?.id?.toInt())!
                     success()
                 })
         }

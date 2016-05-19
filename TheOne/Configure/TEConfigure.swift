@@ -30,6 +30,8 @@ extension TEConfigure {
     static let tabbarFontColor_Selected = UIColor(red: 0.53, green: 0.68, blue: 0.85, alpha: 1)
     /// 电影分数颜色
     static let movie_score_color = UIColor(red: 0.91, green: 0.36, blue: 0.38, alpha: 1)
+    /// 电影即将上映颜色
+    static let movie_beon_color = UIColor.lightGrayColor()
 }
 
 
@@ -38,7 +40,15 @@ extension TEConfigure {
     // MARK: - Font
     /// 电影分数字体
     static let movie_score_font = UIFont(name: "BradleyHandITCTT-Bold", size: 50)
+    /// 即将上映字体
+    static let movie_beon_font = UIFont.systemFontOfSize(14)
     
     // MARK: - Hodler
     static let imageHolder = UIImage()
+}
+
+extension TEConfigure {
+    
+    // MARK: - Debug
+    static let mar_domain = "com.alloc.maru"
 }

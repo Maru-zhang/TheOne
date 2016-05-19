@@ -3,14 +3,15 @@ platform :ios, '9.0'
 use_frameworks!
 
 def pods
-    pod 'ReactiveCocoa', '~> 4.1.0'
+    pod 'Gifu'
     pod 'MJRefresh'
+    pod 'JLToast', '~> 1.4'
 	pod 'Alamofire', '~> 3.0'
 	pod 'ObjectMapper', '~> 1.2'
-	pod 'Cartography', '~> 0.6.0'
 	pod 'SwiftyJSON', '~> 2.3.2'
 	pod 'Kingfisher', '~> 2.1.0'
-	pod 'Gifu'
+    pod 'Cartography', '~> 0.6.0'
+    pod 'ReactiveCocoa', '~> 4.1.0'
 end
 
 target 'TheOne' do

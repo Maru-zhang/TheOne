@@ -16,8 +16,6 @@ class TEMovieCardCell: UITableViewCell {
     /// 背景图片
     let coverImage = UIImageView()
     
-    typealias ModelType = TEMovieCardModel
-    
     // MARK: - Life Cycle
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -56,8 +54,22 @@ class TEMovieCardCell: UITableViewCell {
         
         backgroundColor = UIColor.clearColor()
         selectionStyle = .None
-        scorlLable.font = TEConfigure.movie_score_font;
-        scorlLable.textColor = TEConfigure.movie_score_color
+    }
+    
+    // MARK: - Public Method
+    func configureWithViewModels(viewModel: TEMovieViewModel,indexPath: NSIndexPath) {
+        
+        coverImage.kf_setImageWithURL(viewModel.coverImageURLAtIndexPath(indexPath))
+        
+        if let score = viewModel.scoreNumberAtIndexPath(indexPath) {
+            scorlLable.font = TEConfigure.movie_score_font
+            scorlLable.textColor = TEConfigure.movie_score_color
+            scorlLable.text = score
+        }else {
+            scorlLable.font = TEConfigure.movie_beon_font
+            scorlLable.textColor = TEConfigure.movie_beon_color
+            scorlLable.text = "即将上映"
+        }
     }
 
 }

@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>JLToast.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Kingfisher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -57,12 +62,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2207F8D6C1559EDC3BA8ED7196C98906</key>
+		<key>4A0733EC70417D9DD6B39D41C36CF277</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2A372CC0B3BB8FA50B681C78B54D2921</key>
+		<key>4C2398B398EBC5823CBEBBDD0C4E1E94</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,7 +77,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>687D82B597BD8C9953D7C28AD54DB4A7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>892FE5BFDD0FD8B38E22D76135459FE4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8B88A50D78DF4AD593D6E9E7069AA6BA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -92,17 +112,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D51B128115D836672247827BFCB0149B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>F91226101ECE8FCFD221A3EC54481F82</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FD17F7FE6C8A5EE87AA7EBCB5F791E97</key>
 		<dict>
 			<key>primary</key>
 			<true/>

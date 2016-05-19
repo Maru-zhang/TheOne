@@ -25,39 +25,50 @@ class TEMovieController: UITableViewController {
         
     }
     
-    override func viewDidAppear(animated: Bool) {
-        
-        setupData()
-        
-    }
-    
     // MARK: - Private Method
     private func setupView() {
         title = "电影"
         tableView.separatorStyle = .None
         tableView.registerClass(TEMovieCardCell.classForCoder(), forCellReuseIdentifier: NSStringFromClass(TEMovieCardCell))
         tableView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 9)
-    }
-    
-    
-    private func setupData() {
         
-        tableView.mj_footer = MJRefreshAutoFooter(refreshingBlock: {
-            
+        tableView.mj_footer = MJRefreshBackStateFooter(refreshingBlock: { [unowned self] in
+            self.viewModel.loadMoreObserver.sendNext()
         })
-    
     }
+    
     
     private func bindingView() {
         
         viewModel.active <~ isActive()
         
-        viewModel.refreshSignal.startWithNext { [unowned self] in
+        viewModel.refreshSignal
+            .observeOn(UIScheduler())
+            .startWithNext { [unowned self] in
             
             self.viewModel.fetchRemoteRefreshDataWithCallBack({ (entitys) in
                 self.tableView.reloadData()
+                self.tableView.mj_footer.endRefreshing()
                 }, failure: { (error) in
-                    debugPrint(error)
+                    self.tableView.mj_footer.endRefreshing()
+                    // TODO: 添加网络状态错误的相关HUD
+
+            })
+        }
+        
+        viewModel.loadMoreSignal
+            .observeOn(UIScheduler())
+            .observeNext { [unowned self]() in
+            self.viewModel.fetchRemoteDataWithCallBack({ 
+                self.tableView.reloadData()
+                self.tableView.mj_footer.endRefreshing()
+                }
+                , failure: { (fail) in
+                    if fail.code == 0 {
+                        self.tableView.mj_footer.endRefreshingWithNoMoreData()
+                    }else {
+                        // TODO: 添加网络状态错误的相关HUD
+                    }
             })
         }
         
@@ -72,14 +83,14 @@ class TEMovieController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier(NSStringFromClass(TEMovieCardCell), forIndexPath: indexPath) as! TEMovieCardCell
         
-        viewModel.updateCell(cell, index: indexPath)
+        cell.configureWithViewModels(viewModel, indexPath: indexPath)
         
         return cell
     }
     
     // MARK: - TableView Delegate
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return viewModel.cellForHeightAtIndexPath(indexPath)
+        return viewModel.heightForCellAtIndexPath(indexPath)
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
