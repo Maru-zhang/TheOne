@@ -46,7 +46,6 @@ class TEMovieViewModel {
 extension TEMovieViewModel: TETableModelType {
     
     typealias CellType = TEMovieCardCell
-    typealias EntityType = TEMovieCardModel
     typealias FailureType = NSError
     
     // MARK: - Data Source Method
@@ -75,27 +74,30 @@ extension TEMovieViewModel: TETableModelType {
      - parameter success:	成功回调
      - parameter failure:	失败回调
      */
-    func fetchRemoteDataWithCallBack(success: ([EntityType]) -> Void, failure: (FailureType) -> Void) {
+    func fetchRemoteDataWithCallBack(success: () -> Void, failure: (FailureType) -> Void) {
         
         page += 1
         
-        TENetService.apiGetSpecifyMoiveList(page, withSuccessHandler: { (entitys) in
-            self.movies = entitys
-            success(entitys)
-            }) { (error) in
-                failure(error)
+        TENetService
+            .apiGetSpecifyMoiveListwithResultSignalProducer(page) { [unowned self] (signalProducer) in
+            signalProducer.startWithNext({ (entitys) in
+                self.movies = entitys
+                success()
+            })
         }
+        
     }
     
-    func fetchRemoteRefreshDataWithCallBack(success: ([EntityType]) -> Void, failure: (FailureType) -> Void) {
+    func fetchRemoteRefreshDataWithCallBack(success: () -> Void, failure: (FailureType) -> Void) {
         
         page = 0
         
-        TENetService.apiGetSpecifyMoiveList(page, withSuccessHandler: { (entitys) in
-            self.movies = entitys
-            success(entitys)
-        }) { (error) in
-            failure(error)
+        TENetService
+            .apiGetSpecifyMoiveListwithResultSignalProducer(page) { [unowned self] (signalProducer) in
+                signalProducer.startWithNext({ (entitys) in
+                    self.movies = entitys
+                    success()
+                })
         }
     }
 }

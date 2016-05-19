@@ -11,7 +11,6 @@ import UIKit
 protocol TETableModelType {
     
     associatedtype CellType
-    associatedtype EntityType
     associatedtype FailureType
 
     
@@ -36,5 +35,5 @@ protocol TETableModelType {
      - parameter success:	成功回调
      - parameter failure:	失败回调
      */
-    func fetchRemoteDataWithCallBack(success: ([EntityType]) -> Void,failure: (FailureType) -> Void)
+    func fetchRemoteDataWithCallBack(success: () -> Void,failure: (FailureType) -> Void)
 }

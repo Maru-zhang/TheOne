@@ -10,6 +10,8 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import ObjectMapper
+import ReactiveCocoa
+import Result
 
 class TENetService {
     
@@ -244,7 +246,7 @@ extension TENetService {
      - parameter success:	成功请求回调
      - parameter fail:	失败请求回调
      */
-    static func apiGetSpecifyMoiveList(page: Int,withSuccessHandler success: ([TEMovieCardModel]) -> Void,failureHandler fail: FailureHandler) {
+    static func apiGetSpecifyMoiveListwithResultSignalProducer(page: Int,result: (SignalProducer<[TEMovieCardModel],NSError>) -> Void) {
         
         Alamofire.request(.GET, API_Route.Movie_List(page)).responseJSON { (response) in
             
@@ -255,11 +257,11 @@ extension TENetService {
                 
                 let modelArr: [TEMovieCardModel] = Mapper<TEMovieCardModel>().mapArray(json["data"].rawString())!
                 
-                success(modelArr)
+                result(SignalProducer(value: modelArr))
                 
                 break
             case .Failure(_):
-                fail(response.result.error!)
+                result(SignalProducer<[TEMovieCardModel],NSError>(error: response.result.error!))
                 break
             }
         }
