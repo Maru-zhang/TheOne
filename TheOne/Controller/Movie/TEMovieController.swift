@@ -10,6 +10,7 @@ import UIKit
 import MJRefresh
 import ReactiveCocoa
 
+
 class TEMovieController: UITableViewController {
     
     let viewModel = TEMovieViewModel()
@@ -52,7 +53,7 @@ class TEMovieController: UITableViewController {
                 }, failure: { (error) in
                     self.tableView.mj_footer.endRefreshing()
                     // TODO: 添加网络状态错误的相关HUD
-
+                    TEToastService.showNetDisconnet()
             })
         }
         
@@ -68,6 +69,7 @@ class TEMovieController: UITableViewController {
                         self.tableView.mj_footer.endRefreshingWithNoMoreData()
                     }else {
                         // TODO: 添加网络状态错误的相关HUD
+                        TEToastService.showNetDisconnet()
                     }
             })
         }

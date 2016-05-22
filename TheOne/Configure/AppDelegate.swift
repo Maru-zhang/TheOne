@@ -19,6 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.rootViewController = TETabBarController()
         window?.makeKeyAndVisible()
+        
+        setupAppreance()
+        
         return true
     }
 
@@ -45,5 +48,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+}
+
+extension AppDelegate {
+    
+    private func setupAppreance() {
+        
+        // 导航栏背景颜色
+        UINavigationBar.appearance().barTintColor = TEConfigure.navBarTintColor
+        // 导航栏字体颜色
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: TEConfigure.navTextColor]
+        // 设置返回颜色
+        UINavigationBar.appearance().tintColor = TEConfigure.navBackColor
+        
+        
+        // 设置TabbarItem的外观
+        UITabBarItem.appearance()
+        .setTitleTextAttributes([NSForegroundColorAttributeName: TEConfigure.tabbarFontColor], forState: UIControlState.Normal)
+        
+        UITabBarItem.appearance()
+            .setTitleTextAttributes([NSForegroundColorAttributeName: TEConfigure.tabbarFontColor_Selected], forState: .Selected)
+        
+    }
 }
 

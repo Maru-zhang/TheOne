@@ -1,12 +1,18 @@
 //
-//  TEExtension.swift
-//  TheOne
+//  UIKit+Maru.swift
+//  iCCUT
 //
-//  Created by Maru on 16/3/14.
-//  Copyright © 2016年 Maru. All rights reserved.
+//  Created by Maru on 16/5/22.
+//  Copyright © 2016年 Alloc. All rights reserved.
 //
 
-import UIKit
+import Foundation
+
+extension UIColor {
+    convenience init(r: CGFloat, g: CGFloat, b: CGFloat, alpha: CGFloat) {
+        self.init(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: alpha)
+    }
+}
 
 extension UIViewController {
     
@@ -26,8 +32,8 @@ extension UIViewController {
     }
     
     func showUserCenterController() {
-
-        presentViewController(TESettingController(), animated: true, completion: nil)        
+        
+        presentViewController(TESettingController(), animated: true, completion: nil)
     }
     
     func showSearchViewController() {
@@ -35,5 +41,5 @@ extension UIViewController {
         
     }
     
-
+    
 }

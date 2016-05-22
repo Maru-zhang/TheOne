@@ -14,20 +14,27 @@ import UIKit
 struct TEConfigure {
     
     // MARK: - API
-    /// 电影评分列表API
-    static let API_MOVIE = "http://v3.wufazhuce.com:8000/api/movie/list/0"
-    
-    
+
     
 }
 
 extension TEConfigure {
     
     // MARK: - Color Configure
+    
+    /// Navgation 背景颜色
+    static let navBarTintColor = UIColor.whiteColor()
+    /// Navgation 返回颜色
+    static let navBackColor = UIColor(r: 198, g: 198, b: 198)
+    /// Navgation 正文颜色
+    static let navTextColor = UIColor(r: 78, g: 93, b: 105)
+    
+    
     /// Tabbar普通颜色
     static let tabbarFontColor = UIColor(red: 0.56, green: 0.56, blue: 0.58, alpha: 1)
     /// Tabbar普通颜色
     static let tabbarFontColor_Selected = UIColor(red: 0.53, green: 0.68, blue: 0.85, alpha: 1)
+    
     /// 电影分数颜色
     static let movie_score_color = UIColor(red: 0.91, green: 0.36, blue: 0.38, alpha: 1)
     /// 电影即将上映颜色
