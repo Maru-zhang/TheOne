@@ -17,14 +17,14 @@ class TEArticleController: UIViewController {
     
     override func viewDidLoad() {
         
-        setupCommonProperty()
-        
         setupView()
     }
     
     func setupView() {
         
         title = "阅读"
+        
+        setupCommentItem()
         
         circleView = MARCarousel(frame: CGRectMake(0, 0, view.frame.width, 180))
         view.addSubview(circleView)
@@ -49,3 +49,4 @@ class TEArticleController: UIViewController {
         }
     }
 }
+

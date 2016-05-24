@@ -22,6 +22,9 @@ extension TEConfigure {
     
     // MARK: - Color Configure
     
+    /// 控制器容器颜色
+    static let containnerBG = UIColor(r: 249, g: 253, b: 255)
+    
     /// Navgation 背景颜色
     static let navBarTintColor = UIColor.whiteColor()
     /// Navgation 返回颜色

@@ -18,8 +18,6 @@ class TEMovieController: UITableViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         
-        setupCommonProperty()
-        
         setupView()
         
         bindingView()
@@ -29,6 +27,7 @@ class TEMovieController: UITableViewController {
     // MARK: - Private Method
     private func setupView() {
         title = "电影"
+        setupCommentItem()
         tableView.separatorStyle = .None
         tableView.registerClass(TEMovieCardCell.classForCoder(), forCellReuseIdentifier: NSStringFromClass(TEMovieCardCell))
         tableView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 9)
@@ -76,6 +75,11 @@ class TEMovieController: UITableViewController {
         
     }
     
+    
+}
+
+extension TEMovieController {
+    
     // MARK: - DataSource
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfMoviesInSection(section)
@@ -100,5 +104,5 @@ class TEMovieController: UITableViewController {
         navigationController?.pushViewController(TEMovieDetailController(), animated: true)
     }
     
-    
 }
+

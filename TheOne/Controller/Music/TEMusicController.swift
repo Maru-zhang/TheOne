@@ -11,8 +11,6 @@ import UIKit
 class TEMusicController: UIViewController {
 
     override func viewDidLoad() {
-
-        setupCommonProperty()
         
         setupView()
     }
@@ -22,5 +20,7 @@ class TEMusicController: UIViewController {
     func setupView() {
         
         title = "音乐"
+        
+        setupCommentItem()
     }
 }

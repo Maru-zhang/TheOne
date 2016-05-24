@@ -20,13 +20,13 @@ class TEHomeController: UIViewController {
         
         setupView()
         
-        setupCommonProperty()
-        
     }
     
     
     // MARK: - Private Method
     private func setupView() {
+        
+        setupCommentItem()
         
         // 导航栏LOGO
         navigationItem.titleView = UIImageView(image: UIImage(named: "nav_title"))
@@ -86,5 +86,5 @@ class TEHomeController: UIViewController {
 
     }
     
-
 }
+

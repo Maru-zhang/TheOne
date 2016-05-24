@@ -60,6 +60,8 @@ extension AppDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: TEConfigure.navTextColor]
         // 设置返回颜色
         UINavigationBar.appearance().tintColor = TEConfigure.navBackColor
+        // 设置不透明
+        UINavigationBar.appearance().translucent = false
         
         
         // 设置TabbarItem的外观
