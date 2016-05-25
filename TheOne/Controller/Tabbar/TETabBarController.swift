@@ -27,7 +27,6 @@ class TETabBarController: UITabBarController {
             vc.title = title
             vc.tabBarItem.image = UIImage(named: "\(itemImage)_default")?.imageWithRenderingMode(.AlwaysOriginal)
             vc.tabBarItem.selectedImage = UIImage(named: "\(itemImage)_selected")?.imageWithRenderingMode(.AlwaysOriginal)
-            debugPrint("\(itemImage)_selected")
         }
         
         // 配置子控制器

@@ -26,6 +26,8 @@ class TEArticleController: UIViewController {
         
         setupCommentItem()
         
+        view.backgroundColor = UIColor.whiteColor()
+        
         circleView = MARCarousel(frame: CGRectMake(0, 0, view.frame.width, 180))
         view.addSubview(circleView)
         

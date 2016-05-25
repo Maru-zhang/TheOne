@@ -30,6 +30,7 @@ class TEHomeController: UIViewController {
         
         // 导航栏LOGO
         navigationItem.titleView = UIImageView(image: UIImage(named: "nav_title"))
+        view.backgroundColor = UIColor.whiteColor()
         
         // 配置滑动视图
         scrollView = UIScrollView(frame: view.bounds)

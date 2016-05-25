@@ -22,5 +22,7 @@ class TEMusicController: UIViewController {
         title = "音乐"
         
         setupCommentItem()
+        
+        view.backgroundColor = UIColor.whiteColor()
     }
 }
