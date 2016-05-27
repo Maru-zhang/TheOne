@@ -21,11 +21,14 @@ extension TEItemPresentable where Self: UIViewController {
     
     func setupCommentItem() {
         
+        tabBarController!.title = self.title
+        view.backgroundColor = UIColor.whiteColor()
+        
         let searchBtn = UIBarButtonItem(image: UIImage(named: "searchIcon")?.imageWithRenderingMode(.AlwaysOriginal), landscapeImagePhone: nil, style: .Plain, target: self, action: #selector(TEItemPresentable.showSearchController))
         let meBtn = UIBarButtonItem(image: UIImage(named: "nav_me_default")?.imageWithRenderingMode(.AlwaysOriginal), landscapeImagePhone: nil, style: .Plain, target: self, action: #selector(TEItemPresentable.showUserController))
         
-        navigationItem.leftBarButtonItems = [searchBtn]
-        navigationItem.rightBarButtonItems = [meBtn]
+        tabBarController!.navigationItem.leftBarButtonItems = [searchBtn]
+        tabBarController!.navigationItem.rightBarButtonItems = [meBtn]
     }
 }
 

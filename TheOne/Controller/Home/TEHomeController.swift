@@ -22,15 +22,18 @@ class TEHomeController: UIViewController {
         
     }
     
+    override func viewWillAppear(animated: Bool) {
+        tabBarController!.navigationItem.titleView = UIImageView(image: UIImage(named: "nav_title"))
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        tabBarController!.navigationItem.titleView = nil
+    }
     
     // MARK: - Private Method
     private func setupView() {
-        
+                
         setupCommentItem()
-        
-        // 导航栏LOGO
-        navigationItem.titleView = UIImageView(image: UIImage(named: "nav_title"))
-        view.backgroundColor = UIColor.whiteColor()
         
         // 配置滑动视图
         scrollView = UIScrollView(frame: view.bounds)

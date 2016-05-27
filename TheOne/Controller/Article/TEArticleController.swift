@@ -22,8 +22,6 @@ class TEArticleController: UIViewController {
     
     func setupView() {
         
-        title = "阅读"
-        
         setupCommentItem()
         
         view.backgroundColor = UIColor.whiteColor()
