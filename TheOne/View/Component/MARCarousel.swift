@@ -56,6 +56,10 @@ public class MARCarousel: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        removeObserver(self, forKeyPath: "images")
+    }
+    
     // MARK: - Public Method
 
     
@@ -220,11 +224,14 @@ extension MARCarousel: UIScrollViewDelegate {
     }
     
     public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        
+                
         if scrollView.contentOffset.x == 0 {
             indexOfCurrent = getLastOrNextIndex(true)
-        }else {
+        }else if scrollView.contentOffset.x == scrollView.frame.size.width * 2 {
             indexOfCurrent = getLastOrNextIndex(false)
+        }else {
+            beginTimer()
+            return
         }
         
         resetImageView()

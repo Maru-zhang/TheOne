@@ -8,6 +8,7 @@
 
 import UIKit
 import Cartography
+import ReactiveCocoa
 
 
 let widgetSpace: CFloat = 20
@@ -20,19 +21,17 @@ class TEHomeController: UIViewController {
         
         setupView()
         
+        setupBinding()
+        
     }
     
-    override func viewWillAppear(animated: Bool) {
-        tabBarController!.navigationItem.titleView = UIImageView(image: UIImage(named: "nav_title"))
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        tabBarController!.navigationItem.titleView = nil
-    }
+}
+
+extension TEHomeController {
     
     // MARK: - Private Method
     private func setupView() {
-                
+        
         setupCommentItem()
         
         // 配置滑动视图
@@ -52,7 +51,7 @@ class TEHomeController: UIViewController {
         let more = UIImageView(image: UIImage(named: "shareImage"))
         let likeNum = UILabel()
         likeNum.textColor = UIColor.lightGrayColor()
-        likeNum.textAlignment = .Center
+        likeNum.textAlignment = .Left
         likeNum.font = UIFont.systemFontOfSize(13)
         likeNum.text = "2120"
         
@@ -69,17 +68,15 @@ class TEHomeController: UIViewController {
             diary.height == 21
             diary.left   == (diary.superview?.left)! + 15
             diary.bottom == (diary.superview?.bottom)! - (tabBarController?.tabBar.bounds.height)! - 40
-
+            
             more.width == 44
             more.height == 44
             more.right == diary.superview!.right - 10
             more.centerY == diary.centerY
-
-            likeNum.width == 60
-            likeNum.height == 44
+            
             likeNum.right == more.left
             likeNum.centerY == diary.centerY
-
+            
             like.height == 44
             like.right == likeNum.left
             like.centerY == diary.centerY
@@ -87,8 +84,24 @@ class TEHomeController: UIViewController {
             
         }
         
-
     }
     
+    private func setupBinding() {
+        
+        
+        rac_signalForSelector(#selector(TEHomeController.viewWillAppear(_:)))
+            .toSignalProducer()
+            .startWithNext({ [unowned self] (_) in
+                self.tabBarController!.navigationItem.titleView = UIImageView(image: UIImage(named: "nav_title"))
+            })
+        
+        rac_signalForSelector(#selector(TEHomeController.viewWillDisappear(_:)))
+            .toSignalProducer()
+            .startWithNext({ [unowned self] (_) in
+                self.tabBarController!.navigationItem.titleView = nil
+            })
+        
+        
+    }
 }
 

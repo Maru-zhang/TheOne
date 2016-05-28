@@ -55,7 +55,6 @@
 		425447EB1C96AF0C008B74A9 /* TEArticleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425447EA1C96AF0C008B74A9 /* TEArticleController.swift */; };
 		425447EF1C96B5B2008B74A9 /* TENavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425447EE1C96B5B2008B74A9 /* TENavigationController.swift */; };
 		426645BE1CE4B874005E21B4 /* TECarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426645BD1CE4B874005E21B4 /* TECarousel.swift */; };
-		426645C11CE4B89E005E21B4 /* AlamofireObjectMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426645C01CE4B89E005E21B4 /* AlamofireObjectMapper.swift */; };
 		426645C41CE59E7F005E21B4 /* CirCleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426645C31CE59E7F005E21B4 /* CirCleView.swift */; };
 		426645CF1CE71256005E21B4 /* MARCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426645CD1CE71256005E21B4 /* MARCarousel.swift */; };
 		426645D01CE71256005E21B4 /* TECardPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426645CE1CE71256005E21B4 /* TECardPageView.swift */; };
@@ -133,7 +132,6 @@
 		425447EA1C96AF0C008B74A9 /* TEArticleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEArticleController.swift; sourceTree = "<group>"; };
 		425447EE1C96B5B2008B74A9 /* TENavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TENavigationController.swift; sourceTree = "<group>"; };
 		426645BD1CE4B874005E21B4 /* TECarousel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TECarousel.swift; sourceTree = "<group>"; };
-		426645C01CE4B89E005E21B4 /* AlamofireObjectMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireObjectMapper.swift; sourceTree = "<group>"; };
 		426645C31CE59E7F005E21B4 /* CirCleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CirCleView.swift; sourceTree = "<group>"; };
 		426645CD1CE71256005E21B4 /* MARCarousel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MARCarousel.swift; sourceTree = "<group>"; };
 		426645CE1CE71256005E21B4 /* TECardPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TECardPageView.swift; sourceTree = "<group>"; };
@@ -305,14 +303,6 @@
 			path = Article;
 			sourceTree = "<group>";
 		};
-		426645BF1CE4B884005E21B4 /* AlamofireObjectMapper */ = {
-			isa = PBXGroup;
-			children = (
-				426645C01CE4B89E005E21B4 /* AlamofireObjectMapper.swift */,
-			);
-			path = AlamofireObjectMapper;
-			sourceTree = "<group>";
-		};
 		426645C21CE59E7F005E21B4 /* CirCleView */ = {
 			isa = PBXGroup;
 			children = (
@@ -447,7 +437,6 @@
 			isa = PBXGroup;
 			children = (
 				426645C21CE59E7F005E21B4 /* CirCleView */,
-				426645BF1CE4B884005E21B4 /* AlamofireObjectMapper */,
 			);
 			path = Vendor;
 			sourceTree = "<group>";
@@ -711,7 +700,6 @@
 				4247E8E51CEDF3940047D69A /* UIColoredView.swift in Sources */,
 				4247E8E81CEDF3940047D69A /* UIFontExtensions.swift in Sources */,
 				4247E8DF1CEDF3940047D69A /* NSTimerExtensions.swift in Sources */,
-				426645C11CE4B89E005E21B4 /* AlamofireObjectMapper.swift in Sources */,
 				426645C41CE59E7F005E21B4 /* CirCleView.swift in Sources */,
 				4247E8D61CEDF3940047D69A /* DictionaryExtensions.swift in Sources */,
 				4247E8DE1CEDF3940047D69A /* NSObjectExtensions.swift in Sources */,

@@ -125,6 +125,7 @@ extension UITextField {
 }
 
 extension UISearchBar: UISearchBarDelegate {
+    
     public var rac_text: MutableProperty<String> {
         return lazyAssociatedProperty(self, key: &AssociationKey.text) {
             
