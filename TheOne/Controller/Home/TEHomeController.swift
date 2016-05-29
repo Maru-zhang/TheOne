@@ -23,6 +23,10 @@ class TEHomeController: UIViewController {
         
         setupBinding()
         
+        TENetService.apiGetLatestOneStuff { (signal) in
+            debugPrint(signal)
+        }
+        
     }
     
 }
@@ -38,12 +42,11 @@ extension TEHomeController {
         containner = UIScrollView(frame: view.bounds)
         containner.pagingEnabled = true
         containner.bounces = true
-        containner.contentSize = CGSizeMake(view.frame.width * 3, view.frame.height + 100)
-        containner.backgroundColor = UIColor.whiteColor()
+        containner.contentSize = CGSizeMake(view.frame.width * 3, view.frame.height)
+        containner.backgroundColor = UIColor.clearColor()
         containner.showsVerticalScrollIndicator = true
         containner.showsHorizontalScrollIndicator = true
         containner.delegate = self
-        view.addSubview(containner)
         
         // 配置卡片子视图
         let testCard_0 = TECardPageView()
@@ -54,13 +57,11 @@ extension TEHomeController {
         let testCard_1 = TECardPageView()
         testCard_1.bounds = CGRectMake(0, 0, view.frame.width - 50, 400)
         testCard_1.center = CGPointMake(view.frame.width * 1.5, view.frame.height / 3)
-//        testCard_1.backgroundColor = UIColor.purpleColor()
         containner.addSubview(testCard_1)
         
         let testCard_2 = TECardPageView()
         testCard_2.bounds = CGRectMake(0, 0, view.frame.width - 50, 400)
         testCard_2.center = CGPointMake(view.frame.width * 2.5, view.frame.height / 3)
-//        testCard_2.backgroundColor = UIColor.purpleColor()
         containner.addSubview(testCard_2)
         
         // 喜爱更多等Button
@@ -78,13 +79,15 @@ extension TEHomeController {
         view.addSubview(like)
         view.addSubview(more)
         view.addSubview(likeNum)
+        view.addSubview(containner)
+
         
         // Layout setup
         constrain(diary, like, more, likeNum) { (diary, like, more, likeNum) -> () in
             
             diary.width  == 53
             diary.height == 21
-            diary.left   == (diary.superview?.left)! + 15
+            diary.left   == (diary.superview?.left)! + 10
             diary.bottom == (diary.superview?.bottom)! - (tabBarController?.tabBar.bounds.height)! - 40
             
             more.width == 44

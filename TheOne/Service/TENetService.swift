@@ -32,14 +32,12 @@ class TENetService {
         // MARK: - Home API
         
         /**
-         首页的API
-         
-         - parameter page:	页码
+         最新的首页API
          
          - returns: URL的字符串
          */
-        static func Home_Stuff(page: Int) -> String {
-            return "\(TENetService.HOST)/api/hp/more/\(page)"
+        static func Home_Stuff() -> String {
+            return "\(TENetService.HOST)/api/hp/more/0)"
         }
         
         /**
@@ -182,31 +180,39 @@ extension TENetService {
      - parameter success:	成功回调
      - parameter fail:	失败回调
      */
-    static func apiGetLatestOneStuff(withSuccessHandler success: SuccessHandler,failureHandler fail: FailureHandler) {
+    static func apiGetLatestOneStuff(withSuccessHandler result: (SignalProducer<[TEPaperModel],NSError>) -> ()) {
         
-        apiGetSpecifyOneStuff(0, withSuccessHandler: success, failureHandler: fail)
+        apiGetSpecifyOneStuff(API_Route.Home_Stuff()) { (signal) in
+            result(signal)
+        }
     }
     
     
     /**
      获取指定的页码的首页图片相关的信息
      
-     - parameter page:	页码
-     - parameter success:	成功回调
-     - parameter fail:	失败回调
+     - parameter url:	指定的地址
+     - parameter result:	结果的回调
+     
      */
-    static func apiGetSpecifyOneStuff(page: Int,withSuccessHandler success: SuccessHandler,failureHandler fail: FailureHandler) {
+    static func apiGetSpecifyOneStuff(url: String,withResult result: (SignalProducer<[TEPaperModel],NSError>) -> ()) {
         
-        Alamofire.request(.GET, API_Route.Home_Stuff(page))
+        Alamofire.request(.GET, url)
             .responseJSON { (response) in
             
                 switch response.result {
                 
                 case .Success(_):
+                    
+                    let json = JSON(response.result.value!)
+                    
+                    let pagers: [TEPaperModel] = Mapper<TEPaperModel>().mapArray(json["data"].rawString())!
+                    
+                    result(SignalProducer(value: pagers))
  
                     break
                 case .Failure(_):
-                    fail(response.result.error!)
+                    
                     break
                 }
         }

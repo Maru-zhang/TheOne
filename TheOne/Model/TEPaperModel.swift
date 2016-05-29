@@ -36,11 +36,11 @@ struct TEPaperModel: Mappable {
     /// 网站Image
     var wb_img_url: String?
     /// 点赞数量
-    var praisenum: String?
+    var praisenum: Int?
     /// 分享数量
-    var sharenum: String?
+    var sharenum: Int?
     /// 评论数量
-    var commentnum: String?
+    var commentnum: Int?
     
     init?(_ map: Map) {
         

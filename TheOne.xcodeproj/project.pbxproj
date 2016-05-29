@@ -150,7 +150,7 @@
 		42CE5F561C97ABBA00E04AF6 /* TENaviPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TENaviPresentable.swift; sourceTree = "<group>"; };
 		42CE5F581C97C65400E04AF6 /* TEMacro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMacro.swift; sourceTree = "<group>"; };
 		42CE5F5A1C9818C200E04AF6 /* TEPageable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEPageable.swift; sourceTree = "<group>"; };
-		42CE5F5C1C9819C600E04AF6 /* TEPaperModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEPaperModel.swift; sourceTree = "<group>"; };
+		42CE5F5C1C9819C600E04AF6 /* TEPaperModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TEPaperModel.swift; path = ../TEPaperModel.swift; sourceTree = "<group>"; };
 		42CE5F5F1C981BA500E04AF6 /* TEPaperView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEPaperView.swift; sourceTree = "<group>"; };
 		42CE5F641C9823C600E04AF6 /* TEMovieCardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMovieCardModel.swift; sourceTree = "<group>"; };
 		42CE5F661C9823E800E04AF6 /* TEMovieCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMovieCardCell.swift; sourceTree = "<group>"; };
@@ -322,6 +322,7 @@
 		426B93321CE4624700BB5B96 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				42CE5F5C1C9819C600E04AF6 /* TEPaperModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -458,7 +459,6 @@
 				426645BC1CE4B874005E21B4 /* Article */,
 				426B93321CE4624700BB5B96 /* Home */,
 				42CE5F641C9823C600E04AF6 /* TEMovieCardModel.swift */,
-				42CE5F5C1C9819C600E04AF6 /* TEPaperModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
