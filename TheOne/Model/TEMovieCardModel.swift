@@ -33,15 +33,15 @@ struct TEMovieCardModel: Mappable {
     
     mutating func mapping(map: Map) {
         
-        id <- map["id"]
-        title <- map["title"]
-        verse <- map["verse"]
-        verse_en <- map["verse_en"]
-        score <- map["score"]
+        id           <- map["id"]
+        title        <- map["title"]
+        verse        <- map["verse"]
+        verse_en     <- map["verse_en"]
+        score        <- map["score"]
         revisedscore <- map["revisedscore"]
-        releasetime <- map["releasetime"]
-        scoretime <- map["scoretime"]
-        cover <- map["cover"]
-        servertime <- map["servertime"]
+        releasetime  <- map["releasetime"]
+        scoretime    <- map["scoretime"]
+        cover        <- map["cover"]
+        servertime   <- map["servertime"]
     }
 }

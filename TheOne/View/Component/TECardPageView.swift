@@ -9,18 +9,14 @@
 import UIKit
 
 class TECardPageView: UIView {
-    
-    var containner: UIView!
-    var margin: UIEdgeInsets!
-    
+
+    var shadowLayer: CALayer!
     
     override init(frame: CGRect) {
+
         super.init(frame: frame)
-        backgroundColor = UIColor.redColor()
-        margin = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        containner = UIView(frame: CGRectMake(frame.origin.x + margin.left, frame.origin.y - margin.top, frame.width - margin.left - margin.right, frame.height - margin.top - margin.bottom))
-        containner.layer.borderColor = UIColor.grayColor().CGColor
-        containner.layer.shadowOffset = CGSizeMake(10, 10)
+        backgroundColor = UIColor.whiteColor()
+
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -30,6 +26,17 @@ class TECardPageView: UIView {
     override func drawRect(rect: CGRect) {
         super.drawRect(rect)
         
+        shadowLayer = CALayer()
+        shadowLayer.backgroundColor = UIColor.whiteColor().CGColor
+        shadowLayer.frame = rect
+        shadowLayer.shadowOpacity = 0.3
+        shadowLayer.shadowColor = UIColor.blackColor().CGColor
+        shadowLayer.shadowOffset = CGSizeMake(0, 0)
+        shadowLayer.shadowRadius = 3.0
+        shadowLayer.cornerRadius = 5.0
         
+        layer.addSublayer(shadowLayer)
+
+
     }
 }

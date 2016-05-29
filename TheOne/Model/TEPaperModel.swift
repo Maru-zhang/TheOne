@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import ObjectMapper
 
-struct TEPaperModel {
+struct TEPaperModel: Mappable {
+    
     /// 内容ID
     var hpcontent_id: String?
     /// 标题
@@ -40,4 +42,25 @@ struct TEPaperModel {
     /// 评论数量
     var commentnum: String?
     
+    init?(_ map: Map) {
+        
+    }
+    
+    mutating func mapping(map: Map) {
+        hpcontent_id         <- map["hpcontent_id"]
+        hp_title             <- map["hp_title"]
+        author_id            <- map["author_id"]
+        hp_img_url           <- map["hp_img_url"]
+        hp_img_original_url  <- map["hp_img_original_url"]
+        hp_author            <- map["hp_author"]
+        ipad_url             <- map["ipad_url"]
+        hp_content           <- map["hp_content"]
+        hp_makettime         <- map["hp_makettime"]
+        last_update_date     <- map["last_update_date"]
+        web_url              <- map["web_url"]
+        wb_img_url           <- map["wb_img_url"]
+        praisenum            <- map["praisenum"]
+        sharenum             <- map["sharenum"]
+        commentnum           <- map["commentnum"]
+    }
 }
