@@ -32,6 +32,9 @@ extension TEConfigure {
     /// Navgation 正文颜色
     static let navTextColor = UIColor(r: 78, g: 93, b: 105)
     
+    /// 首页卡片淡化文字颜色
+    static let card_Fade_Color = UIColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 1)
+    
     
     /// Tabbar普通颜色
     static let tabbarFontColor = UIColor(red: 0.56, green: 0.56, blue: 0.58, alpha: 1)
@@ -48,6 +51,12 @@ extension TEConfigure {
 extension TEConfigure {
     
     // MARK: - Font
+    
+    /// 首页淡化文字字体
+    static let card_fade_font = UIFont.systemFontOfSize(10)
+    /// 首页时间戳字体
+    static let card_time_font = UIFont.systemFontOfSize(12)
+    
     /// 电影分数字体
     static let movie_score_font = UIFont(name: "BradleyHandITCTT-Bold", size: 50)
     /// 即将上映字体

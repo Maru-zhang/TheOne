@@ -24,7 +24,9 @@ class TEHomeController: UIViewController {
         setupBinding()
         
         TENetService.apiGetLatestOneStuff { (signal) in
-            debugPrint(signal)
+            signal.startWithNext({ (papers) in
+
+            })
         }
         
     }

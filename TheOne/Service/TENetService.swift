@@ -206,6 +206,8 @@ extension TENetService {
                     
                     let json = JSON(response.result.value!)
                     
+                    debugPrint(json)
+                    
                     let pagers: [TEPaperModel] = Mapper<TEPaperModel>().mapArray(json["data"].rawString())!
                     
                     result(SignalProducer(value: pagers))
