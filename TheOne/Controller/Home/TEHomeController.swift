@@ -15,7 +15,20 @@ let widgetSpace: CFloat = 20
 
 class TEHomeController: UIViewController {
     
-    var containner: UIScrollView!
+    var index: Int = 0
+    
+    var diary: UIButton!
+    var like : UIButton!
+    var more : UIButton!
+    
+    var test: [UIScrollView]! = []
+    
+    var containner: TEPageableView!
+    var pre_card: TECardPageView!
+    var cur_card: TECardPageView!
+    var nex_card: TECardPageView!
+    
+    var viewModel: TECardViewModel!
 
     override func viewDidLoad() {
         
@@ -41,40 +54,46 @@ extension TEHomeController {
         setupCommentItem()
         
         // 配置滑动视图
-        containner = UIScrollView(frame: view.bounds)
-        containner.pagingEnabled = true
-        containner.bounces = true
-        containner.contentSize = CGSizeMake(view.frame.width * 3, view.frame.height)
-        containner.backgroundColor = UIColor.clearColor()
-        containner.showsVerticalScrollIndicator = true
-        containner.showsHorizontalScrollIndicator = true
+        containner = TEPageableView(frame: view.bounds)
         containner.delegate = self
         
         // 配置卡片子视图
-        let testCard_0 = TECardPageView()
-        testCard_0.bounds = CGRectMake(0, 0, view.frame.width - 50, 400)
-        testCard_0.center = CGPointMake(view.frame.width / 2, view.frame.height / 3)
-        containner.addSubview(testCard_0)
+        pre_card = TECardPageView()
+        pre_card.bounds = CGRectMake(0, 0, view.frame.width - 20, 400)
+        pre_card.center = CGPointMake(view.frame.width / 2, view.frame.height / 3)
+        containner.addSubview(pre_card)
         
-        let testCard_1 = TECardPageView()
-        testCard_1.bounds = CGRectMake(0, 0, view.frame.width - 50, 400)
-        testCard_1.center = CGPointMake(view.frame.width * 1.5, view.frame.height / 3)
-        containner.addSubview(testCard_1)
+        cur_card = TECardPageView()
+        cur_card.bounds = CGRectMake(0, 0, view.frame.width - 20, 400)
+        cur_card.center = CGPointMake(view.frame.width * 1.5, view.frame.height / 3)
+        containner.addSubview(cur_card)
         
-        let testCard_2 = TECardPageView()
-        testCard_2.bounds = CGRectMake(0, 0, view.frame.width - 50, 400)
-        testCard_2.center = CGPointMake(view.frame.width * 2.5, view.frame.height / 3)
-        containner.addSubview(testCard_2)
+        nex_card = TECardPageView()
+        nex_card.bounds = CGRectMake(0, 0, view.frame.width - 20, 400)
+        nex_card.center = CGPointMake(view.frame.width * 2.5, view.frame.height / 3)
+        containner.addSubview(nex_card)
         
         // 喜爱更多等Button
-        let diary = UIImageView(image: UIImage(named: "diary_default"))
-        let like = UIImageView(image: UIImage(named: "like_default"))
-        let more = UIImageView(image: UIImage(named: "shareImage"))
+        diary = UIButton()
+        diary.setImage(UIImage(named: "diary_default"), forState: .Normal)
+        
+        like = UIButton()
+        like.setImage(UIImage(named: "like_default"), forState: .Normal)
+        like.setImage(UIImage(named: "like_highlighted"), forState: .Highlighted)
+        like.setImage(UIImage(named: "like_selected"), forState: .Selected)
+        
+        more = UIButton()
+        more.setImage(UIImage(named: "shareImage"), forState: .Normal)
+        
         let likeNum = UILabel()
         likeNum.textColor = UIColor.lightGrayColor()
         likeNum.textAlignment = .Left
         likeNum.font = UIFont.systemFontOfSize(13)
         likeNum.text = "2120"
+        
+        for index in 1...1 {
+            test.append(UIScrollView())
+        }
         
         
         view.addSubview(diary)
@@ -87,22 +106,22 @@ extension TEHomeController {
         // Layout setup
         constrain(diary, like, more, likeNum) { (diary, like, more, likeNum) -> () in
             
-            diary.width  == 53
-            diary.height == 21
-            diary.left   == (diary.superview?.left)! + 10
-            diary.bottom == (diary.superview?.bottom)! - (tabBarController?.tabBar.bounds.height)! - 40
+            diary.width     == 53
+            diary.height    == 21
+            diary.left      == (diary.superview?.left)! + 10
+            diary.bottom    == (diary.superview?.bottom)! - (tabBarController?.tabBar.bounds.height)! - 40
             
-            more.width == 44
-            more.height == 44
-            more.right == diary.superview!.right - 10
-            more.centerY == diary.centerY
+            more.width      == 44
+            more.height     == 44
+            more.right      == diary.superview!.right - 10
+            more.centerY    == diary.centerY
             
-            likeNum.right == more.left
+            likeNum.right   == more.left
             likeNum.centerY == diary.centerY
             
-            like.height == 44
-            like.right == likeNum.left
-            like.centerY == diary.centerY
+            like.height     == 44
+            like.right      == likeNum.left
+            like.centerY    == diary.centerY
             
             
         }
@@ -112,6 +131,7 @@ extension TEHomeController {
     
     private func setupBinding() {
         
+        viewModel = TECardViewModel()
         
         rac_signalForSelector(#selector(TEHomeController.viewWillAppear(_:)))
             .toSignalProducer()
@@ -131,15 +151,20 @@ extension TEHomeController {
 
 extension TEHomeController: UIScrollViewDelegate {
     
-    func scrollViewDidScroll(scrollView: UIScrollView) {
-//        debugPrint(scrollView.contentOffset)
-//        if scrollView.contentOffset.y <= 0 {
-//            scrollView.contentOffset.y = 0
-//        }
-    }
-    
-    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         
+        if scrollView.contentOffset.x == scrollView.frame.width * 2 {
+            index += 1
+        }else if scrollView.contentOffset.x == 0 {
+            index -= 1
+        }
+        
+        guard index != 0 && index != 9 else {
+            return
+        }
+        
+        scrollView.setContentOffset(CGPointMake(scrollView.frame.width, 0), animated: false)
+
     }
 }
 

@@ -27,6 +27,7 @@ class TEArticleController: UIViewController {
         view.backgroundColor = UIColor.whiteColor()
         
         circleView = MARCarousel(frame: CGRectMake(0, 0, view.frame.width, 180))
+        circleView.backgroundColor = UIColor.lightGrayColor()
         view.addSubview(circleView)
         
         // 开始轮播资源进行请求

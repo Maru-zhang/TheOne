@@ -32,13 +32,25 @@ extension TEItemPresentable where Self: UIViewController {
     }
 }
 
-extension UIViewController: TEItemPresentable {
+extension UIViewController: TEItemPresentable,UIViewControllerTransitioningDelegate {
+    
+    
     
     func showUserController() {
-        presentVC(TESettingController())
+        let setting = TESettingController()
+        setting.transitioningDelegate = self
+        self.presentVC(setting)
     }
     
     func showSearchController() {
         
+    }
+    
+    public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return TipperAnimation()
+    }
+    
+    public func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return TipperAnimation()
     }
 }

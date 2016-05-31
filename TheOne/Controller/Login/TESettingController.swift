@@ -29,7 +29,6 @@ class TESettingController: UITableViewController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        setupHeader()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -38,7 +37,8 @@ class TESettingController: UITableViewController {
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
-        setupHeader()
+        
+        setupUI()
         
     }
     
@@ -47,7 +47,7 @@ class TESettingController: UITableViewController {
     }
     
     // MARK: - Private Method
-    private func setupHeader() {
+    private func setupUI() {
         
         backButton = UIButton(type: .Custom)
         backButton.setImage(UIImage(named: "back_default_wight"), forState: .Normal)
@@ -91,6 +91,7 @@ class TESettingController: UITableViewController {
         
         // Add Event
         loginButton.addTarget(self, action: #selector(presentToLoginController), forControlEvents: .TouchUpInside)
+        
     }
     
     
@@ -104,7 +105,9 @@ class TESettingController: UITableViewController {
         let login = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TELoginController")
         presentViewController(login, animated: true, completion: nil)
     }
-    
+}
+
+extension TESettingController {
     
     // MARK: - UIScrolView Delegate
     override func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -119,7 +122,7 @@ class TESettingController: UITableViewController {
         
     }
     
-   // MARK: - UITableView Delegate
+    // MARK: - UITableView Delegate
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -128,7 +131,7 @@ class TESettingController: UITableViewController {
         let cell = UITableViewCell(style: .Default, reuseIdentifier: "cell")
         
         cell.textLabel?.text = "其他设置"
-    
+        
         return cell
     }
     

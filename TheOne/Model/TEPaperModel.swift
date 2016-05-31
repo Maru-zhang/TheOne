@@ -41,6 +41,8 @@ struct TEPaperModel: Mappable {
     var sharenum: Int?
     /// 评论数量
     var commentnum: Int?
+    /// 新加的东西我也不知道什么玩意
+    var push_id: Int?
     
     init?(_ map: Map) {
         
@@ -62,5 +64,6 @@ struct TEPaperModel: Mappable {
         praisenum            <- map["praisenum"]
         sharenum             <- map["sharenum"]
         commentnum           <- map["commentnum"]
+        push_id              <- map["push_id"]
     }
 }

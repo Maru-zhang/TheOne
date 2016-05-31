@@ -195,7 +195,7 @@ extension TENetService {
      - parameter result:	结果的回调
      
      */
-    static func apiGetSpecifyOneStuff(url: String,withResult result: (SignalProducer<[TEPaperModel],NSError>) -> ()) {
+    private static func apiGetSpecifyOneStuff(url: String,withResult result: (SignalProducer<[TEPaperModel],NSError>) -> ()) {
         
         Alamofire.request(.GET, url)
             .responseJSON { (response) in

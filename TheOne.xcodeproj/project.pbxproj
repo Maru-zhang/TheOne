@@ -67,6 +67,9 @@
 		4279A5611C969D2700483480 /* TEConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4279A5601C969D2700483480 /* TEConfigure.swift */; };
 		4285E9841CA28F4C005EDF4B /* TELoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4285E9831CA28F4C005EDF4B /* TELoginController.swift */; };
 		4285E9861CA2C4E1005EDF4B /* TETableModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4285E9851CA2C4E1005EDF4B /* TETableModelType.swift */; };
+		4296EE851CFD6598009814EF /* TECardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4296EE841CFD6598009814EF /* TECardViewModel.swift */; };
+		4296EE871CFDA1ED009814EF /* TEPageableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4296EE861CFDA1ED009814EF /* TEPageableView.swift */; };
+		4296EE8A1CFDAFD2009814EF /* TipperAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4296EE891CFDAFD2009814EF /* TipperAnimation.swift */; };
 		42CE5F471C96D00300E04AF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F451C96D00300E04AF6 /* AppDelegate.swift */; };
 		42CE5F531C97AA0900E04AF6 /* TESettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F521C97AA0900E04AF6 /* TESettingController.swift */; };
 		42CE5F571C97ABBA00E04AF6 /* TENaviPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F561C97ABBA00E04AF6 /* TENaviPresentable.swift */; };
@@ -145,6 +148,9 @@
 		4279A5601C969D2700483480 /* TEConfigure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEConfigure.swift; sourceTree = "<group>"; };
 		4285E9831CA28F4C005EDF4B /* TELoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TELoginController.swift; sourceTree = "<group>"; };
 		4285E9851CA2C4E1005EDF4B /* TETableModelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TETableModelType.swift; sourceTree = "<group>"; };
+		4296EE841CFD6598009814EF /* TECardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TECardViewModel.swift; sourceTree = "<group>"; };
+		4296EE861CFDA1ED009814EF /* TEPageableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEPageableView.swift; sourceTree = "<group>"; };
+		4296EE891CFDAFD2009814EF /* TipperAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipperAnimation.swift; sourceTree = "<group>"; };
 		42CE5F451C96D00300E04AF6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42CE5F521C97AA0900E04AF6 /* TESettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TESettingController.swift; sourceTree = "<group>"; };
 		42CE5F561C97ABBA00E04AF6 /* TENaviPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TENaviPresentable.swift; sourceTree = "<group>"; };
@@ -332,6 +338,7 @@
 			children = (
 				426645CD1CE71256005E21B4 /* MARCarousel.swift */,
 				426645CE1CE71256005E21B4 /* TECardPageView.swift */,
+				4296EE861CFDA1ED009814EF /* TEPageableView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -382,6 +389,7 @@
 		4279A54F1C96780300483480 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4296EE881CFDAF84009814EF /* Animator */,
 				426B93331CE4826700BB5B96 /* Component */,
 				42CE5F611C981D2C00E04AF6 /* Movie */,
 				42CE5F5E1C981B8C00E04AF6 /* Home */,
@@ -453,6 +461,14 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		4296EE881CFDAF84009814EF /* Animator */ = {
+			isa = PBXGroup;
+			children = (
+				4296EE891CFDAFD2009814EF /* TipperAnimation.swift */,
+			);
+			path = Animator;
+			sourceTree = "<group>";
+		};
 		42CE5F441C96CFCB00E04AF6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -509,6 +525,7 @@
 		42E9AF771CE4604B00BB8687 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				4296EE841CFD6598009814EF /* TECardViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -684,6 +701,7 @@
 				42EF86441CF1EB9800060B76 /* TEToastService.swift in Sources */,
 				42CE5F671C9823E800E04AF6 /* TEMovieCardCell.swift in Sources */,
 				42CE5F571C97ABBA00E04AF6 /* TENaviPresentable.swift in Sources */,
+				4296EE8A1CFDAFD2009814EF /* TipperAnimation.swift in Sources */,
 				42CE5F5B1C9818C200E04AF6 /* TEPageable.swift in Sources */,
 				426ADF5E1CEC2EF500DDBD91 /* UIKit+ReactiveCocoa.swift in Sources */,
 				4247E8DA1CEDF3940047D69A /* IntExtensions.swift in Sources */,
@@ -695,6 +713,7 @@
 				4247E8D11CEDF3940047D69A /* BlockWebView.swift in Sources */,
 				4247E8E41CEDF3940047D69A /* UIButtonExtensions.swift in Sources */,
 				4247E8CE1CEDF3940047D69A /* BlockPinch.swift in Sources */,
+				4296EE871CFDA1ED009814EF /* TEPageableView.swift in Sources */,
 				4247E8D01CEDF3940047D69A /* BlockTap.swift in Sources */,
 				4247E8CB1CEDF3940047D69A /* BlockButton.swift in Sources */,
 				4247E8E51CEDF3940047D69A /* UIColoredView.swift in Sources */,
@@ -711,6 +730,7 @@
 				4247E8CD1CEDF3940047D69A /* BlockPan.swift in Sources */,
 				4247E8E71CEDF3940047D69A /* UIDeviceExtensions.swift in Sources */,
 				425447EF1C96B5B2008B74A9 /* TENavigationController.swift in Sources */,
+				4296EE851CFD6598009814EF /* TECardViewModel.swift in Sources */,
 				42CE5F471C96D00300E04AF6 /* AppDelegate.swift in Sources */,
 				4247E8EE1CEDF3940047D69A /* UITextViewExtensions.swift in Sources */,
 				425447E51C96AE68008B74A9 /* TEHomeController.swift in Sources */,
