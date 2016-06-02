@@ -21,8 +21,6 @@ class TEHomeController: UIViewController {
     var like : UIButton!
     var more : UIButton!
     
-    var test: [UIScrollView]! = []
-    
     var containner: TEPageableView!
     var pre_card: TECardPageView!
     var cur_card: TECardPageView!
@@ -35,6 +33,7 @@ class TEHomeController: UIViewController {
         setupView()
         
         setupBinding()
+        
         
         TENetService.apiGetLatestOneStuff { (signal) in
             signal.startWithNext({ (papers) in
@@ -55,7 +54,6 @@ extension TEHomeController {
         
         // 配置滑动视图
         containner = TEPageableView(frame: view.bounds)
-        containner.delegate = self
         
         // 配置卡片子视图
         pre_card = TECardPageView()
@@ -90,11 +88,6 @@ extension TEHomeController {
         likeNum.textAlignment = .Left
         likeNum.font = UIFont.systemFontOfSize(13)
         likeNum.text = "2120"
-        
-        for index in 1...1 {
-            test.append(UIScrollView())
-        }
-        
         
         view.addSubview(diary)
         view.addSubview(like)
@@ -149,22 +142,4 @@ extension TEHomeController {
     }
 }
 
-extension TEHomeController: UIScrollViewDelegate {
-    
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        
-        if scrollView.contentOffset.x == scrollView.frame.width * 2 {
-            index += 1
-        }else if scrollView.contentOffset.x == 0 {
-            index -= 1
-        }
-        
-        guard index != 0 && index != 9 else {
-            return
-        }
-        
-        scrollView.setContentOffset(CGPointMake(scrollView.frame.width, 0), animated: false)
-
-    }
-}
 

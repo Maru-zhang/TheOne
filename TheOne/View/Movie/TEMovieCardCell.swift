@@ -11,10 +11,13 @@ import Cartography
 import Kingfisher
 
 class TEMovieCardCell: UITableViewCell {
+    
     /// 分数
     let scorlLable = UILabel()
     /// 背景图片
     let coverImage = UIImageView()
+    /// 底部的横线
+    let bottomLine = UIImageView()
     
     // MARK: - Life Cycle
     
@@ -33,7 +36,7 @@ class TEMovieCardCell: UITableViewCell {
         
         super.layoutSubviews()
         
-        constrain(scorlLable, coverImage) { (scorlLable, coverImage) -> () in
+        constrain(scorlLable, coverImage ,bottomLine) { (scorlLable, coverImage, bottomLine) -> () in
             
             coverImage.top == (coverImage.superview?.top)!
             coverImage.left == (coverImage.superview?.left)!
@@ -44,6 +47,11 @@ class TEMovieCardCell: UITableViewCell {
             scorlLable.height == 70
             scorlLable.bottom == coverImage.bottom
             scorlLable.right == coverImage.right
+            
+            bottomLine.width == 60
+            bottomLine.height == 5
+            bottomLine.top == scorlLable.bottom - 13
+            bottomLine.right == scorlLable.right
         }
     }
     
@@ -51,6 +59,10 @@ class TEMovieCardCell: UITableViewCell {
         
         addSubview(coverImage)
         addSubview(scorlLable)
+        addSubview(bottomLine)
+        
+        bottomLine.image = UIImage(named: "redline")
+        bottomLine.transform = CGAffineTransformMakeRotation(-0.3)
         
         backgroundColor = UIColor.clearColor()
         selectionStyle = .None
@@ -65,10 +77,12 @@ class TEMovieCardCell: UITableViewCell {
             scorlLable.font = TEConfigure.movie_score_font
             scorlLable.textColor = TEConfigure.movie_score_color
             scorlLable.text = score
+            bottomLine.hidden = false
         }else {
             scorlLable.font = TEConfigure.movie_beon_font
             scorlLable.textColor = TEConfigure.movie_beon_color
             scorlLable.text = "即将上映"
+            bottomLine.hidden = true
         }
     }
 

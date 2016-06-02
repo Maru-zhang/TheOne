@@ -6,15 +6,13 @@
 //  Copyright © 2016年 Maru. All rights reserved.
 //
 import Foundation
+import ReactiveCocoa
 
 @objc
 protocol TEItemPresentable {
     
     optional func setupCommentItem()
     
-    optional func showUserController()
-    
-    optional func showSearchController()
 }
 
 extension TEItemPresentable where Self: UIViewController {
@@ -24,8 +22,20 @@ extension TEItemPresentable where Self: UIViewController {
         tabBarController!.title = self.title
         view.backgroundColor = UIColor.whiteColor()
         
-        let searchBtn = UIBarButtonItem(image: UIImage(named: "searchIcon")?.imageWithRenderingMode(.AlwaysOriginal), landscapeImagePhone: nil, style: .Plain, target: self, action: #selector(TEItemPresentable.showSearchController))
-        let meBtn = UIBarButtonItem(image: UIImage(named: "nav_me_default")?.imageWithRenderingMode(.AlwaysOriginal), landscapeImagePhone: nil, style: .Plain, target: self, action: #selector(TEItemPresentable.showUserController))
+        let searchBtn = UIBarButtonItem(image: UIImage(named: "searchIcon")?.imageWithRenderingMode(.AlwaysOriginal), landscapeImagePhone: nil, style: .Plain, target: self, action: nil)
+        let meBtn = UIBarButtonItem(image: UIImage(named: "nav_me_default")?.imageWithRenderingMode(.AlwaysOriginal), landscapeImagePhone: nil, style: .Plain, target: self, action: nil)
+        
+        searchBtn.rac_command = RACCommand.init(signalBlock: { (button) -> RACSignal! in
+            debugPrint("搜索按钮点击")
+            return RACSignal.empty()
+        })
+        
+        meBtn.rac_command = RACCommand.init(signalBlock: { [unowned self] (button) -> RACSignal! in
+            let setting = TESettingController()
+            setting.transitioningDelegate = self
+            self.presentViewController(setting, animated: true, completion: nil)
+            return RACSignal.empty()
+        })
         
         tabBarController!.navigationItem.leftBarButtonItems = [searchBtn]
         tabBarController!.navigationItem.rightBarButtonItems = [meBtn]
@@ -34,17 +44,6 @@ extension TEItemPresentable where Self: UIViewController {
 
 extension UIViewController: TEItemPresentable,UIViewControllerTransitioningDelegate {
     
-    
-    
-    func showUserController() {
-        let setting = TESettingController()
-        setting.transitioningDelegate = self
-        self.presentVC(setting)
-    }
-    
-    func showSearchController() {
-        
-    }
     
     public func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return TipperAnimation()
