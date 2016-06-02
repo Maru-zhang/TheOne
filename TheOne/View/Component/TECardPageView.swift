@@ -111,3 +111,11 @@ class TECardPageView: UIView {
 
     }
 }
+
+extension TECardPageView {
+    
+    // MARK: - Public method
+    func configWithCardEntity(entity: TEPaperModel) {
+        
+    }
+}

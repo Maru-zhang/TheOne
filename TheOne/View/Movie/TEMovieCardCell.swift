@@ -67,6 +67,10 @@ class TEMovieCardCell: UITableViewCell {
         backgroundColor = UIColor.clearColor()
         selectionStyle = .None
     }
+
+}
+
+extension TEMovieCardCell {
     
     // MARK: - Public Method
     func configureWithViewModels(viewModel: TEMovieViewModel,indexPath: NSIndexPath) {
@@ -85,5 +89,4 @@ class TEMovieCardCell: UITableViewCell {
             bottomLine.hidden = true
         }
     }
-
 }

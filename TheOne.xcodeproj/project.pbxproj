@@ -70,13 +70,13 @@
 		4296EE851CFD6598009814EF /* TECardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4296EE841CFD6598009814EF /* TECardViewModel.swift */; };
 		4296EE871CFDA1ED009814EF /* TEPageableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4296EE861CFDA1ED009814EF /* TEPageableView.swift */; };
 		4296EE8A1CFDAFD2009814EF /* TipperAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4296EE891CFDAFD2009814EF /* TipperAnimation.swift */; };
+		4296EE8D1D000E95009814EF /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4296EE8C1D000E95009814EF /* HomePageView.swift */; };
 		42CE5F471C96D00300E04AF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F451C96D00300E04AF6 /* AppDelegate.swift */; };
 		42CE5F531C97AA0900E04AF6 /* TESettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F521C97AA0900E04AF6 /* TESettingController.swift */; };
 		42CE5F571C97ABBA00E04AF6 /* TENaviPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F561C97ABBA00E04AF6 /* TENaviPresentable.swift */; };
 		42CE5F591C97C65400E04AF6 /* TEMacro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F581C97C65400E04AF6 /* TEMacro.swift */; };
 		42CE5F5B1C9818C200E04AF6 /* TEPageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F5A1C9818C200E04AF6 /* TEPageable.swift */; };
 		42CE5F5D1C9819C600E04AF6 /* TEPaperModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F5C1C9819C600E04AF6 /* TEPaperModel.swift */; };
-		42CE5F601C981BA500E04AF6 /* TEPaperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F5F1C981BA500E04AF6 /* TEPaperView.swift */; };
 		42CE5F651C9823C600E04AF6 /* TEMovieCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F641C9823C600E04AF6 /* TEMovieCardModel.swift */; };
 		42CE5F671C9823E800E04AF6 /* TEMovieCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F661C9823E800E04AF6 /* TEMovieCardCell.swift */; };
 		42E9AF761CE4595300BB8687 /* TENetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E9AF751CE4595300BB8687 /* TENetService.swift */; };
@@ -151,13 +151,13 @@
 		4296EE841CFD6598009814EF /* TECardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TECardViewModel.swift; sourceTree = "<group>"; };
 		4296EE861CFDA1ED009814EF /* TEPageableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEPageableView.swift; sourceTree = "<group>"; };
 		4296EE891CFDAFD2009814EF /* TipperAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipperAnimation.swift; sourceTree = "<group>"; };
+		4296EE8C1D000E95009814EF /* HomePageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		42CE5F451C96D00300E04AF6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42CE5F521C97AA0900E04AF6 /* TESettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TESettingController.swift; sourceTree = "<group>"; };
 		42CE5F561C97ABBA00E04AF6 /* TENaviPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TENaviPresentable.swift; sourceTree = "<group>"; };
 		42CE5F581C97C65400E04AF6 /* TEMacro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMacro.swift; sourceTree = "<group>"; };
 		42CE5F5A1C9818C200E04AF6 /* TEPageable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEPageable.swift; sourceTree = "<group>"; };
 		42CE5F5C1C9819C600E04AF6 /* TEPaperModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TEPaperModel.swift; path = ../TEPaperModel.swift; sourceTree = "<group>"; };
-		42CE5F5F1C981BA500E04AF6 /* TEPaperView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEPaperView.swift; sourceTree = "<group>"; };
 		42CE5F641C9823C600E04AF6 /* TEMovieCardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMovieCardModel.swift; sourceTree = "<group>"; };
 		42CE5F661C9823E800E04AF6 /* TEMovieCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMovieCardCell.swift; sourceTree = "<group>"; };
 		42CE5F681C9824B200E04AF6 /* PingFang Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang Bold.ttf"; sourceTree = "<group>"; };
@@ -500,7 +500,7 @@
 		42CE5F5E1C981B8C00E04AF6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				42CE5F5F1C981BA500E04AF6 /* TEPaperView.swift */,
+				4296EE8C1D000E95009814EF /* HomePageView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -712,6 +712,7 @@
 				4285E9861CA2C4E1005EDF4B /* TETableModelType.swift in Sources */,
 				4247E8D11CEDF3940047D69A /* BlockWebView.swift in Sources */,
 				4247E8E41CEDF3940047D69A /* UIButtonExtensions.swift in Sources */,
+				4296EE8D1D000E95009814EF /* HomePageView.swift in Sources */,
 				4247E8CE1CEDF3940047D69A /* BlockPinch.swift in Sources */,
 				4296EE871CFDA1ED009814EF /* TEPageableView.swift in Sources */,
 				4247E8D01CEDF3940047D69A /* BlockTap.swift in Sources */,
@@ -740,7 +741,6 @@
 				42CE5F591C97C65400E04AF6 /* TEMacro.swift in Sources */,
 				42CE5F5D1C9819C600E04AF6 /* TEPaperModel.swift in Sources */,
 				42E9AF761CE4595300BB8687 /* TENetService.swift in Sources */,
-				42CE5F601C981BA500E04AF6 /* TEPaperView.swift in Sources */,
 				4247E8EC1CEDF3940047D69A /* UISliderExtensions.swift in Sources */,
 				4247E8D51CEDF3940047D69A /* CharacterExtensions.swift in Sources */,
 				4247E8E91CEDF3940047D69A /* UIImageExtensions.swift in Sources */,

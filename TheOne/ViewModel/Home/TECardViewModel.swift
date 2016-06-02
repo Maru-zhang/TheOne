@@ -15,7 +15,7 @@ class TECardViewModel {
     
     let refreshSignal: SignalProducer<Void,NoError>
 
-    private var source: [TEPaperModel] = []
+    var source: [TEPaperModel] = []
     
     init() {
         
@@ -27,11 +27,12 @@ class TECardViewModel {
 extension TECardViewModel {
     
     // MARK: - Public Method
-    func fetchLatestData() {
+    func fetchLatestData(action: ()->()) {
         
         TENetService.apiGetLatestOneStuff { (signalProducter) in
             signalProducter.startWithNext({ [unowned self] (models) in
                 self.source = models
+                action()
             })
         }
     }

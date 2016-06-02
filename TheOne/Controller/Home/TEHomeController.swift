@@ -14,18 +14,13 @@ import ReactiveCocoa
 let widgetSpace: CFloat = 20
 
 class TEHomeController: UIViewController {
-    
-    var index: Int = 0
-    
+
     var diary: UIButton!
     var like : UIButton!
     var more : UIButton!
     
     var containner: TEPageableView!
-    var pre_card: TECardPageView!
-    var cur_card: TECardPageView!
-    var nex_card: TECardPageView!
-    
+
     var viewModel: TECardViewModel!
 
     override func viewDidLoad() {
@@ -33,13 +28,6 @@ class TEHomeController: UIViewController {
         setupView()
         
         setupBinding()
-        
-        
-        TENetService.apiGetLatestOneStuff { (signal) in
-            signal.startWithNext({ (papers) in
-
-            })
-        }
         
     }
     
@@ -54,24 +42,9 @@ extension TEHomeController {
         
         // 配置滑动视图
         containner = TEPageableView(frame: view.bounds)
+        containner.dataSource = self
+        containner.viewDelegate = self
         
-        // 配置卡片子视图
-        pre_card = TECardPageView()
-        pre_card.bounds = CGRectMake(0, 0, view.frame.width - 20, 400)
-        pre_card.center = CGPointMake(view.frame.width / 2, view.frame.height / 3)
-        containner.addSubview(pre_card)
-        
-        cur_card = TECardPageView()
-        cur_card.bounds = CGRectMake(0, 0, view.frame.width - 20, 400)
-        cur_card.center = CGPointMake(view.frame.width * 1.5, view.frame.height / 3)
-        containner.addSubview(cur_card)
-        
-        nex_card = TECardPageView()
-        nex_card.bounds = CGRectMake(0, 0, view.frame.width - 20, 400)
-        nex_card.center = CGPointMake(view.frame.width * 2.5, view.frame.height / 3)
-        containner.addSubview(nex_card)
-        
-        // 喜爱更多等Button
         diary = UIButton()
         diary.setImage(UIImage(named: "diary_default"), forState: .Normal)
         
@@ -126,6 +99,10 @@ extension TEHomeController {
         
         viewModel = TECardViewModel()
         
+        viewModel.fetchLatestData { [unowned self] in
+            self.containner.reloadData()
+        }
+        
         rac_signalForSelector(#selector(TEHomeController.viewWillAppear(_:)))
             .toSignalProducer()
             .startWithNext({ [unowned self] (_) in
@@ -139,6 +116,37 @@ extension TEHomeController {
             })
         
         
+    }
+}
+
+extension TEHomeController: TEPageableDataSource,TEPageableDelegate {
+    
+    func pageableView(pageView: TEPageableView) -> NSInteger {
+        return viewModel.source.count
+    }
+    
+    func pageableView(pageView: TEPageableView, cardCellForColumnAtIndexPath indexPath: NSIndexPath) -> UIView {
+
+        var cell = pageView.dequeueReusableCell() as? TECardPageView
+        let entity = viewModel.source[indexPath.indexAtPosition(0)]
+        
+        if cell == nil { cell = TECardPageView() }
+        
+        cell?.author.text = entity.hp_author
+        cell?.content.text = entity.hp_content
+        cell?.VOL.text = entity.hp_title
+        cell?.imageView.kf_setImageWithURL(NSURL(string: entity.hp_img_url!)!)
+        cell?.markTime.text = entity.hp_makettime
+        
+        return cell!
+    }
+    
+    func pageableViewCenter(pageView: TEPageableView, atIndexPath indexPath: NSIndexPath) -> CGPoint {
+        return CGPointMake(pageView.frame.width / 2, pageView.frame.height / 3)
+    }
+    
+    func pageableViewBounds(pageView: TEPageableView, atIndexPath indexPath: NSIndexPath) -> CGRect {
+        return CGRectMake(0, 0, pageView.frame.width - 20, 400)
     }
 }
 

@@ -12,25 +12,29 @@ import Result
 
 class TEPageableView: UIScrollView {
     
-    typealias itemType = UIView
+    weak var dataSource: TEPageableDataSource?
+    weak var viewDelegate: TEPageableDelegate?
     
-    var currentPage: Int
-    weak var agent: TEPageable?
+    private var registerClass: AnyClass?
+    private var reuseCell: [UIView]
+    private var visibleCell: [UIView]
+    private var currentIndex: NSInteger
     
     // MARK: - Life Cycle
     
-    
     override init(frame: CGRect) {
-        currentPage = 0
+        visibleCell = []
+        reuseCell = []
+        currentIndex = 0
         super.init(frame: frame)
         self.bounces = true
         self.delegate = self
-        self.contentSize = CGSizeMake(frame.width * 10, frame.height + 100)
         self.backgroundColor = UIColor.clearColor()
         self.showsVerticalScrollIndicator = false
-        self.showsHorizontalScrollIndicator = false
+        self.showsHorizontalScrollIndicator = true
         self.directionalLockEnabled = true
         
+        reloadData()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -43,14 +47,55 @@ class TEPageableView: UIScrollView {
 extension TEPageableView {
     
     // MARK: - Public Method
-    func register() {
-        typealias aaa = Int
+
+    func reloadData() {
+        
+        guard dataSource != nil else {
+            contentSize = CGSizeMake(frame.width, frame.height + 100)
+            return
+        }
+        
+        // Reset && Remove all of view
+        removeSubviews()
+        currentIndex = 0
+        visibleCell.removeAll()
+        reuseCell.removeAll()
+
+        let count = dataSource?.pageableView(self)
+        
+        contentSize = CGSizeMake(frame.width * CGFloat(count!), frame.height + 100)
+        
+        // Init scroll
+        scrollViewDidScroll(self)
+    }
+    
+    func registerClass(cls: AnyClass) {
+        registerClass = cls
+    }
+    
+    func dequeueReusableCell() -> UIView? {
+        
+        let anyObj = reuseCell.last
+        
+        if let cell = anyObj {
+            return cell
+        }else {
+            return nil
+        }
+        
     }
 }
 
 extension TEPageableView: UIScrollViewDelegate {
     
+    // MARK: - ScrollView Delegate
+    
     func scrollViewDidScroll(scrollView: UIScrollView) {
+        
+        // Some condition checked
+        guard dataSource != nil else {
+            return
+        }
         
         // Make sure that scrollView only scrollenable in one direction once
         if (scrollView.contentOffset.x != 0 &&
@@ -64,10 +109,65 @@ extension TEPageableView: UIScrollViewDelegate {
         }else {
             scrollView.pagingEnabled = false
         }
+        
+        
+        // Dynamic setup cell
+        
+        if visibleCell.count == 0 {
+            let reuseView = dataSource?.pageableView(self, cardCellForColumnAtIndexPath: NSIndexPath(index: 0))
+            visibleCell.append(reuseView!)
+            let center = viewDelegate?.pageableViewCenter(self, atIndexPath: NSIndexPath(index: 0))
+            let bounds = viewDelegate?.pageableViewBounds(self, atIndexPath: NSIndexPath(index: 0))
+            reuseView?.center = center!
+            reuseView?.bounds = bounds!
+            scrollView.addSubview(reuseView!)
+            return
+        }
+        
+        
+        if scrollView.contentOffset.x > CGFloat(currentIndex) * scrollView.frame.width {
+            // Scroll to right
+            if visibleCell.count == 1 && currentIndex != ((dataSource?.pageableView(self))! - 1) {
+                let center = viewDelegate?.pageableViewCenter(self, atIndexPath: NSIndexPath(index: currentIndex + 1))
+                let bounds = viewDelegate?.pageableViewBounds(self, atIndexPath: NSIndexPath(index: currentIndex + 1))
+                let reuseView = dataSource?.pageableView(self, cardCellForColumnAtIndexPath: NSIndexPath(index: currentIndex + 1))
+                reuseView?.bounds = bounds!
+                reuseView?.center = CGPointMake(scrollView.frame.width * (CGFloat(currentIndex) + 1.5), (center?.y)!)
+                scrollView.addSubview(reuseView!)
+                visibleCell.append(reuseView!)
+                
+            }
+        }else {
+            // Scroll to left
+            if visibleCell.count == 1 && currentIndex != 0 {
+                let center = viewDelegate?.pageableViewCenter(self, atIndexPath: NSIndexPath(index: currentIndex - 1))
+                let bounds = viewDelegate?.pageableViewBounds(self, atIndexPath: NSIndexPath(index: currentIndex - 1))
+                let reuseView = dataSource?.pageableView(self, cardCellForColumnAtIndexPath: NSIndexPath(index: currentIndex - 1))
+                reuseView?.bounds = bounds!
+                reuseView?.center = CGPointMake(scrollView.frame.width * (CGFloat(currentIndex) - 0.5), (center?.y)!)
+                scrollView.addSubview(reuseView!)
+                visibleCell.append(reuseView!)
+                
+            }
+        }
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-
-        currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+        
+        let newIndex = NSInteger(scrollView.contentOffset.x) / NSInteger(scrollView.frame.width)
+        
+        if newIndex == currentIndex {
+            // Scroll to same location
+            let cell = visibleCell.removeLast()
+            cell.removeFromSuperview()
+            reuseCell.append(cell)
+        }else {
+            // Scroll to another location
+            currentIndex = newIndex
+            let cell = visibleCell.removeFirst()
+            cell.removeFromSuperview()
+            reuseCell.append(cell)
+        }
+        
     }
 }
