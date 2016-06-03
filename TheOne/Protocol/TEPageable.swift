@@ -40,7 +40,7 @@ protocol TEPageableDelegate: NSObjectProtocol {
      
      - returns: CGRect
      */
-    func pageableViewBounds(pageView: TEPageableView, atIndexPath indexPath: NSIndexPath) -> CGRect
+//    func pageableViewBounds(pageView: TEPageableView, atIndexPath indexPath: NSIndexPath) -> CGRect
     
     /**
      指定列处，Cell所在的中心点
@@ -49,7 +49,17 @@ protocol TEPageableDelegate: NSObjectProtocol {
      
      - returns: CGPoint
      */
-    func pageableViewCenter(pageView: TEPageableView, atIndexPath indexPath: NSIndexPath) -> CGPoint
+//    func pageableViewCenter(pageView: TEPageableView, atIndexPath indexPath: NSIndexPath) -> CGPoint
+    
+    /**
+     指定列出，cell的位置
+     
+     - parameter pageView:	容器
+     - parameter indexPath:	指定位置的IndexPath
+     
+     - returns: CGRect
+     */
+    func pageableViewFrame(pageView: TEPageableView,atIndexPath indexPath: NSIndexPath) -> CGRect
 }
 
 

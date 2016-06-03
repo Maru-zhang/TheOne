@@ -100,7 +100,7 @@ extension TEPageableView: UIScrollViewDelegate {
         // Make sure that scrollView only scrollenable in one direction once
         if (scrollView.contentOffset.x != 0 &&
             scrollView.contentOffset.y != 0) {
-            scrollView.contentOffset = CGPointMake(0, 0);
+            return
         }
         
         // Make sure that page only in horizontal direation
@@ -111,41 +111,39 @@ extension TEPageableView: UIScrollViewDelegate {
         }
         
         
+        debugPrint(scrollView.contentOffset)
+        
         // Dynamic setup cell
         
         if visibleCell.count == 0 {
             let reuseView = dataSource?.pageableView(self, cardCellForColumnAtIndexPath: NSIndexPath(index: 0))
             visibleCell.append(reuseView!)
-            let center = viewDelegate?.pageableViewCenter(self, atIndexPath: NSIndexPath(index: 0))
-            let bounds = viewDelegate?.pageableViewBounds(self, atIndexPath: NSIndexPath(index: 0))
-            reuseView?.center = center!
-            reuseView?.bounds = bounds!
+            let frame = viewDelegate?.pageableViewFrame(self, atIndexPath: NSIndexPath(index: 0))
+            reuseView?.frame = frame!
             scrollView.addSubview(reuseView!)
             return
         }
         
         
-        if scrollView.contentOffset.x > CGFloat(currentIndex) * scrollView.frame.width {
+        if scrollView.contentOffset.x - CGFloat(currentIndex) * scrollView.frame.width > 0.0001 {
             // Scroll to right
             if visibleCell.count == 1 && currentIndex != ((dataSource?.pageableView(self))! - 1) {
-                let center = viewDelegate?.pageableViewCenter(self, atIndexPath: NSIndexPath(index: currentIndex + 1))
-                let bounds = viewDelegate?.pageableViewBounds(self, atIndexPath: NSIndexPath(index: currentIndex + 1))
+                let frame = viewDelegate?.pageableViewFrame(self, atIndexPath: NSIndexPath(index: currentIndex + 1))
                 let reuseView = dataSource?.pageableView(self, cardCellForColumnAtIndexPath: NSIndexPath(index: currentIndex + 1))
-                reuseView?.bounds = bounds!
-                reuseView?.center = CGPointMake(scrollView.frame.width * (CGFloat(currentIndex) + 1.5), (center?.y)!)
+                reuseView?.frame = CGRectMake(scrollView.frame.width * CGFloat(currentIndex + 1) + frame!.x, (frame?.y)!, (frame?.width)!, (frame?.height)!)
                 scrollView.addSubview(reuseView!)
+                reuseView?.layoutSubviews()
                 visibleCell.append(reuseView!)
                 
             }
-        }else {
+        }else if scrollView.contentOffset.x - CGFloat(currentIndex) * scrollView.frame.width < -0.0001  {
             // Scroll to left
             if visibleCell.count == 1 && currentIndex != 0 {
-                let center = viewDelegate?.pageableViewCenter(self, atIndexPath: NSIndexPath(index: currentIndex - 1))
-                let bounds = viewDelegate?.pageableViewBounds(self, atIndexPath: NSIndexPath(index: currentIndex - 1))
+                let frame = viewDelegate?.pageableViewFrame(self, atIndexPath: NSIndexPath(index: currentIndex - 1))
                 let reuseView = dataSource?.pageableView(self, cardCellForColumnAtIndexPath: NSIndexPath(index: currentIndex - 1))
-                reuseView?.bounds = bounds!
-                reuseView?.center = CGPointMake(scrollView.frame.width * (CGFloat(currentIndex) - 0.5), (center?.y)!)
+                reuseView?.frame = CGRectMake(scrollView.frame.width * CGFloat(currentIndex - 1) + frame!.x, (frame?.y)!, (frame?.width)!, (frame?.height)!)
                 scrollView.addSubview(reuseView!)
+                reuseView?.layoutSubviews()
                 visibleCell.append(reuseView!)
                 
             }
@@ -154,19 +152,22 @@ extension TEPageableView: UIScrollViewDelegate {
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         
+        debugPrint(scrollView.contentOffset.x)
+        
         let newIndex = NSInteger(scrollView.contentOffset.x) / NSInteger(scrollView.frame.width)
         
-        if newIndex == currentIndex {
+        if newIndex == currentIndex && visibleCell.count == 2 {
             // Scroll to same location
             let cell = visibleCell.removeLast()
-            cell.removeFromSuperview()
             reuseCell.append(cell)
-        }else {
+            cell.removeFromSuperview()
+        }else if newIndex != currentIndex && visibleCell.count == 2 {
             // Scroll to another location
             currentIndex = newIndex
             let cell = visibleCell.removeFirst()
-            cell.removeFromSuperview()
             reuseCell.append(cell)
+            cell.removeFromSuperview()
+
         }
         
     }

@@ -136,17 +136,18 @@ extension TEHomeController: TEPageableDataSource,TEPageableDelegate {
         cell?.content.text = entity.hp_content
         cell?.VOL.text = entity.hp_title
         cell?.imageView.kf_setImageWithURL(NSURL(string: entity.hp_img_url!)!)
-        cell?.markTime.text = entity.hp_makettime
+        cell?.markTime.text = (entity.hp_makettime! as NSString).substringToIndex(10)
         
         return cell!
     }
     
-    func pageableViewCenter(pageView: TEPageableView, atIndexPath indexPath: NSIndexPath) -> CGPoint {
-        return CGPointMake(pageView.frame.width / 2, pageView.frame.height / 3)
-    }
-    
-    func pageableViewBounds(pageView: TEPageableView, atIndexPath indexPath: NSIndexPath) -> CGRect {
-        return CGRectMake(0, 0, pageView.frame.width - 20, 400)
+    func pageableViewFrame(pageView: TEPageableView, atIndexPath indexPath: NSIndexPath) -> CGRect {
+        
+        let content = viewModel.source[indexPath.indexAtPosition(0)].hp_content! as NSString
+        
+        let size = content.boundingRectWithSize(CGSizeMake(pageView.frame.width - 20, 100), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: TEConfigure.card_content_font], context: nil)
+        
+        return CGRectMake(10, 10, pageView.frame.width - 20, 350 + size.height)
     }
 }
 
