@@ -104,15 +104,13 @@ extension TEPageableView: UIScrollViewDelegate {
         }
         
         // Make sure that page only in horizontal direation
+        // TODO: There are still some problem
         if scrollView.contentOffset.x > 0 || scrollView.contentOffset.x < 0 {
             scrollView.pagingEnabled = true
         }else {
             scrollView.pagingEnabled = false
         }
-        
-        
-        debugPrint(scrollView.contentOffset)
-        
+
         // Dynamic setup cell
         
         if visibleCell.count == 0 {
@@ -125,25 +123,30 @@ extension TEPageableView: UIScrollViewDelegate {
         }
         
         
-        if scrollView.contentOffset.x - CGFloat(currentIndex) * scrollView.frame.width > 0.0001 {
+        if scrollView.contentOffset.x > CGFloat(currentIndex) * scrollView.frame.width {
             // Scroll to right
             if visibleCell.count == 1 && currentIndex != ((dataSource?.pageableView(self))! - 1) {
+
                 let frame = viewDelegate?.pageableViewFrame(self, atIndexPath: NSIndexPath(index: currentIndex + 1))
                 let reuseView = dataSource?.pageableView(self, cardCellForColumnAtIndexPath: NSIndexPath(index: currentIndex + 1))
                 reuseView?.frame = CGRectMake(scrollView.frame.width * CGFloat(currentIndex + 1) + frame!.x, (frame?.y)!, (frame?.width)!, (frame?.height)!)
+                reuseView?.setNeedsUpdateConstraints()
+                reuseView?.setNeedsLayout()
+                reuseView?.layoutIfNeeded()
                 scrollView.addSubview(reuseView!)
-                reuseView?.layoutSubviews()
                 visibleCell.append(reuseView!)
                 
             }
-        }else if scrollView.contentOffset.x - CGFloat(currentIndex) * scrollView.frame.width < -0.0001  {
+        }else if scrollView.contentOffset.x < CGFloat(currentIndex) * scrollView.frame.width {
             // Scroll to left
             if visibleCell.count == 1 && currentIndex != 0 {
                 let frame = viewDelegate?.pageableViewFrame(self, atIndexPath: NSIndexPath(index: currentIndex - 1))
                 let reuseView = dataSource?.pageableView(self, cardCellForColumnAtIndexPath: NSIndexPath(index: currentIndex - 1))
                 reuseView?.frame = CGRectMake(scrollView.frame.width * CGFloat(currentIndex - 1) + frame!.x, (frame?.y)!, (frame?.width)!, (frame?.height)!)
+                reuseView?.setNeedsUpdateConstraints()
+                reuseView?.setNeedsLayout()
+                reuseView?.layoutIfNeeded()
                 scrollView.addSubview(reuseView!)
-                reuseView?.layoutSubviews()
                 visibleCell.append(reuseView!)
                 
             }
@@ -151,8 +154,6 @@ extension TEPageableView: UIScrollViewDelegate {
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        
-        debugPrint(scrollView.contentOffset.x)
         
         let newIndex = NSInteger(scrollView.contentOffset.x) / NSInteger(scrollView.frame.width)
         

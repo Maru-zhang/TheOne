@@ -16,7 +16,7 @@ install_framework()
     local source="$1"
   fi
 
-  local destination="${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}"
+  local destination="${CONFIGURATION_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}"
 
   if [ -L "${source}" ]; then
       echo "Symlinked..."
@@ -59,8 +59,8 @@ code_sign_if_enabled() {
   if [ -n "${EXPANDED_CODE_SIGN_IDENTITY}" -a "${CODE_SIGNING_REQUIRED}" != "NO" -a "${CODE_SIGNING_ALLOWED}" != "NO" ]; then
     # Use the current code_sign_identitiy
     echo "Code Signing $1 with Identity ${EXPANDED_CODE_SIGN_IDENTITY_NAME}"
-    echo "/usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} ${OTHER_CODE_SIGN_FLAGS} --preserve-metadata=identifier,entitlements \"$1\""
-    /usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} ${OTHER_CODE_SIGN_FLAGS} --preserve-metadata=identifier,entitlements "$1"
+    echo "/usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} --preserve-metadata=identifier,entitlements \"$1\""
+    /usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} --preserve-metadata=identifier,entitlements "$1"
   fi
 }
 
@@ -84,26 +84,26 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Cartography/Cartography.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Gifu/Gifu.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/JLToast/JLToast.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Kingfisher/Kingfisher.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/MJRefresh/MJRefresh.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/ObjectMapper/ObjectMapper.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/ReactiveCocoa/ReactiveCocoa.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Result/Result.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON/SwiftyJSON.framework"
+  install_framework "Pods-TheOne/Alamofire.framework"
+  install_framework "Pods-TheOne/Cartography.framework"
+  install_framework "Pods-TheOne/Gifu.framework"
+  install_framework "Pods-TheOne/JLToast.framework"
+  install_framework "Pods-TheOne/Kingfisher.framework"
+  install_framework "Pods-TheOne/MJRefresh.framework"
+  install_framework "Pods-TheOne/ObjectMapper.framework"
+  install_framework "Pods-TheOne/ReactiveCocoa.framework"
+  install_framework "Pods-TheOne/Result.framework"
+  install_framework "Pods-TheOne/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Cartography/Cartography.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Gifu/Gifu.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/JLToast/JLToast.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Kingfisher/Kingfisher.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/MJRefresh/MJRefresh.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/ObjectMapper/ObjectMapper.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/ReactiveCocoa/ReactiveCocoa.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/Result/Result.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON/SwiftyJSON.framework"
+  install_framework "Pods-TheOne/Alamofire.framework"
+  install_framework "Pods-TheOne/Cartography.framework"
+  install_framework "Pods-TheOne/Gifu.framework"
+  install_framework "Pods-TheOne/JLToast.framework"
+  install_framework "Pods-TheOne/Kingfisher.framework"
+  install_framework "Pods-TheOne/MJRefresh.framework"
+  install_framework "Pods-TheOne/ObjectMapper.framework"
+  install_framework "Pods-TheOne/ReactiveCocoa.framework"
+  install_framework "Pods-TheOne/Result.framework"
+  install_framework "Pods-TheOne/SwiftyJSON.framework"
 fi

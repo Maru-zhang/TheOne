@@ -22,7 +22,7 @@ class TEHomeController: UIViewController {
     var containner: TEPageableView!
 
     var viewModel: TECardViewModel!
-
+    
     override func viewDidLoad() {
         
         setupView()
@@ -37,6 +37,8 @@ extension TEHomeController {
     
     // MARK: - Private Method
     private func setupView() {
+        
+        viewModel = TECardViewModel()
         
         setupCommentItem()
         
@@ -97,12 +99,12 @@ extension TEHomeController {
     
     private func setupBinding() {
         
-        viewModel = TECardViewModel()
+        viewModel.active <~ isActive()
         
-        viewModel.fetchLatestData { [unowned self] in
+        viewModel.cards.signal.observeNext { [unowned self] (_) in
             self.containner.reloadData()
         }
-        
+    
         rac_signalForSelector(#selector(TEHomeController.viewWillAppear(_:)))
             .toSignalProducer()
             .startWithNext({ [unowned self] (_) in
@@ -122,13 +124,13 @@ extension TEHomeController {
 extension TEHomeController: TEPageableDataSource,TEPageableDelegate {
     
     func pageableView(pageView: TEPageableView) -> NSInteger {
-        return viewModel.source.count
+        return viewModel.cards.value.count
     }
     
     func pageableView(pageView: TEPageableView, cardCellForColumnAtIndexPath indexPath: NSIndexPath) -> UIView {
 
         var cell = pageView.dequeueReusableCell() as? TECardPageView
-        let entity = viewModel.source[indexPath.indexAtPosition(0)]
+        let entity = viewModel.cards.value[indexPath.indexAtPosition(0)]
         
         if cell == nil { cell = TECardPageView() }
         
@@ -137,13 +139,13 @@ extension TEHomeController: TEPageableDataSource,TEPageableDelegate {
         cell?.VOL.text = entity.hp_title
         cell?.imageView.kf_setImageWithURL(NSURL(string: entity.hp_img_url!)!)
         cell?.markTime.text = (entity.hp_makettime! as NSString).substringToIndex(10)
-        
+
         return cell!
     }
     
     func pageableViewFrame(pageView: TEPageableView, atIndexPath indexPath: NSIndexPath) -> CGRect {
         
-        let content = viewModel.source[indexPath.indexAtPosition(0)].hp_content! as NSString
+        let content = viewModel.cards.value[indexPath.indexAtPosition(0)].hp_content! as NSString
         
         let size = content.boundingRectWithSize(CGSizeMake(pageView.frame.width - 20, 100), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: TEConfigure.card_content_font], context: nil)
         
