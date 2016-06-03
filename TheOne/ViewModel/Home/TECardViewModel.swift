@@ -16,7 +16,6 @@ class TECardViewModel {
     let active = MutableProperty(false)
     let refreshSignal: SignalProducer<Void,NoError>
     let refreshObserver: Observer<Void,NoError>
-    
     let cards = MutableProperty<[TEPaperModel]>([TEPaperModel]())
     
     init() {

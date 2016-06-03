@@ -46,6 +46,7 @@ class TECardPageView: UIView {
         content.textColor = TEConfigure.card_Content_Color
         content.font = TEConfigure.card_content_font
         content.textAlignment = .Left
+        content.lineBreakMode = .ByCharWrapping
         content.numberOfLines = 0
         
         super.init(frame: frame)

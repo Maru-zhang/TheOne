@@ -126,23 +126,31 @@ extension TEPageableView: UIScrollViewDelegate {
         if scrollView.contentOffset.x > CGFloat(currentIndex) * scrollView.frame.width {
             // Scroll to right
             if visibleCell.count == 1 && currentIndex != ((dataSource?.pageableView(self))! - 1) {
+                
+                debugPrint("++++\(NSIndexPath(index: currentIndex + 1))")
 
-                let frame = viewDelegate?.pageableViewFrame(self, atIndexPath: NSIndexPath(index: currentIndex + 1))
+                let newFrame = viewDelegate?.pageableViewFrame(self, atIndexPath: NSIndexPath(index: currentIndex + 1))
                 let reuseView = dataSource?.pageableView(self, cardCellForColumnAtIndexPath: NSIndexPath(index: currentIndex + 1))
-                reuseView?.frame = CGRectMake(scrollView.frame.width * CGFloat(currentIndex + 1) + frame!.x, (frame?.y)!, (frame?.width)!, (frame?.height)!)
+//                reuseView?.frame = CGRectMake(scrollView.frame.width * CGFloat(currentIndex + 1) + newFrame!.x, (newFrame?.y)!, (newFrame?.width)!, (newFrame?.height)!)
+                reuseView?.bounds = frame
+                reuseView?.center = CGPoint(x: scrollView.frame.width / 2,y: scrollView.frame.height / 2)
                 reuseView?.setNeedsUpdateConstraints()
                 reuseView?.setNeedsLayout()
                 reuseView?.layoutIfNeeded()
                 scrollView.addSubview(reuseView!)
                 visibleCell.append(reuseView!)
                 
+                debugPrint(frame)
+                
             }
         }else if scrollView.contentOffset.x < CGFloat(currentIndex) * scrollView.frame.width {
             // Scroll to left
             if visibleCell.count == 1 && currentIndex != 0 {
-                let frame = viewDelegate?.pageableViewFrame(self, atIndexPath: NSIndexPath(index: currentIndex - 1))
+                let newFrame = viewDelegate?.pageableViewFrame(self, atIndexPath: NSIndexPath(index: currentIndex - 1))
                 let reuseView = dataSource?.pageableView(self, cardCellForColumnAtIndexPath: NSIndexPath(index: currentIndex - 1))
-                reuseView?.frame = CGRectMake(scrollView.frame.width * CGFloat(currentIndex - 1) + frame!.x, (frame?.y)!, (frame?.width)!, (frame?.height)!)
+//                reuseView?.frame = CGRectMake(scrollView.frame.width * CGFloat(currentIndex - 1) + newFrame!.x, (newFrame?.y)!, (newFrame?.width)!, (newFrame?.height)!)
+                reuseView?.bounds = frame
+                reuseView?.center = CGPoint(x: scrollView.frame.width / 2,y: scrollView.frame.height / 2)
                 reuseView?.setNeedsUpdateConstraints()
                 reuseView?.setNeedsLayout()
                 reuseView?.layoutIfNeeded()
