@@ -145,13 +145,11 @@ extension TEHomeController: TEPageableDataSource,TEPageableDelegate {
     
     func pageableViewFrame(pageView: TEPageableView, atIndexPath indexPath: NSIndexPath) -> CGRect {
         
-        debugPrint("---\(indexPath.indexAtPosition(0))")
-        
         let content = viewModel.cards.value[indexPath.indexAtPosition(0)].hp_content! as NSString
         
         let size = content.boundingRectWithSize(CGSizeMake(pageView.frame.width - 20, CGFloat(MAXFLOAT)), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: TEConfigure.card_content_font], context: nil).size
         
-        return CGRectMake(10, 10, pageView.frame.width - 20, 350.0 + size.height)
+        return CGRectMake(10, 10, pageView.frame.width - 20, 380.0 + size.height)
     }
 }
 

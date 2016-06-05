@@ -78,7 +78,7 @@ class TECardPageView: UIView {
             content.right == imageView.right
             
             markTime.right == imageView.right - 6
-            markTime.top == content.bottom + 4
+            markTime.bottom == (imageView.superview?.bottom)! - 4
             
             
         }
@@ -91,6 +91,11 @@ class TECardPageView: UIView {
 
     override func drawRect(rect: CGRect) {
         super.drawRect(rect)
+        
+        // Firsr, remove all of this layer's sublayer
+        if shadowLayer != nil {
+            shadowLayer.removeFromSuperlayer()
+        }
         
         shadowLayer = CALayer()
         shadowLayer.backgroundColor = UIColor.whiteColor().CGColor

@@ -123,22 +123,20 @@ extension TEPageableView: UIScrollViewDelegate {
         }
         
         
+        /*
+         Before use reuseView from cache, should call -setNeedsDisplay to redraw layer,otherwise
+         the layer will be show overlapping.
+         */
         if scrollView.contentOffset.x > CGFloat(currentIndex) * scrollView.frame.width {
             // Scroll to right
             if visibleCell.count == 1 && currentIndex != ((dataSource?.pageableView(self))! - 1) {
                 
-                debugPrint("++++\(NSIndexPath(index: currentIndex + 1))")
-
                 let newFrame = viewDelegate?.pageableViewFrame(self, atIndexPath: NSIndexPath(index: currentIndex + 1))
                 let reuseView = dataSource?.pageableView(self, cardCellForColumnAtIndexPath: NSIndexPath(index: currentIndex + 1))
                 reuseView?.frame = CGRectMake(scrollView.frame.width * CGFloat(currentIndex + 1) + newFrame!.x, (newFrame?.y)!, (newFrame?.width)!, (newFrame?.height)!)
-                reuseView?.setNeedsUpdateConstraints()
-                reuseView?.setNeedsLayout()
-                reuseView?.layoutIfNeeded()
+                reuseView?.setNeedsDisplay()
                 scrollView.addSubview(reuseView!)
                 visibleCell.append(reuseView!)
-                
-                debugPrint(frame)
                 
             }
         }else if scrollView.contentOffset.x < CGFloat(currentIndex) * scrollView.frame.width {
@@ -147,9 +145,7 @@ extension TEPageableView: UIScrollViewDelegate {
                 let newFrame = viewDelegate?.pageableViewFrame(self, atIndexPath: NSIndexPath(index: currentIndex - 1))
                 let reuseView = dataSource?.pageableView(self, cardCellForColumnAtIndexPath: NSIndexPath(index: currentIndex - 1))
                 reuseView?.frame = CGRectMake(scrollView.frame.width * CGFloat(currentIndex - 1) + newFrame!.x, (newFrame?.y)!, (newFrame?.width)!, (newFrame?.height)!)
-                reuseView?.setNeedsUpdateConstraints()
-                reuseView?.setNeedsLayout()
-                reuseView?.layoutIfNeeded()
+                reuseView?.setNeedsDisplay()
                 scrollView.addSubview(reuseView!)
                 visibleCell.append(reuseView!)
                 
