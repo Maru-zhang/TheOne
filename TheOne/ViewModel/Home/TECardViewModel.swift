@@ -38,6 +38,8 @@ class TECardViewModel {
         }
         
         
+        
+        
     }
 }
 
