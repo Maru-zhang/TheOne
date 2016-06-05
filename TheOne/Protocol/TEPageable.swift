@@ -31,25 +31,8 @@ protocol TEPageableDataSource: NSObjectProtocol {
     
 }
 
+
 protocol TEPageableDelegate: NSObjectProtocol {
-    
-    /**
-     指定列处，Cell所显示的Bounds大小
-     
-     - parameter indexPath:	指定位置的IndexPath
-     
-     - returns: CGRect
-     */
-//    func pageableViewBounds(pageView: TEPageableView, atIndexPath indexPath: NSIndexPath) -> CGRect
-    
-    /**
-     指定列处，Cell所在的中心点
-     
-     - parameter indexPath:	指定位置的IndexPath
-     
-     - returns: CGPoint
-     */
-//    func pageableViewCenter(pageView: TEPageableView, atIndexPath indexPath: NSIndexPath) -> CGPoint
     
     /**
      指定列出，cell的位置
@@ -60,16 +43,25 @@ protocol TEPageableDelegate: NSObjectProtocol {
      - returns: CGRect
      */
     func pageableViewFrame(pageView: TEPageableView,atIndexPath indexPath: NSIndexPath) -> CGRect
+    
+    /**
+     当滚动视图滚动完成后调用该函数，反馈现在的滚动位置
+     
+     - parameter pageView:	容器
+     - parameter indexPath:	滚动待的IndexPath位置
+     */
+    func pageableViewDidScroll(pageView: TEPageableView, toIndexPath indexPath: NSIndexPath)
 }
 
 
 extension TEPageableDelegate {
     
-    func pageableViewBounds(pageView: TEPageableView, atIndexPath indexPath: NSIndexPath) -> CGRect {
+    func pageableViewFrame(pageView: TEPageableView,atIndexPath indexPath: NSIndexPath) -> CGRect {
         return CGRectMake(0, 0, pageView.frame.width, pageView.frame.height)
     }
     
-    func pageableViewCenter(pageView: TEPageableView, atIndexPath indexPath: NSIndexPath) -> CGPoint {
-        return CGPointMake(pageView.frame.width / 2, pageView.frame.height / 2)
+    func pageableViewDidScroll(pageView: TEPageableView, toIndexPath indexPath: NSIndexPath) {
+        
     }
+    
 }

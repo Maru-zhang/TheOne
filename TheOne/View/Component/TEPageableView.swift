@@ -67,7 +67,11 @@ extension TEPageableView {
         
         // Init scroll
         scrollViewDidScroll(self)
+        
+        // Call setup delegate
+        scrollViewDidEndDecelerating(self)
     }
+    
     
     func registerClass(cls: AnyClass) {
         registerClass = cls
@@ -156,6 +160,8 @@ extension TEPageableView: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         
         let newIndex = NSInteger(scrollView.contentOffset.x) / NSInteger(scrollView.frame.width)
+        
+        viewDelegate?.pageableViewDidScroll(self, toIndexPath: NSIndexPath(index: newIndex))
         
         if newIndex == currentIndex && visibleCell.count == 2 {
             // Scroll to same location

@@ -16,12 +16,17 @@ class TECardViewModel {
     let active = MutableProperty(false)
     let refreshSignal: SignalProducer<Void,NoError>
     let refreshObserver: Observer<Void,NoError>
+    let praiseSignal: SignalProducer<Int,NoError>
+    let praiseObserver: Observer<Int,NoError>
     let cards = MutableProperty<[TEPaperModel]>([TEPaperModel]())
     
     init() {
         
         let (refreshSignal, refreshObserver) = SignalProducer<Void,NoError>.buffer(0)
         self.refreshSignal = refreshSignal
+        let (pariseSignal, praiseObserver) = SignalProducer<Int,NoError>.buffer(0)
+        self.praiseSignal = pariseSignal
+        self.praiseObserver = praiseObserver
         self.refreshObserver = refreshObserver
         
         active.producer
@@ -33,11 +38,10 @@ class TECardViewModel {
             TENetService.apiGetLatestOneStuff { (signalProducter) in
                 signalProducter.startWithNext({ [unowned self] (models) in
                     self.cards.value = models
+                    
                     })
             }
         }
-        
-        
         
         
     }

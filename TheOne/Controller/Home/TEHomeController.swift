@@ -18,6 +18,7 @@ class TEHomeController: UIViewController {
     var diary: UIButton!
     var like : UIButton!
     var more : UIButton!
+    var likeNum: UILabel!
     
     var containner: TEPageableView!
 
@@ -58,11 +59,10 @@ extension TEHomeController {
         more = UIButton()
         more.setImage(UIImage(named: "shareImage"), forState: .Normal)
         
-        let likeNum = UILabel()
+        likeNum = UILabel()
         likeNum.textColor = UIColor.lightGrayColor()
         likeNum.textAlignment = .Left
         likeNum.font = UIFont.systemFontOfSize(13)
-        likeNum.text = "2120"
         
         view.addSubview(diary)
         view.addSubview(like)
@@ -104,6 +104,10 @@ extension TEHomeController {
         viewModel.cards.signal.observeNext { [unowned self] (_) in
             self.containner.reloadData()
         }
+        
+        viewModel.praiseSignal.startWithNext { [unowned self] (number) in
+            self.likeNum.text = String(number)
+        }
     
         rac_signalForSelector(#selector(TEHomeController.viewWillAppear(_:)))
             .toSignalProducer()
@@ -129,10 +133,10 @@ extension TEHomeController: TEPageableDataSource,TEPageableDelegate {
     
     func pageableView(pageView: TEPageableView, cardCellForColumnAtIndexPath indexPath: NSIndexPath) -> UIView {
 
-        var cell = pageView.dequeueReusableCell() as? TECardPageView
+        var cell = pageView.dequeueReusableCell() as? HomePageView
         let entity = viewModel.cards.value[indexPath.indexAtPosition(0)]
         
-        if cell == nil { cell = TECardPageView() }
+        if cell == nil { cell = HomePageView() }
         
         cell?.author.text = entity.hp_author
         cell?.content.text = entity.hp_content
@@ -150,6 +154,14 @@ extension TEHomeController: TEPageableDataSource,TEPageableDelegate {
         let size = content.boundingRectWithSize(CGSizeMake(pageView.frame.width - 20, CGFloat(MAXFLOAT)), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: TEConfigure.card_content_font], context: nil).size
         
         return CGRectMake(10, 10, pageView.frame.width - 20, 380.0 + size.height)
+    }
+    
+    func pageableViewDidScroll(pageView: TEPageableView, toIndexPath indexPath: NSIndexPath) {
+
+        let number = viewModel.cards.value[indexPath.indexAtPosition(0)].praisenum
+        
+        viewModel.praiseObserver.sendNext(number!)
+        
     }
 }
 
