@@ -46,8 +46,3 @@ class TECardViewModel {
         
     }
 }
-
-extension TECardViewModel {
-    
-
-}

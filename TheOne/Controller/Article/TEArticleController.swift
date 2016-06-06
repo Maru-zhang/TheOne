@@ -15,6 +15,7 @@ class TEArticleController: UIViewController {
     
     var circleView: MARCarousel!
     var pageView: TEPageableView!
+    var viewModel: TEArticleViewModel!
     
     override func viewDidLoad() {
         
@@ -49,6 +50,8 @@ extension TEArticleController {
     
     private func setupBinding() {
         
+        viewModel = TEArticleViewModel()
+        
         // 开始轮播资源进行请求
         TENetService.apiGetArtcleCarousel(withSuccessHandler: { (imgResult) in
             
@@ -79,15 +82,17 @@ extension TEArticleController: TEPageableDataSource,TEPageableDelegate {
     
     func pageableView(pageView: TEPageableView, cardCellForColumnAtIndexPath indexPath: NSIndexPath) -> UIView {
         
-        var cell = pageView.dequeueReusableCell() as? UITableView
+        var cell = pageView.dequeueReusableCell() as? TECardPageView
         
         if cell == nil {
-            cell = TEArticleTableView()
-            cell?.registerClass(TEArticleCell.self, forCellReuseIdentifier: String(TEArticleCell))
+            cell = TECardPageView()
+            let table = TEArticleTableView(frame: CGRectMake(0, 0, pageView.frame.width - 20, pageView.frame.height - 20), style: .Plain)
+            table.registerClass(TEArticleCell.self, forCellReuseIdentifier: String(TEArticleCell))
+            table.delegate = self
+            table.dataSource = self
+            cell?.addSubview(table)
         }
         
-        cell?.dataSource = self
-        cell?.delegate = self
         
         return cell!
     }
@@ -107,6 +112,9 @@ extension TEArticleController: UITableViewDataSource,UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(String(TEArticleCell), forIndexPath: indexPath) as! TEArticleCell
         cell.author.text = "dsadsada"
+        cell.hotLine.text = "dsadsa-------"
+        cell.title.text = "dsadsa"
+        cell.typeImage.image = UIImage(named: "readIcon")
         return cell
     }
     

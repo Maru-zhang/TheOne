@@ -99,7 +99,7 @@ extension TEHomeController {
     
     private func setupBinding() {
         
-        viewModel.active <~ isActive()
+        viewModel.refreshObserver.sendNext()
         
         viewModel.cards.signal.observeNext { [unowned self] (_) in
             self.containner.reloadData()
