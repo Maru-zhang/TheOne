@@ -31,7 +31,7 @@ class TEArticleTableView: UITableView {
         shadowLayer.shadowRadius = 3.0
         shadowLayer.cornerRadius = 5.0
         
-        layer.insertSublayer(shadowLayer, atIndex: 0)
+        layer.insertSublayer(shadowLayer, atIndex: 1)
     }
  
 

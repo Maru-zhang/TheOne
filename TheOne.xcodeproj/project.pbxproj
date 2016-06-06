@@ -54,6 +54,8 @@
 		425447E81C96AE68008B74A9 /* TETabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425447E41C96AE68008B74A9 /* TETabBarController.swift */; };
 		425447EB1C96AF0C008B74A9 /* TEArticleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425447EA1C96AF0C008B74A9 /* TEArticleController.swift */; };
 		425447EF1C96B5B2008B74A9 /* TENavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425447EE1C96B5B2008B74A9 /* TENavigationController.swift */; };
+		425D52BA1D05A10100344C4E /* TEArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425D52B91D05A10100344C4E /* TEArticle.swift */; };
+		425D52BC1D05A95C00344C4E /* TEArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425D52BB1D05A95C00344C4E /* TEArticleViewModel.swift */; };
 		426645BE1CE4B874005E21B4 /* TECarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426645BD1CE4B874005E21B4 /* TECarousel.swift */; };
 		426645C41CE59E7F005E21B4 /* CirCleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426645C31CE59E7F005E21B4 /* CirCleView.swift */; };
 		426645CF1CE71256005E21B4 /* MARCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426645CD1CE71256005E21B4 /* MARCarousel.swift */; };
@@ -73,7 +75,6 @@
 		4296EE8D1D000E95009814EF /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4296EE8C1D000E95009814EF /* HomePageView.swift */; };
 		4296EE901D0451C5009814EF /* TESearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4296EE8F1D0451C5009814EF /* TESearchController.swift */; };
 		4296EE961D045348009814EF /* TEArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4296EE941D045348009814EF /* TEArticleCell.swift */; };
-		4296EE971D045348009814EF /* TEArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4296EE951D045348009814EF /* TEArticleCell.xib */; };
 		4296EE991D045839009814EF /* TEArticleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4296EE981D045839009814EF /* TEArticleTableView.swift */; };
 		42CE5F471C96D00300E04AF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F451C96D00300E04AF6 /* AppDelegate.swift */; };
 		42CE5F531C97AA0900E04AF6 /* TESettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F521C97AA0900E04AF6 /* TESettingController.swift */; };
@@ -138,6 +139,8 @@
 		425447E41C96AE68008B74A9 /* TETabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TETabBarController.swift; sourceTree = "<group>"; };
 		425447EA1C96AF0C008B74A9 /* TEArticleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEArticleController.swift; sourceTree = "<group>"; };
 		425447EE1C96B5B2008B74A9 /* TENavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TENavigationController.swift; sourceTree = "<group>"; };
+		425D52B91D05A10100344C4E /* TEArticle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEArticle.swift; sourceTree = "<group>"; };
+		425D52BB1D05A95C00344C4E /* TEArticleViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEArticleViewModel.swift; sourceTree = "<group>"; };
 		426645BD1CE4B874005E21B4 /* TECarousel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TECarousel.swift; sourceTree = "<group>"; };
 		426645C31CE59E7F005E21B4 /* CirCleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CirCleView.swift; sourceTree = "<group>"; };
 		426645CD1CE71256005E21B4 /* MARCarousel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MARCarousel.swift; sourceTree = "<group>"; };
@@ -158,7 +161,6 @@
 		4296EE8C1D000E95009814EF /* HomePageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		4296EE8F1D0451C5009814EF /* TESearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TESearchController.swift; sourceTree = "<group>"; };
 		4296EE941D045348009814EF /* TEArticleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEArticleCell.swift; sourceTree = "<group>"; };
-		4296EE951D045348009814EF /* TEArticleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TEArticleCell.xib; sourceTree = "<group>"; };
 		4296EE981D045839009814EF /* TEArticleTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEArticleTableView.swift; sourceTree = "<group>"; };
 		42CE5F451C96D00300E04AF6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42CE5F521C97AA0900E04AF6 /* TESettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TESettingController.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				426645BD1CE4B874005E21B4 /* TECarousel.swift */,
+				425D52B91D05A10100344C4E /* TEArticle.swift */,
 			);
 			path = Article;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 		426B93341CE48F1300BB5B96 /* Article */ = {
 			isa = PBXGroup;
 			children = (
+				425D52BB1D05A95C00344C4E /* TEArticleViewModel.swift */,
 			);
 			path = Article;
 			sourceTree = "<group>";
@@ -491,7 +495,6 @@
 			isa = PBXGroup;
 			children = (
 				4296EE941D045348009814EF /* TEArticleCell.swift */,
-				4296EE951D045348009814EF /* TEArticleCell.xib */,
 				4296EE981D045839009814EF /* TEArticleTableView.swift */,
 			);
 			path = Article;
@@ -644,7 +647,6 @@
 				4279A5551C96780300483480 /* Main.storyboard in Resources */,
 				4279A5531C96780300483480 /* Assets.xcassets in Resources */,
 				4279A5541C96780300483480 /* LaunchScreen.storyboard in Resources */,
-				4296EE971D045348009814EF /* TEArticleCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -775,6 +777,7 @@
 				4247E8D71CEDF3940047D69A /* DoubleExtensions.swift in Sources */,
 				4247E8EA1CEDF3940047D69A /* UIImageViewExtensions.swift in Sources */,
 				4247E8CD1CEDF3940047D69A /* BlockPan.swift in Sources */,
+				425D52BC1D05A95C00344C4E /* TEArticleViewModel.swift in Sources */,
 				4296EE961D045348009814EF /* TEArticleCell.swift in Sources */,
 				4247E8E71CEDF3940047D69A /* UIDeviceExtensions.swift in Sources */,
 				425447EF1C96B5B2008B74A9 /* TENavigationController.swift in Sources */,
@@ -785,6 +788,7 @@
 				4247E8F21CEDF3940047D69A /* UIWindowExtensions.swift in Sources */,
 				4247E8D31CEDF3940047D69A /* CGFloatExtensions.swift in Sources */,
 				426645D01CE71256005E21B4 /* TECardPageView.swift in Sources */,
+				425D52BA1D05A10100344C4E /* TEArticle.swift in Sources */,
 				42CE5F591C97C65400E04AF6 /* TEMacro.swift in Sources */,
 				42CE5F5D1C9819C600E04AF6 /* TEPaperModel.swift in Sources */,
 				4296EE991D045839009814EF /* TEArticleTableView.swift in Sources */,

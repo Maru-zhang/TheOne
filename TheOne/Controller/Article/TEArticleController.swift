@@ -37,11 +37,12 @@ extension TEArticleController {
         
         circleView = MARCarousel(frame: CGRectMake(0, 0, view.frame.width, 180))
         circleView.backgroundColor = UIColor.lightGrayColor()
-        view.addSubview(circleView)
         
         pageView = TEPageableView(frame: CGRectMake(0, 180, view.frame.width, view.frame.height - 224))
         pageView.dataSource = self
         pageView.viewDelegate = self
+        
+        view.addSubview(circleView)
         view.addSubview(pageView)
         
     }
@@ -80,7 +81,10 @@ extension TEArticleController: TEPageableDataSource,TEPageableDelegate {
         
         var cell = pageView.dequeueReusableCell() as? UITableView
         
-        if cell == nil { cell = TEArticleTableView() }
+        if cell == nil {
+            cell = TEArticleTableView()
+            cell?.registerClass(TEArticleCell.self, forCellReuseIdentifier: String(TEArticleCell))
+        }
         
         cell?.dataSource = self
         cell?.delegate = self
@@ -101,11 +105,17 @@ extension TEArticleController: UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return TEArticleCell()
+        let cell = tableView.dequeueReusableCellWithIdentifier(String(TEArticleCell), forIndexPath: indexPath) as! TEArticleCell
+        cell.author.text = "dsadsada"
+        return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 60.0
+        return tableView.frame.height / 3
+    }
+    
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
     }
     
     

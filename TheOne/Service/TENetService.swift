@@ -206,8 +206,6 @@ extension TENetService {
                     
                     let json = JSON(response.result.value!)
                     
-                    debugPrint(json)
-                    
                     let pagers: [TEPaperModel] = Mapper<TEPaperModel>().mapArray(json["data"].rawString())!
                     
                     result(SignalProducer(value: pagers))
@@ -241,6 +239,30 @@ extension TENetService {
             }
         }
         
+    }
+    
+    /**
+     Get the latest articles from server
+     
+     - parameter result:	冷信号
+     */
+    static func apiGetArticleIndex(result: (SignalProducer<[TEArticle],NSError>) -> Void) {
+        Alamofire.request(.GET, API_Route.Read_Index())
+            .responseJSON { (response) in
+                switch response.result {
+                case .Success(_):
+                    let json = JSON(response.result.value!)
+                    
+                    let models: [TEArticle] = Mapper<TEArticle>().mapArray(json["data"]["essay"].rawString())!
+                    
+                    result(SignalProducer(value: models))
+                    
+                    break
+                case .Failure(_):
+                    result(SignalProducer<[TEArticle],NSError>(error: response.result.error!))
+                    break
+                }
+        }
     }
     
     // MARK: - Music Service
