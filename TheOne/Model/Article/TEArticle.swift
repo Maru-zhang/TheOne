@@ -10,11 +10,12 @@
 import UIKit
 import ObjectMapper
 
-struct TEArticle: Mappable {
+struct TEEssay: Mappable {
     
     var content_id  : String?
     var hp_title    : String?
     var hp_makettime: String?
+    var guide_word  : String?
     var has_audio   : Bool?
     var author      = TEAuthor()
     
@@ -29,13 +30,65 @@ struct TEArticle: Mappable {
         hp_title   <- map["hp_title"]
         hp_makettime <- map["hp_makettime"]
         has_audio  <- map["has_audio"]
-        author.user_id <- map["user_id"]
-        author.user_name <- map["user_name"]
-        author.web_url <- map["web_url"]
-        author.desc <- map["desc"]
-        author.wb_name <- map["wb_name"]
+        guide_word <- map["guide_word"]
+        author.user_id <- map["author.user_id"]
+        author.user_name <- map["author.user_name"]
+        author.web_url <- map["author.web_url"]
+        author.desc <- map["author.desc"]
+        author.wb_name <- map["author.wb_name"]
     }
     
+}
+
+struct TESerial: Mappable {
+    
+    var id: String?
+    var serial_id: String?
+    var number: String?
+    var title: String?
+    var excerpt: String?
+    var read_num: String?
+    var maketime: String?
+    var author = TEAuthor()
+    
+    init?(_ map: Map) {
+        
+    }
+    
+    mutating func mapping(map: Map) {
+        id <- map["id"]
+        serial_id <- map["serial_id"]
+        number <- map["number"]
+        title <- map["title"]
+        excerpt <- map["excerpt"]
+        read_num <- map["read_num"]
+        maketime <- map["maketime"]
+        author.user_id <- map["author.user_id"]
+        author.desc <- map["author.desc"]
+        author.user_name <- map["author.user_name"]
+        author.web_url <- map["author.web_url"]
+    }
+}
+
+struct TEIssue: Mappable {
+    
+    var question_id: String?
+    var question_title: String?
+    var answer_title: String?
+    var answer_content: String?
+    var question_makettime: String?
+    
+    init?(_ map: Map) {
+        
+    }
+    
+    mutating func mapping(map: Map) {
+        question_id <- map["question_id"]
+        question_title <- map["question_title"]
+        answer_title <- map["answer_title"]
+        answer_content <- map["answer_content"]
+        question_makettime <- map["question_makettime"]
+    }
 }
 
 struct TEAuthor: Mappable {

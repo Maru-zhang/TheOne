@@ -246,20 +246,22 @@ extension TENetService {
      
      - parameter result:	冷信号
      */
-    static func apiGetArticleIndex(result: (SignalProducer<[TEArticle],NSError>) -> Void) {
+    static func apiGetArticleIndex(result: (SignalProducer<([TEEssay],[TESerial],[TEIssue]),NSError>) -> Void) {
         Alamofire.request(.GET, API_Route.Read_Index())
             .responseJSON { (response) in
                 switch response.result {
                 case .Success(_):
                     let json = JSON(response.result.value!)
                     
-                    let models: [TEArticle] = Mapper<TEArticle>().mapArray(json["data"]["essay"].rawString())!
+                    let essay: [TEEssay] = Mapper<TEEssay>().mapArray(json["data"]["essay"].rawString())!
+                    let serials: [TESerial] = Mapper<TESerial>().mapArray(json["data"]["serial"].rawString())!
+                    let issue: [TEIssue] = Mapper<TEIssue>().mapArray(json["data"]["question"].rawString())!
                     
-                    result(SignalProducer(value: models))
+                    result(SignalProducer(value: (essay,serials,issue)))
                     
                     break
                 case .Failure(_):
-                    result(SignalProducer<[TEArticle],NSError>(error: response.result.error!))
+                    result(SignalProducer<([TEEssay],[TESerial],[TEIssue]),NSError>(error: response.result.error!))
                     break
                 }
         }

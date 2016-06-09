@@ -15,10 +15,11 @@ class TEPageableView: UIScrollView {
     weak var dataSource: TEPageableDataSource?
     weak var viewDelegate: TEPageableDelegate?
     
+    var currentIndex: NSInteger
+    var visibleCell: [UIView]
+
     private var registerClass: AnyClass?
     private var reuseCell: [UIView]
-    private var visibleCell: [UIView]
-    private var currentIndex: NSInteger
     
     // MARK: - Life Cycle
     
