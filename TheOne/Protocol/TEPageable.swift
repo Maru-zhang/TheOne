@@ -50,7 +50,15 @@ protocol TEPageableDelegate: NSObjectProtocol {
      - parameter pageView:	容器
      - parameter indexPath:	滚动待的IndexPath位置
      */
-    func pageableViewDidScroll(pageView: TEPageableView, toIndexPath indexPath: NSIndexPath)
+    func pageableViewDidEndScroll(pageView: TEPageableView, toIndexPath indexPath: NSIndexPath)
+    
+    /**
+     当滚动视图即将显示一个重用视图的时候，会调用该函数
+     
+     - parameter pageView:	容器
+     - parameter reuseView:	即将显示的视图
+     */
+    func pageableViewWillShowReuseView(pageView: TEPageableView, reuseView: UIView)
 }
 
 
@@ -60,7 +68,11 @@ extension TEPageableDelegate {
         return CGRectMake(0, 0, pageView.frame.width, pageView.frame.height)
     }
     
-    func pageableViewDidScroll(pageView: TEPageableView, toIndexPath indexPath: NSIndexPath) {
+    func pageableViewDidEndScroll(pageView: TEPageableView, toIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
+    func pageableViewWillShowReuseView(pageView: TEPageableView, reuseView: UIView) {
         
     }
     

@@ -17,7 +17,7 @@ struct TEEssay: Mappable {
     var hp_makettime: String?
     var guide_word  : String?
     var has_audio   : Bool?
-    var author      = TEAuthor()
+    var author      : [TEAuthor]?
     
     init?(_ map: Map) {
         guard map["data"].JSONDictionary.count != 0 else {
@@ -31,11 +31,7 @@ struct TEEssay: Mappable {
         hp_makettime <- map["hp_makettime"]
         has_audio  <- map["has_audio"]
         guide_word <- map["guide_word"]
-        author.user_id <- map["author.user_id"]
-        author.user_name <- map["author.user_name"]
-        author.web_url <- map["author.web_url"]
-        author.desc <- map["author.desc"]
-        author.wb_name <- map["author.wb_name"]
+        author <- map["author"]
     }
     
 }
@@ -49,7 +45,7 @@ struct TESerial: Mappable {
     var excerpt: String?
     var read_num: String?
     var maketime: String?
-    var author = TEAuthor()
+    var author : TEAuthor?
     
     init?(_ map: Map) {
         
@@ -63,10 +59,7 @@ struct TESerial: Mappable {
         excerpt <- map["excerpt"]
         read_num <- map["read_num"]
         maketime <- map["maketime"]
-        author.user_id <- map["author.user_id"]
-        author.desc <- map["author.desc"]
-        author.user_name <- map["author.user_name"]
-        author.web_url <- map["author.web_url"]
+        author <- map["author"]
     }
 }
 
@@ -108,6 +101,10 @@ struct TEAuthor: Mappable {
     }
     
     mutating func mapping(map: Map) {
-        
+        user_id <- map["user_id"]
+        user_name <- map["user_name"]
+        web_url <- map["web_url"]
+        desc <- map["desc"]
+        wb_name <- map["wb_name"]
     }
 }

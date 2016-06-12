@@ -42,8 +42,7 @@ extension TEArticleController {
         pageView = TEPageableView(frame: CGRectMake(0, 180, view.frame.width, view.frame.height - 224))
         pageView.dataSource = self
         pageView.viewDelegate = self
-        pageView.reloadData()
-        
+
         view.addSubview(circleView)
         view.addSubview(pageView)
         
@@ -54,6 +53,7 @@ extension TEArticleController {
         viewModel.refreshSignal.startWithNext { [unowned self] in
             self.viewModel.fetchLastestData({ 
                 self.pageView.reloadData()
+                debugPrint(self.viewModel.serials.value)
             })
         }
         
@@ -108,10 +108,8 @@ extension TEArticleController: TEPageableDataSource,TEPageableDelegate {
         return CGRectMake(10, 10, pageView.frame.width - 20, pageView.frame.height - 20)
     }
     
-    func pageableViewDidScroll(pageView: TEPageableView, toIndexPath indexPath: NSIndexPath) {
-        
-        let tableView = pageView.visibleCell[0].subviews[0] as! UITableView
-        tableView.reloadData()
+    func pageableViewWillShowReuseView(pageView: TEPageableView, reuseView: UIView) {
+        (reuseView.subviews[0] as! UITableView).reloadData()
     }
     
 }
@@ -131,15 +129,17 @@ extension TEArticleController: UITableViewDataSource,UITableViewDelegate {
         
         if indexPath.row == 0 {
             cell.title.text = viewModel.essays.value[pageView.currentIndex].hp_title
-            cell.author.text = "dsa"
+            cell.author.text = viewModel.essays.value[pageView.currentIndex].author![0].user_name
             cell.hotLine.text = viewModel.essays.value[pageView.currentIndex].guide_word
             cell.articleStyle = .read;
         }else if indexPath.row == 1 {
             cell.title.text = viewModel.serials.value[pageView.currentIndex].title
+            cell.author.text = viewModel.serials.value[pageView.currentIndex].author!.user_name
             cell.hotLine.text = viewModel.serials.value[pageView.currentIndex].excerpt
             cell.articleStyle = .serial
         }else {
             cell.title.text = viewModel.issue.value[pageView.currentIndex].question_title
+            cell.author.text = viewModel.issue.value[pageView.currentIndex].answer_title
             cell.hotLine.text = viewModel.issue.value[pageView.currentIndex].answer_content
             cell.articleStyle = .question
         }

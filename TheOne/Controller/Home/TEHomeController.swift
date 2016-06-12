@@ -77,7 +77,7 @@ extension TEHomeController {
             diary.width     == 53
             diary.height    == 21
             diary.left      == (diary.superview?.left)! + 10
-            diary.bottom    == (diary.superview?.bottom)! - (tabBarController?.tabBar.bounds.height)! - 40
+            diary.bottom    == (diary.superview?.bottom)! - (tabBarController?.tabBar.bounds.height)! - 20
             
             more.width      == 44
             more.height     == 44
