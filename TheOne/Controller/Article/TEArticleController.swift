@@ -53,7 +53,6 @@ extension TEArticleController {
         viewModel.refreshSignal.startWithNext { [unowned self] in
             self.viewModel.fetchLastestData({ 
                 self.pageView.reloadData()
-                debugPrint(self.viewModel.serials.value)
             })
         }
         
@@ -109,6 +108,7 @@ extension TEArticleController: TEPageableDataSource,TEPageableDelegate {
     }
     
     func pageableViewWillShowReuseView(pageView: TEPageableView, reuseView: UIView) {
+        debugPrint("====")
         (reuseView.subviews[0] as! UITableView).reloadData()
     }
     
@@ -127,20 +127,30 @@ extension TEArticleController: UITableViewDataSource,UITableViewDelegate {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(String(TEArticleCell), forIndexPath: indexPath) as! TEArticleCell
         
+        var index: NSInteger = 0
+        
+        if pageView.contentOffset.x > view.frame.width * CGFloat(pageView.currentIndex) {
+            index = pageView.currentIndex + 1
+        }else if pageView.contentOffset.x < view.frame.width * CGFloat(pageView.currentIndex) {
+            index = pageView.currentIndex - 1
+        }else {
+            index = pageView.currentIndex
+        }
+        
         if indexPath.row == 0 {
-            cell.title.text = viewModel.essays.value[pageView.currentIndex].hp_title
-            cell.author.text = viewModel.essays.value[pageView.currentIndex].author![0].user_name
-            cell.hotLine.text = viewModel.essays.value[pageView.currentIndex].guide_word
+            cell.title.text = viewModel.essays.value[index].hp_title
+            cell.author.text = viewModel.essays.value[index].author![0].user_name
+            cell.hotLine.text = viewModel.essays.value[index].guide_word
             cell.articleStyle = .read;
         }else if indexPath.row == 1 {
-            cell.title.text = viewModel.serials.value[pageView.currentIndex].title
-            cell.author.text = viewModel.serials.value[pageView.currentIndex].author!.user_name
-            cell.hotLine.text = viewModel.serials.value[pageView.currentIndex].excerpt
+            cell.title.text = viewModel.serials.value[index].title
+            cell.author.text = viewModel.serials.value[index].author!.user_name
+            cell.hotLine.text = viewModel.serials.value[index].excerpt
             cell.articleStyle = .serial
         }else {
-            cell.title.text = viewModel.issue.value[pageView.currentIndex].question_title
-            cell.author.text = viewModel.issue.value[pageView.currentIndex].answer_title
-            cell.hotLine.text = viewModel.issue.value[pageView.currentIndex].answer_content
+            cell.title.text = viewModel.issue.value[index].question_title
+            cell.author.text = viewModel.issue.value[index].answer_title
+            cell.hotLine.text = viewModel.issue.value[index].answer_content
             cell.articleStyle = .question
         }
         

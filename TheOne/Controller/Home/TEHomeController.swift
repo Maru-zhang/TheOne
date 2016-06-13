@@ -156,7 +156,7 @@ extension TEHomeController: TEPageableDataSource,TEPageableDelegate {
         return CGRectMake(10, 10, pageView.frame.width - 20, 380.0 + size.height)
     }
     
-    func pageableViewDidScroll(pageView: TEPageableView, toIndexPath indexPath: NSIndexPath) {
+    func pageableViewDidEndScroll(pageView: TEPageableView, toIndexPath indexPath: NSIndexPath) {
 
         let number = viewModel.cards.value[indexPath.indexAtPosition(0)].praisenum
         
