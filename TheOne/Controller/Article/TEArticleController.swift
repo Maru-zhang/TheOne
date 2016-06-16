@@ -108,7 +108,6 @@ extension TEArticleController: TEPageableDataSource,TEPageableDelegate {
     }
     
     func pageableViewWillShowReuseView(pageView: TEPageableView, reuseView: UIView) {
-        debugPrint("====")
         (reuseView.subviews[0] as! UITableView).reloadData()
     }
     

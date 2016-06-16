@@ -251,6 +251,7 @@ extension TENetService {
             .responseJSON { (response) in
                 switch response.result {
                 case .Success(_):
+                    
                     let json = JSON(response.result.value!)
                     
                     let essay: [TEEssay] = Mapper<TEEssay>().mapArray(json["data"]["essay"].rawString())!
@@ -268,6 +269,60 @@ extension TENetService {
     }
     
     // MARK: - Music Service
+    
+    /**
+     According to the music id,request get the detail of info from this music
+     
+     - parameter music_id:	music id
+     - parameter result:	SignalProducer of TEMusicDetail
+     */
+    static func apiGetMusicDetailByID(music_id: Int,result: (SignalProducer<TEMusicDetail,NSError>) -> Void) {
+        Alamofire.request(.GET, API_Route.Music_Detail(music_id))
+            .responseJSON { (response) in
+                switch response.result {
+                case .Success(_):
+                    
+                    let json = JSON(response.result.value!)
+                    
+                    let detail = Mapper<TEMusicDetail>().map(json["data"].rawString())!
+                    
+                    result(SignalProducer<TEMusicDetail,NSError>(value: detail))
+                    
+                    break
+                case .Failure(_):
+                    result(SignalProducer<TEMusicDetail,NSError>(error: response.result.error!))
+                    break
+                }
+        }
+    }
+    
+    /**
+     根据音乐的ID以及衔接ID获取相关的评论数据
+     
+     - parameter music_id:	音乐的ID
+     - parameter page:		上一次请求最后的一个评论的ID
+     - parameter result:	结果冷信号
+     */
+    static func apiGetMusicCommentListBy(music_id: Int,page: Int,result: (SignalProducer<([TEComment],Int),NSError>) -> Void) {
+        Alamofire.request(.GET, API_Route.Music_Comment(music_id, page: page))
+            .responseJSON { (response) in
+                switch response.result {
+                case .Success(_):
+                    
+                    let json = JSON(response.result.value!)
+                    
+                    let count = json["data"]["count"].intValue
+                    let comments = Mapper<TEComment>().mapArray(json["data"]["data"].rawString()!)
+                    
+                    result(SignalProducer<([TEComment],Int),NSError>(value: (comments!,count)))
+                    
+                    break
+                case .Failure(_):
+                    result(SignalProducer<([TEComment],Int),NSError>.init(error: response.result.error!))
+                    break
+                }
+        }
+    }
     
     // MARK: - Movie Service
     

@@ -48,6 +48,13 @@
 		4247E8F01CEDF3940047D69A /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4247E8C71CEDF3940047D69A /* UIViewControllerExtensions.swift */; };
 		4247E8F11CEDF3940047D69A /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4247E8C81CEDF3940047D69A /* UIViewExtensions.swift */; };
 		4247E8F21CEDF3940047D69A /* UIWindowExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4247E8C91CEDF3940047D69A /* UIWindowExtensions.swift */; };
+		424F6F581D127A4D00C8AF50 /* TEMusicBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424F6F571D127A4D00C8AF50 /* TEMusicBanner.swift */; };
+		424F6F5A1D127A9100C8AF50 /* TEMusicBanner.xib in Resources */ = {isa = PBXBuildFile; fileRef = 424F6F591D127A9100C8AF50 /* TEMusicBanner.xib */; };
+		424F6F5C1D128B9E00C8AF50 /* TEComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424F6F5B1D128B9E00C8AF50 /* TEComment.swift */; };
+		424F6F811D12A21900C8AF50 /* TEUIProductor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424F6F801D12A21900C8AF50 /* TEUIProductor.swift */; };
+		424F6F841D12CB6000C8AF50 /* TECommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424F6F821D12CB6000C8AF50 /* TECommentCell.swift */; };
+		424F6F851D12CB6000C8AF50 /* TECommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 424F6F831D12CB6000C8AF50 /* TECommentCell.xib */; };
+		424F6F881D12D11200C8AF50 /* TEMusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424F6F871D12D11200C8AF50 /* TEMusicViewModel.swift */; };
 		425447E51C96AE68008B74A9 /* TEHomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425447DE1C96AE68008B74A9 /* TEHomeController.swift */; };
 		425447E61C96AE68008B74A9 /* TEMovieController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425447E01C96AE68008B74A9 /* TEMovieController.swift */; };
 		425447E71C96AE68008B74A9 /* TEMusicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425447E21C96AE68008B74A9 /* TEMusicController.swift */; };
@@ -56,6 +63,7 @@
 		425447EF1C96B5B2008B74A9 /* TENavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425447EE1C96B5B2008B74A9 /* TENavigationController.swift */; };
 		425D52BA1D05A10100344C4E /* TEArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425D52B91D05A10100344C4E /* TEArticle.swift */; };
 		425D52BC1D05A95C00344C4E /* TEArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425D52BB1D05A95C00344C4E /* TEArticleViewModel.swift */; };
+		425D52BF1D0E92EA00344C4E /* TEMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425D52BE1D0E92EA00344C4E /* TEMusic.swift */; };
 		426645BE1CE4B874005E21B4 /* TECarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426645BD1CE4B874005E21B4 /* TECarousel.swift */; };
 		426645C41CE59E7F005E21B4 /* CirCleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426645C31CE59E7F005E21B4 /* CirCleView.swift */; };
 		426645CF1CE71256005E21B4 /* MARCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426645CD1CE71256005E21B4 /* MARCarousel.swift */; };
@@ -133,6 +141,13 @@
 		4247E8C71CEDF3940047D69A /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		4247E8C81CEDF3940047D69A /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		4247E8C91CEDF3940047D69A /* UIWindowExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIWindowExtensions.swift; sourceTree = "<group>"; };
+		424F6F571D127A4D00C8AF50 /* TEMusicBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMusicBanner.swift; sourceTree = "<group>"; };
+		424F6F591D127A9100C8AF50 /* TEMusicBanner.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TEMusicBanner.xib; sourceTree = "<group>"; };
+		424F6F5B1D128B9E00C8AF50 /* TEComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEComment.swift; sourceTree = "<group>"; };
+		424F6F801D12A21900C8AF50 /* TEUIProductor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEUIProductor.swift; sourceTree = "<group>"; };
+		424F6F821D12CB6000C8AF50 /* TECommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TECommentCell.swift; sourceTree = "<group>"; };
+		424F6F831D12CB6000C8AF50 /* TECommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TECommentCell.xib; sourceTree = "<group>"; };
+		424F6F871D12D11200C8AF50 /* TEMusicViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMusicViewModel.swift; sourceTree = "<group>"; };
 		425447DE1C96AE68008B74A9 /* TEHomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEHomeController.swift; sourceTree = "<group>"; };
 		425447E01C96AE68008B74A9 /* TEMovieController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMovieController.swift; sourceTree = "<group>"; };
 		425447E21C96AE68008B74A9 /* TEMusicController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMusicController.swift; sourceTree = "<group>"; };
@@ -141,6 +156,7 @@
 		425447EE1C96B5B2008B74A9 /* TENavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TENavigationController.swift; sourceTree = "<group>"; };
 		425D52B91D05A10100344C4E /* TEArticle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEArticle.swift; sourceTree = "<group>"; };
 		425D52BB1D05A95C00344C4E /* TEArticleViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEArticleViewModel.swift; sourceTree = "<group>"; };
+		425D52BE1D0E92EA00344C4E /* TEMusic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMusic.swift; sourceTree = "<group>"; };
 		426645BD1CE4B874005E21B4 /* TECarousel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TECarousel.swift; sourceTree = "<group>"; };
 		426645C31CE59E7F005E21B4 /* CirCleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CirCleView.swift; sourceTree = "<group>"; };
 		426645CD1CE71256005E21B4 /* MARCarousel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MARCarousel.swift; sourceTree = "<group>"; };
@@ -247,6 +263,25 @@
 			path = EZSwiftExtensions;
 			sourceTree = "<group>";
 		};
+		424F6F561D127A3900C8AF50 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				424F6F571D127A4D00C8AF50 /* TEMusicBanner.swift */,
+				424F6F591D127A9100C8AF50 /* TEMusicBanner.xib */,
+				424F6F821D12CB6000C8AF50 /* TECommentCell.swift */,
+				424F6F831D12CB6000C8AF50 /* TECommentCell.xib */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
+		424F6F861D12D0F500C8AF50 /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				424F6F871D12D11200C8AF50 /* TEMusicViewModel.swift */,
+			);
+			path = Music;
+			sourceTree = "<group>";
+		};
 		425447DC1C96AE68008B74A9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -312,6 +347,15 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
+		425D52BD1D0E92D700344C4E /* Music */ = {
+			isa = PBXGroup;
+			children = (
+				425D52BE1D0E92EA00344C4E /* TEMusic.swift */,
+				424F6F5B1D128B9E00C8AF50 /* TEComment.swift */,
+			);
+			name = Music;
+			sourceTree = "<group>";
+		};
 		426645BC1CE4B874005E21B4 /* Article */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,6 +392,7 @@
 		426B93331CE4826700BB5B96 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				424F6F801D12A21900C8AF50 /* TEUIProductor.swift */,
 				426645CD1CE71256005E21B4 /* MARCarousel.swift */,
 				426645CE1CE71256005E21B4 /* TECardPageView.swift */,
 				4296EE861CFDA1ED009814EF /* TEPageableView.swift */,
@@ -402,6 +447,7 @@
 		4279A54F1C96780300483480 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				424F6F561D127A3900C8AF50 /* Music */,
 				4296EE881CFDAF84009814EF /* Animator */,
 				42CE5F5E1C981B8C00E04AF6 /* Home */,
 				4296EE911D0452DC009814EF /* Article */,
@@ -414,6 +460,7 @@
 		4279A5511C96780300483480 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				424F6F861D12D0F500C8AF50 /* Music */,
 				426ADF5F1CEC301600DDBD91 /* Movie */,
 				426B93341CE48F1300BB5B96 /* Article */,
 				42E9AF771CE4604B00BB8687 /* Home */,
@@ -503,6 +550,7 @@
 		42CE5F441C96CFCB00E04AF6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				425D52BD1D0E92D700344C4E /* Music */,
 				426645BC1CE4B874005E21B4 /* Article */,
 				426B93321CE4624700BB5B96 /* Home */,
 				42CE5F641C9823C600E04AF6 /* TEMovieCardModel.swift */,
@@ -645,7 +693,9 @@
 			files = (
 				4279A5571C96780300483480 /* Launch.xcassets in Resources */,
 				4279A5551C96780300483480 /* Main.storyboard in Resources */,
+				424F6F851D12CB6000C8AF50 /* TECommentCell.xib in Resources */,
 				4279A5531C96780300483480 /* Assets.xcassets in Resources */,
+				424F6F5A1D127A9100C8AF50 /* TEMusicBanner.xib in Resources */,
 				4279A5541C96780300483480 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -724,10 +774,12 @@
 				4247E8E31CEDF3940047D69A /* UIAlertControllerExtensions.swift in Sources */,
 				4247E8ED1CEDF3940047D69A /* UISwitchExtensions.swift in Sources */,
 				42CE5F651C9823C600E04AF6 /* TEMovieCardModel.swift in Sources */,
+				424F6F841D12CB6000C8AF50 /* TECommentCell.swift in Sources */,
 				4247E8CF1CEDF3940047D69A /* BlockSwipe.swift in Sources */,
 				425447E71C96AE68008B74A9 /* TEMusicController.swift in Sources */,
 				4247E8D81CEDF3940047D69A /* ErrorTypeExtensions.swift in Sources */,
 				4247E8E11CEDF3940047D69A /* NSUserDefaultsExtension.swift in Sources */,
+				425D52BF1D0E92EA00344C4E /* TEMusic.swift in Sources */,
 				4247E8EF1CEDF3940047D69A /* UIUserInterfaceSizeClassExtensions.swift in Sources */,
 				426ADF611CEC303800DDBD91 /* TEMovieViewModel.swift in Sources */,
 				4285E9841CA28F4C005EDF4B /* TELoginController.swift in Sources */,
@@ -739,8 +791,10 @@
 				4247E8F01CEDF3940047D69A /* UIViewControllerExtensions.swift in Sources */,
 				4247E8D41CEDF3940047D69A /* CGRectExtensions.swift in Sources */,
 				4247E8D91CEDF3940047D69A /* EZSwiftFunctions.swift in Sources */,
+				424F6F881D12D11200C8AF50 /* TEMusicViewModel.swift in Sources */,
 				4247E8E21CEDF3940047D69A /* StringExtensions.swift in Sources */,
 				42CE5F531C97AA0900E04AF6 /* TESettingController.swift in Sources */,
+				424F6F5C1D128B9E00C8AF50 /* TEComment.swift in Sources */,
 				426645BE1CE4B874005E21B4 /* TECarousel.swift in Sources */,
 				4247E8DD1CEDF3940047D69A /* NSDateExtensions.swift in Sources */,
 				4247E8DB1CEDF3940047D69A /* NSAttributedStringExtensions.swift in Sources */,
@@ -755,6 +809,7 @@
 				4279A5611C969D2700483480 /* TEConfigure.swift in Sources */,
 				42FAE4F71CB229D900495273 /* TEMovieDetailController.swift in Sources */,
 				4247E8EB1CEDF3940047D69A /* UILabelExtensions.swift in Sources */,
+				424F6F581D127A4D00C8AF50 /* TEMusicBanner.swift in Sources */,
 				4247E8F11CEDF3940047D69A /* UIViewExtensions.swift in Sources */,
 				4285E9861CA2C4E1005EDF4B /* TETableModelType.swift in Sources */,
 				4247E8D11CEDF3940047D69A /* BlockWebView.swift in Sources */,
@@ -770,6 +825,7 @@
 				4247E8DF1CEDF3940047D69A /* NSTimerExtensions.swift in Sources */,
 				426645C41CE59E7F005E21B4 /* CirCleView.swift in Sources */,
 				4247E8D61CEDF3940047D69A /* DictionaryExtensions.swift in Sources */,
+				424F6F811D12A21900C8AF50 /* TEUIProductor.swift in Sources */,
 				4247E8DE1CEDF3940047D69A /* NSObjectExtensions.swift in Sources */,
 				4247E8D21CEDF3940047D69A /* BoolExtensions.swift in Sources */,
 				425447EB1C96AF0C008B74A9 /* TEArticleController.swift in Sources */,

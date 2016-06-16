@@ -48,6 +48,9 @@ extension TEConfigure {
     static let movie_score_color = UIColor(red: 0.91, green: 0.36, blue: 0.38, alpha: 1)
     /// 电影即将上映颜色
     static let movie_beon_color = UIColor.lightGrayColor()
+    
+    /// 分割线的颜色
+    static let separator_color = UIColor(white: 229 / 255.0, alpha: 1)
 }
 
 
