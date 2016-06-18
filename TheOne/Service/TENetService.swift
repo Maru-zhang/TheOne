@@ -270,6 +270,22 @@ extension TENetService {
     
     // MARK: - Music Service
     
+    static func apiGetMusicList(index: Int,result: (SignalProducer<[String],NSError>) -> Void) {
+        
+        Alamofire.request(.GET, API_Route.Music_List(index))
+            .responseJSON { (response) in
+                switch response.result {
+                case .Success(_):
+                    let json = JSON(response.result.value!)
+                    let data = json["data"].arrayValue.map({ $0.stringValue })
+                    result(SignalProducer.init(value: data))
+                    break
+                case .Failure(_):
+                    break
+                }
+        }
+    }
+    
     /**
      According to the music id,request get the detail of info from this music
      

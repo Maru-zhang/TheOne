@@ -1,0 +1,10 @@
+//
+//  Fundation+Maru.swift
+//  TheOne
+//
+//  Created by Maru on 16/6/18.
+//  Copyright © 2016年 Maru. All rights reserved.
+//
+
+import UIKit
+

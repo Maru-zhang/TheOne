@@ -8,11 +8,17 @@
 
 import UIKit
 
-class TEMusicController: UITableViewController {
+class TEMusicController: UIViewController {
+    
+    var pageView: TEPageableView!
+    let viewModel = TEMusicViewModel()
+    
 
     override func viewDidLoad() {
         
         setupView()
+        
+        setupData()
     }
     
     
@@ -23,33 +29,75 @@ class TEMusicController: UITableViewController {
         
         setupCommentItem()
         
+        pageView = TEPageableView(frame: self.view.bounds)
+        pageView.dataSource = self
+        pageView.viewDelegate = self
+        
+        view.addSubview(pageView)
         view.backgroundColor = UIColor.whiteColor()
         
-        tableView.estimatedRowHeight = 70.0
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: String(UITableViewCell))
-        tableView.registerNib(UINib.init(nibName: String(TECommentCell), bundle: nil), forCellReuseIdentifier: String(TECommentCell))
+
+
+    }
+    
+    func setupData() {
         
-        TENetService.apiGetMusicCommentListBy(602, page: 0) { (signal) in
-            signal.startWithNext({ (comments, count) in
-                debugPrint(comments,count)
-            })
+        viewModel.fetchIDList()
+        
+        viewModel.listReady.observeNext { [unowned self] in
+            self.pageView.reloadData()
         }
+        
     }
 }
 
-extension TEMusicController {
+extension TEMusicController: TEPageableDataSource,TEPageableDelegate {
+    
+    // MARK: - Pageable Datasource
+    func pageableView(pageView: TEPageableView) -> NSInteger {
+        
+        return viewModel.orders.value.count
+    }
+    
+    func pageableView(pageView: TEPageableView, cardCellForColumnAtIndexPath indexPath: NSIndexPath) -> UIView {
+        
+        var cell = pageView.dequeueReusableCell() as? UITableView
+        
+        if cell == nil {
+            
+            cell = UITableView()
+            cell!.delegate = self
+            cell!.delegate = self
+            cell!.estimatedRowHeight = 70.0
+            cell!.rowHeight = UITableViewAutomaticDimension
+            cell!.registerClass(UITableViewCell.self, forCellReuseIdentifier: String(UITableViewCell))
+            cell!.registerNib(UINib.init(nibName: String(TECommentCell), bundle: nil), forCellReuseIdentifier: String(TECommentCell))
+            
+        }
+        
+        return cell!
+    }
+    
+    // MARK: - Pageable Delegate
+    func pageableViewFrame(pageView: TEPageableView, atIndexPath indexPath: NSIndexPath) -> CGRect {
+        return view.bounds
+    }
+    
+    
+}
+
+extension TEMusicController: UITableViewDelegate,UITableViewDataSource {
     
     // MARK: - DataSource
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 3
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
             return tableView.dequeueReusableCellWithIdentifier(String(UITableViewCell), forIndexPath: indexPath)
@@ -66,11 +114,11 @@ extension TEMusicController {
     }
     
     // MARK: - Delegate
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return nil
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
             return nil
