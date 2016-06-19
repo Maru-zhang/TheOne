@@ -89,4 +89,18 @@ class HomePageView: TECardPageView {
         fatalError("init(coder:) has not been implemented")
     }
     
+
+    
+}
+
+extension HomePageView {
+    
+    // MARK: - Public Method
+    func configWithEntity(entity: TEPaperModel) {
+        author.text = entity.hp_author
+        content.text = entity.hp_content
+        VOL.text = entity.hp_title
+        imageView.kf_setImageWithURL(NSURL(string: entity.hp_img_url!)!)
+        markTime.text = (entity.hp_makettime! as NSString).substringToIndex(10)
+    }
 }

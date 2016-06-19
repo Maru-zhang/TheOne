@@ -9,6 +9,7 @@
 import UIKit
 import MJRefresh
 import ReactiveCocoa
+import ESPullToRefresh
 
 
 class TEMovieController: UITableViewController {
@@ -31,10 +32,15 @@ class TEMovieController: UITableViewController {
         tableView.separatorStyle = .None
         tableView.registerClass(TEMovieCardCell.classForCoder(), forCellReuseIdentifier: NSStringFromClass(TEMovieCardCell))
         tableView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 9)
-        
-        tableView.mj_footer = MJRefreshBackStateFooter(refreshingBlock: { [unowned self] in
+        tableView.pagingEnabled = true
+        tableView.es_addInfiniteScrolling { [unowned self] in
             self.viewModel.loadMoreObserver.sendNext()
-        })
+        }
+        tableView.addPullToRefreshPosition(.Top) { (v) in
+            debugPrint("sdsadsa")
+            v.stopIndicatorAnimation()
+        }
+
     }
     
     
@@ -48,9 +54,9 @@ class TEMovieController: UITableViewController {
             
             self.viewModel.fetchRemoteRefreshDataWithCallBack({ (entitys) in
                 self.tableView.reloadData()
-                self.tableView.mj_footer.endRefreshing()
+                self.tableView.es_stopLoadingMore()
                 }, failure: { (error) in
-                    self.tableView.mj_footer.endRefreshing()
+                    self.tableView.es_stopLoadingMore()
                     // TODO: 添加网络状态错误的相关HUD
                     TEToastService.showNetDisconnet()
             })
@@ -61,11 +67,11 @@ class TEMovieController: UITableViewController {
             .observeNext { [unowned self]() in
             self.viewModel.fetchRemoteDataWithCallBack({ 
                 self.tableView.reloadData()
-                self.tableView.mj_footer.endRefreshing()
+                self.tableView.es_stopLoadingMore()
                 }
                 , failure: { (fail) in
                     if fail.code == 0 {
-                        self.tableView.mj_footer.endRefreshingWithNoMoreData()
+                        self.tableView.es_noticeNoMoreData()
                     }else {
                         // TODO: 添加网络状态错误的相关HUD
                         TEToastService.showNetDisconnet()

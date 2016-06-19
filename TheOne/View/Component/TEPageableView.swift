@@ -12,11 +12,19 @@ import Result
 
 class TEPageableView: UIScrollView {
     
+    typealias triggerAction = (refresh: AAPullToRefresh) -> ()
+    
     weak var dataSource: TEPageableDataSource?
     weak var viewDelegate: TEPageableDelegate?
     
     var currentIndex: NSInteger
     var visibleCell: [UIView]
+    
+    var leftAction: triggerAction?
+    var rightAction: triggerAction?
+    
+    var leftRefresher: AAPullToRefresh?
+    var rightRefresher: AAPullToRefresh?
 
     private var registerClass: AnyClass?
     private var reuseCell: [UIView]
@@ -30,12 +38,13 @@ class TEPageableView: UIScrollView {
         super.init(frame: frame)
         self.bounces = true
         self.delegate = self
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.whiteColor()
         self.showsVerticalScrollIndicator = false
         self.showsHorizontalScrollIndicator = true
         self.directionalLockEnabled = true
         
         reloadData()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -56,6 +65,10 @@ extension TEPageableView {
             return
         }
         
+        if dataSource != nil {
+            
+        }
+        
         // Reset && Remove all of view
         removeSubviews()
         currentIndex = 0
@@ -63,20 +76,30 @@ extension TEPageableView {
         reuseCell.removeAll()
 
         let count = dataSource?.pageableView(self)
-        
         contentSize = CGSizeMake(frame.width * CGFloat(count!), frame.height + 100)
+        
+        // Setup refresh
+        
+        if leftRefresher != nil {
+            leftRefresher?.showPullToRefresh = false
+            leftRefresher?.removeFromSuperview()
+        }
+        
+        leftRefresher = addPullToRefreshPosition(.Left) { (v) in
+            if let action = self.leftAction { action(refresh: v) }
+        }
+        
+        leftRefresher!.borderWidth = 4.0
+        leftRefresher!.borderColor = TEConfigure.pullRefreshColor
         
         // Init scroll
         scrollViewDidScroll(self)
         
         // Call setup delegate
         scrollViewDidEndDecelerating(self)
+        
     }
     
-    
-    func registerClass(cls: AnyClass) {
-        registerClass = cls
-    }
     
     func dequeueReusableCell() -> UIView? {
         
@@ -184,4 +207,5 @@ extension TEPageableView: UIScrollViewDelegate {
         viewDelegate?.pageableViewDidEndScroll(self, toIndexPath: NSIndexPath(index: newIndex))
 
     }
+    
 }

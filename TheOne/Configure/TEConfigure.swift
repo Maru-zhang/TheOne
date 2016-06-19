@@ -24,6 +24,8 @@ extension TEConfigure {
     
     /// 控制器容器颜色
     static let containnerBG = UIColor(r: 249, g: 253, b: 255)
+    /// 刷新控件的颜色
+    static let pullRefreshColor = UIColor(red: 0.58, green: 0.77, blue: 0.97, alpha: 1)
     
     /// Navgation 背景颜色
     static let navBarTintColor = UIColor.whiteColor()

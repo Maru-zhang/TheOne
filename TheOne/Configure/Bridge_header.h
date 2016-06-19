@@ -8,6 +8,5 @@
 
 #ifndef Bridge_header_h
 #define Bridge_header_h
-#import <MJRefresh/MJRefresh.h>
-
+#import "AAPullToRefresh.h"
 #endif /* Bridge_header_h */

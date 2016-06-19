@@ -4,7 +4,6 @@ use_frameworks!
 
 def pods
     pod 'Gifu'
-    pod 'MJRefresh'
     pod 'ESPullToRefresh'
     pod 'JLToast', '~> 1.4'
 	pod 'Alamofire', '~> 3.0'

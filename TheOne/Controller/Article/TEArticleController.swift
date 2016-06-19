@@ -49,14 +49,16 @@ extension TEArticleController {
     }
     
     private func setupBinding() {
-                
-        viewModel.refreshSignal.startWithNext { [unowned self] in
-            self.viewModel.fetchLastestData({ 
-                self.pageView.reloadData()
-            })
+        
+        viewModel.fetchLastestData()
+        
+        viewModel.refreshComplete.startWithNext { [unowned self] in
+            self.pageView.reloadData()
         }
         
-        viewModel.refreshObserver.sendNext()
+        pageView.leftAction = { [unowned self] refresh in
+            self.viewModel.fetchLastestData()
+        }
         
         // 开始轮播资源进行请求
         TENetService.apiGetArtcleCarousel(withSuccessHandler: { (imgResult) in

@@ -12,7 +12,7 @@ import Result
 
 class TEArticleViewModel {
     
-    let refreshSignal: SignalProducer<Void,NoError>
+    let refreshComplete: SignalProducer<Void,NoError>
     let refreshObserver: Observer<Void,NoError>
 
     let essays  = MutableProperty<[TEEssay]>([TEEssay]())
@@ -22,19 +22,19 @@ class TEArticleViewModel {
     init() {
         
         let (refreshSignal,refreshObserver) = SignalProducer<Void,NoError>.buffer(0)
-        self.refreshSignal = refreshSignal
+        self.refreshComplete = refreshSignal
         self.refreshObserver = refreshObserver
         
     }
     
-    func fetchLastestData(completion: () -> ()) {
+    func fetchLastestData() {
         
         TENetService.apiGetArticleIndex { [unowned self] (resultSignal) in
             resultSignal.startWithNext({ (essay, serial, issue) in
                 self.essays.value = essay
                 self.serials.value = serial
                 self.issue.value = issue
-                completion()
+                self.refreshObserver.sendNext()
             })
         }
     }

@@ -69,7 +69,6 @@ extension TEHomeController {
         view.addSubview(more)
         view.addSubview(likeNum)
         view.addSubview(containner)
-
         
         // Layout setup
         constrain(diary, like, more, likeNum) { (diary, like, more, likeNum) -> () in
@@ -94,12 +93,16 @@ extension TEHomeController {
             
         }
         
-        
     }
     
     private func setupBinding() {
         
         viewModel.refreshObserver.sendNext()
+        
+        containner.leftAction = { [unowned self] refresh in
+            self.viewModel.refreshObserver.sendNext()
+            refresh.stopIndicatorAnimation()
+        }
         
         viewModel.cards.signal.observeNext { [unowned self] (_) in
             self.containner.reloadData()
@@ -137,13 +140,8 @@ extension TEHomeController: TEPageableDataSource,TEPageableDelegate {
         let entity = viewModel.cards.value[indexPath.indexAtPosition(0)]
         
         if cell == nil { cell = HomePageView() }
+        cell!.configWithEntity(entity)
         
-        cell?.author.text = entity.hp_author
-        cell?.content.text = entity.hp_content
-        cell?.VOL.text = entity.hp_title
-        cell?.imageView.kf_setImageWithURL(NSURL(string: entity.hp_img_url!)!)
-        cell?.markTime.text = (entity.hp_makettime! as NSString).substringToIndex(10)
-
         return cell!
     }
     

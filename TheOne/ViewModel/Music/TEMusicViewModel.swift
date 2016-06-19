@@ -80,6 +80,7 @@ extension TEMusicViewModel {
                     return comments.count != 0 || self.comments.value.count != 0
                 })
                 .startWithNext({ (comments, count) in
+                    if self.sentry == 0 { self.comments.value.removeAll() }
                     self.comments.value.appendContentsOf(comments)
                     if comments.count == 0 {
                         self.fetchObserver.sendCompleted()

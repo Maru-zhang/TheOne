@@ -5,7 +5,6 @@ PODS:
   - Gifu (1.0.1)
   - JLToast (1.4.1)
   - Kingfisher (2.1.0)
-  - MJRefresh (3.1.0)
   - ObjectMapper (1.3.0)
   - ReactiveCocoa (4.1.0):
     - ReactiveCocoa/UI (= 4.1.0)
@@ -28,7 +27,6 @@ DEPENDENCIES:
   - Gifu
   - JLToast (~> 1.4)
   - Kingfisher (~> 2.1.0)
-  - MJRefresh
   - ObjectMapper (~> 1.2)
   - ReactiveCocoa (~> 4.1.0)
   - SwiftyJSON (~> 2.3.2)
@@ -40,7 +38,6 @@ SPEC CHECKSUMS:
   Gifu: bf7a99fe9f20a1dc18c3cb4289aebc922a2ad419
   JLToast: f2ccfdb8726e562e6c0154fa3658cd432021b1cc
   Kingfisher: 3ac09acad75a25ab22f6d7cef3de10d61dd4792d
-  MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   ObjectMapper: 4eb08a726e9791a93b2632049951b56a7c17e471
   ReactiveCocoa: d70004d7a366a7b8e87e60ce2347182c77701949
   Result: 9e75e1111c774c6ac594e14907b15057053a7959
