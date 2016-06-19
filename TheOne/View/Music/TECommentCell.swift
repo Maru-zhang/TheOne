@@ -21,13 +21,16 @@ class TECommentCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        header.layer.cornerRadius = 20.0
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
 //        super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    override func setHighlighted(highlighted: Bool, animated: Bool) {
+        
     }
     
 }
@@ -41,7 +44,14 @@ extension TECommentCell {
         header.kf_setImageWithURL(NSURL(string: (comment.user?.web_url)!)!)
         timestamp.text = comment.input_date
         content.text = comment.content
-        likeNum.text = String(comment.praisenum)
+        likeNum.text = String(comment.praisenum!)
+        
+        // setup display
+        header.layer.cornerRadius = 20.0
+        header.layer.masksToBounds = true
+        separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        layoutMargins = UIEdgeInsetsZero
+        
     }
     
     // MARK: - Action

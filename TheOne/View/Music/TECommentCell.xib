@@ -22,18 +22,18 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGf-3e-AbJ">
-                        <rect key="frame" x="56" y="8" width="38" height="18"/>
+                        <rect key="frame" x="56" y="8" width="181" height="18"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="38" id="bWh-9Z-A1W"/>
+                            <constraint firstAttribute="width" constant="181" id="bWh-9Z-A1W"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPA-Yk-sDu">
-                        <rect key="frame" x="56" y="27" width="25" height="14.5"/>
+                        <rect key="frame" x="56" y="27" width="198" height="14.5"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="25" id="oPb-xh-dpx"/>
+                            <constraint firstAttribute="width" constant="198" id="oPb-xh-dpx"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>

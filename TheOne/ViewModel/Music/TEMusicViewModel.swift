@@ -20,10 +20,11 @@ class TEMusicViewModel {
     
     /// 评论数据源
     let comments = MutableProperty<[TEComment]>([TEComment]())
+    /// 当前页的音乐ID
+    let currentMusicID = MutableProperty<String>("0")
     
     /// 分页标记
     private var sentry = 0
-    private let musicID: NSInteger = 0
     private let listReadyObserver: Observer<Void,NoError>
     private let fetchObserver: Observer<Void,NoError>
     
@@ -36,6 +37,18 @@ class TEMusicViewModel {
         let (listComplete,listObserver) = Signal<Void,NoError>.pipe()
         self.listReady = listComplete
         self.listReadyObserver = listObserver
+        
+        orders.producer
+            .filter({ (list) -> Bool in
+                return list.count != 0
+            })
+            .startWithNext { [unowned self] (list) in
+            self.currentMusicID.value = list.first!
+        }
+        
+        currentMusicID.producer.startWithNext { [unowned self] (id) in
+            self.fetchCurrentItemData()
+        }
         
     }
     
@@ -61,11 +74,33 @@ extension TEMusicViewModel {
      */
     func fetchCurrentItemData() {
         
-        TENetService.apiGetMusicCommentListBy(musicID, page: sentry) { [unowned self] (sigalProductor) in
+        TENetService.apiGetMusicCommentListBy(currentMusicID.value.toInt()!, page: sentry) { [unowned self] (sigalProductor) in
             sigalProductor
+                .filter({ (comments, count) -> Bool in
+                    return comments.count != 0 || self.comments.value.count != 0
+                })
                 .startWithNext({ (comments, count) in
-                    self.fetchObserver.sendNext()
+                    self.comments.value.appendContentsOf(comments)
+                    if comments.count == 0 {
+                        self.fetchObserver.sendCompleted()
+                    }else {
+                        self.sentry = (comments.last?.id?.toInt())!
+                        self.fetchObserver.sendNext()
+                    }
                 })
         }
     }
+    
+    
+    /**
+     翻页到一个新的页面
+     
+     - parameter page:	页码
+     */
+    func pageToIndex(page: Int) {
+        sentry = 0
+        currentMusicID.value = orders.value[page]
+    }
+    
+    
 }

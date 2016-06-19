@@ -116,11 +116,7 @@ extension TEArticleController: TEPageableDataSource,TEPageableDelegate {
 extension TEArticleController: UITableViewDataSource,UITableViewDelegate {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if viewModel.essays.value.count == 0 {
-            return 0
-        }else {
-            return 3
-        }
+        return viewModel.essays.value.count == 0 ? 0 : 3
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

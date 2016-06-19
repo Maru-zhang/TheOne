@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ESPullToRefresh.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Gifu.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -62,17 +67,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>249FDB09945F15DC3D751E5FC26AE834</key>
+		<key>28995EBC9CE9D86273C5A2908EEBD680</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>565812E78BB2B785DDE4CAE98108B431</key>
+		<key>3E6BE26A9C676D1DEF18F57C6F2DE025</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6149934F293C46C84C3BE46C2A21E9B5</key>
+		<key>5AF441937E5EC12876833E38741D9971</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -92,12 +97,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>96FD03E5709B4A6C31EBD74A33361563</key>
+		<key>AEA56EBE1B518C71721209FB26701898</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AEA56EBE1B518C71721209FB26701898</key>
+		<key>C0009AC10DA866CAE172C3A408555F7D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C0EAC944C97FA396A57DCADBCA0BD2B1</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (3.4.0)
   - Cartography (0.6.0)
+  - ESPullToRefresh (1.0.4)
   - Gifu (1.0.1)
   - JLToast (1.4.1)
   - Kingfisher (2.1.0)
@@ -23,6 +24,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 3.0)
   - Cartography (~> 0.6.0)
+  - ESPullToRefresh
   - Gifu
   - JLToast (~> 1.4)
   - Kingfisher (~> 2.1.0)
@@ -34,6 +36,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
   Cartography: 70af183a248547694a8cfaa6b989cb7e04589985
+  ESPullToRefresh: c3cebd239c25c74020564afc72e6104be09b48d1
   Gifu: bf7a99fe9f20a1dc18c3cb4289aebc922a2ad419
   JLToast: f2ccfdb8726e562e6c0154fa3658cd432021b1cc
   Kingfisher: 3ac09acad75a25ab22f6d7cef3de10d61dd4792d

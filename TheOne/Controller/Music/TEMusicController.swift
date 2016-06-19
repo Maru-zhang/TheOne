@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import ReactiveCocoa
+import ESPullToRefresh
 
 class TEMusicController: UIViewController {
     
@@ -44,10 +46,24 @@ class TEMusicController: UIViewController {
         
         viewModel.fetchIDList()
         
-        viewModel.listReady.observeNext { [unowned self] in
+        viewModel.listReady
+            .observeNext { [unowned self] in
             self.pageView.reloadData()
         }
         
+        viewModel.fetchComplete
+            .observeNext { [unowned self] in
+                let tableView = self.pageView.visibleCell.first as! UITableView
+                tableView.reloadData()
+                tableView.es_stopLoadingMore()
+        }
+        
+        viewModel.fetchComplete
+            .observeCompleted {  [unowned self] in
+                let tableView = self.pageView.visibleCell.first as! UITableView
+                tableView.es_stopLoadingMore()
+                tableView.es_noticeNoMoreData()
+        }
     }
 }
 
@@ -66,13 +82,16 @@ extension TEMusicController: TEPageableDataSource,TEPageableDelegate {
         if cell == nil {
             
             cell = UITableView()
-            cell!.delegate = self
+            cell!.dataSource = self
             cell!.delegate = self
             cell!.estimatedRowHeight = 70.0
             cell!.rowHeight = UITableViewAutomaticDimension
             cell!.registerClass(UITableViewCell.self, forCellReuseIdentifier: String(UITableViewCell))
             cell!.registerNib(UINib.init(nibName: String(TECommentCell), bundle: nil), forCellReuseIdentifier: String(TECommentCell))
             
+            cell?.es_addInfiniteScrolling(handler: { [unowned self] in
+                self.viewModel.fetchCurrentItemData()
+            })
         }
         
         return cell!
@@ -81,6 +100,10 @@ extension TEMusicController: TEPageableDataSource,TEPageableDelegate {
     // MARK: - Pageable Delegate
     func pageableViewFrame(pageView: TEPageableView, atIndexPath indexPath: NSIndexPath) -> CGRect {
         return view.bounds
+    }
+    
+    func pageableViewDidEndScroll(pageView: TEPageableView, toIndexPath indexPath: NSIndexPath) {
+        viewModel.pageToIndex(indexPath.indexAtPosition(0))
     }
     
     
@@ -94,7 +117,16 @@ extension TEMusicController: UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        switch section {
+        case 0:
+            return 4
+        case 1:
+            return 4
+        case 2:
+            return viewModel.comments.value.count
+        default:
+            return 0
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -105,7 +137,8 @@ extension TEMusicController: UITableViewDelegate,UITableViewDataSource {
             return tableView.dequeueReusableCellWithIdentifier(String(UITableViewCell), forIndexPath: indexPath)
         case 2:
             let cell = tableView.dequeueReusableCellWithIdentifier(String(TECommentCell), forIndexPath: indexPath) as! TECommentCell
-            cell.content.text = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "
+            let entity: TEComment = viewModel.comments.value[indexPath.row]
+            cell.configWithComment(entity)
             return cell
         default:
             return tableView.dequeueReusableCellWithIdentifier(String(UITableViewCell), forIndexPath: indexPath)

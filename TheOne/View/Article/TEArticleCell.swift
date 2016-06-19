@@ -80,6 +80,7 @@ class TEArticleCell: UITableViewCell {
             hotLine.left == title.left
             hotLine.right == (title.superview?.right)! - 5
             hotLine.top  == author.bottom + 8
+            hotLine.bottom == (title.superview)!.bottom - 5
             
             
         }
