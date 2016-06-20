@@ -9,6 +9,7 @@
 import UIKit
 import Cartography
 import Kingfisher
+import ReactiveCocoa
 
 
 class TEArticleController: UIViewController {
@@ -52,7 +53,9 @@ extension TEArticleController {
         
         viewModel.fetchLastestData()
         
-        viewModel.refreshComplete.startWithNext { [unowned self] in
+        viewModel.refreshComplete
+            .delay(0.25, onScheduler: QueueScheduler.mainQueueScheduler)
+            .startWithNext { [unowned self] in
             self.pageView.reloadData()
         }
         

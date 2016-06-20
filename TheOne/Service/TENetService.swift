@@ -340,6 +340,30 @@ extension TENetService {
         }
     }
     
+    /**
+     根据音乐的ID获取相关的其他音乐推荐列表
+     
+     - parameter music_id:	音乐ID
+     - parameter result:	回调函数
+     */
+    static func apiGetMusicRelatedList(music_id: Int,result: (SignalProducer<[TEMusic_Related],NSError>) -> Void) {
+        Alamofire.request(.GET, API_Route.Music_Related(music_id))
+            .responseJSON { (response) in
+                switch response.result {
+                case .Success(_):
+                    
+                    let json = JSON(response.result.value!)
+                    let relates = Mapper<TEMusic_Related>().mapArray(json["data"].rawString())
+                    result(SignalProducer<[TEMusic_Related],NSError>.init(value: relates!))
+                    break
+                case .Failure(_):
+                    result(SignalProducer<[TEMusic_Related],NSError>.init(error: response.result.error!))
+                    break
+                }
+        }
+    }
+    
+    
     // MARK: - Movie Service
     
     /**

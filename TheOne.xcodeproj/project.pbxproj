@@ -57,7 +57,6 @@
 		424F6F881D12D11200C8AF50 /* TEMusicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424F6F871D12D11200C8AF50 /* TEMusicViewModel.swift */; };
 		424F6F8A1D15082C00C8AF50 /* Fundation+Maru.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424F6F891D15082C00C8AF50 /* Fundation+Maru.swift */; };
 		424F6F8D1D16AE4400C8AF50 /* TERelatedMusicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424F6F8B1D16AE4400C8AF50 /* TERelatedMusicCell.swift */; };
-		424F6F8E1D16AE4400C8AF50 /* TERelatedMusicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 424F6F8C1D16AE4400C8AF50 /* TERelatedMusicCell.xib */; };
 		424F6F941D16BC1000C8AF50 /* AAPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 424F6F911D16BC1000C8AF50 /* AAPullToRefresh.m */; };
 		425447E51C96AE68008B74A9 /* TEHomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425447DE1C96AE68008B74A9 /* TEHomeController.swift */; };
 		425447E61C96AE68008B74A9 /* TEMovieController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425447E01C96AE68008B74A9 /* TEMovieController.swift */; };
@@ -154,7 +153,6 @@
 		424F6F871D12D11200C8AF50 /* TEMusicViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMusicViewModel.swift; sourceTree = "<group>"; };
 		424F6F891D15082C00C8AF50 /* Fundation+Maru.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Fundation+Maru.swift"; sourceTree = "<group>"; };
 		424F6F8B1D16AE4400C8AF50 /* TERelatedMusicCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TERelatedMusicCell.swift; sourceTree = "<group>"; };
-		424F6F8C1D16AE4400C8AF50 /* TERelatedMusicCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TERelatedMusicCell.xib; sourceTree = "<group>"; };
 		424F6F901D16BC1000C8AF50 /* AAPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPullToRefresh.h; sourceTree = "<group>"; };
 		424F6F911D16BC1000C8AF50 /* AAPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAPullToRefresh.m; sourceTree = "<group>"; };
 		425447DE1C96AE68008B74A9 /* TEHomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEHomeController.swift; sourceTree = "<group>"; };
@@ -280,7 +278,6 @@
 				424F6F821D12CB6000C8AF50 /* TECommentCell.swift */,
 				424F6F831D12CB6000C8AF50 /* TECommentCell.xib */,
 				424F6F8B1D16AE4400C8AF50 /* TERelatedMusicCell.swift */,
-				424F6F8C1D16AE4400C8AF50 /* TERelatedMusicCell.xib */,
 			);
 			path = Music;
 			sourceTree = "<group>";
@@ -713,7 +710,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				424F6F8E1D16AE4400C8AF50 /* TERelatedMusicCell.xib in Resources */,
 				4279A5571C96780300483480 /* Launch.xcassets in Resources */,
 				4279A5551C96780300483480 /* Main.storyboard in Resources */,
 				424F6F851D12CB6000C8AF50 /* TECommentCell.xib in Resources */,

@@ -18,15 +18,28 @@ class TEMusicViewModel {
     /// MUSICID列表
     let orders   = MutableProperty<[String]>([String]())
     
+    //******************* 以上索引相关 *********************************
+    
+    /// 详细内容
+    let detail   = MutableProperty<TEMusicDetail?>(nil)
+    /// 相关音乐
+    let relates  = MutableProperty<[TEMusic_Related]>([TEMusic_Related]())
     /// 评论数据源
     let comments = MutableProperty<[TEComment]>([TEComment]())
+    
     /// 当前页的音乐ID
     let currentMusicID = MutableProperty<String>("0")
     
+    // ****************** 以上当前模型相关 ******************************
+    
+    let commentsSignal : Signal<[TEComment],NoError>
+    let commentObserver: Observer<[TEComment],NoError>
+    
     /// 分页标记
     private var sentry = 0
-    private let listReadyObserver: Observer<Void,NoError>
+    let listReadyObserver: Observer<Void,NoError>
     private let fetchObserver: Observer<Void,NoError>
+    
     
     init() {
         
@@ -37,6 +50,11 @@ class TEMusicViewModel {
         let (listComplete,listObserver) = Signal<Void,NoError>.pipe()
         self.listReady = listComplete
         self.listReadyObserver = listObserver
+        
+        let  (commentsSignal,commentObserver) = Signal<[TEComment],NoError>.pipe()
+        self.comments <~ commentsSignal
+        self.commentsSignal = commentsSignal
+        self.commentObserver = commentObserver
         
         orders.producer
             .filter({ (list) -> Bool in
@@ -49,6 +67,7 @@ class TEMusicViewModel {
         currentMusicID.producer.startWithNext { [unowned self] (id) in
             self.fetchCurrentItemData()
         }
+        
         
     }
     
@@ -64,7 +83,20 @@ extension TEMusicViewModel {
         TENetService.apiGetMusicList(0) { (signal) in
             signal.startWithNext({ [unowned self] (lists) in
                 self.orders.value = lists
-                self.listReadyObserver.sendNext()
+            })
+        }
+    }
+    
+    /**
+     获取音乐的所有信息，详细故事、相关音乐以及评论
+     */
+    func fetchCurrentItemData() {
+        
+        fetchCurrentComment()
+        
+        TENetService.apiGetMusicRelatedList(currentMusicID.value.toInt()!) { (signal) in
+            signal.startWithNext({ [unowned self] (relates) in
+                self.relates.value = relates
             })
         }
     }
@@ -72,24 +104,25 @@ extension TEMusicViewModel {
     /*
      如果为true那么是重新加载数据，如果是false那么就添加评论数据
      */
-    func fetchCurrentItemData() {
+    func fetchCurrentComment() {
         
         TENetService.apiGetMusicCommentListBy(currentMusicID.value.toInt()!, page: sentry) { [unowned self] (sigalProductor) in
+            
             sigalProductor
                 .filter({ (comments, count) -> Bool in
                     return comments.count != 0 || self.comments.value.count != 0
                 })
                 .startWithNext({ (comments, count) in
                     if self.sentry == 0 { self.comments.value.removeAll() }
-                    self.comments.value.appendContentsOf(comments)
                     if comments.count == 0 {
-                        self.fetchObserver.sendCompleted()
+                        self.commentObserver.sendCompleted()
                     }else {
+                        self.comments.value.appendContentsOf(comments)
                         self.sentry = (comments.last?.id?.toInt())!
-                        self.fetchObserver.sendNext()
                     }
                 })
         }
+        
     }
     
     

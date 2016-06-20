@@ -84,3 +84,28 @@ struct Story_Author: Mappable {
         web_url <- map["web_url"]
     }
 }
+
+
+struct TEMusic_Related: Mappable {
+    
+    var id: String?
+    var title: String?
+    var cover: String?
+    var platform: String?
+    var music_id: String?
+    var author: TEAuthor?
+    
+    init?(_ map: Map) {
+        
+    }
+    
+    mutating func mapping(map: Map) {
+        
+        id <- map["id"]
+        title <- map["title"]
+        cover <- map["cover"]
+        platform <- map["platform"]
+        music_id <- map["music_id"]
+        author <- map["author"]
+    }
+}

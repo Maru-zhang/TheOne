@@ -46,24 +46,29 @@ class TEMusicController: UIViewController {
         
         viewModel.fetchIDList()
         
-        viewModel.listReady
-            .observeNext { [unowned self] in
+        viewModel.orders.producer
+            .filter({ (orders) -> Bool in
+                return orders.count != 0
+            })
+            .startWithNext { [unowned self] (_) in
             self.pageView.reloadData()
         }
         
-        viewModel.fetchComplete
-            .observeNext { [unowned self] in
-                let tableView = self.pageView.visibleCell.first as! UITableView
-                tableView.reloadData()
-                tableView.es_stopLoadingMore()
+        viewModel.comments.signal
+            .observeOn(QueueScheduler.mainQueueScheduler)
+            .observeNext { [unowned self] (_) in
+            let tableView = self.pageView.visibleCell.first as! UITableView
+            tableView.es_stopLoadingMore()
+            tableView.reloadData()
         }
         
-        viewModel.fetchComplete
-            .observeCompleted {  [unowned self] in
-                let tableView = self.pageView.visibleCell.first as! UITableView
-                tableView.es_stopLoadingMore()
-                tableView.es_noticeNoMoreData()
+        viewModel.commentsSignal.observeCompleted { [unowned self] in
+            let tableView = self.pageView.visibleCell.first as! UITableView
+            tableView.es_stopLoadingMore()
+            tableView.es_resetNoMoreData()
         }
+        
+        
     }
 }
 
@@ -85,12 +90,12 @@ extension TEMusicController: TEPageableDataSource,TEPageableDelegate {
             cell!.dataSource = self
             cell!.delegate = self
             cell!.estimatedRowHeight = 70.0
-            cell!.rowHeight = UITableViewAutomaticDimension
+            cell!.registerClass(TERelatedMusicCell.self, forCellReuseIdentifier: String(TERelatedMusicCell))
             cell!.registerClass(UITableViewCell.self, forCellReuseIdentifier: String(UITableViewCell))
             cell!.registerNib(UINib.init(nibName: String(TECommentCell), bundle: nil), forCellReuseIdentifier: String(TECommentCell))
             
             cell?.es_addInfiniteScrolling(handler: { [unowned self] in
-                self.viewModel.fetchCurrentItemData()
+                self.viewModel.fetchCurrentComment()
             })
         }
         
@@ -121,7 +126,7 @@ extension TEMusicController: UITableViewDelegate,UITableViewDataSource {
         case 0:
             return 4
         case 1:
-            return 4
+            return 1
         case 2:
             return viewModel.comments.value.count
         default:
@@ -130,16 +135,22 @@ extension TEMusicController: UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         switch indexPath.section {
+            
         case 0:
             return tableView.dequeueReusableCellWithIdentifier(String(UITableViewCell), forIndexPath: indexPath)
+            
         case 1:
-            return tableView.dequeueReusableCellWithIdentifier(String(UITableViewCell), forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCellWithIdentifier(String(TERelatedMusicCell), forIndexPath: indexPath)
+            return cell
+            
         case 2:
             let cell = tableView.dequeueReusableCellWithIdentifier(String(TECommentCell), forIndexPath: indexPath) as! TECommentCell
             let entity: TEComment = viewModel.comments.value[indexPath.row]
             cell.configWithComment(entity)
             return cell
+            
         default:
             return tableView.dequeueReusableCellWithIdentifier(String(UITableViewCell), forIndexPath: indexPath)
 
@@ -161,6 +172,19 @@ extension TEMusicController: UITableViewDelegate,UITableViewDataSource {
             return "评论列表"
         default:
             return nil
+        }
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        switch indexPath.section {
+        case 0:
+            return 70
+        case 1:
+            return 100
+        case 2:
+            return UITableViewAutomaticDimension
+        default:
+            return 70
         }
     }
     

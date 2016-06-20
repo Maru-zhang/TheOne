@@ -30,7 +30,8 @@ class TEArticleViewModel {
     func fetchLastestData() {
         
         TENetService.apiGetArticleIndex { [unowned self] (resultSignal) in
-            resultSignal.startWithNext({ (essay, serial, issue) in
+            resultSignal
+                .startWithNext({ (essay, serial, issue) in
                 self.essays.value = essay
                 self.serials.value = serial
                 self.issue.value = issue
