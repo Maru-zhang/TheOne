@@ -70,17 +70,17 @@ class TEArticleCell: UITableViewCell {
             title.top  == (title.superview?.left)! + 8
             
             typeImage.right == (title.superview?.right)! - 8
-            typeImage.centerY == title.centerY
+            typeImage.top == title.top
             typeImage.width == 41
             typeImage.height == 19
             
             author.left == title.left
             author.top  == title.bottom + 8
+            author.right == title.right
             
             hotLine.left == title.left
             hotLine.right == (title.superview?.right)! - 5
             hotLine.top  == author.bottom + 8
-            hotLine.bottom == (title.superview)!.bottom - 5
             
             
         }

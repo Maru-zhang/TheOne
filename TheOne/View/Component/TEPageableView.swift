@@ -38,7 +38,7 @@ class TEPageableView: UIScrollView {
         super.init(frame: frame)
         self.bounces = true
         self.delegate = self
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.clearColor()
         self.showsVerticalScrollIndicator = false
         self.showsHorizontalScrollIndicator = true
         self.directionalLockEnabled = true

@@ -68,7 +68,6 @@ class TEMusicViewModel {
             self.fetchCurrentItemData()
         }
         
-        
     }
     
 
@@ -92,13 +91,20 @@ extension TEMusicViewModel {
      */
     func fetchCurrentItemData() {
         
-        fetchCurrentComment()
+        TENetService.apiGetMusicDetailByID(currentMusicID.value.toInt()!) { (signal) in
+            signal.startWithNext({ [unowned self] (details) in
+                self.detail.value  = details
+            })
+        }
         
         TENetService.apiGetMusicRelatedList(currentMusicID.value.toInt()!) { (signal) in
             signal.startWithNext({ [unowned self] (relates) in
                 self.relates.value = relates
             })
         }
+        
+        fetchCurrentComment()
+
     }
 
     /*

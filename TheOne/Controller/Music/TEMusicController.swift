@@ -54,6 +54,21 @@ class TEMusicController: UIViewController {
             self.pageView.reloadData()
         }
         
+        
+        viewModel.detail.signal
+            .observeOn(QueueScheduler.mainQueueScheduler)
+            .observeNext { [unowned self] (_) in
+                let tableView = self.pageView.visibleCell.first as! UITableView
+                tableView.reloadData()
+        }
+        
+        viewModel.relates.signal
+            .observeOn(QueueScheduler.mainQueueScheduler)
+            .observeNext { [unowned self] (_) in
+                let tableView = self.pageView.visibleCell.first as! UITableView
+                tableView.reloadData()
+        }
+        
         viewModel.comments.signal
             .observeOn(QueueScheduler.mainQueueScheduler)
             .observeNext { [unowned self] (_) in
@@ -90,6 +105,7 @@ extension TEMusicController: TEPageableDataSource,TEPageableDelegate {
             cell!.dataSource = self
             cell!.delegate = self
             cell!.estimatedRowHeight = 70.0
+            cell!.registerClass(TEContentCell.self, forCellReuseIdentifier: String(TEContentCell))
             cell!.registerClass(TERelatedMusicCell.self, forCellReuseIdentifier: String(TERelatedMusicCell))
             cell!.registerClass(UITableViewCell.self, forCellReuseIdentifier: String(UITableViewCell))
             cell!.registerNib(UINib.init(nibName: String(TECommentCell), bundle: nil), forCellReuseIdentifier: String(TECommentCell))
@@ -124,7 +140,7 @@ extension TEMusicController: UITableViewDelegate,UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 4
+            return 3
         case 1:
             return 1
         case 2:
@@ -139,10 +155,20 @@ extension TEMusicController: UITableViewDelegate,UITableViewDataSource {
         switch indexPath.section {
             
         case 0:
-            return tableView.dequeueReusableCellWithIdentifier(String(UITableViewCell), forIndexPath: indexPath)
+            
+            if indexPath.row == 0 {
+                return tableView.dequeueReusableCellWithIdentifier(String(UITableViewCell), forIndexPath: indexPath)
+            }else if indexPath.row == 1 {
+                let cell = tableView.dequeueReusableCellWithIdentifier(String(TEContentCell), forIndexPath: indexPath) as! TEContentCell
+                cell.configWithEntity(viewModel.detail.value)
+                return cell
+            }else {
+                return tableView.dequeueReusableCellWithIdentifier(String(UITableViewCell), forIndexPath: indexPath)
+            }
             
         case 1:
-            let cell = tableView.dequeueReusableCellWithIdentifier(String(TERelatedMusicCell), forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCellWithIdentifier(String(TERelatedMusicCell), forIndexPath: indexPath) as! TERelatedMusicCell
+            cell.configWithEntitys(viewModel.relates.value)
             return cell
             
         case 2:
@@ -180,7 +206,7 @@ extension TEMusicController: UITableViewDelegate,UITableViewDataSource {
         case 0:
             return 70
         case 1:
-            return 100
+            return 150
         case 2:
             return UITableViewAutomaticDimension
         default:

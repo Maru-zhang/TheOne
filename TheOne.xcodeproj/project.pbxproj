@@ -80,6 +80,7 @@
 		4279A5611C969D2700483480 /* TEConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4279A5601C969D2700483480 /* TEConfigure.swift */; };
 		4285E9841CA28F4C005EDF4B /* TELoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4285E9831CA28F4C005EDF4B /* TELoginController.swift */; };
 		4285E9861CA2C4E1005EDF4B /* TETableModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4285E9851CA2C4E1005EDF4B /* TETableModelType.swift */; };
+		42860FBF1D19717900D2EC95 /* TEContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42860FBE1D19717900D2EC95 /* TEContentCell.swift */; };
 		4296EE851CFD6598009814EF /* TECardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4296EE841CFD6598009814EF /* TECardViewModel.swift */; };
 		4296EE871CFDA1ED009814EF /* TEPageableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4296EE861CFDA1ED009814EF /* TEPageableView.swift */; };
 		4296EE8A1CFDAFD2009814EF /* TipperAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4296EE891CFDAFD2009814EF /* TipperAnimation.swift */; };
@@ -178,6 +179,7 @@
 		4279A5601C969D2700483480 /* TEConfigure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEConfigure.swift; sourceTree = "<group>"; };
 		4285E9831CA28F4C005EDF4B /* TELoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TELoginController.swift; sourceTree = "<group>"; };
 		4285E9851CA2C4E1005EDF4B /* TETableModelType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TETableModelType.swift; sourceTree = "<group>"; };
+		42860FBE1D19717900D2EC95 /* TEContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEContentCell.swift; sourceTree = "<group>"; };
 		4296EE841CFD6598009814EF /* TECardViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TECardViewModel.swift; sourceTree = "<group>"; };
 		4296EE861CFDA1ED009814EF /* TEPageableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEPageableView.swift; sourceTree = "<group>"; };
 		4296EE891CFDAFD2009814EF /* TipperAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipperAnimation.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				424F6F821D12CB6000C8AF50 /* TECommentCell.swift */,
 				424F6F831D12CB6000C8AF50 /* TECommentCell.xib */,
 				424F6F8B1D16AE4400C8AF50 /* TERelatedMusicCell.swift */,
+				42860FBE1D19717900D2EC95 /* TEContentCell.swift */,
 			);
 			path = Music;
 			sourceTree = "<group>";
@@ -832,6 +835,7 @@
 				4247E8EB1CEDF3940047D69A /* UILabelExtensions.swift in Sources */,
 				424F6F581D127A4D00C8AF50 /* TEMusicBanner.swift in Sources */,
 				4247E8F11CEDF3940047D69A /* UIViewExtensions.swift in Sources */,
+				42860FBF1D19717900D2EC95 /* TEContentCell.swift in Sources */,
 				4285E9861CA2C4E1005EDF4B /* TETableModelType.swift in Sources */,
 				4247E8D11CEDF3940047D69A /* BlockWebView.swift in Sources */,
 				4247E8E41CEDF3940047D69A /* UIButtonExtensions.swift in Sources */,

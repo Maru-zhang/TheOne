@@ -21,6 +21,7 @@ class TECommentCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        username.textColor = TEConfigure.author_Highlight
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
