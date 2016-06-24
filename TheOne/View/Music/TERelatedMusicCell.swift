@@ -9,7 +9,7 @@
 import UIKit
 import Cartography
 
-class TERelatedMusicCell: UITableViewCell {
+class TERelatedMusicCell: TECleanCell {
     
     let scrollView: UIScrollView
     let item_L: TERelatedMusicItem
@@ -42,10 +42,6 @@ class TERelatedMusicCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-
-    override func setSelected(selected: Bool, animated: Bool) {}
-    override func setHighlighted(highlighted: Bool, animated: Bool) {}
     
 }
 

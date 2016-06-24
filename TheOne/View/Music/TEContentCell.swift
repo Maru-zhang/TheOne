@@ -10,7 +10,7 @@
 import UIKit
 import Cartography
 
-class TEContentCell: UITableViewCell {
+class TEContentCell: TECleanCell {
     
     let title: UILabel
     let author: UILabel
@@ -48,7 +48,6 @@ class TEContentCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {}
 
 }
 

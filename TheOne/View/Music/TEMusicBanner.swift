@@ -10,6 +10,7 @@ import UIKit
 
 class TEMusicBanner: UIView {
 
+    var shadowLayer: CALayer!
     
     @IBOutlet weak var header: UIImageView!
     @IBOutlet weak var authour: UILabel!
@@ -20,7 +21,43 @@ class TEMusicBanner: UIView {
     @IBOutlet weak var timeStamp: UILabel!
     
     override func awakeFromNib() {
-        header.layer.cornerRadius = 25.0
-        layer.borderWidth = 2.0
+        authour.textColor = TEConfigure.author_Highlight
+        Profession.textColor = UIColor.lightGrayColor()
+        header.layer.cornerRadius = 25
+        header.layer.masksToBounds = true
+    }
+
+    override func drawRect(rect: CGRect) {
+        super.drawRect(rect)
+        
+        // Firsr, remove all of this layer's sublayer
+        if shadowLayer != nil {
+            shadowLayer.removeFromSuperlayer()
+        }
+        
+        shadowLayer = CALayer()
+        shadowLayer.backgroundColor = UIColor.whiteColor().CGColor
+        shadowLayer.frame = rect
+        shadowLayer.shadowOpacity = 0.3
+        shadowLayer.shadowColor = UIColor.blackColor().CGColor
+        shadowLayer.shadowOffset = CGSizeMake(0, 0)
+        shadowLayer.shadowRadius = 3.0
+        shadowLayer.cornerRadius = 5.0
+        
+        layer.insertSublayer(shadowLayer, atIndex: 0)
+        
+        
+    }
+}
+
+extension TEMusicBanner {
+    
+    // MARK: - Public Method
+    func configWithEntity(entity: TEMusicDetail) {
+        header.kf_setImageWithURL(NSURL.init(string: (entity.author?.web_url)!)!)
+        title.text = entity.title
+        authour.text = entity.author?.user_name
+        Profession.text = entity.author?.desc
+        timeStamp.text = entity.maketime
     }
 }

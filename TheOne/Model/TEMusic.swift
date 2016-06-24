@@ -35,6 +35,8 @@ struct TEMusicDetail: Mappable {
     var sharenum: NSInteger?
     var commentnum: NSInteger?
     
+    init() {}
+    
     init?(_ map: Map) {
         
     }

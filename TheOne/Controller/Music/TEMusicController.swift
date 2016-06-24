@@ -57,6 +57,13 @@ class TEMusicController: UIViewController {
         
         viewModel.detail.signal
             .observeOn(QueueScheduler.mainQueueScheduler)
+            .filter({ (_) -> Bool in
+                if let _ = self.pageView.visibleCell.first {
+                    return true
+                }else {
+                    return false
+                }
+            })
             .observeNext { [unowned self] (_) in
                 let tableView = self.pageView.visibleCell.first as! UITableView
                 tableView.reloadData()
@@ -64,6 +71,13 @@ class TEMusicController: UIViewController {
         
         viewModel.relates.signal
             .observeOn(QueueScheduler.mainQueueScheduler)
+            .filter({ (_) -> Bool in
+                if let _ = self.pageView.visibleCell.first {
+                    return true
+                }else {
+                    return false
+                }
+            })
             .observeNext { [unowned self] (_) in
                 let tableView = self.pageView.visibleCell.first as! UITableView
                 tableView.reloadData()
@@ -105,6 +119,7 @@ extension TEMusicController: TEPageableDataSource,TEPageableDelegate {
             cell!.dataSource = self
             cell!.delegate = self
             cell!.estimatedRowHeight = 70.0
+            cell?.registerClass(TEHeaderCell.self, forCellReuseIdentifier: String(TEHeaderCell))
             cell!.registerClass(TEContentCell.self, forCellReuseIdentifier: String(TEContentCell))
             cell!.registerClass(TERelatedMusicCell.self, forCellReuseIdentifier: String(TERelatedMusicCell))
             cell!.registerClass(UITableViewCell.self, forCellReuseIdentifier: String(UITableViewCell))
@@ -155,9 +170,10 @@ extension TEMusicController: UITableViewDelegate,UITableViewDataSource {
         switch indexPath.section {
             
         case 0:
-            
             if indexPath.row == 0 {
-                return tableView.dequeueReusableCellWithIdentifier(String(UITableViewCell), forIndexPath: indexPath)
+                let cell = tableView.dequeueReusableCellWithIdentifier(String(TEHeaderCell), forIndexPath: indexPath) as! TEHeaderCell
+                cell.configWithEntity(viewModel.detail)
+                return cell
             }else if indexPath.row == 1 {
                 let cell = tableView.dequeueReusableCellWithIdentifier(String(TEContentCell), forIndexPath: indexPath) as! TEContentCell
                 cell.configWithEntity(viewModel.detail.value)
@@ -204,6 +220,9 @@ extension TEMusicController: UITableViewDelegate,UITableViewDataSource {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
+            if indexPath.row == 0 {
+                return 500
+            }
             return 70
         case 1:
             return 150
