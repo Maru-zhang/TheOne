@@ -91,6 +91,8 @@
 		4296EE901D0451C5009814EF /* TESearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4296EE8F1D0451C5009814EF /* TESearchController.swift */; };
 		4296EE961D045348009814EF /* TEArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4296EE941D045348009814EF /* TEArticleCell.swift */; };
 		4296EE991D045839009814EF /* TEArticleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4296EE981D045839009814EF /* TEArticleTableView.swift */; };
+		42B75D8A1D1EA72000140D8F /* ButtonLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B75D891D1EA72000140D8F /* ButtonLine.swift */; };
+		42B75D8C1D1EA8F000140D8F /* TEButtonLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B75D8B1D1EA8F000140D8F /* TEButtonLineCell.swift */; };
 		42CE5F471C96D00300E04AF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F451C96D00300E04AF6 /* AppDelegate.swift */; };
 		42CE5F531C97AA0900E04AF6 /* TESettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F521C97AA0900E04AF6 /* TESettingController.swift */; };
 		42CE5F571C97ABBA00E04AF6 /* TENaviPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F561C97ABBA00E04AF6 /* TENaviPresentable.swift */; };
@@ -193,6 +195,8 @@
 		4296EE8F1D0451C5009814EF /* TESearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TESearchController.swift; sourceTree = "<group>"; };
 		4296EE941D045348009814EF /* TEArticleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEArticleCell.swift; sourceTree = "<group>"; };
 		4296EE981D045839009814EF /* TEArticleTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEArticleTableView.swift; sourceTree = "<group>"; };
+		42B75D891D1EA72000140D8F /* ButtonLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonLine.swift; sourceTree = "<group>"; };
+		42B75D8B1D1EA8F000140D8F /* TEButtonLineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEButtonLineCell.swift; sourceTree = "<group>"; };
 		42CE5F451C96D00300E04AF6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42CE5F521C97AA0900E04AF6 /* TESettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TESettingController.swift; sourceTree = "<group>"; };
 		42CE5F561C97ABBA00E04AF6 /* TENaviPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TENaviPresentable.swift; sourceTree = "<group>"; };
@@ -288,6 +292,7 @@
 				42860FDE1D1BC10A00D2EC95 /* TEHeaderCell.swift */,
 				42860FBE1D19717900D2EC95 /* TEContentCell.swift */,
 				424F6F8B1D16AE4400C8AF50 /* TERelatedMusicCell.swift */,
+				42B75D8B1D1EA8F000140D8F /* TEButtonLineCell.swift */,
 			);
 			path = Music;
 			sourceTree = "<group>";
@@ -423,6 +428,7 @@
 				426645CD1CE71256005E21B4 /* MARCarousel.swift */,
 				426645CE1CE71256005E21B4 /* TECardPageView.swift */,
 				4296EE861CFDA1ED009814EF /* TEPageableView.swift */,
+				42B75D891D1EA72000140D8F /* ButtonLine.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -868,6 +874,7 @@
 				4247E8E81CEDF3940047D69A /* UIFontExtensions.swift in Sources */,
 				4247E8DF1CEDF3940047D69A /* NSTimerExtensions.swift in Sources */,
 				426645C41CE59E7F005E21B4 /* CirCleView.swift in Sources */,
+				42B75D8A1D1EA72000140D8F /* ButtonLine.swift in Sources */,
 				4247E8D61CEDF3940047D69A /* DictionaryExtensions.swift in Sources */,
 				424F6F811D12A21900C8AF50 /* TEUIProductor.swift in Sources */,
 				4247E8DE1CEDF3940047D69A /* NSObjectExtensions.swift in Sources */,
@@ -898,6 +905,7 @@
 				4247E8EC1CEDF3940047D69A /* UISliderExtensions.swift in Sources */,
 				4247E8D51CEDF3940047D69A /* CharacterExtensions.swift in Sources */,
 				4247E8E91CEDF3940047D69A /* UIImageExtensions.swift in Sources */,
+				42B75D8C1D1EA8F000140D8F /* TEButtonLineCell.swift in Sources */,
 				42EDEC281CF48A9700ED682D /* TEItemPresentable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

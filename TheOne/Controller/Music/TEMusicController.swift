@@ -121,6 +121,7 @@ extension TEMusicController: TEPageableDataSource,TEPageableDelegate {
             cell!.estimatedRowHeight = 70.0
             cell?.registerClass(TEHeaderCell.self, forCellReuseIdentifier: String(TEHeaderCell))
             cell!.registerClass(TEContentCell.self, forCellReuseIdentifier: String(TEContentCell))
+            cell!.registerClass(TEButtonLineCell.self, forCellReuseIdentifier: String(TEButtonLineCell))
             cell!.registerClass(TERelatedMusicCell.self, forCellReuseIdentifier: String(TERelatedMusicCell))
             cell!.registerClass(UITableViewCell.self, forCellReuseIdentifier: String(UITableViewCell))
             cell!.registerNib(UINib.init(nibName: String(TECommentCell), bundle: nil), forCellReuseIdentifier: String(TECommentCell))
@@ -173,13 +174,33 @@ extension TEMusicController: UITableViewDelegate,UITableViewDataSource {
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCellWithIdentifier(String(TEHeaderCell), forIndexPath: indexPath) as! TEHeaderCell
                 cell.configWithEntity(viewModel.detail)
+                cell.storyAction = { [unowned self] obj in
+                    let content = tableView.cellForRowAtIndexPath(NSIndexPath.init(forRow: 1, inSection: 0)) as! TEContentCell
+                    content.displayType = TEContentType.story
+                    content.configWithEntity(self.viewModel.detail.value)
+                    tableView.reloadRowsAtIndexPaths([NSIndexPath.init(forRow: 1, inSection: 0)], withRowAnimation: .None)
+                }
+                cell.lyricsAction = { [unowned self] obj in
+                    let content = tableView.cellForRowAtIndexPath(NSIndexPath.init(forRow: 1, inSection: 0)) as! TEContentCell
+                    content.displayType = TEContentType.lyrics
+                    content.configWithEntity(self.viewModel.detail.value)
+                    tableView.reloadRowsAtIndexPaths([NSIndexPath.init(forRow: 1, inSection: 0)], withRowAnimation: .None)
+                }
+                cell.infoAction = { [unowned self] obj in
+                    let content = tableView.cellForRowAtIndexPath(NSIndexPath.init(forRow: 1, inSection: 0)) as! TEContentCell
+                    content.displayType = TEContentType.info
+                    content.configWithEntity(self.viewModel.detail.value)
+                    tableView.reloadRowsAtIndexPaths([NSIndexPath.init(forRow: 1, inSection: 0)], withRowAnimation: .None)
+                }
                 return cell
             }else if indexPath.row == 1 {
                 let cell = tableView.dequeueReusableCellWithIdentifier(String(TEContentCell), forIndexPath: indexPath) as! TEContentCell
                 cell.configWithEntity(viewModel.detail.value)
                 return cell
             }else {
-                return tableView.dequeueReusableCellWithIdentifier(String(UITableViewCell), forIndexPath: indexPath)
+                let cell = tableView.dequeueReusableCellWithIdentifier(String(TEButtonLineCell), forIndexPath: indexPath) as! TEButtonLineCell
+                cell.configWithEntity(viewModel.detail.value)
+                return cell
             }
             
         case 1:
@@ -222,8 +243,11 @@ extension TEMusicController: UITableViewDelegate,UITableViewDataSource {
         case 0:
             if indexPath.row == 0 {
                 return 500
+            }else if indexPath.row == 1 {
+                return 500
+            }else {
+                return 44
             }
-            return 70
         case 1:
             return 150
         case 2:

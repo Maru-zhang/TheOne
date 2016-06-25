@@ -12,6 +12,8 @@ import ReactiveCocoa
 
 class TEHeaderCell: TECleanCell {
     
+    typealias ClickAction = (AnyObject) -> ()
+    
     let detail = MutableProperty<TEMusicDetail?>(nil)
     
     let headerImage: UIImageView
@@ -21,6 +23,10 @@ class TEHeaderCell: TECleanCell {
     let lyrics: UIButton
     let info: UIButton
     
+    var storyAction: ClickAction?
+    var lyricsAction: ClickAction?
+    var infoAction: ClickAction?
+
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         headerImage = UIImageView()
         authorBanner = UINib.init(nibName: String(TEMusicBanner), bundle: nil).instantiateWithOwner(nil, options: nil).first as! TEMusicBanner
@@ -28,6 +34,7 @@ class TEHeaderCell: TECleanCell {
         story = UIButton()
         lyrics = UIButton()
         info = UIButton()
+
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         titleName.text = "歌曲信息"
@@ -39,6 +46,7 @@ class TEHeaderCell: TECleanCell {
         
         story.setImage(UIImage(named: "music_story_default"), forState: .Normal)
         story.setImage(UIImage(named: "music_story_selected"), forState: .Selected)
+        story.selected = true
         
         info.setImage(UIImage(named: "music_about_default"), forState: .Normal)
         info.setImage(UIImage(named: "music_about_selected"), forState: .Selected)
@@ -50,23 +58,36 @@ class TEHeaderCell: TECleanCell {
         contentView.addSubview(info)
         contentView.addSubview(authorBanner)
         
-        detail.producer
-            .startOn(QueueScheduler.mainQueueScheduler)
-            .filter({ (details) -> Bool in
-                return details != nil
-            })
-            .startWithNext { [unowned self] (details) in
-                self.headerImage.kf_setImageWithURL(NSURL.init(string: details!.cover!)!, placeholderImage: UIImage.init(named: "music_cover_small"))
-                self.authorBanner.configWithEntity(details!)
-        }
-
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    override func layoutSubviews() {
+        story.rac_command = RACCommand(signalBlock: { [unowned self] (anyObj) -> RACSignal! in
+            guard self.story.selected != true else {
+                return RACSignal.empty()
+            }
+            self.resetSelect()
+            self.story.selected = true
+            self.storyAction?(anyObj)
+            return RACSignal.empty()
+        })
+        
+        lyrics.rac_command = RACCommand(signalBlock: { [unowned self] (anyObj) -> RACSignal! in
+            guard self.lyrics.selected != true else {
+                return RACSignal.empty()
+            }
+            self.resetSelect()
+            self.lyrics.selected = true
+            self.lyricsAction?(anyObj)
+            return RACSignal.empty()
+        })
+        
+        info.rac_command = RACCommand(signalBlock: { [unowned self] (anyObj) -> RACSignal! in
+            guard self.info.selected != true else {
+                return RACSignal.empty()
+            }
+            self.resetSelect()
+            self.info.selected = true
+            self.infoAction?(anyObj)
+            return RACSignal.empty()
+        })
+        
         
         constrain(headerImage, authorBanner, titleName) { (headerImage, authorBanner, titleName) in
             
@@ -104,9 +125,34 @@ class TEHeaderCell: TECleanCell {
             
         }
         
-        super.layoutSubviews()
+        detail.producer
+            .startOn(QueueScheduler.mainQueueScheduler)
+            .filter({ (details) -> Bool in
+                return details != nil
+            })
+            .startWithNext { [unowned self] (details) in
+                self.headerImage.kf_setImageWithURL(NSURL.init(string: details!.cover!)!, placeholderImage: UIImage.init(named: "music_cover_small"))
+                self.authorBanner.configWithEntity(details!)
+        }
+
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
+    private func resetSelect() {
+        if story.selected == true {
+            story.selected = false
+        }
+        if lyrics.selected == true {
+            lyrics.selected = false
+        }
+        
+        if info.selected == true {
+            info.selected = false
+        }
+    }
 
 }
 

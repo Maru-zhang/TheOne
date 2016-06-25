@@ -159,7 +159,7 @@ extension TEArticleController: UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return tableView.frame.height / 3
+        return 150
     }
     
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

@@ -41,6 +41,7 @@ extension TECommentCell {
         // setup display
         header.layer.cornerRadius = 20.0
         header.layer.masksToBounds = true
+        
         separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         layoutMargins = UIEdgeInsetsZero
         
