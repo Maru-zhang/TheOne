@@ -63,11 +63,16 @@ class TEArticleCell: UITableViewCell {
         addSubview(hotLine)
         addSubview(typeImage)
                 
+
+    }
+    
+    override func layoutSubviews() {
         constrain(title, author, hotLine, typeImage) { (title, author, hotLine, typeImage) in
             
             title.left == (title.superview?.left)! + 5
             title.right == (title.superview?.right)! - 54
             title.top  == (title.superview?.left)! + 8
+            
             
             typeImage.right == (title.superview?.right)! - 8
             typeImage.top == title.top
@@ -78,11 +83,15 @@ class TEArticleCell: UITableViewCell {
             author.top  == title.bottom + 8
             author.right == title.right
             
-            hotLine.left == title.left
+            hotLine.left == (title.superview?.left)! + 5
             hotLine.right == (title.superview?.right)! - 5
-            hotLine.top  == author.bottom + 8
+//            hotLine.top  == author.bottom + 8
+            hotLine.top == (author.superview?.top)!
+            hotLine.bottom == (author.superview?.bottom)!
             
         }
+        super.layoutSubviews()
+
     }
     
     required init?(coder aDecoder: NSCoder) {

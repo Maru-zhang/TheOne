@@ -9,6 +9,7 @@
 import UIKit
 import ReactiveCocoa
 import ESPullToRefresh
+import Kingfisher
 
 class TEMusicController: UIViewController {
     
@@ -39,8 +40,8 @@ class TEMusicController: UIViewController {
         view.backgroundColor = UIColor.whiteColor()
         
 
-
     }
+    
     
     func setupData() {
         
@@ -54,43 +55,16 @@ class TEMusicController: UIViewController {
             self.pageView.reloadData()
         }
         
-        
-        viewModel.detail.signal
+        combineLatest(viewModel.detail.signal, viewModel.relates.signal, viewModel.comments.signal)
             .observeOn(QueueScheduler.mainQueueScheduler)
-            .filter({ (_) -> Bool in
-                if let _ = self.pageView.visibleCell.first {
-                    return true
-                }else {
-                    return false
-                }
-            })
-            .observeNext { [unowned self] (_) in
-                let tableView = self.pageView.visibleCell.first as! UITableView
-                tableView.reloadData()
-        }
-        
-        viewModel.relates.signal
-            .observeOn(QueueScheduler.mainQueueScheduler)
-            .filter({ (_) -> Bool in
-                if let _ = self.pageView.visibleCell.first {
-                    return true
-                }else {
-                    return false
-                }
-            })
-            .observeNext { [unowned self] (_) in
-                let tableView = self.pageView.visibleCell.first as! UITableView
-                tableView.reloadData()
-        }
-        
-        viewModel.comments.signal
-            .observeOn(QueueScheduler.mainQueueScheduler)
-            .observeNext { [unowned self] (_) in
+            .filter { (details, relateds, comments) -> Bool in
+            return details != nil && relateds.count != 0 && comments.count != 0
+        }.observeNext { [unowned self] (_, _, _) in
             let tableView = self.pageView.visibleCell.first as! UITableView
             tableView.es_stopLoadingMore()
             tableView.reloadData()
         }
-        
+
         viewModel.commentsSignal.observeCompleted { [unowned self] in
             let tableView = self.pageView.visibleCell.first as! UITableView
             tableView.es_stopLoadingMore()
@@ -139,6 +113,9 @@ extension TEMusicController: TEPageableDataSource,TEPageableDelegate {
     // MARK: - Pageable Delegate
     func pageableViewFrame(pageView: TEPageableView, atIndexPath indexPath: NSIndexPath) -> CGRect {
         return view.bounds
+    }
+    
+    func pageableViewWillShowReuseView(pageView: TEPageableView, reuseView: UIView) {
     }
     
     func pageableViewDidEndScroll(pageView: TEPageableView, toIndexPath indexPath: NSIndexPath) {
@@ -223,9 +200,6 @@ extension TEMusicController: UITableViewDelegate,UITableViewDataSource {
     }
     
     // MARK: - Delegate
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return nil
-    }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
@@ -258,6 +232,5 @@ extension TEMusicController: UITableViewDelegate,UITableViewDataSource {
             return 70
         }
     }
-    
-    
+
 }

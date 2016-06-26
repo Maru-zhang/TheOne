@@ -97,7 +97,11 @@ extension TEArticleController: TEPageableDataSource,TEPageableDelegate {
         
         if cell == nil {
             cell = TECardPageView()
+            cell?.backgroundColor = UIColor.clearColor()
             let table = TEArticleTableView(frame: CGRectMake(0, 0, pageView.frame.width - 20, pageView.frame.height - 20), style: .Plain)
+            table.scrollEnabled = false
+            table.estimatedRowHeight = 150
+            table.rowHeight = UITableViewAutomaticDimension
             table.registerClass(TEArticleCell.self, forCellReuseIdentifier: String(TEArticleCell))
             table.delegate = self
             table.dataSource = self
@@ -153,14 +157,13 @@ extension TEArticleController: UITableViewDataSource,UITableViewDelegate {
             cell.hotLine.text = viewModel.issue.value[index].answer_content
             cell.articleStyle = .question
         }
-        
-        
+
         return cell
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 150
-    }
+//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return 150
+//    }
     
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()

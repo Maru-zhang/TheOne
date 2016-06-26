@@ -120,7 +120,7 @@ extension TEPageableView: UIScrollViewDelegate {
     // MARK: - ScrollView Delegate
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        
+
         // Some condition checked
         guard dataSource != nil else {
             return
