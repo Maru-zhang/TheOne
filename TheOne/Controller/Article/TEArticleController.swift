@@ -102,7 +102,7 @@ extension TEArticleController: TEPageableDataSource,TEPageableDelegate {
             table.scrollEnabled = false
             table.estimatedRowHeight = 150
             table.rowHeight = UITableViewAutomaticDimension
-            table.registerClass(TEArticleCell.self, forCellReuseIdentifier: String(TEArticleCell))
+            table.registerNib(UINib.init(nibName: "TEArticleCell", bundle: nil), forCellReuseIdentifier: String(TEArticleCell))
             table.delegate = self
             table.dataSource = self
             cell?.addSubview(table)

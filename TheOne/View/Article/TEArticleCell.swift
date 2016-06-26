@@ -20,26 +20,19 @@ enum TEArticleType: String {
 
 class TEArticleCell: UITableViewCell {
     
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var author: UILabel!
+    @IBOutlet weak var hotLine: UILabel!
+    @IBOutlet weak var typeImage: UIImageView!
 
-    let title: UILabel!
-    let author: UILabel!
-    let hotLine: UILabel!
-    let typeImage: UIImageView!
-    
-    var articleStyle: TEArticleType {
+    var articleStyle: TEArticleType = .question {
         didSet {
             typeImage.image = UIImage(named: self.articleStyle.rawValue)
         }
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override func awakeFromNib() {
         
-        title = UILabel()
-        author = UILabel()
-        hotLine = UILabel()
-        typeImage = UIImageView()
-        articleStyle = .question
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         backgroundColor = UIColor.clearColor()
         selectionStyle = .None
@@ -57,53 +50,8 @@ class TEArticleCell: UITableViewCell {
         hotLine.font = UIFont.systemFontOfSize(15)
         hotLine.textAlignment = .Left
         hotLine.numberOfLines = 0
-        
-        addSubview(title)
-        addSubview(author)
-        addSubview(hotLine)
-        addSubview(typeImage)
-                
+    }
 
-    }
-    
-    override func layoutSubviews() {
-        constrain(title, author, hotLine, typeImage) { (title, author, hotLine, typeImage) in
-            
-            title.left == (title.superview?.left)! + 5
-            title.right == (title.superview?.right)! - 54
-            title.top  == (title.superview?.left)! + 8
-            
-            
-            typeImage.right == (title.superview?.right)! - 8
-            typeImage.top == title.top
-            typeImage.width == 41
-            typeImage.height == 19
-            
-            author.left == title.left
-            author.top  == title.bottom + 8
-            author.right == title.right
-            
-            hotLine.left == (title.superview?.left)! + 5
-            hotLine.right == (title.superview?.right)! - 5
-//            hotLine.top  == author.bottom + 8
-            hotLine.top == (author.superview?.top)!
-            hotLine.bottom == (author.superview?.bottom)!
-            
-        }
-        super.layoutSubviews()
-
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
 }
 
 extension TEArticleCell {

@@ -7,12 +7,61 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TEArticleCell" customModule="TheOne" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="519" height="143"/>
+            <rect key="frame" x="0.0" y="0.0" width="519" height="102"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCa-BI-juU">
+                    <rect key="frame" x="12" y="36" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tg9-9P-9eE">
+                    <rect key="frame" x="12" y="65" width="499" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Wes-ky-hcq">
+                    <rect key="frame" x="470" y="8" width="41" height="19"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="19" id="9nz-gN-Pqg"/>
+                        <constraint firstAttribute="width" constant="41" id="g5n-0i-VId"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZ2-OL-VMG">
+                    <rect key="frame" x="12" y="7" width="437" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Wes-ky-hcq" firstAttribute="leading" secondItem="YZ2-OL-VMG" secondAttribute="trailing" constant="21" id="ADG-oR-Hhe"/>
+                <constraint firstItem="jCa-BI-juU" firstAttribute="leading" secondItem="YZ2-OL-VMG" secondAttribute="leading" id="J52-0Q-020"/>
+                <constraint firstItem="YZ2-OL-VMG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="KaZ-ge-HZW"/>
+                <constraint firstItem="jCa-BI-juU" firstAttribute="top" secondItem="YZ2-OL-VMG" secondAttribute="bottom" constant="8" id="SGB-CA-OAK"/>
+                <constraint firstAttribute="bottom" secondItem="Tg9-9P-9eE" secondAttribute="bottom" constant="16" id="Z8l-50-dNy"/>
+                <constraint firstItem="YZ2-OL-VMG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="7" id="ZPC-1H-nZk"/>
+                <constraint firstItem="Tg9-9P-9eE" firstAttribute="leading" secondItem="YZ2-OL-VMG" secondAttribute="leading" id="ZUd-2M-bzl"/>
+                <constraint firstAttribute="trailing" secondItem="Wes-ky-hcq" secondAttribute="trailing" constant="8" id="alg-6K-uhq"/>
+                <constraint firstItem="Tg9-9P-9eE" firstAttribute="top" secondItem="jCa-BI-juU" secondAttribute="bottom" constant="8" id="hba-SP-eYB"/>
+                <constraint firstAttribute="trailing" secondItem="Tg9-9P-9eE" secondAttribute="trailing" constant="8" id="kPm-g6-JzC"/>
+                <constraint firstItem="Wes-ky-hcq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="qc8-aJ-NDe"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="491.5" y="525.5"/>
+            <connections>
+                <outlet property="author" destination="jCa-BI-juU" id="VR4-ve-TYX"/>
+                <outlet property="hotLine" destination="Tg9-9P-9eE" id="akf-D2-NaP"/>
+                <outlet property="title" destination="YZ2-OL-VMG" id="ARx-CR-xpT"/>
+                <outlet property="typeImage" destination="Wes-ky-hcq" id="t6R-b5-VEi"/>
+            </connections>
+            <point key="canvasLocation" x="491.5" y="505"/>
         </view>
     </objects>
+    <resources>
+        <image name="questionIcon" width="41" height="19"/>
+    </resources>
 </document>
