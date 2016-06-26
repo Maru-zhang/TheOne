@@ -9,7 +9,7 @@
 import UIKit
 import Cartography
 import ReactiveCocoa
-
+import JTSImageViewController
 
 let widgetSpace: CFloat = 20
 
@@ -139,7 +139,17 @@ extension TEHomeController: TEPageableDataSource,TEPageableDelegate {
         var cell = pageView.dequeueReusableCell() as? HomePageView
         let entity = viewModel.cards.value[indexPath.indexAtPosition(0)]
         
-        if cell == nil { cell = HomePageView() }
+        if cell == nil {
+            cell = HomePageView()
+            cell?.showClosure = { [unowned self] in
+                let imageInfo = JTSImageInfo()
+                imageInfo.image = cell?.imageView.image
+                imageInfo.referenceRect = (cell?.imageView.frame)!
+                imageInfo.referenceView = cell
+                let showVC = JTSImageViewController(imageInfo: imageInfo, mode: JTSImageViewControllerMode.init(rawValue: 0)!, backgroundStyle: JTSImageViewControllerBackgroundOptions.init(rawValue: 2))
+                showVC.showFromViewController(self, transition: JTSImageViewControllerTransition.FromOriginalPosition)
+            }
+        }
         cell!.configWithEntity(entity)
         
         return cell!
@@ -151,7 +161,7 @@ extension TEHomeController: TEPageableDataSource,TEPageableDelegate {
         
         let size = content.boundingRectWithSize(CGSizeMake(pageView.frame.width - 20, CGFloat(MAXFLOAT)), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: TEConfigure.card_content_font], context: nil).size
         
-        return CGRectMake(10, 10, pageView.frame.width - 20, 380.0 + size.height)
+        return CGRectMake(10, 10, pageView.frame.width - 20, 350.0 + size.height)
     }
     
     func pageableViewDidEndScroll(pageView: TEPageableView, toIndexPath indexPath: NSIndexPath) {

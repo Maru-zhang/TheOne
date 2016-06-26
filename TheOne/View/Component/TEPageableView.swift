@@ -19,6 +19,7 @@ class TEPageableView: UIScrollView {
     
     var currentIndex: NSInteger
     var visibleCell: [UIView]
+    var loadViewAfter: Bool = false
     
     var leftAction: triggerAction?
     var rightAction: triggerAction?

@@ -35,13 +35,13 @@ extension TEButtonLineCell {
     
     // MARK: - Public Method
     func configWithEntity(entity: TEMusicDetail?) {
-        separatorInset = UIEdgeInsetsZero
-        layoutMargins = UIEdgeInsetsZero
+
         guard entity != nil else {
             return
         }
         buttonLine.lineButtons[0].setTitle(String(entity!.praisenum!), forState: .Normal)
         buttonLine.lineButtons[1].setTitle(String(entity!.commentnum!), forState: .Normal)
         buttonLine.lineButtons[2].setTitle(String(entity!.sharenum!), forState: .Normal)
+        
     }
 }

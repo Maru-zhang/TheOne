@@ -11,9 +11,15 @@ import UIKit
 class ButtonLine: UIView {
     
     var lineButtons: [TELineButton] = []
+    var line_l: UIImageView
+    var line_r: UIImageView
 
     override init(frame: CGRect) {
+        line_l = UIImageView(image: UIImage.init(named: "toolBarLine"))
+        line_r = UIImageView(image: UIImage.init(named: "toolBarLine"))
         super.init(frame: frame)
+        addSubview(line_l)
+        addSubview(line_r)
         setupView()
     }
     
@@ -22,6 +28,10 @@ class ButtonLine: UIView {
     }
     
     override func layoutSubviews() {
+        line_l.bounds = CGRectMake(0, 0, 1, 27)
+        line_l.center = CGPointMake(frame.width / 3, frame.height / 2)
+        line_r.bounds = CGRectMake(0, 0, 1, 27)
+        line_r.center = CGPointMake(frame.width * 0.66, frame.height / 2)
         let width = self.frame.width / CGFloat(3)
         for (index,btn) in lineButtons.enumerate() {
             btn.frame = CGRectMake(width * CGFloat(index), 0, width, frame.height)
@@ -45,9 +55,11 @@ class ButtonLine: UIView {
             }else {
                 btn.setImage(UIImage.init(named: "shareImage"), forState: .Normal)
             }
+            
             addSubview(btn)
             lineButtons.append(btn)
         }
+
     }
 
 }

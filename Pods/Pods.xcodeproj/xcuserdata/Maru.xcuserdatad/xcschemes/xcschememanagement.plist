@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>JTSImageViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Kingfisher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -62,27 +67,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>04CE1DC9C059D1CC5EFEA84709EE5B3D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>3E6BE26A9C676D1DEF18F57C6F2DE025</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5006A29DC418F8262DC0F604399CB8BA</key>
+		<key>784D3FE92E17267D638280A6F5AE9D0F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7E3A7F5E5521E22E96059898169E67A3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,6 +92,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>B1A26822214E538C5F54F58AB347B075</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C3A04698AAE4D6124C20602D622956E5</key>
 		<dict>
 			<key>primary</key>
@@ -107,12 +107,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EA33A2FB487FF44D8A483B92F0E72935</key>
+		<key>E6A53D0D8AC2AEBC7762F099FF210F35</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EC2ECA1A2DF7A2824A6F0434D2DC82B7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>F91226101ECE8FCFD221A3EC54481F82</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FAE26C46CFBAF39E4C96ABF16B93D9FC</key>
 		<dict>
 			<key>primary</key>
 			<true/>

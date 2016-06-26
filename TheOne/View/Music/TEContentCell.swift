@@ -58,6 +58,7 @@ class TEContentCell: TECleanCell {
             textView.right == (title.superview?.right)! - 3
             textView.bottom == (title.superview?.bottom)! - 3
         }
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -77,6 +78,7 @@ extension TEContentCell {
     // MARK: - Public Method
     
     func configWithEntity(entity: TEMusicDetail?) {
+        
         guard entity != nil else {
             return
         }

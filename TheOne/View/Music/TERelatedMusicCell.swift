@@ -56,6 +56,7 @@ extension TERelatedMusicCell {
         item_R.configWithEntity(entitys[0])
         item_C.configWithEntity(entitys[1])
         item_L.configWithEntity(entitys[2])
+        
     }
 }
 

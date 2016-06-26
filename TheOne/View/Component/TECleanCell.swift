@@ -13,8 +13,6 @@ class TECleanCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = UIColor.clearColor()
-        separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
-        layoutMargins = UIEdgeInsetsZero
     }
     
     required init?(coder aDecoder: NSCoder) {

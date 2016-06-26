@@ -119,6 +119,8 @@ extension TEMusicController: TEPageableDataSource,TEPageableDelegate {
             cell!.dataSource = self
             cell!.delegate = self
             cell!.estimatedRowHeight = 70.0
+            cell!.separatorInset = UIEdgeInsetsZero
+            cell!.layoutMargins = UIEdgeInsetsZero
             cell?.registerClass(TEHeaderCell.self, forCellReuseIdentifier: String(TEHeaderCell))
             cell!.registerClass(TEContentCell.self, forCellReuseIdentifier: String(TEContentCell))
             cell!.registerClass(TEButtonLineCell.self, forCellReuseIdentifier: String(TEButtonLineCell))
@@ -256,5 +258,6 @@ extension TEMusicController: UITableViewDelegate,UITableViewDataSource {
             return 70
         }
     }
+    
     
 }

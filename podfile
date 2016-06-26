@@ -12,6 +12,7 @@ def pods
 	pod 'Kingfisher', '~> 2.1.0'
     pod 'Cartography', '~> 0.6.0'
     pod 'ReactiveCocoa', '~> 4.1.0'
+    pod 'JTSImageViewController'
 end
 
 target 'TheOne' do

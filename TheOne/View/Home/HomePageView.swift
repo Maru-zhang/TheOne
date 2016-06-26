@@ -22,6 +22,8 @@ class HomePageView: TECardPageView {
     let markTime: UILabel!
     /// 内容
     let content: UILabel!
+    /// 点击封面的操作闭包
+    var showClosure: (() -> ())?
     
     override init(frame: CGRect) {
         
@@ -59,13 +61,17 @@ class HomePageView: TECardPageView {
         addSubview(markTime)
         addSubview(content)
         
+        imageView.userInteractionEnabled = true
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showFlexibleImage)))
+
+        
         // Custom Layout
         constrain(imageView, VOL, author, markTime, content) { (imageView, VOL, author, markTime, content) in
             
             imageView.left == ((imageView.superview)?.left)! + 6
             imageView.right == (imageView.superview?.right)! - 6
             imageView.top == (imageView.superview?.top)! + 6
-            imageView.height == 300
+            imageView.height == imageView.width * 0.75
             
             VOL.left == (VOL.superview?.left)! + 6
             VOL.top == imageView.bottom + 4
@@ -82,6 +88,7 @@ class HomePageView: TECardPageView {
             
             
         }
+        
         
     }
     
@@ -102,5 +109,10 @@ extension HomePageView {
         VOL.text = entity.hp_title
         imageView.kf_setImageWithURL(NSURL(string: entity.hp_img_url!)!)
         markTime.text = (entity.hp_makettime! as NSString).substringToIndex(10)
+        
+    }
+    
+    func showFlexibleImage() {
+        showClosure?()
     }
 }

@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '11F3415987E592FB899DA61B'
-               BlueprintName = 'Cartography'
+               BlueprintIdentifier = 'FE65972BD28BAD87719F104A'
+               BlueprintName = 'JTSImageViewController'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Cartography.framework'>
+               BuildableName = 'JTSImageViewController.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
