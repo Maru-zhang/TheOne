@@ -98,7 +98,7 @@ extension TEArticleController: TEPageableDataSource,TEPageableDelegate {
         if cell == nil {
             cell = TECardPageView()
             cell?.backgroundColor = UIColor.clearColor()
-            let table = TEArticleTableView(frame: CGRectMake(0, 0, pageView.frame.width - 20, pageView.frame.height - 20), style: .Plain)
+            let table = TEArticleTableView(frame: CGRectMake(0, 0, pageView.frame.width - 20, pageView.frame.height), style: .Plain)
             table.scrollEnabled = false
             table.estimatedRowHeight = 150
             table.rowHeight = UITableViewAutomaticDimension
@@ -113,7 +113,8 @@ extension TEArticleController: TEPageableDataSource,TEPageableDelegate {
     }
     
     func pageableViewFrame(pageView: TEPageableView, atIndexPath indexPath: NSIndexPath) -> CGRect {
-        return CGRectMake(10, 10, pageView.frame.width - 20, pageView.frame.height - 20)
+        
+        return CGRectMake(10, 10, pageView.frame.width - 20, pageView.frame.height + 20)
     }
     
     func pageableViewWillShowReuseView(pageView: TEPageableView, reuseView: UIView) {
@@ -161,9 +162,9 @@ extension TEArticleController: UITableViewDataSource,UITableViewDelegate {
         return cell
     }
     
-//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return 150
-//    }
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 150
+    }
     
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
