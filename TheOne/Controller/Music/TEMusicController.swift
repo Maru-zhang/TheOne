@@ -55,6 +55,13 @@ class TEMusicController: UIViewController {
             self.pageView.reloadData()
         }
         
+        viewModel.contentCellType.signal
+            .observeOn(QueueScheduler.mainQueueScheduler)
+            .observeNext { [unowned self] (type) in
+                let tableView = self.pageView.visibleCell.first as! UITableView
+                tableView.reloadData()
+        }
+        
         combineLatest(viewModel.detail.signal, viewModel.relates.signal, viewModel.comments.signal)
             .observeOn(QueueScheduler.mainQueueScheduler)
             .filter { (details, relateds, comments) -> Bool in
@@ -154,26 +161,18 @@ extension TEMusicController: UITableViewDelegate,UITableViewDataSource {
                 let cell = tableView.dequeueReusableCellWithIdentifier(String(TEHeaderCell), forIndexPath: indexPath) as! TEHeaderCell
                 cell.configWithEntity(viewModel.detail)
                 cell.storyAction = { [unowned self] obj in
-                    let content = tableView.cellForRowAtIndexPath(NSIndexPath.init(forRow: 1, inSection: 0)) as! TEContentCell
-                    content.displayType = TEContentType.story
-                    content.configWithEntity(self.viewModel.detail.value)
-                    tableView.reloadRowsAtIndexPaths([NSIndexPath.init(forRow: 1, inSection: 0)], withRowAnimation: .None)
+                    self.viewModel.contentCellType.value = TEContentType.story
                 }
                 cell.lyricsAction = { [unowned self] obj in
-                    let content = tableView.cellForRowAtIndexPath(NSIndexPath.init(forRow: 1, inSection: 0)) as! TEContentCell
-                    content.displayType = TEContentType.lyrics
-                    content.configWithEntity(self.viewModel.detail.value)
-                    tableView.reloadRowsAtIndexPaths([NSIndexPath.init(forRow: 1, inSection: 0)], withRowAnimation: .None)
+                    self.viewModel.contentCellType.value = TEContentType.lyrics
                 }
                 cell.infoAction = { [unowned self] obj in
-                    let content = tableView.cellForRowAtIndexPath(NSIndexPath.init(forRow: 1, inSection: 0)) as! TEContentCell
-                    content.displayType = TEContentType.info
-                    content.configWithEntity(self.viewModel.detail.value)
-                    tableView.reloadRowsAtIndexPaths([NSIndexPath.init(forRow: 1, inSection: 0)], withRowAnimation: .None)
+                    self.viewModel.contentCellType.value = TEContentType.info
                 }
                 return cell
             }else if indexPath.row == 1 {
                 let cell = tableView.dequeueReusableCellWithIdentifier(String(TEContentCell), forIndexPath: indexPath) as! TEContentCell
+                cell.displayType = viewModel.contentCellType.value
                 cell.configWithEntity(viewModel.detail.value)
                 return cell
             }else {
@@ -220,7 +219,7 @@ extension TEMusicController: UITableViewDelegate,UITableViewDataSource {
             if indexPath.row == 0 {
                 return 500
             }else if indexPath.row == 1 {
-                return 500
+                return UITableViewAutomaticDimension
             }else {
                 return 44
             }

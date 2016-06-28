@@ -29,6 +29,8 @@ class TEMusicViewModel {
     
     /// 当前页的音乐ID
     let currentMusicID = MutableProperty<String>("0")
+    /// 当前内容面板的显示类型
+    let contentCellType = MutableProperty<TEContentType>(TEContentType.story)
     
     // ****************** 以上当前模型相关 ******************************
     

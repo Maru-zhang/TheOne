@@ -207,7 +207,6 @@ extension TEPageableView: UIScrollViewDelegate {
         }
         
         viewDelegate?.pageableViewDidEndScroll(self, toIndexPath: NSIndexPath(index: newIndex))
-        scrollView.pagingEnabled = false
     }
     
 }
