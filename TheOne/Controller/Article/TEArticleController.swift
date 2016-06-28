@@ -41,6 +41,7 @@ extension TEArticleController {
         circleView.backgroundColor = UIColor.lightGrayColor()
         
         pageView = TEPageableView(frame: CGRectMake(0, 180, view.frame.width, view.frame.height - 224))
+        pageView.contentHeight = view.frame.height - 24
         pageView.dataSource = self
         pageView.viewDelegate = self
 
@@ -99,6 +100,7 @@ extension TEArticleController: TEPageableDataSource,TEPageableDelegate {
             cell = TECardPageView()
             cell?.backgroundColor = UIColor.clearColor()
             let table = TEArticleTableView(frame: CGRectMake(0, 0, pageView.frame.width - 20, pageView.frame.height), style: .Plain)
+            table.tableFooterView =  UIView()
             table.scrollEnabled = false
             table.estimatedRowHeight = 150
             table.rowHeight = UITableViewAutomaticDimension
@@ -125,6 +127,7 @@ extension TEArticleController: TEPageableDataSource,TEPageableDelegate {
 
 extension TEArticleController: UITableViewDataSource,UITableViewDelegate {
     
+    // MARK: - DataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.essays.value.count == 0 ? 0 : 3
     }
@@ -162,12 +165,10 @@ extension TEArticleController: UITableViewDataSource,UITableViewDelegate {
         return cell
     }
     
+    
+    // MARK: - Delegate
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 150
-    }
-    
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return UIView()
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -175,6 +176,25 @@ extension TEArticleController: UITableViewDataSource,UITableViewDelegate {
         cell.separatorInset = UIEdgeInsetsMake(0, 12, 0, 12)
         cell.layoutMargins = UIEdgeInsetsZero
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! TEArticleCell
+        
+        let detailVC = TEArticleDetailController()
+        
+        switch cell.articleStyle {
+        case .read:
+            break
+        case .serial:
+            break
+        case .question:
+            break
+        }
+        
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
     
     
 }

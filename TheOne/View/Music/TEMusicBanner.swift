@@ -54,7 +54,7 @@ extension TEMusicBanner {
     
     // MARK: - Public Method
     func configWithEntity(entity: TEMusicDetail) {
-        header.kf_setImageWithURL(NSURL.init(string: (entity.author?.web_url)!)!)
+        header.kf_setImageWithURL(NSURL.init(string: (entity.author?.web_url)!)!, placeholderImage: UIImage(named: "personal"))
         title.text = entity.title
         authour.text = entity.author?.user_name
         Profession.text = entity.author?.desc

@@ -19,7 +19,6 @@ class TENavigationController: UINavigationController,UINavigationControllerDeleg
     // MARK: - Private Method
     private func setupSetting() {
         delegate = self
-
     }
     
     
@@ -32,7 +31,6 @@ class TENavigationController: UINavigationController,UINavigationControllerDeleg
         }else {
             viewController.tabBarController?.tabBar.hidden = true
         }
-        
         
     }
     

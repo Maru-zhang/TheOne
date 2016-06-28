@@ -34,11 +34,6 @@ struct TEEssay: Mappable {
         author <- map["author"]
     }
     
-    func expectHeight() -> CGFloat {
-        let title = (hp_title as! NSString).boundingRectWithSize(CGSizeMake(UIScreen.mainScreen().bounds.width - 20 - 12 - 21 - 41 - 8, CGFloat(MAXFLOAT)), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(19)], context: nil).size
-        let guide = (guide_word as! NSString).boundingRectWithSize(CGSizeMake(UIScreen.mainScreen().bounds.width - 20 - 7, CGFloat(MAXFLOAT)), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(15)], context: nil).size
-        return title.height + guide.height + 20
-    }
     
 }
 
@@ -67,12 +62,7 @@ struct TESerial: Mappable {
         maketime <- map["maketime"]
         author <- map["author"]
     }
-    
-    func expectHeight() -> CGFloat {
-        let titleSizee = (title as! NSString).boundingRectWithSize(CGSizeMake(UIScreen.mainScreen().bounds.width - 20 - 12 - 21 - 41 - 8, CGFloat(MAXFLOAT)), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(19)], context: nil).size
-        let guideSize = (excerpt as! NSString).boundingRectWithSize(CGSizeMake(UIScreen.mainScreen().bounds.width - 20 - 7, CGFloat(MAXFLOAT)), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(15)], context: nil).size
-        return titleSizee.height + guideSize.height + 20
-    }
+
 }
 
 struct TEIssue: Mappable {
@@ -94,12 +84,7 @@ struct TEIssue: Mappable {
         answer_content <- map["answer_content"]
         question_makettime <- map["question_makettime"]
     }
-    
-    func expectHeight() -> CGFloat {
-        let titleSize = (question_title as! NSString).boundingRectWithSize(CGSizeMake(UIScreen.mainScreen().bounds.width - 20 - 12 - 21 - 41 - 8, CGFloat(MAXFLOAT)), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(19)], context: nil).size
-        let guideSize = (answer_content as! NSString).boundingRectWithSize(CGSizeMake(UIScreen.mainScreen().bounds.width - 20 - 7, CGFloat(MAXFLOAT)), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFontOfSize(15)], context: nil).size
-        return titleSize.height + guideSize.height + 20
-    }
+
 }
 
 struct TEAuthor: Mappable {

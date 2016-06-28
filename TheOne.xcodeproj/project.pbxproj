@@ -94,6 +94,10 @@
 		42B75D8A1D1EA72000140D8F /* ButtonLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B75D891D1EA72000140D8F /* ButtonLine.swift */; };
 		42B75D8C1D1EA8F000140D8F /* TEButtonLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B75D8B1D1EA8F000140D8F /* TEButtonLineCell.swift */; };
 		42B75DA11D20096E00140D8F /* TEArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42B75DA01D20096E00140D8F /* TEArticleCell.xib */; };
+		42B75DA31D22EA4E00140D8F /* TEArticleDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B75DA21D22EA4E00140D8F /* TEArticleDetailController.swift */; };
+		42B75DA51D22F2FF00140D8F /* TEMovieHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B75DA41D22F2FF00140D8F /* TEMovieHeaderCell.swift */; };
+		42B75DA81D22F5A100140D8F /* TEMovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B75DA71D22F5A100140D8F /* TEMovieDetail.swift */; };
+		42B75DAA1D22F82A00140D8F /* TEMovieStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B75DA91D22F82A00140D8F /* TEMovieStory.swift */; };
 		42CE5F471C96D00300E04AF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F451C96D00300E04AF6 /* AppDelegate.swift */; };
 		42CE5F531C97AA0900E04AF6 /* TESettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F521C97AA0900E04AF6 /* TESettingController.swift */; };
 		42CE5F571C97ABBA00E04AF6 /* TENaviPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F561C97ABBA00E04AF6 /* TENaviPresentable.swift */; };
@@ -199,13 +203,17 @@
 		42B75D891D1EA72000140D8F /* ButtonLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonLine.swift; sourceTree = "<group>"; };
 		42B75D8B1D1EA8F000140D8F /* TEButtonLineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEButtonLineCell.swift; sourceTree = "<group>"; };
 		42B75DA01D20096E00140D8F /* TEArticleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TEArticleCell.xib; sourceTree = "<group>"; };
+		42B75DA21D22EA4E00140D8F /* TEArticleDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEArticleDetailController.swift; sourceTree = "<group>"; };
+		42B75DA41D22F2FF00140D8F /* TEMovieHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMovieHeaderCell.swift; sourceTree = "<group>"; };
+		42B75DA71D22F5A100140D8F /* TEMovieDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMovieDetail.swift; sourceTree = "<group>"; };
+		42B75DA91D22F82A00140D8F /* TEMovieStory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMovieStory.swift; sourceTree = "<group>"; };
 		42CE5F451C96D00300E04AF6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42CE5F521C97AA0900E04AF6 /* TESettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TESettingController.swift; sourceTree = "<group>"; };
 		42CE5F561C97ABBA00E04AF6 /* TENaviPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TENaviPresentable.swift; sourceTree = "<group>"; };
 		42CE5F581C97C65400E04AF6 /* TEMacro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMacro.swift; sourceTree = "<group>"; };
 		42CE5F5A1C9818C200E04AF6 /* TEPageable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEPageable.swift; sourceTree = "<group>"; };
 		42CE5F5C1C9819C600E04AF6 /* TEPaperModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TEPaperModel.swift; path = ../TEPaperModel.swift; sourceTree = "<group>"; };
-		42CE5F641C9823C600E04AF6 /* TEMovieCardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMovieCardModel.swift; sourceTree = "<group>"; };
+		42CE5F641C9823C600E04AF6 /* TEMovieCardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TEMovieCardModel.swift; path = ../TEMovieCardModel.swift; sourceTree = "<group>"; };
 		42CE5F661C9823E800E04AF6 /* TEMovieCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMovieCardCell.swift; sourceTree = "<group>"; };
 		42CE5F681C9824B200E04AF6 /* PingFang Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang Bold.ttf"; sourceTree = "<group>"; };
 		42CE5F691C9824B200E04AF6 /* PingFang Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang Light.ttf"; sourceTree = "<group>"; };
@@ -368,6 +376,7 @@
 			isa = PBXGroup;
 			children = (
 				425447EA1C96AF0C008B74A9 /* TEArticleController.swift */,
+				42B75DA21D22EA4E00140D8F /* TEArticleDetailController.swift */,
 			);
 			path = Article;
 			sourceTree = "<group>";
@@ -594,13 +603,23 @@
 			path = Article;
 			sourceTree = "<group>";
 		};
+		42B75DA61D22F58400140D8F /* Movie */ = {
+			isa = PBXGroup;
+			children = (
+				42CE5F641C9823C600E04AF6 /* TEMovieCardModel.swift */,
+				42B75DA71D22F5A100140D8F /* TEMovieDetail.swift */,
+				42B75DA91D22F82A00140D8F /* TEMovieStory.swift */,
+			);
+			path = Movie;
+			sourceTree = "<group>";
+		};
 		42CE5F441C96CFCB00E04AF6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				42B75DA61D22F58400140D8F /* Movie */,
 				425D52BD1D0E92D700344C4E /* Music */,
 				426645BC1CE4B874005E21B4 /* Article */,
 				426B93321CE4624700BB5B96 /* Home */,
-				42CE5F641C9823C600E04AF6 /* TEMovieCardModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -636,6 +655,7 @@
 			isa = PBXGroup;
 			children = (
 				42CE5F661C9823E800E04AF6 /* TEMovieCardCell.swift */,
+				42B75DA41D22F2FF00140D8F /* TEMovieHeaderCell.swift */,
 			);
 			path = Movie;
 			sourceTree = "<group>";
@@ -840,6 +860,7 @@
 				425447E81C96AE68008B74A9 /* TETabBarController.swift in Sources */,
 				4247E8E61CEDF3940047D69A /* UIColorExtensions.swift in Sources */,
 				4247E8F01CEDF3940047D69A /* UIViewControllerExtensions.swift in Sources */,
+				42B75DA81D22F5A100140D8F /* TEMovieDetail.swift in Sources */,
 				4247E8D41CEDF3940047D69A /* CGRectExtensions.swift in Sources */,
 				4247E8D91CEDF3940047D69A /* EZSwiftFunctions.swift in Sources */,
 				42860FDF1D1BC10A00D2EC95 /* TEHeaderCell.swift in Sources */,
@@ -889,6 +910,7 @@
 				4247E8EA1CEDF3940047D69A /* UIImageViewExtensions.swift in Sources */,
 				4247E8CD1CEDF3940047D69A /* BlockPan.swift in Sources */,
 				425D52BC1D05A95C00344C4E /* TEArticleViewModel.swift in Sources */,
+				42B75DAA1D22F82A00140D8F /* TEMovieStory.swift in Sources */,
 				4296EE961D045348009814EF /* TEArticleCell.swift in Sources */,
 				4247E8E71CEDF3940047D69A /* UIDeviceExtensions.swift in Sources */,
 				425447EF1C96B5B2008B74A9 /* TENavigationController.swift in Sources */,
@@ -897,9 +919,11 @@
 				4247E8EE1CEDF3940047D69A /* UITextViewExtensions.swift in Sources */,
 				425447E51C96AE68008B74A9 /* TEHomeController.swift in Sources */,
 				424F6F8D1D16AE4400C8AF50 /* TERelatedMusicCell.swift in Sources */,
+				42B75DA31D22EA4E00140D8F /* TEArticleDetailController.swift in Sources */,
 				42860FE41D1BDBCE00D2EC95 /* TEBaseSelectButton.swift in Sources */,
 				4247E8F21CEDF3940047D69A /* UIWindowExtensions.swift in Sources */,
 				4247E8D31CEDF3940047D69A /* CGFloatExtensions.swift in Sources */,
+				42B75DA51D22F2FF00140D8F /* TEMovieHeaderCell.swift in Sources */,
 				426645D01CE71256005E21B4 /* TECardPageView.swift in Sources */,
 				425D52BA1D05A10100344C4E /* TEArticle.swift in Sources */,
 				42CE5F591C97C65400E04AF6 /* TEMacro.swift in Sources */,

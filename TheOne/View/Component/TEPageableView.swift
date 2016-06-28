@@ -20,6 +20,7 @@ class TEPageableView: UIScrollView {
     var currentIndex: NSInteger
     var visibleCell: [UIView]
     var loadViewAfter: Bool = false
+    var contentHeight: CGFloat
     
     var leftAction: triggerAction?
     var rightAction: triggerAction?
@@ -36,6 +37,7 @@ class TEPageableView: UIScrollView {
         visibleCell = []
         reuseCell = []
         currentIndex = 0
+        contentHeight = frame.height
         super.init(frame: frame)
         self.bounces = true
         self.delegate = self
@@ -62,7 +64,7 @@ extension TEPageableView {
     func reloadData() {
         
         guard dataSource != nil else {
-            contentSize = CGSizeMake(frame.width, frame.height + 200)
+            contentSize = CGSizeMake(frame.width, frame.height)
             return
         }
         
@@ -77,7 +79,7 @@ extension TEPageableView {
         reuseCell.removeAll()
 
         let count = dataSource?.pageableView(self)
-        contentSize = CGSizeMake(frame.width * CGFloat(count!), frame.height + 100)
+        contentSize = CGSizeMake(frame.width * CGFloat(count!), contentHeight)
         
         // Setup refresh
         

@@ -19,6 +19,8 @@ struct TEComment: Mappable {
     var touser: String?
     /// 0代表热门评论,1代表一般
     var type: NSInteger?
+    /// 电影的分数，无用则为nil
+    var score: String?
     var user: TEUser?
     
     init?(_ map: Map) {
@@ -33,6 +35,7 @@ struct TEComment: Mappable {
         input_date <- map["input_date"]
         touser <- map["touser"]
         type <- map["type"]
+        score <- map["score"]
         user <- map["user"]
     }
 }

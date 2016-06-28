@@ -28,10 +28,7 @@ class TEMusicController: UIViewController {
     // MARK: - Private Method
     func setupView() {
         
-        title = "音乐"
-        
         setupCommentItem()
-        
         pageView = TEPageableView(frame: self.view.bounds)
         pageView.dataSource = self
         pageView.viewDelegate = self
@@ -52,7 +49,7 @@ class TEMusicController: UIViewController {
                 return orders.count != 0
             })
             .startWithNext { [unowned self] (_) in
-            self.pageView.reloadData()
+                self.pageView.reloadData()
         }
         
         viewModel.contentCellType.signal
@@ -96,22 +93,23 @@ extension TEMusicController: TEPageableDataSource,TEPageableDelegate {
         
         if cell == nil {
             
-            cell = UITableView()
+            cell = UITableView(frame: CGRectZero, style: .Plain)
             cell!.dataSource = self
             cell!.delegate = self
             cell!.estimatedRowHeight = 70.0
             cell!.separatorInset = UIEdgeInsetsZero
             cell!.layoutMargins = UIEdgeInsetsZero
+            cell!.tableFooterView = UIView()
             cell?.registerClass(TEHeaderCell.self, forCellReuseIdentifier: String(TEHeaderCell))
             cell!.registerClass(TEContentCell.self, forCellReuseIdentifier: String(TEContentCell))
             cell!.registerClass(TEButtonLineCell.self, forCellReuseIdentifier: String(TEButtonLineCell))
             cell!.registerClass(TERelatedMusicCell.self, forCellReuseIdentifier: String(TERelatedMusicCell))
             cell!.registerClass(UITableViewCell.self, forCellReuseIdentifier: String(UITableViewCell))
             cell!.registerNib(UINib.init(nibName: String(TECommentCell), bundle: nil), forCellReuseIdentifier: String(TECommentCell))
-            
             cell?.es_addInfiniteScrolling(handler: { [unowned self] in
                 self.viewModel.fetchCurrentComment()
             })
+            
         }
         
         return cell!
@@ -232,10 +230,6 @@ extension TEMusicController: UITableViewDelegate,UITableViewDataSource {
         default:
             return nil
         }
-    }
-    
-    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        return TEConfigure.cleanView()
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

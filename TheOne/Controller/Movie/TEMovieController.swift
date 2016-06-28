@@ -27,7 +27,6 @@ class TEMovieController: UITableViewController {
     
     // MARK: - Private Method
     private func setupView() {
-        title = "电影"
         setupCommentItem()
         tableView.separatorStyle = .None
         tableView.registerClass(TEMovieCardCell.classForCoder(), forCellReuseIdentifier: NSStringFromClass(TEMovieCardCell))

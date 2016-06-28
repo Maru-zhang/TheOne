@@ -17,6 +17,7 @@ class TECommentCell: TECleanCell {
     @IBOutlet weak var content: UILabel!
     @IBOutlet weak var like: UIButton!
     @IBOutlet weak var likeNum: UILabel!
+    @IBOutlet weak var scores: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

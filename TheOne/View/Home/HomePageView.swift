@@ -107,7 +107,7 @@ extension HomePageView {
         author.text = entity.hp_author
         content.text = entity.hp_content
         VOL.text = entity.hp_title
-        imageView.kf_setImageWithURL(NSURL(string: entity.hp_img_url!)!)
+        imageView.kf_setImageWithURL(NSURL(string: entity.hp_img_url!)!,placeholderImage: UIImage(named: "home"))
         markTime.text = (entity.hp_makettime! as NSString).substringToIndex(10)
         
     }

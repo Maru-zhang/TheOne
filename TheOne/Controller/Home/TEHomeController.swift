@@ -45,6 +45,7 @@ extension TEHomeController {
         
         // 配置滑动视图
         containner = TEPageableView(frame: view.bounds)
+        containner.contentHeight = view.bounds.height + 200
         containner.dataSource = self
         containner.viewDelegate = self
         
