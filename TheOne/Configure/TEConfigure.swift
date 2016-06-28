@@ -80,6 +80,26 @@ extension TEConfigure {
 
 extension TEConfigure {
     
+    // MARK: - UI module
+    static func musicHeaderViewForSection(title: String) -> UILabel {
+        let lable = UILabel()
+        lable.text = "  \(title)"
+        lable.font = UIFont.systemFontOfSize(13)
+        lable.textColor = UIColor.darkGrayColor()
+        lable.backgroundColor = UIColor.groupTableViewBackgroundColor()
+        return lable
+    }
+    
+    static func cleanView() -> UIView {
+        let view = UIView()
+        view.backgroundColor = UIColor.clearColor()
+        return view
+    }
+}
+
+extension TEConfigure {
+    
     // MARK: - Debug
     static let mar_domain = "com.alloc.maru"
 }
+

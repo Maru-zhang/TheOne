@@ -123,6 +123,9 @@ extension TEMusicController: TEPageableDataSource,TEPageableDelegate {
     }
     
     func pageableViewWillShowReuseView(pageView: TEPageableView, reuseView: UIView) {
+        dispatch_async(dispatch_get_main_queue()) {
+            (reuseView as! UITableView).reloadData()
+        }
     }
     
     func pageableViewDidEndScroll(pageView: TEPageableView, toIndexPath indexPath: NSIndexPath) {
@@ -136,7 +139,11 @@ extension TEMusicController: UITableViewDelegate,UITableViewDataSource {
     
     // MARK: - DataSource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        if pageView.visibleCell.count == 1 {
+            return 3
+        }else {
+            return 0
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -169,6 +176,7 @@ extension TEMusicController: UITableViewDelegate,UITableViewDataSource {
                 cell.infoAction = { [unowned self] obj in
                     self.viewModel.contentCellType.value = TEContentType.info
                 }
+                cell.titleName.text = viewModel.contentCellType.value.rawValue
                 return cell
             }else if indexPath.row == 1 {
                 let cell = tableView.dequeueReusableCellWithIdentifier(String(TEContentCell), forIndexPath: indexPath) as! TEContentCell
@@ -211,6 +219,23 @@ extension TEMusicController: UITableViewDelegate,UITableViewDataSource {
         default:
             return nil
         }
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch section {
+        case 0:
+            return nil
+        case 1:
+            return TEConfigure.musicHeaderViewForSection("相似歌曲")
+        case 2:
+            return TEConfigure.musicHeaderViewForSection("评论列表")
+        default:
+            return nil
+        }
+    }
+    
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return TEConfigure.cleanView()
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

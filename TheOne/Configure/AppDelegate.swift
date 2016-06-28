@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         setupAppreance()
+        setupKingfisher()
         
         return true
     }
@@ -72,6 +74,13 @@ extension AppDelegate {
         UITabBarItem.appearance()
             .setTitleTextAttributes([NSForegroundColorAttributeName: TEConfigure.tabbarFontColor_Selected], forState: .Selected)
         
+    }
+    
+    private func setupKingfisher() {
+        
+        KingfisherManager.sharedManager.cache.maxMemoryCost = 5 * 1024 * 1024
+        KingfisherManager.sharedManager.cache.maxDiskCacheSize = 100 * 1024 * 1024
+
     }
 }
 
