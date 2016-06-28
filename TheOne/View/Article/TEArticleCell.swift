@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ObjectMapper
 import Cartography
 
 enum TEArticleType: String {
@@ -57,7 +58,7 @@ class TEArticleCell: UITableViewCell {
 extension TEArticleCell {
     
     // MARK: - Public Method
-    func configureWithType(model: TEArticleViewModel, type: TEArticleType) {
-        
+    func configureWithType(model: Mappable) {
+
     }
 }

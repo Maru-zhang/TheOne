@@ -62,7 +62,7 @@ extension TEPageableView {
     func reloadData() {
         
         guard dataSource != nil else {
-            contentSize = CGSizeMake(frame.width, frame.height + 100)
+            contentSize = CGSizeMake(frame.width, frame.height + 200)
             return
         }
         
@@ -127,24 +127,25 @@ extension TEPageableView: UIScrollViewDelegate {
         }
         
         // Make sure that scrollView only scrollenable in one direction once
-        if (scrollView.contentOffset.x != 0 &&
-            scrollView.contentOffset.y != 0) {
-            return
-        }
+//        if (scrollView.contentOffset.x != 0 &&
+//            scrollView.contentOffset.y != 0) {
+//            return
+//        }
         
         // Make sure that page only in horizontal direation
         // TODO: There are still some problem
-        if scrollView.contentOffset.x > 0 || scrollView.contentOffset.x < 0 {
+        if scrollView.contentOffset.x % scrollView.frame.width != 0 {
             scrollView.pagingEnabled = true
-        }else {
+        }else if scrollView.contentOffset.y != 0 {
             scrollView.pagingEnabled = false
         }
-
+        
         // Dynamic setup cell
         
         if visibleCell.count == 0 {
             let reuseView = dataSource?.pageableView(self, cardCellForColumnAtIndexPath: NSIndexPath(index: 0))
             visibleCell.append(reuseView!)
+            viewDelegate?.pageableViewWillShowReuseView(self, reuseView: reuseView!)
             let frame = viewDelegate?.pageableViewFrame(self, atIndexPath: NSIndexPath(index: 0))
             reuseView?.frame = frame!
             scrollView.addSubview(reuseView!)
@@ -206,7 +207,7 @@ extension TEPageableView: UIScrollViewDelegate {
         }
         
         viewDelegate?.pageableViewDidEndScroll(self, toIndexPath: NSIndexPath(index: newIndex))
-
+        scrollView.pagingEnabled = false
     }
     
 }
