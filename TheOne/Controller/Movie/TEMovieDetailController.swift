@@ -12,10 +12,12 @@ class TEMovieDetailController: UITableViewController {
 
     override func viewDidLoad() {
         
+        setupUI()
     }
     
     private func setupUI() {
         
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: String(UITableViewCell))
         tableView.registerClass(TEMovieHeaderCell.self, forCellReuseIdentifier: String(TEMovieHeaderCell))
     }
 }

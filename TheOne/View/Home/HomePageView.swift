@@ -25,6 +25,8 @@ class HomePageView: TECardPageView {
     /// 点击封面的操作闭包
     var showClosure: (() -> ())?
     
+
+    
     override init(frame: CGRect) {
         
         imageView = UIImageView()
@@ -86,7 +88,6 @@ class HomePageView: TECardPageView {
             markTime.right == imageView.right - 6
             markTime.bottom == (imageView.superview?.bottom)! - 4
             
-            
         }
         
         
@@ -97,7 +98,6 @@ class HomePageView: TECardPageView {
     }
     
 
-    
 }
 
 extension HomePageView {

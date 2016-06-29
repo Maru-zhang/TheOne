@@ -40,8 +40,7 @@ extension TEArticleController {
         circleView = MARCarousel(frame: CGRectMake(0, 0, view.frame.width, 180))
         circleView.backgroundColor = UIColor.lightGrayColor()
         
-        pageView = TEPageableView(frame: CGRectMake(0, 180, view.frame.width, view.frame.height - 224))
-        pageView.contentHeight = view.frame.height - 24
+        pageView = TEPageableView(frame: CGRectMake(0, 180, view.frame.width, view.frame.height - 300))
         pageView.dataSource = self
         pageView.viewDelegate = self
 
@@ -100,8 +99,9 @@ extension TEArticleController: TEPageableDataSource,TEPageableDelegate {
             cell = TECardPageView()
             cell?.backgroundColor = UIColor.clearColor()
             let table = TEArticleTableView(frame: CGRectMake(0, 0, pageView.frame.width - 20, pageView.frame.height), style: .Plain)
+            table.showsVerticalScrollIndicator = false
             table.tableFooterView =  UIView()
-            table.scrollEnabled = false
+            table.scrollEnabled = true
             table.estimatedRowHeight = 150
             table.rowHeight = UITableViewAutomaticDimension
             table.registerNib(UINib.init(nibName: "TEArticleCell", bundle: nil), forCellReuseIdentifier: String(TEArticleCell))

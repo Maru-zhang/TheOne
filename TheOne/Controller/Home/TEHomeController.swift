@@ -45,7 +45,6 @@ extension TEHomeController {
         
         // 配置滑动视图
         containner = TEPageableView(frame: view.bounds)
-        containner.contentHeight = view.bounds.height + 200
         containner.dataSource = self
         containner.viewDelegate = self
         
@@ -137,32 +136,44 @@ extension TEHomeController: TEPageableDataSource,TEPageableDelegate {
     
     func pageableView(pageView: TEPageableView, cardCellForColumnAtIndexPath indexPath: NSIndexPath) -> UIView {
 
-        var cell = pageView.dequeueReusableCell() as? HomePageView
+        var cell = pageView.dequeueReusableCell() as? UIScrollView
         let entity = viewModel.cards.value[indexPath.indexAtPosition(0)]
         
         if cell == nil {
-            cell = HomePageView()
-            cell?.showClosure = { [unowned self] in
+            cell = UIScrollView()
+            cell?.alwaysBounceVertical = true
+            cell?.showsVerticalScrollIndicator = false
+            cell?.backgroundColor = UIColor.clearColor()
+            cell?.contentSize = CGSizeMake(pageView.frame.width, pageView.frame.height + 200)
+            let homePageView = HomePageView()
+            homePageView.showClosure = { [unowned self] in
                 let imageInfo = JTSImageInfo()
-                imageInfo.image = cell?.imageView.image
-                imageInfo.referenceRect = (cell?.imageView.frame)!
+                imageInfo.image = homePageView.imageView.image
+                imageInfo.referenceRect = (homePageView.imageView.frame)
                 imageInfo.referenceView = cell
                 let showVC = JTSImageViewController(imageInfo: imageInfo, mode: JTSImageViewControllerMode.init(rawValue: 0)!, backgroundStyle: JTSImageViewControllerBackgroundOptions.init(rawValue: 2))
                 showVC.showFromViewController(self, transition: JTSImageViewControllerTransition.FromOriginalPosition)
             }
+            cell?.addSubview(homePageView)
+            
         }
-        cell!.configWithEntity(entity)
+        
+        (cell?.subviews.first as! HomePageView).configWithEntity(entity)
         
         return cell!
     }
     
-    func pageableViewFrame(pageView: TEPageableView, atIndexPath indexPath: NSIndexPath) -> CGRect {
-        
+    func pageableViewWillShowReuseView(pageView: TEPageableView, reuseView: UIView, indexPath: NSIndexPath) {
         let content = viewModel.cards.value[indexPath.indexAtPosition(0)].hp_content! as NSString
-        
-        let size = content.boundingRectWithSize(CGSizeMake(pageView.frame.width - 20, CGFloat(MAXFLOAT)), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: TEConfigure.card_content_font], context: nil).size
-        
-        return CGRectMake(10, 10, pageView.frame.width - 20, 350.0 + size.height)
+        let sizeH = content.boundingRectWithSize(CGSizeMake(pageView.frame.width - 20, CGFloat(MAXFLOAT)), options: .UsesLineFragmentOrigin, attributes: [NSFontAttributeName: TEConfigure.card_content_font], context: nil).size.height + 350.0
+        let scrollView = reuseView as! UIScrollView
+        let home = scrollView.subviews.first as! HomePageView
+        scrollView.contentOffset = CGPointZero
+        home.frame = CGRectMake(10, 10, pageView.frame.width - 20, sizeH)
+    }
+    
+    func pageableViewFrame(pageView: TEPageableView, atIndexPath indexPath: NSIndexPath) -> CGRect {
+        return CGRectMake(0, 0, pageView.frame.width, pageView.frame.height)
     }
     
     func pageableViewDidEndScroll(pageView: TEPageableView, toIndexPath indexPath: NSIndexPath) {

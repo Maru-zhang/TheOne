@@ -58,7 +58,7 @@ protocol TEPageableDelegate: NSObjectProtocol {
      - parameter pageView:	容器
      - parameter reuseView:	即将显示的视图
      */
-    func pageableViewWillShowReuseView(pageView: TEPageableView, reuseView: UIView)
+    func pageableViewWillShowReuseView(pageView: TEPageableView, reuseView: UIView, indexPath: NSIndexPath)
 }
 
 
@@ -72,7 +72,7 @@ extension TEPageableDelegate {
         
     }
     
-    func pageableViewWillShowReuseView(pageView: TEPageableView, reuseView: UIView) {
+    func pageableViewWillShowReuseView(pageView: TEPageableView, reuseView: UIView, indexPath: NSIndexPath) {
         
     }
     

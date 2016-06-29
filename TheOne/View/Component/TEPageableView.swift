@@ -20,7 +20,6 @@ class TEPageableView: UIScrollView {
     var currentIndex: NSInteger
     var visibleCell: [UIView]
     var loadViewAfter: Bool = false
-    var contentHeight: CGFloat
     
     var leftAction: triggerAction?
     var rightAction: triggerAction?
@@ -37,13 +36,15 @@ class TEPageableView: UIScrollView {
         visibleCell = []
         reuseCell = []
         currentIndex = 0
-        contentHeight = frame.height
         super.init(frame: frame)
         self.bounces = true
+        self.pagingEnabled = true
+        self.alwaysBounceHorizontal = true
+        self.alwaysBounceVertical = false
         self.delegate = self
         self.backgroundColor = UIColor.clearColor()
         self.showsVerticalScrollIndicator = false
-        self.showsHorizontalScrollIndicator = true
+        self.showsHorizontalScrollIndicator = false
         self.directionalLockEnabled = true
         
         reloadData()
@@ -79,7 +80,7 @@ extension TEPageableView {
         reuseCell.removeAll()
 
         let count = dataSource?.pageableView(self)
-        contentSize = CGSizeMake(frame.width * CGFloat(count!), contentHeight)
+        contentSize = CGSizeMake(frame.width * CGFloat(count!), frame.height)
         
         // Setup refresh
         
@@ -128,29 +129,16 @@ extension TEPageableView: UIScrollViewDelegate {
             return
         }
         
-        // Make sure that scrollView only scrollenable in one direction once
-//        if (scrollView.contentOffset.x != 0 &&
-//            scrollView.contentOffset.y != 0) {
-//            return
-//        }
-        
-        // Make sure that page only in horizontal direation
-        // TODO: There are still some problem
-        if scrollView.contentOffset.x % scrollView.frame.width != 0 {
-            scrollView.pagingEnabled = true
-        }else if scrollView.contentOffset.y != 0 {
-            scrollView.pagingEnabled = false
-        }
-        
         // Dynamic setup cell
         
         if visibleCell.count == 0 {
             let reuseView = dataSource?.pageableView(self, cardCellForColumnAtIndexPath: NSIndexPath(index: 0))
-            visibleCell.append(reuseView!)
-            viewDelegate?.pageableViewWillShowReuseView(self, reuseView: reuseView!)
             let frame = viewDelegate?.pageableViewFrame(self, atIndexPath: NSIndexPath(index: 0))
             reuseView?.frame = frame!
+            viewDelegate?.pageableViewWillShowReuseView(self, reuseView: reuseView!, indexPath: NSIndexPath(index: 0))
+            reuseView?.setNeedsLayout()
             scrollView.addSubview(reuseView!)
+            visibleCell.append(reuseView!)
             return
         }
         
@@ -171,6 +159,7 @@ extension TEPageableView: UIScrollViewDelegate {
                 newFrame = viewDelegate?.pageableViewFrame(self, atIndexPath: NSIndexPath(index: currentIndex + 1))
                 reuseView = dataSource?.pageableView(self, cardCellForColumnAtIndexPath: NSIndexPath(index: currentIndex + 1))
                 reuseView?.frame = CGRectMake(scrollView.frame.width * CGFloat(currentIndex + 1) + newFrame!.x, (newFrame?.y)!, (newFrame?.width)!, (newFrame?.height)!)
+                viewDelegate?.pageableViewWillShowReuseView(self, reuseView: reuseView!, indexPath: NSIndexPath(index: currentIndex + 1))
             }
         }else if scrollView.contentOffset.x < CGFloat(currentIndex) * scrollView.frame.width {
             // Scroll to left
@@ -178,16 +167,17 @@ extension TEPageableView: UIScrollViewDelegate {
                 newFrame = viewDelegate?.pageableViewFrame(self, atIndexPath: NSIndexPath(index: currentIndex - 1))
                 reuseView = dataSource?.pageableView(self, cardCellForColumnAtIndexPath: NSIndexPath(index: currentIndex - 1))
                 reuseView?.frame = CGRectMake(scrollView.frame.width * CGFloat(currentIndex - 1) + newFrame!.x, (newFrame?.y)!, (newFrame?.width)!, (newFrame?.height)!)
+                viewDelegate?.pageableViewWillShowReuseView(self, reuseView: reuseView!, indexPath: NSIndexPath(index: currentIndex - 1))
             }
         }
         
         if reuseView != nil {
             reuseView?.setNeedsDisplay()
-            viewDelegate?.pageableViewWillShowReuseView(self, reuseView: reuseView!)
+            reuseView?.setNeedsLayout()
             scrollView.addSubview(reuseView!)
             visibleCell.append(reuseView!)
         }
-        
+
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {

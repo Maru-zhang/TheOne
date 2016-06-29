@@ -26,6 +26,7 @@ class TECardPageView: UIView {
     }
 
     override func drawRect(rect: CGRect) {
+        
         super.drawRect(rect)
         
         // Firsr, remove all of this layer's sublayer
@@ -43,7 +44,8 @@ class TECardPageView: UIView {
         shadowLayer.cornerRadius = 5.0
         
         layer.insertSublayer(shadowLayer, atIndex: 0)
-
+        
+        
     }
 }
 
