@@ -170,6 +170,7 @@ extension TEHomeController: TEPageableDataSource,TEPageableDelegate {
         let home = scrollView.subviews.first as! HomePageView
         scrollView.contentOffset = CGPointZero
         home.frame = CGRectMake(10, 10, pageView.frame.width - 20, sizeH)
+        home.setNeedsDisplay()
     }
     
     func pageableViewFrame(pageView: TEPageableView, atIndexPath indexPath: NSIndexPath) -> CGRect {
