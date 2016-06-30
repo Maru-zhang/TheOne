@@ -102,6 +102,7 @@
 		42B75DB01D23E32C00140D8F /* TEMovieDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B75DAF1D23E32C00140D8F /* TEMovieDetailViewModel.swift */; };
 		42B75DB21D23E38500140D8F /* TEMovieUtilCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B75DB11D23E38500140D8F /* TEMovieUtilCell.swift */; };
 		42B75DB41D23E9F900140D8F /* TEMovieStoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B75DB31D23E9F900140D8F /* TEMovieStoryCell.swift */; };
+		42B75DB81D24F47100140D8F /* TEKeywordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B75DB71D24F47100140D8F /* TEKeywordCell.swift */; };
 		42CE5F471C96D00300E04AF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F451C96D00300E04AF6 /* AppDelegate.swift */; };
 		42CE5F531C97AA0900E04AF6 /* TESettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F521C97AA0900E04AF6 /* TESettingController.swift */; };
 		42CE5F571C97ABBA00E04AF6 /* TENaviPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5F561C97ABBA00E04AF6 /* TENaviPresentable.swift */; };
@@ -215,6 +216,7 @@
 		42B75DAF1D23E32C00140D8F /* TEMovieDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMovieDetailViewModel.swift; sourceTree = "<group>"; };
 		42B75DB11D23E38500140D8F /* TEMovieUtilCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMovieUtilCell.swift; sourceTree = "<group>"; };
 		42B75DB31D23E9F900140D8F /* TEMovieStoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMovieStoryCell.swift; sourceTree = "<group>"; };
+		42B75DB71D24F47100140D8F /* TEKeywordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEKeywordCell.swift; sourceTree = "<group>"; };
 		42CE5F451C96D00300E04AF6 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42CE5F521C97AA0900E04AF6 /* TESettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TESettingController.swift; sourceTree = "<group>"; };
 		42CE5F561C97ABBA00E04AF6 /* TENaviPresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TENaviPresentable.swift; sourceTree = "<group>"; };
@@ -668,6 +670,7 @@
 				42B75DA41D22F2FF00140D8F /* TEMovieHeaderCell.swift */,
 				42B75DB11D23E38500140D8F /* TEMovieUtilCell.swift */,
 				42B75DB31D23E9F900140D8F /* TEMovieStoryCell.swift */,
+				42B75DB71D24F47100140D8F /* TEKeywordCell.swift */,
 			);
 			path = Movie;
 			sourceTree = "<group>";
@@ -945,6 +948,7 @@
 				42CE5F591C97C65400E04AF6 /* TEMacro.swift in Sources */,
 				42CE5F5D1C9819C600E04AF6 /* TEPaperModel.swift in Sources */,
 				4296EE991D045839009814EF /* TEArticleTableView.swift in Sources */,
+				42B75DB81D24F47100140D8F /* TEKeywordCell.swift in Sources */,
 				42E9AF761CE4595300BB8687 /* TENetService.swift in Sources */,
 				4247E8EC1CEDF3940047D69A /* UISliderExtensions.swift in Sources */,
 				4247E8D51CEDF3940047D69A /* CharacterExtensions.swift in Sources */,

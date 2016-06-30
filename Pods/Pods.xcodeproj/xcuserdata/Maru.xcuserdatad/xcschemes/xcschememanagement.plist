@@ -34,6 +34,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>KRVideoPlayer-KRVideoPlayer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>KRVideoPlayer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Kingfisher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -67,12 +77,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>36C218345FC823212891250F309E9C21</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>3E6BE26A9C676D1DEF18F57C6F2DE025</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>784D3FE92E17267D638280A6F5AE9D0F</key>
+		<key>5221754E8ECBD6C2D93DF3377D522386</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -87,12 +102,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AEA56EBE1B518C71721209FB26701898</key>
+		<key>9A4B8B630E8B1651FC947DD52038A14D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B1A26822214E538C5F54F58AB347B075</key>
+		<key>AEA56EBE1B518C71721209FB26701898</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -107,12 +122,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E6A53D0D8AC2AEBC7762F099FF210F35</key>
+		<key>DDC377BC3C0FDD87B66C0D96783435F6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>EC2ECA1A2DF7A2824A6F0434D2DC82B7</key>
+		<key>DFA83DD856DF17ECBD24735CE87DAFD7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EC375C393EF26BE5FCD989A55C44D81D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

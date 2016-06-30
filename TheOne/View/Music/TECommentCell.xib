@@ -64,6 +64,11 @@
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="4FP-Du-rKz"/>
+                            </mask>
+                        </variation>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pzv-UE-U5q">
                         <rect key="frame" x="278" y="8" width="0.0" height="0.0"/>
@@ -83,6 +88,7 @@
                     <constraint firstItem="eH4-Qi-TZT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="FsZ-VG-5rn"/>
                     <constraint firstItem="eH4-Qi-TZT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="HEY-DI-ob9"/>
                     <constraint firstAttribute="topMargin" secondItem="pGf-3e-AbJ" secondAttribute="top" id="LvT-Zv-qyn"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="OSI-Og-dlM" secondAttribute="trailing" constant="2" id="NoJ-IN-nfI"/>
                     <constraint firstItem="MKQ-os-Sj0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-3" id="O3b-Pk-IXM"/>
                     <constraint firstItem="LPA-Yk-sDu" firstAttribute="leading" secondItem="eH4-Qi-TZT" secondAttribute="trailing" constant="8" id="QgQ-yW-0o6"/>
                     <constraint firstAttribute="topMargin" secondItem="QVX-x1-6w3" secondAttribute="top" id="a3A-J2-TfU"/>

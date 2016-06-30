@@ -32,6 +32,7 @@ class TEMovieDetailController: UITableViewController {
         setupBinding()
     }
     
+
     private func setupUI() {
         
         tableView.separatorInset = UIEdgeInsetsZero
@@ -41,7 +42,9 @@ class TEMovieDetailController: UITableViewController {
         tableView.registerClass(TEMovieHeaderCell.self, forCellReuseIdentifier: String(TEMovieHeaderCell))
         tableView.registerClass(TEMovieUtilCell.self, forCellReuseIdentifier: String(TEMovieUtilCell))
         tableView.registerClass(TEMovieStoryCell.self, forCellReuseIdentifier: String(TEMovieStoryCell))
+        tableView.registerClass(TEKeywordCell.self, forCellReuseIdentifier: String(TEKeywordCell))
         tableView.registerNib(UINib.init(nibName: String(TECommentCell), bundle: nil), forCellReuseIdentifier: String(TECommentCell))
+        
         tableView.es_addInfiniteScrolling { [unowned self] in
             self.viewModel.fetchCommentList()
         }
@@ -89,7 +92,11 @@ extension TEMovieDetailController {
         case 1:
             return viewModel.story.value.count
         case 2:
-            return 0
+            if viewModel.detail.value != nil {
+                return 1
+            }else {
+                return 0
+            }
         case 3:
             return viewModel.comments.value.count
         default:
@@ -111,6 +118,10 @@ extension TEMovieDetailController {
             let cell = tableView.dequeueReusableCellWithIdentifier(String(TEMovieStoryCell), forIndexPath: indexPath)  as! TEMovieStoryCell
             cell.configWithEntity(viewModel.story.value.first!)
             return cell
+        case 2:
+            let cell = tableView.dequeueReusableCellWithIdentifier(String(TEKeywordCell), forIndexPath: indexPath) as! TEKeywordCell
+            cell.configWithKeyword((viewModel.detail.value?.keywords!)!)
+            return cell
         case 3:
             let cell = tableView.dequeueReusableCellWithIdentifier(String(TECommentCell), forIndexPath: indexPath) as! TECommentCell
             
@@ -126,16 +137,49 @@ extension TEMovieDetailController {
         switch indexPath.section {
         case 0:
             return indexPath.row == 0 ? 200 : 40
+        case 2:
+            return 126
         default:
             return UITableViewAutomaticDimension
         }
     }
     
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 1:
+            return 44
+        case 2:
+            return 44
+        case 3:
+            return 44
+        default:
+            return 0
+        }
+    }
+
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 1 {
+        switch section {
+        case 1:
             return TEConfigure.musicHeaderViewForSection("电影故事")
-        }else {
+        case 2:
+            return TEConfigure.musicHeaderViewForSection("一个电影表")
+        case 3:
+            return TEConfigure.musicHeaderViewForSection("评论列表")
+        default:
             return nil
         }
+    }
+    
+}
+
+extension TEMovieDetailController {
+    
+    // MARK: - Override
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
+    override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {
+        return .Fade
     }
 }

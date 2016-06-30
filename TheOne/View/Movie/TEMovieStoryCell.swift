@@ -16,7 +16,7 @@ class TEMovieStoryCell: TECleanCell{
     let nameLable: UILabel
     let timeLable: UILabel
     let srotyTitle: UILabel
-    let storyContent: UITextView
+    let storyContent: UILabel
     let likeButton: UIButton
     let likeLable: UILabel
     
@@ -27,7 +27,7 @@ class TEMovieStoryCell: TECleanCell{
         nameLable = UILabel()
         timeLable = UILabel()
         srotyTitle = UILabel()
-        storyContent = UITextView()
+        storyContent = UILabel()
         likeButton = UIButton()
         likeLable = UILabel()
         
@@ -46,6 +46,10 @@ class TEMovieStoryCell: TECleanCell{
         headerImage.layer.masksToBounds = true
         
         srotyTitle.numberOfLines = 0
+        
+        storyContent.numberOfLines = 0
+        storyContent.font = UIFont.systemFontOfSize(15)
+        storyContent.textColor = UIColor.darkGrayColor()
         
         likeButton.setImage(UIImage.init(named: "like_default"), forState: .Normal)
         likeButton.setImage(UIImage.init(named: "like_selected"), forState: .Selected)
@@ -73,19 +77,19 @@ class TEMovieStoryCell: TECleanCell{
             timeLable.left == headerImage.right + 5
             
             srotyTitle.left == nameLable.left
-            srotyTitle.right == nameLable.right - 5
+            srotyTitle.right == nameLable.right - 10
             srotyTitle.top == headerImage.bottom + 5
             
             storyContent.top == srotyTitle.bottom + 8
             storyContent.left == timeLable.left
-            storyContent.right == storyContent.superview!.right - 5
-            storyContent.bottom == storyContent.superview!.bottom
+            storyContent.right == storyContent.superview!.right - 10
+            storyContent.bottom == storyContent.superview!.bottom - 3
         }
         
         constrain(likeLable, likeButton) { (likeLable, likeButton) in
             
             likeLable.right == likeLable.superview!.right - 5
-            likeLable.top == likeLable.superview!.top + 1
+            likeLable.top == likeLable.superview!.top + 15
             
             likeButton.width == 44
             likeButton.height == 44
@@ -109,7 +113,7 @@ extension TEMovieStoryCell {
         timeLable.text = entity.input_date!
         likeLable.text = entity.praisenum?.toString
         srotyTitle.text = entity.title
-        storyContent.attributedText = try! NSMutableAttributedString.init(data: (entity.content!.dataUsingEncoding(NSUnicodeStringEncoding))!, options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType], documentAttributes: nil)
+        storyContent.text = entity.content
     }
     
 }
