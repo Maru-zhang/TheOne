@@ -40,7 +40,7 @@ extension TEArticleController {
         circleView = MARCarousel(frame: CGRectMake(0, 0, view.frame.width, 180))
         circleView.backgroundColor = UIColor.lightGrayColor()
         
-        pageView = TEPageableView(frame: CGRectMake(0, 180, view.frame.width, view.frame.height - 300))
+        pageView = TEPageableView(frame: CGRectMake(0, 180, view.frame.width, view.frame.height - 240))
         pageView.dataSource = self
         pageView.viewDelegate = self
 
@@ -93,21 +93,18 @@ extension TEArticleController: TEPageableDataSource,TEPageableDelegate {
     
     func pageableView(pageView: TEPageableView, cardCellForColumnAtIndexPath indexPath: NSIndexPath) -> UIView {
         
-        var cell = pageView.dequeueReusableCell() as? TECardPageView
+        var cell = pageView.dequeueReusableCell() as? TEArticleTableView
         
         if cell == nil {
-            cell = TECardPageView()
-            cell?.backgroundColor = UIColor.clearColor()
-            let table = TEArticleTableView(frame: CGRectMake(0, 0, pageView.frame.width - 20, pageView.frame.height), style: .Plain)
-            table.showsVerticalScrollIndicator = false
-            table.tableFooterView =  UIView()
-            table.scrollEnabled = true
-            table.estimatedRowHeight = 150
-            table.rowHeight = UITableViewAutomaticDimension
-            table.registerNib(UINib.init(nibName: "TEArticleCell", bundle: nil), forCellReuseIdentifier: String(TEArticleCell))
-            table.delegate = self
-            table.dataSource = self
-            cell?.addSubview(table)
+            cell = TEArticleTableView(frame: CGRectMake(0, 0, pageView.frame.width - 20, pageView.frame.height), style: .Plain)
+            cell!.showsVerticalScrollIndicator = false
+            cell!.tableFooterView =  UIView()
+            cell!.scrollEnabled = true
+            cell!.estimatedRowHeight = 150
+            cell!.rowHeight = UITableViewAutomaticDimension
+            cell!.registerNib(UINib.init(nibName: "TEArticleCell", bundle: nil), forCellReuseIdentifier: String(TEArticleCell))
+            cell!.delegate = self
+            cell!.dataSource = self
         }
         
         
@@ -121,6 +118,7 @@ extension TEArticleController: TEPageableDataSource,TEPageableDelegate {
     
     func pageableViewWillShowReuseView(pageView: TEPageableView, reuseView: UIView) {
         (reuseView.subviews[0] as! UITableView).reloadData()
+        reuseView.setNeedsDisplay()
     }
     
 }
@@ -146,20 +144,11 @@ extension TEArticleController: UITableViewDataSource,UITableViewDelegate {
         }
         
         if indexPath.row == 0 {
-            cell.title.text = viewModel.essays.value[index].hp_title
-            cell.author.text = viewModel.essays.value[index].author![0].user_name
-            cell.hotLine.text = viewModel.essays.value[index].guide_word
-            cell.articleStyle = .read;
+            cell.configureWithType(viewModel.essays.value[index])
         }else if indexPath.row == 1 {
-            cell.title.text = viewModel.serials.value[index].title
-            cell.author.text = viewModel.serials.value[index].author!.user_name
-            cell.hotLine.text = viewModel.serials.value[index].excerpt
-            cell.articleStyle = .serial
+            cell.configureWithType(viewModel.serials.value[index])
         }else {
-            cell.title.text = viewModel.issue.value[index].question_title
-            cell.author.text = viewModel.issue.value[index].answer_title
-            cell.hotLine.text = viewModel.issue.value[index].answer_content
-            cell.articleStyle = .question
+            cell.configureWithType(viewModel.issue.value[index])
         }
 
         return cell
@@ -192,7 +181,7 @@ extension TEArticleController: UITableViewDataSource,UITableViewDelegate {
             break
         }
         
-        navigationController?.pushViewController(detailVC, animated: true)
+//        navigationController?.pushViewController(detailVC, animated: true)
     }
     
     

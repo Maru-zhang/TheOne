@@ -59,6 +59,24 @@ extension TEArticleCell {
     
     // MARK: - Public Method
     func configureWithType(model: Mappable) {
-
+        if model is TEEssay {
+            let essay = model as! TEEssay
+            title.text = essay.hp_title
+            author.text = essay.author![0].user_name
+            hotLine.text = essay.guide_word
+            articleStyle = .read;
+        }else if model is TESerial {
+            let serial = model as! TESerial
+            title.text = serial.title
+            author.text = serial.author!.user_name
+            hotLine.text = serial.excerpt
+            articleStyle = .serial
+        }else if model is TEIssue {
+            let issue = model as! TEIssue
+            title.text = issue.question_title
+            author.text = issue.answer_title
+            hotLine.text = issue.answer_content
+            articleStyle = .question
+        }
     }
 }

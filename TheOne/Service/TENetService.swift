@@ -150,7 +150,7 @@ class TENetService {
          - returns: URL的字符串
          */
         static func Movie_Comment(id: Int,page: Int) -> String {
-            return "\(TENetService.HOST)api/comment/praiseandtime/movie/\(id)/\(page)"
+            return "\(TENetService.HOST)/api/comment/praiseandtime/movie/\(id)/\(page)"
         }
         
         /**
@@ -389,6 +389,83 @@ extension TENetService {
                 break
             case .Failure(_):
                 result(SignalProducer<[TEMovieCardModel],NSError>(error: response.result.error!))
+                break
+            }
+        }
+    }
+    
+    /**
+     获取电影的详细信息
+     
+     - parameter movieID:	电影的ID
+     - parameter result:	请求冷信号回调
+     */
+    static func apiGetSpecifyMovieDetailWithResultSignalProducer(movieID: Int ,result: (SignalProducer<TEMovieDetail,NSError>) -> Void) {
+    
+        Alamofire.request(.GET, API_Route.Movie_Detail(movieID)).responseJSON { (response) in
+            
+            switch response.result {
+            case .Success(_):
+                
+                let json = JSON(response.result.value!)
+                let entity = Mapper<TEMovieDetail>().map(json["data"].rawString())!
+                result(SignalProducer(value: entity))
+                
+                break
+            case .Failure(_):
+                result(SignalProducer<TEMovieDetail,NSError>(error: response.result.error!))
+                break
+            }
+        }
+    }
+    
+    /**
+     获取电影故事
+     
+     - parameter movieID:	电影ID
+     - parameter result:	请求冷信号回调
+     */
+    static func apiGetSpecifyMovieStoryWithResultSignalProducer(movieID: Int ,result: (SignalProducer<[TEMovieStory],NSError>) -> Void) {
+        
+        Alamofire.request(.GET, API_Route.Movie_Story(movieID)).responseJSON { (response) in
+            
+            switch response.result {
+                
+            case .Success(_):
+                
+                let json = JSON(response.result.value!)
+                let entity = Mapper<TEMovieStory>().mapArray(json["data"]["data"].rawString())!
+                result(SignalProducer(value: entity))
+                
+                break
+            case .Failure(_):
+                result(SignalProducer<[TEMovieStory],NSError>(error: response.result.error!))
+                break
+            }
+        }
+    }
+    
+    /**
+     获取电影的详细评论列表
+     
+     - parameter id:		电影的ID
+     - parameter page:	电影评论分页Flag
+     - parameter result:	请求信号回调
+     */
+    static func apiGetSpecifyMovieCommentListwithResultSignalProducer(id: Int, page: Int,result: (SignalProducer<[TEComment],NSError>) -> Void) {
+        
+        Alamofire.request(.GET, API_Route.Movie_Comment(id, page: page)).responseJSON { (response) in
+
+            switch response.result {
+            case .Success(_):
+                
+                let json = JSON(response.result.value!)
+                let entitys = Mapper<TEComment>().mapArray(json["data"]["data"].rawString())!
+                result(SignalProducer(value: entitys))
+                
+                break
+            case .Failure(_):
+                result(SignalProducer<[TEComment],NSError>(error: response.result.error!))
                 break
             }
         }

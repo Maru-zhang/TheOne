@@ -23,6 +23,8 @@ class TECommentCell: TECleanCell {
         super.awakeFromNib()
         // Initialization code
         username.textColor = TEConfigure.author_Highlight
+        scores.font = TEConfigure.movie_score_personnal_font
+        scores.textColor = TEConfigure.movie_score_color
     }
 
     
@@ -33,16 +35,20 @@ extension TECommentCell {
     // MARK: - Public Method
     
     func configWithComment(comment: TEComment) {
-        username.text = comment.user?.user_name
+        
+        // config data
+        username.text = comment.user?.user_name!
         header.kf_setImageWithURL(NSURL(string: (comment.user?.web_url)!)!)
         timestamp.text = comment.input_date
         content.text = comment.content
         likeNum.text = String(comment.praisenum!)
+        scores.text = comment.score ?? ""
         
         // setup display
         header.layer.cornerRadius = 20.0
         header.layer.masksToBounds = true
         
+        // Layout separato
         separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         layoutMargins = UIEdgeInsetsZero
         

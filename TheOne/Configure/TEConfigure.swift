@@ -69,8 +69,10 @@ extension TEConfigure {
     /// 首页正文文字字体
     static let card_content_font = UIFont.systemFontOfSize(13)
     
-    /// 电影分数字体
+    /// 官方电影分数字体
     static let movie_score_font = UIFont(name: "BradleyHandITCTT-Bold", size: 50)
+    /// 个人电影分数字体
+    static let movie_score_personnal_font = UIFont(name: "BradleyHandITCTT-Bold", size: 13)
     /// 即将上映字体
     static let movie_beon_font = UIFont.systemFontOfSize(14)
     

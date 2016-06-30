@@ -180,7 +180,6 @@ extension TEHomeController: TEPageableDataSource,TEPageableDelegate {
     func pageableViewDidEndScroll(pageView: TEPageableView, toIndexPath indexPath: NSIndexPath) {
 
         let number = viewModel.cards.value[indexPath.indexAtPosition(0)].praisenum
-        
         viewModel.praiseObserver.sendNext(number!)
         
     }

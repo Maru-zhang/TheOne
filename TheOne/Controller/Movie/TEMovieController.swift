@@ -102,7 +102,9 @@ extension TEMovieController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        navigationController?.pushViewController(TEMovieDetailController(), animated: true)
+        let model = TEMovieDetailViewModel.init(movie: viewModel.entityMappingIndexPath(indexPath))
+        
+        navigationController?.pushViewController(TEMovieDetailController.init(model: model), animated: true)
     }
     
 }

@@ -1,31 +1,30 @@
 //
-//  TEArticleTableView.swift
+//  TEContainerView.swift
 //  TheOne
 //
-//  Created by Maru on 16/6/5.
+//  Created by Maru on 16/6/29.
 //  Copyright © 2016年 Maru. All rights reserved.
 //
 
 import UIKit
 
-class TEArticleTableView: UITableView {
+class TEContainerView: UIScrollView {
 
     var shadowLayer: CALayer!
-    
-    override init(frame: CGRect, style: UITableViewStyle) {
-        super.init(frame: frame, style: style)
-        backgroundColor = UIColor.clearColor()
 
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        alwaysBounceVertical = true
+        alwaysBounceVertical = false
+        showsVerticalScrollIndicator = false
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
     override func drawRect(rect: CGRect) {
-        // Drawing code
+        
         super.drawRect(rect)
         
         // Firsr, remove all of this layer's sublayer
@@ -43,7 +42,7 @@ class TEArticleTableView: UITableView {
         shadowLayer.cornerRadius = 5.0
         
         layer.insertSublayer(shadowLayer, atIndex: 0)
+        
+        
     }
- 
-
 }

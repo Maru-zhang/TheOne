@@ -79,6 +79,10 @@ extension TEMovieViewModel: TETableModelType {
         return 190;
     }
     
+    func entityMappingIndexPath(indexPath: NSIndexPath) -> TEMovieCardModel {
+        return movies[indexPath.row]
+    }
+    
     // MARK: - Fetch Command
     
     /**

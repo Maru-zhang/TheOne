@@ -173,7 +173,6 @@ extension TEPageableView: UIScrollViewDelegate {
         
         if reuseView != nil {
             reuseView?.setNeedsDisplay()
-            reuseView?.setNeedsLayout()
             scrollView.addSubview(reuseView!)
             visibleCell.append(reuseView!)
         }

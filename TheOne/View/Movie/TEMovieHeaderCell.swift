@@ -18,6 +18,9 @@ class TEMovieHeaderCell: TECleanCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        scores.font = TEConfigure.movie_score_font
+        scores.textColor = TEConfigure.movie_score_color
+        
         contentView.addSubview(bgImage)
         contentView.addSubview(scores)
         contentView.addSubview(lineImage)
@@ -38,4 +41,17 @@ class TEMovieHeaderCell: TECleanCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+}
+
+extension TEMovieHeaderCell {
+    
+    // MARK: - Public Method
+    func configWithEntity(entity: TEMovieDetail?
+        ) {
+        guard entity != nil else {
+            return
+        }
+        bgImage.kf_setImageWithURL(NSURL.init(string: entity!.detailcover!)!, placeholderImage: UIImage.init(named: "movie"))
+        scores.text = entity!.score
+    }
 }
