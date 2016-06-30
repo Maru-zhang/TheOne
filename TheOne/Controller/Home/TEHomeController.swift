@@ -145,6 +145,7 @@ extension TEHomeController: TEPageableDataSource,TEPageableDelegate {
             cell?.showsVerticalScrollIndicator = false
             cell?.backgroundColor = UIColor.clearColor()
             cell?.contentSize = CGSizeMake(pageView.frame.width, pageView.frame.height + 200)
+            
             let homePageView = HomePageView()
             homePageView.showClosure = { [unowned self] in
                 let imageInfo = JTSImageInfo()

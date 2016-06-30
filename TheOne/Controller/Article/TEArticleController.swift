@@ -17,6 +17,8 @@ class TEArticleController: UIViewController {
     var circleView: MARCarousel!
     var pageView: TEPageableView!
     var viewModel: TEArticleViewModel = TEArticleViewModel()
+    var carouselModels: [TECarousel] = []
+    var reuseHeight: [CGFloat] = [0,0,0]
     
     override func viewDidLoad() {
         
@@ -64,9 +66,15 @@ extension TEArticleController {
         }
         
         // 开始轮播资源进行请求
-        TENetService.apiGetArtcleCarousel(withSuccessHandler: { (imgResult) in
+        TENetService.apiGetArtcleCarousel(withSuccessHandler: { [unowned self] (imgResult) in
             
             let urls: [NSURL] = imgResult.map{ NSURL(string: $0.cover!)! }
+            
+            self.carouselModels = imgResult
+            
+            self.circleView.touchEventColsure = { index in
+                self.presentVC(TERankTableController.init(model: self.carouselModels[index]))
+            }
             
             ImagePrefetcher(urls: urls, optionsInfo: nil, progressBlock: nil, completionHandler: { (skippedResources, failedResources, completedResources) in
                 
@@ -81,6 +89,8 @@ extension TEArticleController {
         }) { (error) in
             debugPrint(error)
         }
+        
+        
     }
 }
 
@@ -93,17 +103,36 @@ extension TEArticleController: TEPageableDataSource,TEPageableDelegate {
     
     func pageableView(pageView: TEPageableView, cardCellForColumnAtIndexPath indexPath: NSIndexPath) -> UIView {
         
-        var cell = pageView.dequeueReusableCell() as? TEArticleTableView
+        var cell = pageView.dequeueReusableCell() as? UIScrollView
         
         if cell == nil {
-            cell = TEArticleTableView(frame: CGRectMake(10, 10, pageView.frame.width - 20, pageView.frame.height), style: .Plain)
-            cell!.showsVerticalScrollIndicator = false
-            cell!.tableFooterView =  UIView()
-            cell!.estimatedRowHeight = 150
-            cell!.rowHeight = UITableViewAutomaticDimension
-            cell!.registerNib(UINib.init(nibName: "TEArticleCell", bundle: nil), forCellReuseIdentifier: String(TEArticleCell))
-            cell!.delegate = self
-            cell!.dataSource = self
+            
+            cell = UIScrollView()
+            cell?.contentSize = CGSizeMake(view.frame.width , 700)
+            cell?.backgroundColor = UIColor.whiteColor()
+            cell?.showsVerticalScrollIndicator = false
+            cell?.showsHorizontalScrollIndicator = false
+            
+            let pannel = UITableView(frame: CGRectMake(10, 10, view.frame.width - 20, 550))
+            pannel.backgroundColor = UIColor.whiteColor()
+            pannel.estimatedRowHeight = 150
+            pannel.dataSource = self;
+            pannel.delegate = self;
+            pannel.registerNib(UINib.init(nibName: "TEArticleCell", bundle: nil), forCellReuseIdentifier: String(TEArticleCell))
+            pannel.tableFooterView = UIView()
+            pannel.scrollEnabled = false;
+            pannel.scrollsToTop = false;
+            pannel.translatesAutoresizingMaskIntoConstraints = true;
+            pannel.layer.masksToBounds = false;
+            pannel.layer.shadowColor = UIColor.blackColor().CGColor;
+            pannel.layer.shadowRadius = 2;
+            pannel.layoutMargins = UIEdgeInsetsZero
+            pannel.separatorInset = UIEdgeInsetsZero
+            pannel.layer.shadowOffset = CGSizeZero;
+            pannel.layer.shadowOpacity = 0.5;
+            pannel.layer.cornerRadius = 5;
+            
+            cell?.addSubview(pannel)
         }
         
         
@@ -112,13 +141,23 @@ extension TEArticleController: TEPageableDataSource,TEPageableDelegate {
     
     func pageableViewFrame(pageView: TEPageableView, atIndexPath indexPath: NSIndexPath) -> CGRect {
         
-        return CGRectMake(10, 0, pageView.frame.width - 20, pageView.frame.height + 20)
+        return CGRectMake(0, 0, pageView.frame.width, pageView.frame.height)
     }
     
-    func pageableViewWillShowReuseView(pageView: TEPageableView, reuseView: UIView) {
-        (reuseView as! UITableView).reloadData()
-        reuseView.setNeedsDisplay()
+    func pageableViewWillShowReuseView(pageView: TEPageableView, reuseView: UIView, indexPath: NSIndexPath) {
+        let scrollview = reuseView as! UIScrollView
+        let tableView = reuseView.subviews[0] as! UITableView
+        scrollview.setContentOffset(CGPointZero, animated: false)
+        tableView.reloadData()
+        dispatch_async(dispatch_get_main_queue()) {
+            // MARK: TODO - 这里有性能问题
+            let height = (tableView.cellForRowAtIndexPath(NSIndexPath.init(forRow: 0, inSection: 0))?.frame.height)! + (tableView.cellForRowAtIndexPath(NSIndexPath.init(forRow: 1, inSection: 0))?.frame.height)! + (tableView.cellForRowAtIndexPath(NSIndexPath.init(forRow: 2, inSection: 0))?.frame.height)!
+            let newHeight = self.reuseHeight.reduce(0, combine: +)
+            tableView.frame = CGRectMake(10, 10, self.view.frame.width - 20, height)
+            scrollview.contentSize = CGSizeMake(self.view.frame.width, height + 200)
+        }
     }
+    
     
 }
 
@@ -133,6 +172,7 @@ extension TEArticleController: UITableViewDataSource,UITableViewDelegate {
         let cell = tableView.dequeueReusableCellWithIdentifier(String(TEArticleCell), forIndexPath: indexPath) as! TEArticleCell
         
         var index: NSInteger = 0
+    
         
         if pageView.contentOffset.x > view.frame.width * CGFloat(pageView.currentIndex) {
             index = pageView.currentIndex + 1
@@ -156,32 +196,35 @@ extension TEArticleController: UITableViewDataSource,UITableViewDelegate {
     
     // MARK: - Delegate
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 150
-    }
-    
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.preservesSuperviewLayoutMargins = false
-        cell.separatorInset = UIEdgeInsetsMake(0, 12, 0, 12)
-        cell.layoutMargins = UIEdgeInsetsZero
+        return UITableViewAutomaticDimension
     }
 
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        reuseHeight[indexPath.row] = cell.frame.height
+    }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! TEArticleCell
         
-        let detailVC = TEArticleDetailController()
-        
-        switch cell.articleStyle {
-        case .read:
-            break
-        case .serial:
-            break
-        case .question:
-            break
+        dispatch_async(dispatch_get_main_queue()) { 
+            switch cell.articleStyle {
+            case .read:
+                let detailVC = TEArticleDetailController(list: self.viewModel.essays.value, index: self.pageView.currentIndex)
+                self.navigationController?.pushViewController(detailVC, animated: true)
+                break
+            case .serial:
+                let detailVC = TEArticleDetailController(list: self.viewModel.serials.value, index: self.pageView.currentIndex)
+                self.navigationController?.pushViewController(detailVC, animated: true)
+                break
+            case .question:
+                let detailVC = TEArticleDetailController(list: self.viewModel.issue.value, index: self.pageView.currentIndex)
+                self.navigationController?.pushViewController(detailVC, animated: true)
+                break
+            }
         }
-        
-//        navigationController?.pushViewController(detailVC, animated: true)
+
     }
     
     

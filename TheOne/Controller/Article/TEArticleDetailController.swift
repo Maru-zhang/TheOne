@@ -8,9 +8,35 @@
 
 import UIKit
 
-class TEArticleDetailController: UIViewController {
+class TEArticleDetailController<ReadType>: UIViewController {
+    
+
+    
+    let pageableView: TEPageableView
+    
+    private let list: [ReadType]
+    private var index: Int
 
     // MARK: - Life Cycle
+    init(list: [ReadType],index: Int) {
+        self.list = list
+        self.index = index
+        self.pageableView = TEPageableView()
+        super.init(nibName: nil, bundle: nil)
+        if list.first is TEEssay {
+            title = "短篇"
+        }else if list.first is TESerial {
+            title = "连载"
+        }else {
+            title = "问题"
+        }
+        pageableView.frame = view.bounds
+        pageableView.dataSource = self
+        pageableView.viewDelegate = self
+        view.addSubview(pageableView)
+        view.backgroundColor = UIColor.whiteColor()
+    }
+    
     override func viewDidLoad() {
         
     }
@@ -19,4 +45,15 @@ class TEArticleDetailController: UIViewController {
         
     }
 
+}
+
+extension TEArticleDetailController: TEPageableDelegate,TEPageableDataSource {
+    
+    func pageableView(pageView: TEPageableView) -> NSInteger {
+        return list.count
+    }
+    
+    func pageableView(pageView: TEPageableView, cardCellForColumnAtIndexPath indexPath: NSIndexPath) -> UIView {
+        return UIView()
+    }
 }

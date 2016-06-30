@@ -31,7 +31,7 @@ public class MARCarousel: UIView {
     /// Default time duration
     public var duration: NSTimeInterval!
     /// Call back when user touch event,Default is nil
-    public var touchEventColsure: (() -> Void)?
+    public var touchEventColsure: ((Int) -> Void)?
     /// The index of current page
     private var indexOfCurrent: Int = 0 {
         didSet {
@@ -82,16 +82,25 @@ public class MARCarousel: UIView {
         currentImageView.userInteractionEnabled = true
         currentImageView.contentMode = .ScaleToFill
         currentImageView.clipsToBounds = true
+        currentImageView.addTapGesture { [unowned self] (_) in
+            self.touchEventColsure?(self.indexOfCurrent)
+        }
         
         lastImageView = UIImageView(frame: CGRectMake(0, 0, self.frame.width, self.frame.height))
         lastImageView.userInteractionEnabled = true
         lastImageView.contentMode = .ScaleToFill
         lastImageView.clipsToBounds = true
+        lastImageView.addTapGesture { [unowned self] (_) in
+            self.touchEventColsure?(self.indexOfCurrent)
+        }
         
         nextImageView = UIImageView(frame: CGRectMake(self.frame.size.width * 2, 0, self.frame.size.width, self.frame.size.height))
         nextImageView.userInteractionEnabled = true
         nextImageView.contentMode = .ScaleToFill
         nextImageView.clipsToBounds = true
+        nextImageView.addTapGesture { [unowned self] (_) in
+            self.touchEventColsure?(self.indexOfCurrent)
+        }
         
         
         pageIndicator = UIPageControl()

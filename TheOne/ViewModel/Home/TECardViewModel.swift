@@ -38,7 +38,6 @@ class TECardViewModel {
             TENetService.apiGetLatestOneStuff { (signalProducter) in
                 signalProducter.startWithNext({ [unowned self] (models) in
                     self.cards.value = models
-                    
                     })
             }
         }
