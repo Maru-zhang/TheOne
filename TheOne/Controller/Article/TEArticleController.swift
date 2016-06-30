@@ -96,10 +96,9 @@ extension TEArticleController: TEPageableDataSource,TEPageableDelegate {
         var cell = pageView.dequeueReusableCell() as? TEArticleTableView
         
         if cell == nil {
-            cell = TEArticleTableView(frame: CGRectMake(0, 0, pageView.frame.width - 20, pageView.frame.height), style: .Plain)
+            cell = TEArticleTableView(frame: CGRectMake(10, 10, pageView.frame.width - 20, pageView.frame.height), style: .Plain)
             cell!.showsVerticalScrollIndicator = false
             cell!.tableFooterView =  UIView()
-            cell!.scrollEnabled = true
             cell!.estimatedRowHeight = 150
             cell!.rowHeight = UITableViewAutomaticDimension
             cell!.registerNib(UINib.init(nibName: "TEArticleCell", bundle: nil), forCellReuseIdentifier: String(TEArticleCell))
@@ -113,11 +112,11 @@ extension TEArticleController: TEPageableDataSource,TEPageableDelegate {
     
     func pageableViewFrame(pageView: TEPageableView, atIndexPath indexPath: NSIndexPath) -> CGRect {
         
-        return CGRectMake(10, 10, pageView.frame.width - 20, pageView.frame.height + 20)
+        return CGRectMake(10, 0, pageView.frame.width - 20, pageView.frame.height + 20)
     }
     
     func pageableViewWillShowReuseView(pageView: TEPageableView, reuseView: UIView) {
-        (reuseView.subviews[0] as! UITableView).reloadData()
+        (reuseView as! UITableView).reloadData()
         reuseView.setNeedsDisplay()
     }
     
@@ -165,6 +164,7 @@ extension TEArticleController: UITableViewDataSource,UITableViewDelegate {
         cell.separatorInset = UIEdgeInsetsMake(0, 12, 0, 12)
         cell.layoutMargins = UIEdgeInsetsZero
     }
+
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         

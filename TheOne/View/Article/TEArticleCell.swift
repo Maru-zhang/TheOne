@@ -36,6 +36,7 @@ class TEArticleCell: UITableViewCell {
         
         
         backgroundColor = UIColor.clearColor()
+        contentView.backgroundColor = UIColor.clearColor()
         selectionStyle = .None
         
         title.textAlignment = .Left

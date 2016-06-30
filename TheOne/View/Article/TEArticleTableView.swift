@@ -39,7 +39,7 @@ class TEArticleTableView: UITableView {
         shadowLayer.shadowOpacity = 0.3
         shadowLayer.shadowColor = UIColor.blackColor().CGColor
         shadowLayer.shadowOffset = CGSizeMake(0, 0)
-        shadowLayer.shadowRadius = 3.0
+        shadowLayer.shadowRadius = 4.0
         shadowLayer.cornerRadius = 5.0
         
         layer.insertSublayer(shadowLayer, atIndex: 0)
