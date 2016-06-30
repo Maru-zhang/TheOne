@@ -8,17 +8,27 @@
 
 import UIKit
 import ReactiveCocoa
+import BMPlayer
+
 
 class TEMovieDetailController: UITableViewController {
-
+    
+    let player: BMPlayer
     let viewModel: TEMovieDetailViewModel
     
     // MARK: - Life Cycle
     
     init(model: TEMovieDetailViewModel) {
         viewModel = model
+        player = BMPlayer()
         super.init(nibName: nil, bundle: nil)
+        player.frame = CGRectMake(0, 0, view.frame.width, view.frame.width * (9 / 16))
         self.title = viewModel.title.value
+        player.backBlock = { [unowned self] in
+            self.player.pause()
+            self.player.removeFromSuperview()
+            UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: .Fade)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -30,6 +40,7 @@ class TEMovieDetailController: UITableViewController {
         setupUI()
         
         setupBinding()
+        
     }
     
 
@@ -80,6 +91,21 @@ class TEMovieDetailController: UITableViewController {
 
 extension TEMovieDetailController {
     
+    // MARK: - Action
+    func showTrailerMovieAction() {
+        guard viewModel.detail.value != nil else {
+            return
+        }
+        
+        view.window!.addSubview(player)
+        player.playWithURL(NSURL.init(string: (viewModel.detail.value?.video)!)!)
+        UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: .Fade)
+
+    }
+}
+
+extension TEMovieDetailController {
+    
     // MARK: - DataSource
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 4
@@ -109,6 +135,9 @@ extension TEMovieDetailController {
         case 0:
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCellWithIdentifier(String(TEMovieHeaderCell), forIndexPath: indexPath) as! TEMovieHeaderCell
+                cell.headerDidClick = { [unowned self] in
+                    self.showTrailerMovieAction()
+                }
                 cell.configWithEntity(viewModel.detail.value)
                 return cell
             }else {
@@ -176,7 +205,11 @@ extension TEMovieDetailController {
     
     // MARK: - Override
     override func prefersStatusBarHidden() -> Bool {
-        return true
+        if player.superview != nil {
+            return true
+        }else {
+            return false
+        }
     }
     
     override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MJRefresh
 import ReactiveCocoa
 import ESPullToRefresh
 

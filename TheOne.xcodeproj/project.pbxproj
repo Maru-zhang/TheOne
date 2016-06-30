@@ -48,6 +48,20 @@
 		4247E8F01CEDF3940047D69A /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4247E8C71CEDF3940047D69A /* UIViewControllerExtensions.swift */; };
 		4247E8F11CEDF3940047D69A /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4247E8C81CEDF3940047D69A /* UIViewExtensions.swift */; };
 		4247E8F21CEDF3940047D69A /* UIWindowExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4247E8C91CEDF3940047D69A /* UIWindowExtensions.swift */; };
+		424B2C281D25331D00BD828D /* kr-video-player-close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 424B2C171D25331D00BD828D /* kr-video-player-close@2x.png */; };
+		424B2C291D25331D00BD828D /* kr-video-player-close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 424B2C181D25331D00BD828D /* kr-video-player-close@3x.png */; };
+		424B2C2A1D25331D00BD828D /* kr-video-player-fullscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 424B2C191D25331D00BD828D /* kr-video-player-fullscreen@2x.png */; };
+		424B2C2B1D25331D00BD828D /* kr-video-player-fullscreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 424B2C1A1D25331D00BD828D /* kr-video-player-fullscreen@3x.png */; };
+		424B2C2C1D25331D00BD828D /* kr-video-player-pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 424B2C1B1D25331D00BD828D /* kr-video-player-pause@2x.png */; };
+		424B2C2D1D25331D00BD828D /* kr-video-player-pause@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 424B2C1C1D25331D00BD828D /* kr-video-player-pause@3x.png */; };
+		424B2C2E1D25331D00BD828D /* kr-video-player-play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 424B2C1D1D25331D00BD828D /* kr-video-player-play@2x.png */; };
+		424B2C2F1D25331D00BD828D /* kr-video-player-play@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 424B2C1E1D25331D00BD828D /* kr-video-player-play@3x.png */; };
+		424B2C301D25331D00BD828D /* kr-video-player-point@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 424B2C1F1D25331D00BD828D /* kr-video-player-point@2x.png */; };
+		424B2C311D25331D00BD828D /* kr-video-player-point@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 424B2C201D25331D00BD828D /* kr-video-player-point@3x.png */; };
+		424B2C321D25331D00BD828D /* kr-video-player-shrinkscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 424B2C211D25331D00BD828D /* kr-video-player-shrinkscreen@2x.png */; };
+		424B2C331D25331D00BD828D /* kr-video-player-shrinkscreen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 424B2C221D25331D00BD828D /* kr-video-player-shrinkscreen@3x.png */; };
+		424B2C341D25331D00BD828D /* KRVideoPlayerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 424B2C251D25331D00BD828D /* KRVideoPlayerController.m */; };
+		424B2C351D25331D00BD828D /* KRVideoPlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 424B2C271D25331D00BD828D /* KRVideoPlayerControlView.m */; };
 		424F6F581D127A4D00C8AF50 /* TEMusicBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424F6F571D127A4D00C8AF50 /* TEMusicBanner.swift */; };
 		424F6F5A1D127A9100C8AF50 /* TEMusicBanner.xib in Resources */ = {isa = PBXBuildFile; fileRef = 424F6F591D127A9100C8AF50 /* TEMusicBanner.xib */; };
 		424F6F5C1D128B9E00C8AF50 /* TEComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424F6F5B1D128B9E00C8AF50 /* TEComment.swift */; };
@@ -160,6 +174,22 @@
 		4247E8C71CEDF3940047D69A /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		4247E8C81CEDF3940047D69A /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		4247E8C91CEDF3940047D69A /* UIWindowExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIWindowExtensions.swift; sourceTree = "<group>"; };
+		424B2C171D25331D00BD828D /* kr-video-player-close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-close@2x.png"; sourceTree = "<group>"; };
+		424B2C181D25331D00BD828D /* kr-video-player-close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-close@3x.png"; sourceTree = "<group>"; };
+		424B2C191D25331D00BD828D /* kr-video-player-fullscreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-fullscreen@2x.png"; sourceTree = "<group>"; };
+		424B2C1A1D25331D00BD828D /* kr-video-player-fullscreen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-fullscreen@3x.png"; sourceTree = "<group>"; };
+		424B2C1B1D25331D00BD828D /* kr-video-player-pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-pause@2x.png"; sourceTree = "<group>"; };
+		424B2C1C1D25331D00BD828D /* kr-video-player-pause@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-pause@3x.png"; sourceTree = "<group>"; };
+		424B2C1D1D25331D00BD828D /* kr-video-player-play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-play@2x.png"; sourceTree = "<group>"; };
+		424B2C1E1D25331D00BD828D /* kr-video-player-play@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-play@3x.png"; sourceTree = "<group>"; };
+		424B2C1F1D25331D00BD828D /* kr-video-player-point@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-point@2x.png"; sourceTree = "<group>"; };
+		424B2C201D25331D00BD828D /* kr-video-player-point@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-point@3x.png"; sourceTree = "<group>"; };
+		424B2C211D25331D00BD828D /* kr-video-player-shrinkscreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-shrinkscreen@2x.png"; sourceTree = "<group>"; };
+		424B2C221D25331D00BD828D /* kr-video-player-shrinkscreen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kr-video-player-shrinkscreen@3x.png"; sourceTree = "<group>"; };
+		424B2C241D25331D00BD828D /* KRVideoPlayerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRVideoPlayerController.h; sourceTree = "<group>"; };
+		424B2C251D25331D00BD828D /* KRVideoPlayerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRVideoPlayerController.m; sourceTree = "<group>"; };
+		424B2C261D25331D00BD828D /* KRVideoPlayerControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KRVideoPlayerControlView.h; sourceTree = "<group>"; };
+		424B2C271D25331D00BD828D /* KRVideoPlayerControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KRVideoPlayerControlView.m; sourceTree = "<group>"; };
 		424F6F571D127A4D00C8AF50 /* TEMusicBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMusicBanner.swift; sourceTree = "<group>"; };
 		424F6F591D127A9100C8AF50 /* TEMusicBanner.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TEMusicBanner.xib; sourceTree = "<group>"; };
 		424F6F5B1D128B9E00C8AF50 /* TEComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEComment.swift; sourceTree = "<group>"; };
@@ -300,6 +330,45 @@
 				4247E8C91CEDF3940047D69A /* UIWindowExtensions.swift */,
 			);
 			path = EZSwiftExtensions;
+			sourceTree = "<group>";
+		};
+		424B2C151D25331D00BD828D /* KRVideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				424B2C161D25331D00BD828D /* Assets */,
+				424B2C231D25331D00BD828D /* Classes */,
+			);
+			path = KRVideoPlayer;
+			sourceTree = "<group>";
+		};
+		424B2C161D25331D00BD828D /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				424B2C171D25331D00BD828D /* kr-video-player-close@2x.png */,
+				424B2C181D25331D00BD828D /* kr-video-player-close@3x.png */,
+				424B2C191D25331D00BD828D /* kr-video-player-fullscreen@2x.png */,
+				424B2C1A1D25331D00BD828D /* kr-video-player-fullscreen@3x.png */,
+				424B2C1B1D25331D00BD828D /* kr-video-player-pause@2x.png */,
+				424B2C1C1D25331D00BD828D /* kr-video-player-pause@3x.png */,
+				424B2C1D1D25331D00BD828D /* kr-video-player-play@2x.png */,
+				424B2C1E1D25331D00BD828D /* kr-video-player-play@3x.png */,
+				424B2C1F1D25331D00BD828D /* kr-video-player-point@2x.png */,
+				424B2C201D25331D00BD828D /* kr-video-player-point@3x.png */,
+				424B2C211D25331D00BD828D /* kr-video-player-shrinkscreen@2x.png */,
+				424B2C221D25331D00BD828D /* kr-video-player-shrinkscreen@3x.png */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		424B2C231D25331D00BD828D /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				424B2C241D25331D00BD828D /* KRVideoPlayerController.h */,
+				424B2C251D25331D00BD828D /* KRVideoPlayerController.m */,
+				424B2C261D25331D00BD828D /* KRVideoPlayerControlView.h */,
+				424B2C271D25331D00BD828D /* KRVideoPlayerControlView.m */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		424F6F561D127A3900C8AF50 /* Music */ = {
@@ -563,6 +632,7 @@
 		4279A55C1C96788300483480 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				424B2C151D25331D00BD828D /* KRVideoPlayer */,
 				424F6F8F1D16BC1000C8AF50 /* AAPullToRefresh */,
 				426645C21CE59E7F005E21B4 /* CirCleView */,
 			);
@@ -748,6 +818,11 @@
 					4279A5291C9675EC00483480 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = 678WD436L9;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -774,13 +849,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				424B2C2F1D25331D00BD828D /* kr-video-player-play@3x.png in Resources */,
 				4279A5571C96780300483480 /* Launch.xcassets in Resources */,
 				4279A5551C96780300483480 /* Main.storyboard in Resources */,
 				42B75DA11D20096E00140D8F /* TEArticleCell.xib in Resources */,
+				424B2C2C1D25331D00BD828D /* kr-video-player-pause@2x.png in Resources */,
+				424B2C321D25331D00BD828D /* kr-video-player-shrinkscreen@2x.png in Resources */,
 				424F6F851D12CB6000C8AF50 /* TECommentCell.xib in Resources */,
+				424B2C311D25331D00BD828D /* kr-video-player-point@3x.png in Resources */,
+				424B2C2D1D25331D00BD828D /* kr-video-player-pause@3x.png in Resources */,
 				4279A5531C96780300483480 /* Assets.xcassets in Resources */,
+				424B2C2A1D25331D00BD828D /* kr-video-player-fullscreen@2x.png in Resources */,
+				424B2C2E1D25331D00BD828D /* kr-video-player-play@2x.png in Resources */,
+				424B2C331D25331D00BD828D /* kr-video-player-shrinkscreen@3x.png in Resources */,
 				424F6F5A1D127A9100C8AF50 /* TEMusicBanner.xib in Resources */,
+				424B2C301D25331D00BD828D /* kr-video-player-point@2x.png in Resources */,
 				4279A5541C96780300483480 /* LaunchScreen.storyboard in Resources */,
+				424B2C291D25331D00BD828D /* kr-video-player-close@3x.png in Resources */,
+				424B2C281D25331D00BD828D /* kr-video-player-close@2x.png in Resources */,
+				424B2C2B1D25331D00BD828D /* kr-video-player-fullscreen@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -927,6 +1014,7 @@
 				42B75DB21D23E38500140D8F /* TEMovieUtilCell.swift in Sources */,
 				4247E8EA1CEDF3940047D69A /* UIImageViewExtensions.swift in Sources */,
 				4247E8CD1CEDF3940047D69A /* BlockPan.swift in Sources */,
+				424B2C341D25331D00BD828D /* KRVideoPlayerController.m in Sources */,
 				425D52BC1D05A95C00344C4E /* TEArticleViewModel.swift in Sources */,
 				42B75DAA1D22F82A00140D8F /* TEMovieStory.swift in Sources */,
 				4296EE961D045348009814EF /* TEArticleCell.swift in Sources */,
@@ -945,6 +1033,7 @@
 				426645D01CE71256005E21B4 /* TECardPageView.swift in Sources */,
 				42B75DB01D23E32C00140D8F /* TEMovieDetailViewModel.swift in Sources */,
 				425D52BA1D05A10100344C4E /* TEArticle.swift in Sources */,
+				424B2C351D25331D00BD828D /* KRVideoPlayerControlView.m in Sources */,
 				42CE5F591C97C65400E04AF6 /* TEMacro.swift in Sources */,
 				42CE5F5D1C9819C600E04AF6 /* TEPaperModel.swift in Sources */,
 				4296EE991D045839009814EF /* TEArticleTableView.swift in Sources */,
@@ -1070,6 +1159,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = TheOne/Configure/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alloc.TheOne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1085,6 +1175,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = TheOne/Configure/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alloc.TheOne;
 				PRODUCT_NAME = "$(TARGET_NAME)";

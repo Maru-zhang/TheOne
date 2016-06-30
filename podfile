@@ -13,7 +13,7 @@ def pods
     pod 'Cartography', '~> 0.6.0'
     pod 'ReactiveCocoa', '~> 4.1.0'
     pod 'JTSImageViewController'
-    pod 'KRVideoPlayer'
+    pod 'BMPlayer', '~> 0.2.0'
 end
 
 target 'TheOne' do

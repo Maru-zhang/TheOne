@@ -14,6 +14,7 @@ class TEMovieHeaderCell: TECleanCell {
     let scores    = UILabel()
     let bgImage   = UIImageView()
     let lineImage = UIImageView()
+    var headerDidClick: (() -> ())?
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -34,6 +35,10 @@ class TEMovieHeaderCell: TECleanCell {
             
             lineImage.right == scores.right
             lineImage.top == scores.bottom
+        }
+        
+        bgImage.addTapGesture { (tap) in
+            self.headerDidClick?()
         }
     }
     

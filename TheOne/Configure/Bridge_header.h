@@ -9,4 +9,6 @@
 #ifndef Bridge_header_h
 #define Bridge_header_h
 #import "AAPullToRefresh.h"
+#import "KRVideoPlayerController.h"
+#import "KRVideoPlayerControlView.h"
 #endif /* Bridge_header_h */
