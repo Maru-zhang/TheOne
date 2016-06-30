@@ -11,25 +11,48 @@ import Cartography
 
 class TERankCell: UITableViewCell {
     
-    
+    let rank: UILabel
     let topicTitle: UILabel
     let topicPerson: UILabel
     let topicHotLine: UILabel
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        rank = UILabel()
         topicTitle = UILabel()
         topicPerson = UILabel()
         topicHotLine = UILabel()
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        topicHotLine.numberOfLines = 0
-        topicHotLine.textColor = UIColor.whiteColor()
+        rank.font = UIFont.systemFontOfSize(15)
+        rank.textColor = UIColor.whiteColor()
+        
+        topicTitle.numberOfLines = 0
+        topicTitle.font = UIFont.systemFontOfSize(15)
+        topicTitle.textColor = UIColor.whiteColor()
         
         topicPerson.numberOfLines = 0
+        topicPerson.font = UIFont.systemFontOfSize(11)
         topicPerson.textColor = UIColor.whiteColor()
         
         topicHotLine.numberOfLines = 0
+        topicPerson.font = UIFont.systemFontOfSize(13)
         topicHotLine.textColor = UIColor.whiteColor()
+        
+        constrain(topicTitle, topicPerson, topicHotLine, rank) { (topicTitle, topicPerson, topicHotLine, rank) in
+            
+            topicTitle.left == topicTitle.superview!.left + 30
+            topicTitle.top  == topicTitle.superview!.top + 4
+            topicTitle.right == topicTitle.superview!.right - 4
+            
+            topicPerson.left == topicTitle.left
+            topicPerson.top == topicTitle.bottom + 3
+            
+            topicHotLine.left == topicTitle.left
+            topicHotLine.right == topicTitle.right
+            topicHotLine.top == topicPerson.bottom + 3
+            topicHotLine.bottom == topicHotLine.superview!.bottom - 3
+            
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

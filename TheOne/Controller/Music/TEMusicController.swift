@@ -122,6 +122,7 @@ extension TEMusicController: TEPageableDataSource,TEPageableDelegate {
     
     func pageableViewWillShowReuseView(pageView: TEPageableView, reuseView: UIView) {
         dispatch_async(dispatch_get_main_queue()) {
+            (reuseView as! UITableView).setContentOffset(CGPointZero, animated: false)
             (reuseView as! UITableView).reloadData()
         }
     }
