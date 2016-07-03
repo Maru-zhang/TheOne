@@ -16,3 +16,23 @@
 ![Movie](https://github.com/Maru-zhang/TheOne/blob/master/Screenshot/04.gif)
 
 ![Video](https://github.com/Maru-zhang/TheOne/blob/master/Screenshot/05.gif)
+
+## 鸣谢
+
+### OpenSource
+
+* ReactiveCocoa
+* Alamofire
+* Kingfisher
+* SwiftyJSON
+* ObjectMapper
+* Cartography
+* JLToast
+* ESPullToRefresh
+* AAPullToRefresh
+* JTSImageViewController
+* BMPlayer
+
+## 结语
+
+该作品尚未完成，我将持续完成它，并且学习RAC+POP编程，加油！
