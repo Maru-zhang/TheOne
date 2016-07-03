@@ -7,12 +7,12 @@
 
 ## 效果
 
-[Home](https://github.com/Maru-zhang/TheOne/blob/master/Screenshot/01.gif)
+![Home](https://github.com/Maru-zhang/TheOne/blob/master/Screenshot/01.gif)
 
-[Read](https://github.com/Maru-zhang/TheOne/blob/master/Screenshot/02.gif)
+![Read](https://github.com/Maru-zhang/TheOne/blob/master/Screenshot/02.gif)
 
-[Music](https://github.com/Maru-zhang/TheOne/blob/master/Screenshot/03.gif)
+![Music](https://github.com/Maru-zhang/TheOne/blob/master/Screenshot/03.gif)
 
-[Movie](https://github.com/Maru-zhang/TheOne/blob/master/Screenshot/04.gif)
+![Movie](https://github.com/Maru-zhang/TheOne/blob/master/Screenshot/04.gif)
 
-[Video](https://github.com/Maru-zhang/TheOne/blob/master/Screenshot/05.gif)
+![Video](https://github.com/Maru-zhang/TheOne/blob/master/Screenshot/05.gif)
