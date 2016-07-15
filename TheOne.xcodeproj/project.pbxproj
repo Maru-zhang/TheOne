@@ -76,8 +76,6 @@
 		426ADF5E1CEC2EF500DDBD91 /* UIKit+ReactiveCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426ADF5D1CEC2EF500DDBD91 /* UIKit+ReactiveCocoa.swift */; };
 		426ADF611CEC303800DDBD91 /* TEMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426ADF601CEC303800DDBD91 /* TEMovieViewModel.swift */; };
 		4279A5531C96780300483480 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4279A5471C96780300483480 /* Assets.xcassets */; };
-		4279A5541C96780300483480 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4279A5481C96780300483480 /* LaunchScreen.storyboard */; };
-		4279A5551C96780300483480 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4279A54A1C96780300483480 /* Main.storyboard */; };
 		4279A5571C96780300483480 /* Launch.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4279A54E1C96780300483480 /* Launch.xcassets */; };
 		4279A5611C969D2700483480 /* TEConfigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4279A5601C969D2700483480 /* TEConfigure.swift */; };
 		4285E9841CA28F4C005EDF4B /* TELoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4285E9831CA28F4C005EDF4B /* TELoginController.swift */; };
@@ -116,6 +114,8 @@
 		42EDEC281CF48A9700ED682D /* TEItemPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EDEC271CF48A9700ED682D /* TEItemPresentable.swift */; };
 		42EF86441CF1EB9800060B76 /* TEToastService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EF86431CF1EB9800060B76 /* TEToastService.swift */; };
 		42FAE4F71CB229D900495273 /* TEMovieDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FAE4F61CB229D900495273 /* TEMovieDetailController.swift */; };
+		AF6902151D392B8200B4D2A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF6902131D392B8200B4D2A6 /* LaunchScreen.storyboard */; };
+		AF6902161D392B8200B4D2A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF6902141D392B8200B4D2A6 /* Main.storyboard */; };
 		DD5C9AE4AF121A1675E1B8EE /* Pods_TheOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEEF2339B6BA212A6E17CE33 /* Pods_TheOne.framework */; };
 /* End PBXBuildFile section */
 
@@ -191,8 +191,6 @@
 		426ADF601CEC303800DDBD91 /* TEMovieViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMovieViewModel.swift; sourceTree = "<group>"; };
 		4279A52A1C9675EC00483480 /* TheOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4279A5471C96780300483480 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
-		4279A5491C96780300483480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		4279A54B1C96780300483480 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4279A54E1C96780300483480 /* Launch.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Launch.xcassets; path = ../Launch.xcassets; sourceTree = "<group>"; };
 		4279A5601C969D2700483480 /* TEConfigure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEConfigure.swift; sourceTree = "<group>"; };
 		4285E9831CA28F4C005EDF4B /* TELoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TELoginController.swift; sourceTree = "<group>"; };
@@ -241,6 +239,8 @@
 		58C453D8642A474F7D457052 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		61099A783A1A9763F5A58A18 /* Pods-TheOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-TheOne/Pods-TheOne.release.xcconfig"; sourceTree = "<group>"; };
 		89DC4F58B1DF9C35A1386A3F /* Pods-TheOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheOne.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheOne/Pods-TheOne.debug.xcconfig"; sourceTree = "<group>"; };
+		AF6902131D392B8200B4D2A6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AF6902141D392B8200B4D2A6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		EEEF2339B6BA212A6E17CE33 /* Pods_TheOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -557,11 +557,12 @@
 		4279A55B1C96785C00483480 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				4279A5481C96780300483480 /* LaunchScreen.storyboard */,
-				4279A54A1C96780300483480 /* Main.storyboard */,
+				AF6902131D392B8200B4D2A6 /* LaunchScreen.storyboard */,
+				AF6902141D392B8200B4D2A6 /* Main.storyboard */,
 			);
-			path = Interface;
-			sourceTree = "<group>";
+			name = Interface;
+			path = TheOne/Interface;
+			sourceTree = SOURCE_ROOT;
 		};
 		4279A55C1C96788300483480 /* Vendor */ = {
 			isa = PBXGroup;
@@ -782,13 +783,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF6902161D392B8200B4D2A6 /* Main.storyboard in Resources */,
 				4279A5571C96780300483480 /* Launch.xcassets in Resources */,
-				4279A5551C96780300483480 /* Main.storyboard in Resources */,
 				42B75DA11D20096E00140D8F /* TEArticleCell.xib in Resources */,
 				424F6F851D12CB6000C8AF50 /* TECommentCell.xib in Resources */,
+				AF6902151D392B8200B4D2A6 /* LaunchScreen.storyboard in Resources */,
 				4279A5531C96780300483480 /* Assets.xcassets in Resources */,
 				424F6F5A1D127A9100C8AF50 /* TEMusicBanner.xib in Resources */,
-				4279A5541C96780300483480 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -968,27 +969,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		4279A5481C96780300483480 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4279A5491C96780300483480 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			path = ..;
-			sourceTree = "<group>";
-		};
-		4279A54A1C96780300483480 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4279A54B1C96780300483480 /* Base */,
-			);
-			name = Main.storyboard;
-			path = ..;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		4279A53A1C9675EC00483480 /* Debug */ = {

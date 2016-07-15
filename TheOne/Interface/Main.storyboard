@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="RKX-Q9-mmp">
+            <objects>
+                <navigationController storyboardIdentifier="TELoginController" id="SRF-zH-Ha8" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6af-19-9mR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="6DT-Cx-EEs" kind="relationship" relationship="rootViewController" id="aUE-cs-mD5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G3N-bn-we9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="442" y="304"/>
+        </scene>
+        <!--登录ONE-->
+        <scene sceneID="kka-f5-1jW">
+            <objects>
+                <viewController title="登录ONE" id="6DT-Cx-EEs" customClass="TELoginController" customModule="TheOne" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JdX-3F-2Z7"/>
+                        <viewControllerLayoutGuide type="bottom" id="FYt-2W-X7R"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wz5-tx-CJv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u23-4d-wyX">
+                                <rect key="frame" x="165" y="189" width="270" height="40"/>
+                                <state key="normal" image="qqLogin"/>
+                                <state key="highlighted" image="qqLoginHigh"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AiC-tb-DWO">
+                                <rect key="frame" x="165" y="93" width="270" height="40"/>
+                                <state key="normal" image="wechatLogin"/>
+                                <state key="highlighted" image="wechatLoginHigh"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qx-Vk-Sgv">
+                                <rect key="frame" x="165" y="247" width="270" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="19" id="fKU-Qd-tMY"/>
+                                </constraints>
+                                <state key="normal" image="mobileLogin"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="或者" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X31-Ru-Teh">
+                                <rect key="frame" x="290" y="234" width="20" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IgF-N2-Jff">
+                                <rect key="frame" x="165" y="141" width="270" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="PlD-u5-5Vc"/>
+                                </constraints>
+                                <state key="normal" image="weiboLogin"/>
+                                <state key="highlighted" image="weiboLoginHigh"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.25" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="X31-Ru-Teh" firstAttribute="top" secondItem="u23-4d-wyX" secondAttribute="bottom" constant="5" id="Ba6-dc-bMR"/>
+                            <constraint firstItem="IgF-N2-Jff" firstAttribute="leading" secondItem="u23-4d-wyX" secondAttribute="leading" id="JWs-iU-cUA"/>
+                            <constraint firstItem="u23-4d-wyX" firstAttribute="leading" secondItem="0qx-Vk-Sgv" secondAttribute="leading" id="N1u-ie-2Ui"/>
+                            <constraint firstItem="IgF-N2-Jff" firstAttribute="top" secondItem="AiC-tb-DWO" secondAttribute="bottom" constant="8" symbolic="YES" id="P62-mY-8zI"/>
+                            <constraint firstItem="u23-4d-wyX" firstAttribute="top" secondItem="IgF-N2-Jff" secondAttribute="bottom" constant="8" symbolic="YES" id="Qdd-JJ-Zwp"/>
+                            <constraint firstItem="AiC-tb-DWO" firstAttribute="top" secondItem="JdX-3F-2Z7" secondAttribute="bottom" constant="29" id="Tao-rS-vAR"/>
+                            <constraint firstItem="X31-Ru-Teh" firstAttribute="centerX" secondItem="0qx-Vk-Sgv" secondAttribute="centerX" id="fwD-V0-kvt"/>
+                            <constraint firstItem="AiC-tb-DWO" firstAttribute="centerX" secondItem="wz5-tx-CJv" secondAttribute="centerX" id="hsm-5j-DYB"/>
+                            <constraint firstItem="0qx-Vk-Sgv" firstAttribute="top" secondItem="X31-Ru-Teh" secondAttribute="bottom" constant="1" id="i5q-Vn-wgd"/>
+                            <constraint firstItem="AiC-tb-DWO" firstAttribute="leading" secondItem="IgF-N2-Jff" secondAttribute="leading" id="lpT-Q6-vdT"/>
+                            <constraint firstItem="u23-4d-wyX" firstAttribute="trailing" secondItem="0qx-Vk-Sgv" secondAttribute="trailing" id="vgt-Zn-nDN"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="登录ONE" id="gxC-23-HVM">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="lv3-NA-H6B">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="close:" destination="6DT-Cx-EEs" id="zA6-xJ-gCn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ygY-QY-qak" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1120" y="304"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="mobileLogin" width="121" height="17"/>
+        <image name="qqLogin" width="270" height="40"/>
+        <image name="qqLoginHigh" width="270" height="40"/>
+        <image name="wechatLogin" width="270" height="40"/>
+        <image name="wechatLoginHigh" width="270" height="40"/>
+        <image name="weiboLogin" width="270" height="41"/>
+        <image name="weiboLoginHigh" width="270" height="41"/>
+    </resources>
+</document>
