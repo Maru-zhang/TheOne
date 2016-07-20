@@ -11,7 +11,7 @@ import UIKit
 
 extension UIColor {
     
-    static func colorWithHexString (hex:String) -> UIColor {
+    static func colorWithHexString(hex: String) -> UIColor {
         
         var cString: String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).uppercaseString
         

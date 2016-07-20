@@ -152,7 +152,7 @@ extension TEArticleController: TEPageableDataSource,TEPageableDelegate {
         dispatch_async(dispatch_get_main_queue()) {
             // MARK: TODO - 这里有性能问题
             let height = (tableView.cellForRowAtIndexPath(NSIndexPath.init(forRow: 0, inSection: 0))?.frame.height)! + (tableView.cellForRowAtIndexPath(NSIndexPath.init(forRow: 1, inSection: 0))?.frame.height)! + (tableView.cellForRowAtIndexPath(NSIndexPath.init(forRow: 2, inSection: 0))?.frame.height)!
-            let newHeight = self.reuseHeight.reduce(0, combine: +)
+//            let newHeight = self.reuseHeight.reduce(0, combine: +)
             tableView.frame = CGRectMake(10, 10, self.view.frame.width - 20, height)
             scrollview.contentSize = CGSizeMake(self.view.frame.width, height + 200)
         }
