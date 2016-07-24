@@ -20,7 +20,7 @@ class TENetService {
     
     /// 主机域名
     private static let HOST = "http://v3.wufazhuce.com:8000"
-
+    
     /**
      *	API路由集合
      *
@@ -68,6 +68,17 @@ class TENetService {
          */
         static func Read_Index() -> String {
             return "\(TENetService.HOST)/api/reading/index"
+        }
+        
+        /**
+         阅读模块轮播推荐内容
+         
+         - author: Maru
+         
+         - returns: URL的字符串
+         */
+        static func Read_Recommend(id: Int) -> String {
+            return "\(TENetService.HOST)/api/reading/carousel/\(id)"
         }
         
         // MARK: - Music API
@@ -219,7 +230,7 @@ extension TENetService {
     }
     
     // MARK: - Article Service
-    static func apiGetArtcleCarousel(withSuccessHandler success: ([TECarousel]) -> Void,fail: FailureHandler) {
+    static func apiGetArticleCarousel(withSuccessHandler success: ([TECarousel]) -> Void,fail: FailureHandler) {
         
         Alamofire.request(.GET, API_Route.Read_Carousel()).responseJSON { (response) in
             
@@ -239,6 +250,35 @@ extension TENetService {
             }
         }
         
+    }
+    
+    /**
+     Get the list of recommend articles
+     
+     - author: Maru
+     
+     - parameter id:     recommend ID
+     - parameter result: 冷信号
+     */
+    static func apiGetArticleRankContent(id: Int,result: (SignalProducer<[TERecommend],NSError>) -> Void) {
+        
+        Alamofire.request(.GET, API_Route.Read_Recommend(id))
+            .responseJSON { (response) in
+                switch response.result {
+                case .Success(_):
+                    
+                    let json = JSON(response.result.value!)
+                    
+                    let recommends: [TERecommend] = Mapper<TERecommend>().mapArray(json["data"].rawString()!)!
+                    
+                    result(SignalProducer(value: recommends))
+                    
+                    break
+                case .Failure(_):
+                    result(SignalProducer<([TERecommend]),NSError>(error: response.result.error!))
+                    break
+                }
+        }
     }
     
     /**

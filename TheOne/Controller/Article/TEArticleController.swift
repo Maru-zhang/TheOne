@@ -66,7 +66,7 @@ extension TEArticleController {
         }
         
         // 开始轮播资源进行请求
-        TENetService.apiGetArtcleCarousel(withSuccessHandler: { [unowned self] (imgResult) in
+        TENetService.apiGetArticleCarousel(withSuccessHandler: { [unowned self] (imgResult) in
             
             let urls: [NSURL] = imgResult.map{ NSURL(string: $0.cover!)! }
             

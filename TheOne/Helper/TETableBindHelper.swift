@@ -33,11 +33,11 @@ extension TETableBindHelper: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfRows(inSection: section)
+        return viewModel.table(tableView, numberOfRows: section)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        return viewModel.table(tableView, cellForRow: indexPath)
     }
     
 }

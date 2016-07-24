@@ -14,7 +14,9 @@ protocol TETableModelType: class {
     
     func numberOfSectionsInTableView() -> Int
     
-    func numberOfRows(inSection section: Int) -> Int
+    func table(view: UITableView, numberOfRows section: Int) -> Int
+    
+    func table(view: UITableView, cellForRow indexPath: NSIndexPath) -> UITableViewCell
     
     /**
      根据Index返回Cell的动态高度
