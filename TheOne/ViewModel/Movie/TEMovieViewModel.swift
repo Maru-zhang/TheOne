@@ -45,15 +45,12 @@ class TEMovieViewModel {
             .filter({ $0 })
             .map({_ in ()})
             .start(refreshObserver)
-        
-        
-        
     }
     
     
 }
 
-extension TEMovieViewModel: TETableModelType {
+extension TEMovieViewModel {
     
     typealias CellType = TEMovieCardCell
     typealias FailureType = NSError

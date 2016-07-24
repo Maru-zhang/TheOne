@@ -114,9 +114,11 @@
 		42EDEC281CF48A9700ED682D /* TEItemPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EDEC271CF48A9700ED682D /* TEItemPresentable.swift */; };
 		42EF86441CF1EB9800060B76 /* TEToastService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EF86431CF1EB9800060B76 /* TEToastService.swift */; };
 		42FAE4F71CB229D900495273 /* TEMovieDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FAE4F61CB229D900495273 /* TEMovieDetailController.swift */; };
+		AF15C0731D3FDEA000E647F7 /* TERankViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF15C0721D3FDEA000E647F7 /* TERankViewModel.swift */; };
+		AF15C0761D3FEB9A00E647F7 /* TETableBindHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF15C0751D3FEB9A00E647F7 /* TETableBindHelper.swift */; };
 		AF6902151D392B8200B4D2A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF6902131D392B8200B4D2A6 /* LaunchScreen.storyboard */; };
 		AF6902161D392B8200B4D2A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF6902141D392B8200B4D2A6 /* Main.storyboard */; };
-		DD5C9AE4AF121A1675E1B8EE /* Pods_TheOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEEF2339B6BA212A6E17CE33 /* Pods_TheOne.framework */; };
+		FBD3CA97A1339B8E9A563ECB /* Pods_TheOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2490AC66A902F2D7AAF0D16 /* Pods_TheOne.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -237,11 +239,13 @@
 		42EF86431CF1EB9800060B76 /* TEToastService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEToastService.swift; sourceTree = "<group>"; };
 		42FAE4F61CB229D900495273 /* TEMovieDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TEMovieDetailController.swift; sourceTree = "<group>"; };
 		58C453D8642A474F7D457052 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		61099A783A1A9763F5A58A18 /* Pods-TheOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-TheOne/Pods-TheOne.release.xcconfig"; sourceTree = "<group>"; };
-		89DC4F58B1DF9C35A1386A3F /* Pods-TheOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheOne.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheOne/Pods-TheOne.debug.xcconfig"; sourceTree = "<group>"; };
+		AE945C702EEA076920F3EEA5 /* Pods-TheOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheOne.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheOne/Pods-TheOne.debug.xcconfig"; sourceTree = "<group>"; };
+		AF15C0721D3FDEA000E647F7 /* TERankViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TERankViewModel.swift; sourceTree = "<group>"; };
+		AF15C0751D3FEB9A00E647F7 /* TETableBindHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TETableBindHelper.swift; sourceTree = "<group>"; };
 		AF6902131D392B8200B4D2A6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AF6902141D392B8200B4D2A6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		EEEF2339B6BA212A6E17CE33 /* Pods_TheOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2490AC66A902F2D7AAF0D16 /* Pods_TheOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TheOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F00AFAC3CAA796D6B88229C3 /* Pods-TheOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-TheOne/Pods-TheOne.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,7 +253,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD5C9AE4AF121A1675E1B8EE /* Pods_TheOne.framework in Frameworks */,
+				FBD3CA97A1339B8E9A563ECB /* Pods_TheOne.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +467,7 @@
 			isa = PBXGroup;
 			children = (
 				425D52BB1D05A95C00344C4E /* TEArticleViewModel.swift */,
+				AF15C0721D3FDEA000E647F7 /* TERankViewModel.swift */,
 			);
 			path = Article;
 			sourceTree = "<group>";
@@ -473,7 +478,7 @@
 				4279A5451C96780300483480 /* TheOne */,
 				4279A52B1C9675EC00483480 /* Products */,
 				A6EF4A678E4A1B6EB3AB0FBB /* Frameworks */,
-				5877175B53F0A027EF1E8E5C /* Pods */,
+				B8A8A0C38365C19794F0FE13 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -497,6 +502,7 @@
 				42CE5F441C96CFCB00E04AF6 /* Model */,
 				42E9AF741CE4584200BB8687 /* Service */,
 				4279A55F1C969C1300483480 /* Protocol */,
+				AF15C0741D3FEB3100E647F7 /* Helper */,
 				4279A55C1C96788300483480 /* Vendor */,
 				4279A55A1C96783A00483480 /* Resource */,
 			);
@@ -581,8 +587,9 @@
 				42CE5F561C97ABBA00E04AF6 /* TENaviPresentable.swift */,
 				42EDEC271CF48A9700ED682D /* TEItemPresentable.swift */,
 			);
-			path = Protocol;
-			sourceTree = "<group>";
+			name = Protocol;
+			path = TheOne/Protocol;
+			sourceTree = SOURCE_ROOT;
 		};
 		42860FE21D1BDBAC00D2EC95 /* Base */ = {
 			isa = PBXGroup;
@@ -696,22 +703,31 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		5877175B53F0A027EF1E8E5C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				89DC4F58B1DF9C35A1386A3F /* Pods-TheOne.debug.xcconfig */,
-				61099A783A1A9763F5A58A18 /* Pods-TheOne.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		A6EF4A678E4A1B6EB3AB0FBB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				58C453D8642A474F7D457052 /* Pods.framework */,
-				EEEF2339B6BA212A6E17CE33 /* Pods_TheOne.framework */,
+				C2490AC66A902F2D7AAF0D16 /* Pods_TheOne.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AF15C0741D3FEB3100E647F7 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				AF15C0751D3FEB9A00E647F7 /* TETableBindHelper.swift */,
+			);
+			name = Helper;
+			path = TheOne/Helper;
+			sourceTree = SOURCE_ROOT;
+		};
+		B8A8A0C38365C19794F0FE13 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AE945C702EEA076920F3EEA5 /* Pods-TheOne.debug.xcconfig */,
+				F00AFAC3CAA796D6B88229C3 /* Pods-TheOne.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -721,13 +737,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4279A53C1C9675EC00483480 /* Build configuration list for PBXNativeTarget "TheOne" */;
 			buildPhases = (
-				8450C6755251CB63E7179531 /* 📦 Check Pods Manifest.lock */,
+				140A41EFF6FF6F72EC553D3A /* [CP] Check Pods Manifest.lock */,
 				4279A5261C9675EC00483480 /* Sources */,
 				4279A5271C9675EC00483480 /* Frameworks */,
 				4279A5281C9675EC00483480 /* Resources */,
-				96E1A954757AE13E4E433364 /* 📦 Embed Pods Frameworks */,
-				55FCE3DC19C7B8098D4DBAFF /* 📦 Copy Pods Resources */,
-				54189DE7101E34AA39D35433 /* Embed Pods Frameworks */,
+				A19B2629740E31D56A146BE6 /* [CP] Embed Pods Frameworks */,
+				7666A89B9ABF812312752522 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -796,44 +811,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		54189DE7101E34AA39D35433 /* Embed Pods Frameworks */ = {
+		140A41EFF6FF6F72EC553D3A /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TheOne/Pods-TheOne-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		55FCE3DC19C7B8098D4DBAFF /* 📦 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TheOne/Pods-TheOne-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8450C6755251CB63E7179531 /* 📦 Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -841,14 +826,29 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		96E1A954757AE13E4E433364 /* 📦 Embed Pods Frameworks */ = {
+		7666A89B9ABF812312752522 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TheOne/Pods-TheOne-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A19B2629740E31D56A146BE6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -863,6 +863,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF15C0761D3FEB9A00E647F7 /* TETableBindHelper.swift in Sources */,
 				4247E8DC1CEDF3940047D69A /* NSBundleExtensions.swift in Sources */,
 				4247E8E31CEDF3940047D69A /* UIAlertControllerExtensions.swift in Sources */,
 				4247E8ED1CEDF3940047D69A /* UISwitchExtensions.swift in Sources */,
@@ -960,6 +961,7 @@
 				42B75DB81D24F47100140D8F /* TEKeywordCell.swift in Sources */,
 				42E9AF761CE4595300BB8687 /* TENetService.swift in Sources */,
 				4247E8EC1CEDF3940047D69A /* UISliderExtensions.swift in Sources */,
+				AF15C0731D3FDEA000E647F7 /* TERankViewModel.swift in Sources */,
 				4247E8D51CEDF3940047D69A /* CharacterExtensions.swift in Sources */,
 				4247E8E91CEDF3940047D69A /* UIImageExtensions.swift in Sources */,
 				42B75D8C1D1EA8F000140D8F /* TEButtonLineCell.swift in Sources */,
@@ -1054,7 +1056,7 @@
 		};
 		4279A53D1C9675EC00483480 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89DC4F58B1DF9C35A1386A3F /* Pods-TheOne.debug.xcconfig */;
+			baseConfigurationReference = AE945C702EEA076920F3EEA5 /* Pods-TheOne.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1070,7 +1072,7 @@
 		};
 		4279A53E1C9675EC00483480 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 61099A783A1A9763F5A58A18 /* Pods-TheOne.release.xcconfig */;
+			baseConfigurationReference = F00AFAC3CAA796D6B88229C3 /* Pods-TheOne.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

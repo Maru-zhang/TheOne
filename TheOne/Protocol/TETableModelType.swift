@@ -8,11 +8,13 @@
 
 import UIKit
 
-protocol TETableModelType {
+protocol TETableModelType: class {
     
-    associatedtype CellType
-    associatedtype FailureType
-
+    
+    
+    func numberOfSectionsInTableView() -> Int
+    
+    func numberOfRows(inSection section: Int) -> Int
     
     /**
      根据Index返回Cell的动态高度
@@ -27,5 +29,5 @@ protocol TETableModelType {
      - parameter success:	成功回调
      - parameter failure:	失败回调
      */
-    func fetchRemoteDataWithCallBack(success: () -> Void,failure: (FailureType) -> Void)
+    func fetchRemoteDataWithCallBack<Error: NSError>(success: () -> Void,failure: (Error) -> Void)
 }
