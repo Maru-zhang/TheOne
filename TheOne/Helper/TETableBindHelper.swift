@@ -13,9 +13,7 @@ class TETableBindHelper: NSObject {
     unowned var tableView: UITableView
     unowned var viewModel: TETableModelType
     
-    private var sectionConfig: ((tableView: UITableView) ->())?
-    
-    init(tableView: UITableView,viewModel: TETableModelType) {
+    init(tableView: UITableView,viewModel: protocol<TETableModelType>) {
         self.tableView = tableView
         self.viewModel = viewModel
         super.init()
@@ -24,7 +22,6 @@ class TETableBindHelper: NSObject {
     }
 
 }
-
 
 extension TETableBindHelper: UITableViewDataSource {
     
