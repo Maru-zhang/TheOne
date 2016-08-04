@@ -12,6 +12,14 @@ import Result
 
 class TERankViewModel {
 
-
+    let title: ConstantProperty<String>
+    
+    let carousel: TECarousel
+    
+    init(model: TECarousel) {
+        
+        carousel = model
+        title = ConstantProperty<String>(carousel.title!)
+    }
     
 }
