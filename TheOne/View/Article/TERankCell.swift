@@ -17,10 +17,12 @@ class TERankCell: UITableViewCell {
     let topicHotLine: UILabel
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        
         rank = UILabel()
         topicTitle = UILabel()
         topicPerson = UILabel()
         topicHotLine = UILabel()
+        
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         rank.font = UIFont.systemFontOfSize(15)
@@ -43,10 +45,10 @@ class TERankCell: UITableViewCell {
             topicTitle.left == topicTitle.superview!.left + 30
             topicTitle.top  == topicTitle.superview!.top + 4
             topicTitle.right == topicTitle.superview!.right - 4
-            
+
             topicPerson.left == topicTitle.left
             topicPerson.top == topicTitle.bottom + 3
-            
+
             topicHotLine.left == topicTitle.left
             topicHotLine.right == topicTitle.right
             topicHotLine.top == topicPerson.bottom + 3
@@ -70,4 +72,14 @@ class TERankCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+}
+
+extension TERankCell {
+    
+    func configureWithEntity(recommend: TERecommend) {
+        
+        topicTitle.text = recommend.title
+        topicPerson.text = recommend.auther
+        topicHotLine.text = recommend.intro
+    }
 }

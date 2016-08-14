@@ -11,10 +11,10 @@ import Result
 
 
 class TERankViewModel {
-
-    let title: ConstantProperty<String>
     
     let carousel: TECarousel
+    let title: ConstantProperty<String>
+    let recommends = MutableProperty<[TERecommend]>([TERecommend]())
     
     init(model: TECarousel) {
         
@@ -23,3 +23,17 @@ class TERankViewModel {
     }
     
 }
+
+extension TERankViewModel {
+    
+    func fetchRemoteData() {
+        
+        TENetService.apiGetArticleRankContent((carousel.id?.toInt())!) { (signal) in
+            
+            signal.startWithNext({ [unowned self] (recommends) in
+                self.recommends.value = recommends
+            })
+        }
+    }
+}
+

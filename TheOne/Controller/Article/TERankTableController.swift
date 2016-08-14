@@ -23,7 +23,8 @@ class TERankTableController: UITableViewController {
         super.init(nibName: nil, bundle: nil)
         
         tableView.backgroundColor = UIColor.colorWithHexString(model.bgcolor!)
-        
+        tableView.registerClass(TERankCell.self, forCellReuseIdentifier: String(TERankCell))
+
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,6 +35,8 @@ class TERankTableController: UITableViewController {
         super.viewDidLoad()
 
         setupView()
+        
+        viewModel.fetchRemoteData()
     }
 
 }
@@ -41,6 +44,19 @@ class TERankTableController: UITableViewController {
 extension TERankTableController {
     
     // MARK: - DataSource
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.recommends.value.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier(String(TERankCell), forIndexPath: indexPath) as! TERankCell
+        
+        cell.configureWithEntity(viewModel.recommends.value[indexPath.row])
+        
+        return cell
+    }
     
     
     // MARK: - Delegate
@@ -53,6 +69,10 @@ extension TERankTableController {
         header.textAlignment = .Center
         header.text = viewModel.title.value
         return header
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -78,6 +98,17 @@ extension TERankTableController {
             close.height == 44
             close.top    == close.superview!.top + 20
             close.left   == close.superview!.left + 10
+        }
+    }
+    
+    final private func setupBinding() {
+        
+        viewModel.recommends.signal.observeNext { [unowned self] (recommends) in
+            self.tableView.reloadData()
+        }
+        
+        viewModel.recommends.signal.observeFailed { (error) in
+            
         }
     }
     

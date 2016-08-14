@@ -25,11 +25,20 @@ protocol TETableModelType: class {
      */
     func heightForCellAtIndexPath(indexPath: NSIndexPath) -> CGFloat
     
-    /**
-     发送网络请求，返回相应的实体数据或者失败回调
-     
-     - parameter success:	成功回调
-     - parameter failure:	失败回调
-     */
-    func fetchRemoteDataWithCallBack<Error: NSError>(success: () -> Void,failure: (Error) -> Void)
+}
+
+extension TETableBindHelper {
+    
+    func numberOfSectionsInTableView() -> Int {
+        return 1
+    }
+    
+    func table(view: UITableView, numberOfRows section: Int) -> Int {
+        return 0
+    }
+    
+    func heightForCellAtIndexPath(indexPath: NSIndexPath) -> CGFloat {
+        return 44
+    }
+    
 }
