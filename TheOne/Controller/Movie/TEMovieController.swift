@@ -16,6 +16,7 @@ class TEMovieController: UITableViewController {
     let viewModel = TEMovieViewModel()
     
     // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         
         setupView()
@@ -25,6 +26,7 @@ class TEMovieController: UITableViewController {
     }
     
     // MARK: - Private Method
+    
     private func setupView() {
         setupCommentItem()
         tableView.separatorStyle = .None
@@ -35,7 +37,6 @@ class TEMovieController: UITableViewController {
         }
 
     }
-    
     
     private func bindingView() {
         

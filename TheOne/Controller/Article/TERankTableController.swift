@@ -22,6 +22,8 @@ class TERankTableController: UITableViewController {
         
         super.init(nibName: nil, bundle: nil)
         
+        tableView.estimatedRowHeight = 100
+        tableView.separatorStyle = .None
         tableView.backgroundColor = UIColor.colorWithHexString(model.bgcolor!)
         tableView.registerClass(TERankCell.self, forCellReuseIdentifier: String(TERankCell))
 
@@ -36,7 +38,8 @@ class TERankTableController: UITableViewController {
 
         setupView()
         
-        viewModel.fetchRemoteData()
+        setupBinding()
+        
     }
 
 }
@@ -71,12 +74,26 @@ extension TERankTableController {
         return header
     }
     
+    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        
+        let bottom = UILabel.init()
+        bottom.font = UIFont.systemFontOfSize(15)
+        bottom.textColor = UIColor.whiteColor()
+        bottom.textAlignment = .Center
+        bottom.text = viewModel.bottom.value
+        return bottom
+    }
+    
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
     
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 100
+        return 120
+    }
+    
+    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 200
     }
 }
 
@@ -103,12 +120,10 @@ extension TERankTableController {
     
     final private func setupBinding() {
         
-        viewModel.recommends.signal.observeNext { [unowned self] (recommends) in
-            self.tableView.reloadData()
-        }
+        viewModel.fetchRemoteData()
         
-        viewModel.recommends.signal.observeFailed { (error) in
-            
+        viewModel.refreshSignal.startWithNext { [unowned self] in
+            self.tableView.reloadData()
         }
     }
     

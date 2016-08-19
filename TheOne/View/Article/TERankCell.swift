@@ -9,7 +9,7 @@
 import UIKit
 import Cartography
 
-class TERankCell: UITableViewCell {
+class TERankCell: TECleanCell {
     
     let rank: UILabel
     let topicTitle: UILabel
@@ -37,8 +37,13 @@ class TERankCell: UITableViewCell {
         topicPerson.textColor = UIColor.whiteColor()
         
         topicHotLine.numberOfLines = 0
-        topicPerson.font = UIFont.systemFontOfSize(13)
+        topicHotLine.font = UIFont.systemFontOfSize(11)
         topicHotLine.textColor = UIColor.whiteColor()
+        
+        contentView.addSubview(rank)
+        contentView.addSubview(topicTitle)
+        contentView.addSubview(topicPerson)
+        contentView.addSubview(topicHotLine)
         
         constrain(topicTitle, topicPerson, topicHotLine, rank) { (topicTitle, topicPerson, topicHotLine, rank) in
             
@@ -52,7 +57,7 @@ class TERankCell: UITableViewCell {
             topicHotLine.left == topicTitle.left
             topicHotLine.right == topicTitle.right
             topicHotLine.top == topicPerson.bottom + 3
-            topicHotLine.bottom == topicHotLine.superview!.bottom - 3
+            topicHotLine.bottom == topicHotLine.superview!.bottom - 30
             
         }
     }

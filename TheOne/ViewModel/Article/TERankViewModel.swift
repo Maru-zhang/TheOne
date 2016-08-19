@@ -14,12 +14,20 @@ class TERankViewModel {
     
     let carousel: TECarousel
     let title: ConstantProperty<String>
+    let bottom: ConstantProperty<String>
     let recommends = MutableProperty<[TERecommend]>([TERecommend]())
+    let refresh: Observer<Void,NoError>
+    let refreshSignal: SignalProducer<Void,NoError>
     
     init(model: TECarousel) {
         
         carousel = model
-        title = ConstantProperty<String>(carousel.title!)
+        title = ConstantProperty<String>.init(carousel.title!)
+        bottom = ConstantProperty<String>.init(carousel.bottom_text!)
+        let (refreshS,refreshObserver) = SignalProducer<Void,NoError>.buffer(0)
+        refresh = refreshObserver
+        refreshSignal = refreshS
+
     }
     
 }
@@ -31,7 +39,8 @@ extension TERankViewModel {
         TENetService.apiGetArticleRankContent((carousel.id?.toInt())!) { (signal) in
             
             signal.startWithNext({ [unowned self] (recommends) in
-                self.recommends.value = recommends
+                self.recommends.swap(recommends)
+                self.refresh.sendNext()
             })
         }
     }

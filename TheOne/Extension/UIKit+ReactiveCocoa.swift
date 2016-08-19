@@ -44,6 +44,7 @@ func lazyMutableProperty<T>(host: AnyObject, key: UnsafePointer<Void>, setter: T
 
 
 extension UIViewController {
+    
     func isActive() -> SignalProducer<Bool, NoError> {
         
         // Track whether view is visible
