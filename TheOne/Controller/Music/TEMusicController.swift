@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import ReactiveCocoa
+import ReactiveSwift
 import ESPullToRefresh
 import Kingfisher
 
@@ -22,6 +22,7 @@ class TEMusicController: UIViewController {
         setupView()
         
         setupData()
+        
     }
     
     

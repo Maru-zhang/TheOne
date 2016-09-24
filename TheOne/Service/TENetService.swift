@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import ObjectMapper
-import ReactiveCocoa
+import ReactiveSwift
 import Result
 
 class TENetService {

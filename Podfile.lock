@@ -1,67 +1,63 @@
 PODS:
-  - Alamofire (3.4.1)
-  - BMPlayer (0.2.7):
-    - NVActivityIndicatorView (~> 2.6)
-    - SnapKit
-  - Cartography (0.6.0)
-  - ESPullToRefresh (1.0.5)
-  - Gifu (1.2.1)
-  - JLToast (1.4.2)
+  - Alamofire (4.0.0)
+  - Cartography (0.5.0)
+  - ESPullToRefresh (2.0)
+  - EZSwiftExtensions (1.6)
   - JTSImageViewController (1.5.1)
-  - Kingfisher (2.1.0)
-  - NVActivityIndicatorView (2.9)
-  - ObjectMapper (1.3.0)
-  - ReactiveCocoa (4.1.0):
-    - ReactiveCocoa/UI (= 4.1.0)
-    - Result (~> 2.0)
-  - ReactiveCocoa/Core (4.1.0):
-    - ReactiveCocoa/no-arc
-    - Result (~> 2.0)
-  - ReactiveCocoa/no-arc (4.1.0):
-    - Result (~> 2.0)
-  - ReactiveCocoa/UI (4.1.0):
-    - ReactiveCocoa/Core
-    - Result (~> 2.0)
-  - Result (2.1.3)
-  - Reusable (2.4.0):
-    - Reusable/Storyboard (= 2.4.0)
-    - Reusable/View (= 2.4.0)
-  - Reusable/Storyboard (2.4.0)
-  - Reusable/View (2.4.0)
-  - SnapKit (0.21.1)
-  - SwiftyJSON (2.3.2)
+  - Kingfisher (3.1.0)
+  - ObjectMapper (2.0.0)
+  - ReactiveSwift (1.0.0-alpha.1):
+    - Result (~> 3.0)
+  - Result (3.0.0)
+  - SwiftyJSON (3.0.0)
+  - Toaster (2.0.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 3.0)
-  - BMPlayer (~> 0.2.0)
-  - Cartography (~> 0.6.0)
-  - ESPullToRefresh
-  - Gifu
-  - JLToast (~> 1.4)
+  - Alamofire (~> 4.0)
+  - Cartography (from `https://github.com/alexiosdev/Cartography.git`, branch `swift3_alex`)
+  - ESPullToRefresh (from `https://github.com/eggswift/pull-to-refresh.git`, branch `swift3`)
+  - EZSwiftExtensions (from `https://github.com/lfarah/EZSwiftExtensions.git`)
   - JTSImageViewController
-  - Kingfisher (~> 2.1.0)
-  - ObjectMapper (~> 1.2)
-  - ReactiveCocoa (~> 4.1.0)
-  - Reusable (~> 2.4.0)
-  - SwiftyJSON (~> 2.3.2)
+  - Kingfisher
+  - ObjectMapper
+  - ReactiveSwift (~> 1.0.0-alpha.1)
+  - SwiftyJSON
+  - Toaster (~> 2.0)
+
+EXTERNAL SOURCES:
+  Cartography:
+    :branch: swift3_alex
+    :git: https://github.com/alexiosdev/Cartography.git
+  ESPullToRefresh:
+    :branch: swift3
+    :git: https://github.com/eggswift/pull-to-refresh.git
+  EZSwiftExtensions:
+    :git: https://github.com/lfarah/EZSwiftExtensions.git
+
+CHECKOUT OPTIONS:
+  Cartography:
+    :commit: b86998764ecb2df775c54046ba78b387dd4dbd40
+    :git: https://github.com/alexiosdev/Cartography.git
+  ESPullToRefresh:
+    :commit: 6f662f19a8661735661ff570f476463e11188144
+    :git: https://github.com/eggswift/pull-to-refresh.git
+  EZSwiftExtensions:
+    :commit: 53a43266fc6926fcd22738ec1774e1aacd2fef0d
+    :git: https://github.com/lfarah/EZSwiftExtensions.git
 
 SPEC CHECKSUMS:
-  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
-  BMPlayer: ea9cf5d3ee408ae58414986b9d4fbe76a734345a
-  Cartography: 70af183a248547694a8cfaa6b989cb7e04589985
-  ESPullToRefresh: 03154f0eff5e4519970f23176c338ece51a955e0
-  Gifu: 0eab1ca24a4adbd949338bcb71a8556748cb2d28
-  JLToast: bf63282a7df069557e80c77dbd2c6b9f9fc4de72
+  Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
+  Cartography: de3e85d2fc2d7288a2e7c89e1ac6cad08599d75e
+  ESPullToRefresh: 98d61c362f6f4ad72b2b0885fa23935de136e4f2
+  EZSwiftExtensions: 6c5e29ae473b3d2edbf5472eab0a3d7bdb20215c
   JTSImageViewController: 1f8ce1cc93dab0d0af8e53badeea7528560cfec9
-  Kingfisher: 3ac09acad75a25ab22f6d7cef3de10d61dd4792d
-  NVActivityIndicatorView: 0084f6be71bdf4735b5424ebfb530b1e3db3276c
-  ObjectMapper: 4eb08a726e9791a93b2632049951b56a7c17e471
-  ReactiveCocoa: d70004d7a366a7b8e87e60ce2347182c77701949
-  Result: 18e1a7597fbcca5923c565b40a25a98afafdee02
-  Reusable: c23110dd77e6d3cb2ee2197289ef5e21005ba8f0
-  SnapKit: bbad04cb016c7cead63965f16b00c09318d271ee
-  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  Kingfisher: 7779f22e977393e9533a89a9685beb8f679d3767
+  ObjectMapper: aed2570edabbd3c9b26c939e1cabdb6558f933e0
+  ReactiveSwift: cf34523b2b0dd8fbfc8fda484b0d0585e3d74955
+  Result: 1b3e431f37cbcd3ad89c6aa9ab0ae55515fae3b6
+  SwiftyJSON: f57b2b44bc166617372d1c70773591fe9f0f5fd4
+  Toaster: 25101e968655aa991fa72ad888029e8d515c6237
 
-PODFILE CHECKSUM: 355de4014be70c938f674f8fbc71e301f35ce01d
+PODFILE CHECKSUM: c706f9f6593f37bbcfbc345e30b2dc8cfb93d77c
 
 COCOAPODS: 1.0.1

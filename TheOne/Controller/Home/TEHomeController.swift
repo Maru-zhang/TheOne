@@ -8,7 +8,7 @@
 
 import UIKit
 import Cartography
-import ReactiveCocoa
+import ReactiveSwift
 import JTSImageViewController
 
 let widgetSpace: CFloat = 20

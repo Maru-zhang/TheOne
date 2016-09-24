@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -12,9 +13,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6af-19-9mR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -34,34 +35,29 @@
                         <viewControllerLayoutGuide type="bottom" id="FYt-2W-X7R"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wz5-tx-CJv">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u23-4d-wyX">
-                                <rect key="frame" x="165" y="189" width="270" height="40"/>
                                 <state key="normal" image="qqLogin"/>
                                 <state key="highlighted" image="qqLoginHigh"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AiC-tb-DWO">
-                                <rect key="frame" x="165" y="93" width="270" height="40"/>
                                 <state key="normal" image="wechatLogin"/>
                                 <state key="highlighted" image="wechatLoginHigh"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0qx-Vk-Sgv">
-                                <rect key="frame" x="165" y="247" width="270" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="fKU-Qd-tMY"/>
                                 </constraints>
                                 <state key="normal" image="mobileLogin"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="或者" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X31-Ru-Teh">
-                                <rect key="frame" x="290" y="234" width="20" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IgF-N2-Jff">
-                                <rect key="frame" x="165" y="141" width="270" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="PlD-u5-5Vc"/>
                                 </constraints>
@@ -69,7 +65,7 @@
                                 <state key="highlighted" image="weiboLoginHigh"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.25" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="X31-Ru-Teh" firstAttribute="top" secondItem="u23-4d-wyX" secondAttribute="bottom" constant="5" id="Ba6-dc-bMR"/>
                             <constraint firstItem="IgF-N2-Jff" firstAttribute="leading" secondItem="u23-4d-wyX" secondAttribute="leading" id="JWs-iU-cUA"/>
@@ -86,7 +82,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="登录ONE" id="gxC-23-HVM">
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="lv3-NA-H6B">
-                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="close:" destination="6DT-Cx-EEs" id="zA6-xJ-gCn"/>
                             </connections>

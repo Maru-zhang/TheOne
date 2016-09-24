@@ -34,12 +34,12 @@ class TERankTableController: UITableViewController {
     }
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
         setupView()
         
         setupBinding()
-        
     }
 
 }

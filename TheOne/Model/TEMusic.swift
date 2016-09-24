@@ -37,7 +37,7 @@ struct TEMusicDetail: Mappable {
     
     init() {}
     
-    init?(_ map: Map) {
+    init?(map: Map) {
         
     }
     
@@ -76,7 +76,7 @@ struct Story_Author: Mappable {
     var user_name: String?
     var web_url: String?
     
-    init?(_ map: Map) {
+    init?(map: Map) {
         
     }
     
@@ -97,7 +97,7 @@ struct TEMusic_Related: Mappable {
     var music_id: String?
     var author: TEAuthor?
     
-    init?(_ map: Map) {
+    init?(map: Map) {
         
     }
     

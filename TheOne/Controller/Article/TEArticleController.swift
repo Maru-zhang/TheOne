@@ -9,7 +9,7 @@
 import UIKit
 import Cartography
 import Kingfisher
-import ReactiveCocoa
+import ReactiveSwift
 
 
 class TEArticleController: UIViewController {
@@ -73,7 +73,8 @@ extension TEArticleController {
             self.carouselModels = imgResult
             
             self.circleView.touchEventColsure = { index in
-                self.presentVC(TERankTableController.init(model: self.carouselModels[index]))
+                let rankVC = UINavigationController.init(rootViewController: TERankTableController.init(model: self.carouselModels[index]))
+                self.presentVC(rankVC)
             }
             
             ImagePrefetcher(urls: urls, optionsInfo: nil, progressBlock: nil, completionHandler: { (skippedResources, failedResources, completedResources) in
@@ -108,27 +109,27 @@ extension TEArticleController: TEPageableDataSource,TEPageableDelegate {
         if cell == nil {
             
             cell = UIScrollView()
-            cell?.contentSize = CGSizeMake(view.frame.width , 700)
-            cell?.backgroundColor = UIColor.whiteColor()
+            cell?.contentSize = CGSize(width: view.frame.width, height: 700)
+            cell?.backgroundColor = UIColor.white
             cell?.showsVerticalScrollIndicator = false
             cell?.showsHorizontalScrollIndicator = false
             
-            let pannel = UITableView(frame: CGRectMake(10, 10, view.frame.width - 20, 550))
-            pannel.backgroundColor = UIColor.whiteColor()
+            let pannel = UITableView(frame: CGRect.init(origin: CGPoint.init(x: 10, y: 10), size: CGSize.init(width: view.frame.width - 20, height: 550)))
+            pannel.backgroundColor = UIColor.white
             pannel.estimatedRowHeight = 150
             pannel.dataSource = self;
             pannel.delegate = self;
-            pannel.registerNib(UINib.init(nibName: "TEArticleCell", bundle: nil), forCellReuseIdentifier: String(TEArticleCell))
+            pannel.register(UINib.init(nibName: "TEArticleCell", bundle: nil), forCellReuseIdentifier: String(describing: TEArticleCell()))
             pannel.tableFooterView = UIView()
-            pannel.scrollEnabled = false;
+            pannel.isScrollEnabled = false;
             pannel.scrollsToTop = false;
             pannel.translatesAutoresizingMaskIntoConstraints = true;
             pannel.layer.masksToBounds = false;
-            pannel.layer.shadowColor = UIColor.blackColor().CGColor;
+            pannel.layer.shadowColor = UIColor.black.cgColor;
             pannel.layer.shadowRadius = 2;
-            pannel.layoutMargins = UIEdgeInsetsZero
-            pannel.separatorInset = UIEdgeInsetsZero
-            pannel.layer.shadowOffset = CGSizeZero;
+            pannel.layoutMargins = UIEdgeInsets.zero
+            pannel.separatorInset = UIEdgeInsets.zero
+            pannel.layer.shadowOffset = CGSize.zero;
             pannel.layer.shadowOpacity = 0.5;
             pannel.layer.cornerRadius = 5;
             

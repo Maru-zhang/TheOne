@@ -3,18 +3,17 @@ platform :ios, '9.0'
 use_frameworks!
 
 def pods
-    pod 'Gifu'
-    pod 'ESPullToRefresh'
-    pod 'JLToast', '~> 1.4'
-	pod 'Alamofire', '~> 3.0'
-	pod 'ObjectMapper', '~> 1.2'
-	pod 'SwiftyJSON', '~> 2.3.2'
-	pod 'Kingfisher', '~> 2.1.0'
-    pod 'Cartography', '~> 0.6.0'
-    pod 'ReactiveCocoa', '~> 4.1.0'
-    pod 'Reusable', '~>2.4.0'
+    pod 'ESPullToRefresh', :git => 'https://github.com/eggswift/pull-to-refresh.git',  :branch => 'swift3'
+    pod 'Toaster', '~> 2.0'
+    pod 'Alamofire', '~> 4.0'
+	pod 'ObjectMapper'
+	pod 'SwiftyJSON'
+	pod 'Kingfisher'
+    pod 'Cartography', :git => 'https://github.com/alexiosdev/Cartography.git',  :branch => 'swift3_alex'
+    pod 'ReactiveSwift', '~> 1.0.0-alpha.1'
     pod 'JTSImageViewController'
-    pod 'BMPlayer', '~> 0.2.0'
+    pod 'EZSwiftExtensions', :git => 'https://github.com/lfarah/EZSwiftExtensions.git'
+
 end
 
 target 'TheOne' do

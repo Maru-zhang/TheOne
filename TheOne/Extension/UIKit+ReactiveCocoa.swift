@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import ReactiveCocoa
+import ReactiveSwift
 import Result
 
 struct AssociationKey {
@@ -31,7 +31,7 @@ func lazyAssociatedProperty<T: AnyObject>(host: AnyObject, key: UnsafePointer<Vo
   return associatedProperty!
 }
 
-func lazyMutableProperty<T>(host: AnyObject, key: UnsafePointer<Void>, setter: T -> (), getter: () -> T) -> MutableProperty<T> {
+func lazyMutableProperty<T>(host: AnyObject, key: UnsafePointer<Void>, setter: (T) -> (), getter: () -> T) -> MutableProperty<T> {
   return lazyAssociatedProperty(host, key: key) {
     let property = MutableProperty<T>(getter())
     property.producer

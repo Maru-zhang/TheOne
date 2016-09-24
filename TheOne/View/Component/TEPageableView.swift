@@ -7,12 +7,12 @@
 //
 
 import UIKit
-import ReactiveCocoa
+import ReactiveSwift
 import Result
 
 class TEPageableView: UIScrollView {
     
-    typealias triggerAction = (refresh: AAPullToRefresh) -> ()
+    typealias triggerAction = (_ refresh: AAPullToRefresh) -> ()
     
     weak var dataSource: TEPageableDataSource?
     weak var viewDelegate: TEPageableDelegate?
@@ -38,7 +38,7 @@ class TEPageableView: UIScrollView {
         currentIndex = 0
         super.init(frame: frame)
         self.bounces = true
-        self.pagingEnabled = true
+        self.isPagingEnabled = true
         self.alwaysBounceHorizontal = true
         self.alwaysBounceVertical = false
         self.delegate = self

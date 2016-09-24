@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import JLToast
+import Toaster
 
 
 class TEToastService {

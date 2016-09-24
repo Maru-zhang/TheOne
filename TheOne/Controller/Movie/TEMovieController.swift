@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import ReactiveCocoa
+import ReactiveSwift
 import ESPullToRefresh
 
 
@@ -30,7 +30,7 @@ class TEMovieController: UITableViewController {
     private func setupView() {
         setupCommentItem()
         tableView.separatorStyle = .None
-        tableView.registerClass(TEMovieCardCell.classForCoder(), forCellReuseIdentifier: NSStringFromClass(TEMovieCardCell))
+        tableView.register(TEMovieCardCell.classForCoder(), forCellReuseIdentifier: NSStringFromClass(TEMovieCardCell))
         tableView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 9)
         tableView.es_addInfiniteScrolling { [unowned self] in
             self.viewModel.loadMoreObserver.sendNext()

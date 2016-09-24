@@ -27,7 +27,7 @@ struct TEMovieCardModel: Mappable {
     var servertime: String?
     
     
-    init?(_ map: Map) {
+    init?(map: Map) {
         
     }
     

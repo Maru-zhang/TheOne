@@ -8,7 +8,7 @@
 
 import Foundation
 import Kingfisher
-import ReactiveCocoa
+import ReactiveSwift
 import Result
 
 class TEMovieViewModel {

@@ -8,7 +8,7 @@
 
 import UIKit
 import Cartography
-import ReactiveCocoa
+import ReactiveSwift
 
 class TEHeaderCell: TECleanCell {
     

@@ -38,7 +38,7 @@ extension TECommentCell {
         
         // config data
         username.text = comment.user?.user_name!
-        header.kf_setImageWithURL(NSURL(string: (comment.user?.web_url)!)!)
+        header.kf.setImage(with: ImageResource.init(downloadURL: URL.init(string: (comment.user?.web_url)!)!))
         timestamp.text = comment.input_date
         content.text = comment.content
         likeNum.text = String(comment.praisenum!)
@@ -50,7 +50,7 @@ extension TECommentCell {
         
         // Layout separato
         separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
-        layoutMargins = UIEdgeInsetsZero
+        layoutMargins = UIEdgeInsets.zero
         
     }
     

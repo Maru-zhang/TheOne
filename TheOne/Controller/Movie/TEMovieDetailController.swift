@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import ReactiveCocoa
-import BMPlayer
+import ReactiveSwift
 
 
 class TEMovieDetailController: UITableViewController {
