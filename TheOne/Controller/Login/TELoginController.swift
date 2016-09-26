@@ -20,20 +20,20 @@ class TELoginController: UIViewController {
     private func setupView() {
         
         // 隐藏NavigaionItem
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.translucent = true
+        navigationController?.navigationBar.isTranslucent = true
         
         // 配置背景图片
         let background = UIImageView(image: UIImage(named: "personalBackgroundImage")!)
         background.frame = view.bounds
         view.addSubview(background)
-        view.sendSubviewToBack(background)
+        view.sendSubview(toBack: background)
         
     }
     
     @IBAction func close(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
 
 }

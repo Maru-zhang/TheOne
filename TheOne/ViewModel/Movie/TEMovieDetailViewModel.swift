@@ -12,7 +12,7 @@ import Result
 class TEMovieDetailViewModel {
     
     /// 电影名
-    let title: ConstantProperty<String>
+    let title: Property<String>
     /// 电影详情
     let detail = MutableProperty<TEMovieDetail?>(nil)
     /// 电影故事

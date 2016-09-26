@@ -26,7 +26,7 @@ class TENetService {
      *
      *	@since 0.1.0
      */
-    private struct API_Route {
+    fileprivate struct API_Route {
         
         
         // MARK: - Home API
@@ -191,9 +191,9 @@ extension TENetService {
      - parameter success:	成功回调
      - parameter fail:	失败回调
      */
-    static func apiGetLatestOneStuff(withSuccessHandler result: (SignalProducer<[TEPaperModel],NSError>) -> ()) {
+    static func apiGetLatestOneStuff(withSuccessHandler result: @escaping (SignalProducer<[TEPaperModel],NSError>) -> ()) {
         
-        apiGetSpecifyOneStuff(API_Route.Home_Stuff()) { (signal) in
+        apiGetSpecifyOneStuff(url: API_Route.Home_Stuff()) { (signal) in
             result(signal)
         }
     }

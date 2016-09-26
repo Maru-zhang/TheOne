@@ -29,11 +29,11 @@ class TEMovieController: UITableViewController {
     
     private func setupView() {
         setupCommentItem()
-        tableView.separatorStyle = .None
-        tableView.register(TEMovieCardCell.classForCoder(), forCellReuseIdentifier: NSStringFromClass(TEMovieCardCell))
+        tableView.separatorStyle = .none
+        tableView.register(TEMovieCardCell.classForCoder(), forCellReuseIdentifier: NSStringFromClass(TEMovieCardCell.self))
         tableView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 9)
-        tableView.es_addInfiniteScrolling { [unowned self] in
-            self.viewModel.loadMoreObserver.sendNext()
+        let _ = tableView.es_addInfiniteScrolling { [unowned self] in
+//            self.viewModel.loadMoreObserver.send(value: <#T##Void#>)
         }
 
     }
@@ -43,10 +43,10 @@ class TEMovieController: UITableViewController {
         viewModel.active <~ isActive()
         
         viewModel.refreshSignal
-            .observeOn(UIScheduler())
-            .startWithNext { [unowned self] in
+            .observe(on: UIScheduler())
+            .startWithValues { [unowned self] in
             
-            self.viewModel.fetchRemoteRefreshDataWithCallBack({ (entitys) in
+            self.viewModel.fetchRemoteRefreshDataWithCallBack(success: { (entitys) in
                 self.tableView.reloadData()
                 self.tableView.es_stopLoadingMore()
                 }, failure: { (error) in
@@ -57,9 +57,9 @@ class TEMovieController: UITableViewController {
         }
         
         viewModel.loadMoreSignal
-            .observeOn(UIScheduler())
-            .observeNext { [unowned self]() in
-            self.viewModel.fetchRemoteDataWithCallBack({ 
+            .observe(on: UIScheduler())
+            .observeValues { [unowned self]() in
+            self.viewModel.fetchRemoteDataWithCallBack(success: { 
                 self.tableView.reloadData()
                 self.tableView.es_stopLoadingMore()
                 }
@@ -82,27 +82,28 @@ class TEMovieController: UITableViewController {
 extension TEMovieController {
     
     // MARK: - DataSource
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfMoviesInSection(section)
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.numberOfMoviesInSection(section: section)
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(NSStringFromClass(TEMovieCardCell), forIndexPath: indexPath) as! TEMovieCardCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: NSStringFromClass(TEMovieCardCell.self), for: indexPath) as! TEMovieCardCell
         
-        cell.configureWithViewModels(viewModel, indexPath: indexPath)
+        cell.configureWithViewModels(viewModel: viewModel, indexPath: indexPath as NSIndexPath)
         
         return cell
     }
     
     // MARK: - TableView Delegate
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return viewModel.heightForCellAtIndexPath(indexPath)
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return viewModel.heightForCellAtIndexPath(indexPath: indexPath as NSIndexPath)
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let model = TEMovieDetailViewModel.init(movie: viewModel.entityMappingIndexPath(indexPath))
+        let model = TEMovieDetailViewModel.init(movie: viewModel.entityMappingIndexPath(indexPath: indexPath as NSIndexPath))
         
         navigationController?.pushViewController(TEMovieDetailController.init(model: model), animated: true)
     }

@@ -20,11 +20,11 @@ class TEMovieViewModel {
     
     
     let loadMoreObserver: Observer<Void,NoError>
-    private let refreshObserver: Observer<Void, NoError>
+    fileprivate let refreshObserver: Observer<Void, NoError>
 
     // MARK: - DataSources
-    private var pageIndex: Int
-    private var movies: [TEMovieCardModel]
+    fileprivate var pageIndex: Int
+    fileprivate var movies: [TEMovieCardModel]
     
     
     // MARK: - Initalizer
@@ -32,13 +32,13 @@ class TEMovieViewModel {
         self.pageIndex = 0
         self.movies = [TEMovieCardModel]()
         
-        let (refreshSignal, refreshObserver) = SignalProducer<Void, NoError>.buffer(0)
-        self.refreshObserver = refreshObserver
-        self.refreshSignal = refreshSignal
-        
-        let (loadMoreSignal,loadMoreObserver) = Signal<Void, NoError>.pipe()
-        self.loadMoreSignal = loadMoreSignal
-        self.loadMoreObserver = loadMoreObserver
+//        let (refreshSignal, refreshObserver) = SignalProducer<Void, NoError>.buffer(0)
+//        self.refreshObserver = refreshObserver
+//        self.refreshSignal = refreshSignal
+//        
+//        let (loadMoreSignal,loadMoreObserver) = Signal<Void, NoError>.pipe()
+//        self.loadMoreSignal = loadMoreSignal
+//        self.loadMoreObserver = loadMoreObserver
         
 
         active.producer
@@ -88,21 +88,20 @@ extension TEMovieViewModel {
      - parameter success:	成功回调
      - parameter failure:	失败回调
      */
-    func fetchRemoteDataWithCallBack(success: () -> Void, failure: (FailureType) -> Void) {
+    func fetchRemoteDataWithCallBack(success: @escaping () -> Void, failure: @escaping (FailureType) -> Void) {
         
-        
-        TENetService
-            .apiGetSpecifyMoiveListwithResultSignalProducer(page) { [unowned self] (signalProducer) in
-            signalProducer.startWithNext({ (entitys) in
-                guard !entitys.isEmpty else {
-                    failure(NSError(domain: TEConfigure.mar_domain, code: 0, userInfo: nil))
-                    return
-                }
-                self.movies.appendContentsOf(entitys)
-                self.page = (entitys.last?.id?.toInt())!
-                success()
-            })
-        }
+//        TENetService
+//            .apiGetSpecifyMoiveListwithResultSignalProducer(page: page) { [unowned self] (signalProducer) in
+//            signalProducer.startWithValues({ (entitys) in
+//                guard !entitys.isEmpty else {
+//                    failure(NSError(domain: TEConfigure.mar_domain, code: 0, userInfo: nil))
+//                    return
+//                }
+//                self.movies.appendContentsOf(entitys)
+//                self.page = (entitys.last?.id?.toInt())!
+//                success()
+//            })
+//        }
         
     }
     
@@ -112,17 +111,17 @@ extension TEMovieViewModel {
      - parameter success:	成功回调
      - parameter failure:	失败回调
      */
-    func fetchRemoteRefreshDataWithCallBack(success: () -> Void, failure: (FailureType) -> Void) {
+    func fetchRemoteRefreshDataWithCallBack(success: @escaping () -> Void, failure: (FailureType) -> Void) {
         
         page = 0
         
-        TENetService
-            .apiGetSpecifyMoiveListwithResultSignalProducer(page) { [unowned self] (signalProducer) in
-                signalProducer.startWithNext({ (entitys) in
-                    self.movies = entitys
-                    self.page = (entitys.last?.id?.toInt())!
-                    success()
-                })
-        }
+//        TENetService
+//            .apiGetSpecifyMoiveListwithResultSignalProducer(page: page) { [unowned self] (signalProducer) in
+//                signalProducer.startWithNext({ (entitys) in
+//                    self.movies = entitys
+//                    self.page = (entitys.last?.id?.toInt())!
+//                    success()
+//                })
+//        }
     }
 }

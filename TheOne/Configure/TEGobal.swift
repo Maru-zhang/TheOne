@@ -11,4 +11,4 @@ import UIKit
 
 
 // 尺寸
-let SCREEN_BOUNDS = UIScreen.mainScreen().bounds
+let SCREEN_BOUNDS = UIScreen.main.bounds
