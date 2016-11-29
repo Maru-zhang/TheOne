@@ -39,7 +39,7 @@ struct TEMovieDetail: Mappable {
     var commentnum: NSInteger?
     var servertime: NSInteger?
     
-    init?(_ map: Map) {
+    init?(map: Map) {
         
     }
     

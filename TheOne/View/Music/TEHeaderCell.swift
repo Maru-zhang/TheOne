@@ -29,7 +29,7 @@ class TEHeaderCell: TECleanCell {
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         headerImage = UIImageView()
-        authorBanner = UINib.init(nibName: String(TEMusicBanner), bundle: nil).instantiateWithOwner(nil, options: nil).first as! TEMusicBanner
+        authorBanner = UINib.init(nibName: String(describing: TEMusicBanner()), bundle: nil).instantiate(withOwner: nil, options: nil).first as! TEMusicBanner
         titleName = UILabel()
         story = UIButton()
         lyrics = UIButton()
@@ -38,18 +38,18 @@ class TEHeaderCell: TECleanCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         titleName.text = "歌曲信息"
-        titleName.textColor = UIColor.lightGrayColor()
-        titleName.font = UIFont.systemFontOfSize(12)
+        titleName.textColor = UIColor.lightGray
+        titleName.font = UIFont.systemFont(ofSize: 12)
         
-        lyrics.setImage(UIImage(named: "music_lyric_default"), forState: .Normal)
-        lyrics.setImage(UIImage(named: "music_story_selected"), forState: .Selected)
+        lyrics.setImage(UIImage(named: "music_lyric_default"), for: .normal)
+        lyrics.setImage(UIImage(named: "music_story_selected"), for: .selected)
         
-        story.setImage(UIImage(named: "music_story_default"), forState: .Normal)
-        story.setImage(UIImage(named: "music_story_selected"), forState: .Selected)
-        story.selected = true
+        story.setImage(UIImage(named: "music_story_default"), for: .normal)
+        story.setImage(UIImage(named: "music_story_selected"), for: .selected)
+        story.isSelected = true
         
-        info.setImage(UIImage(named: "music_about_default"), forState: .Normal)
-        info.setImage(UIImage(named: "music_about_selected"), forState: .Selected)
+        info.setImage(UIImage(named: "music_about_default"), for: .normal)
+        info.setImage(UIImage(named: "music_about_selected"), for: .selected)
         
         contentView.addSubview(headerImage)
         contentView.addSubview(titleName)
@@ -58,35 +58,37 @@ class TEHeaderCell: TECleanCell {
         contentView.addSubview(info)
         contentView.addSubview(authorBanner)
         
-        story.rac_command = RACCommand(signalBlock: { [unowned self] (anyObj) -> RACSignal! in
-            guard self.story.selected != true else {
-                return RACSignal.empty()
-            }
-            self.resetSelect()
-            self.story.selected = true
-            self.storyAction?(anyObj)
-            return RACSignal.empty()
-        })
+//        story.rac_command =
+//            
+//            RACCommand(signalBlock: { [unowned self] (anyObj) -> RACSignal! in
+//            guard self.story.selected != true else {
+//                return RACSignal.empty()
+//            }
+//            self.resetSelect()
+//            self.story.selected = true
+//            self.storyAction?(anyObj)
+//            return RACSignal.empty()
+//        })
         
-        lyrics.rac_command = RACCommand(signalBlock: { [unowned self] (anyObj) -> RACSignal! in
-            guard self.lyrics.selected != true else {
-                return RACSignal.empty()
-            }
-            self.resetSelect()
-            self.lyrics.selected = true
-            self.lyricsAction?(anyObj)
-            return RACSignal.empty()
-        })
-        
-        info.rac_command = RACCommand(signalBlock: { [unowned self] (anyObj) -> RACSignal! in
-            guard self.info.selected != true else {
-                return RACSignal.empty()
-            }
-            self.resetSelect()
-            self.info.selected = true
-            self.infoAction?(anyObj)
-            return RACSignal.empty()
-        })
+//        lyrics.rac_command = RACCommand(signalBlock: { [unowned self] (anyObj) -> RACSignal! in
+//            guard self.lyrics.selected != true else {
+//                return RACSignal.empty()
+//            }
+//            self.resetSelect()
+//            self.lyrics.selected = true
+//            self.lyricsAction?(anyObj)
+//            return RACSignal.empty()
+//        })
+//        
+//        info.rac_command = RACCommand(signalBlock: { [unowned self] (anyObj) -> RACSignal! in
+//            guard self.info.selected != true else {
+//                return RACSignal.empty()
+//            }
+//            self.resetSelect()
+//            self.info.selected = true
+//            self.infoAction?(anyObj)
+//            return RACSignal.empty()
+//        })
         
         
         constrain(headerImage, authorBanner, titleName) { (headerImage, authorBanner, titleName) in
@@ -126,13 +128,14 @@ class TEHeaderCell: TECleanCell {
         }
         
         detail.producer
-            .startOn(QueueScheduler.mainQueueScheduler)
+            .start(on: UIScheduler())
             .filter({ (details) -> Bool in
                 return details != nil
             })
-            .startWithNext { [unowned self] (details) in
-                self.headerImage.kf_setImageWithURL(NSURL.init(string: details!.cover!)!, placeholderImage: UIImage.init(named: "music_cover_small"))
-                self.authorBanner.configWithEntity(details!)
+      
+            .startWithValues { [unowned self] (details) in
+                self.headerImage.kf.setImage(with: NSURL.init(string: details!.cover!) as! Resource?)
+                self.authorBanner.configWithEntity(entity: details!)
         }
 
     }
@@ -142,15 +145,15 @@ class TEHeaderCell: TECleanCell {
     }
 
     private func resetSelect() {
-        if story.selected == true {
-            story.selected = false
+        if story.isSelected == true {
+            story.isSelected = false
         }
-        if lyrics.selected == true {
-            lyrics.selected = false
+        if lyrics.isSelected == true {
+            lyrics.isSelected = false
         }
         
-        if info.selected == true {
-            info.selected = false
+        if info.isSelected == true {
+            info.isSelected = false
         }
     }
 

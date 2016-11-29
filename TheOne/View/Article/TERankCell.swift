@@ -25,20 +25,20 @@ class TERankCell: TECleanCell {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        rank.font = UIFont.systemFontOfSize(15)
-        rank.textColor = UIColor.whiteColor()
+        rank.font = UIFont.systemFont(ofSize: 15)
+        rank.textColor = UIColor.white
         
         topicTitle.numberOfLines = 0
-        topicTitle.font = UIFont.systemFontOfSize(15)
-        topicTitle.textColor = UIColor.whiteColor()
+        topicTitle.font = UIFont.systemFont(ofSize: 15)
+        topicTitle.textColor = UIColor.white
         
         topicPerson.numberOfLines = 0
-        topicPerson.font = UIFont.systemFontOfSize(11)
-        topicPerson.textColor = UIColor.whiteColor()
+        topicPerson.font = UIFont.systemFont(ofSize: 11)
+        topicPerson.textColor = UIColor.white
         
         topicHotLine.numberOfLines = 0
-        topicHotLine.font = UIFont.systemFontOfSize(11)
-        topicHotLine.textColor = UIColor.whiteColor()
+        topicHotLine.font = UIFont.systemFont(ofSize: 11)
+        topicHotLine.textColor = UIColor.white
         
         contentView.addSubview(rank)
         contentView.addSubview(topicTitle)
@@ -71,7 +71,7 @@ class TERankCell: TECleanCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

@@ -27,9 +27,9 @@ public class MARCarousel: UIView {
     /// The pageIndicator
     private var pageIndicator: UIPageControl!
     /// The time Manager
-    private var timer: NSTimer?
+    private var timer: Timer?
     /// Default time duration
-    public var duration: NSTimeInterval!
+    public var duration: TimeInterval!
     /// Call back when user touch event,Default is nil
     public var touchEventColsure: ((Int) -> Void)?
     /// The index of current page
@@ -71,46 +71,37 @@ public class MARCarousel: UIView {
         touchEventColsure = nil
         
         scrollView = UIScrollView(frame: self.bounds)
-        scrollView.contentSize = CGSizeMake(self.frame.width * 3, self.frame.height)
+        scrollView.contentSize = CGSize.init(width: self.frame.width * 3, height: self.frame.height)
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
-        scrollView.pagingEnabled = true
+        scrollView.isPagingEnabled = true
         scrollView.delegate = self
         scrollView.bounces = false
         
-        currentImageView = UIImageView(frame: CGRectMake(self.frame.size.width, 0, self.frame.size.width, self.frame.size.height))
-        currentImageView.userInteractionEnabled = true
-        currentImageView.contentMode = .ScaleToFill
+        currentImageView = UIImageView.init(frame: CGRect(x: self.frame.size.width, y: 0, width: self.frame.size.width, height: self.frame.size.height))
+        currentImageView.isUserInteractionEnabled = true
+        currentImageView.contentMode = .scaleToFill
         currentImageView.clipsToBounds = true
-        currentImageView.addTapGesture { [unowned self] (_) in
-            self.touchEventColsure?(self.indexOfCurrent)
-        }
         
-        lastImageView = UIImageView(frame: CGRectMake(0, 0, self.frame.width, self.frame.height))
-        lastImageView.userInteractionEnabled = true
-        lastImageView.contentMode = .ScaleToFill
+        lastImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
+        lastImageView = UIImageView(frame: CGRect.init(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
+        lastImageView.isUserInteractionEnabled = true
+        lastImageView.contentMode = .scaleToFill
         lastImageView.clipsToBounds = true
-        lastImageView.addTapGesture { [unowned self] (_) in
-            self.touchEventColsure?(self.indexOfCurrent)
-        }
-        
-        nextImageView = UIImageView(frame: CGRectMake(self.frame.size.width * 2, 0, self.frame.size.width, self.frame.size.height))
-        nextImageView.userInteractionEnabled = true
-        nextImageView.contentMode = .ScaleToFill
+
+        nextImageView = UIImageView(frame: CGRect.init(x: self.frame.size.width * 2.0, y: self.frame.size.width, width: self.frame.size.width, height: self.frame.height))
+        nextImageView.isUserInteractionEnabled = true
+        nextImageView.contentMode = .scaleToFill
         nextImageView.clipsToBounds = true
-        nextImageView.addTapGesture { [unowned self] (_) in
-            self.touchEventColsure?(self.indexOfCurrent)
-        }
-        
         
         pageIndicator = UIPageControl()
         pageIndicator.hidesForSinglePage = true
-        pageIndicator.backgroundColor = UIColor.clearColor()
-        pageIndicator.frame = CGRectMake(0, self.frame.height - 40, self.frame.width, 40)
+        pageIndicator.backgroundColor = UIColor.clear
+        pageIndicator.frame = CGRect.init(x: 0, y: self.frame.height - 40, width: self.frame.width, height: 40)
         pageIndicator.numberOfPages = images.count
         pageIndicator.currentPage = 0
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: duration, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
         
         addSubview(scrollView)
         addSubview(pageIndicator)
@@ -118,11 +109,12 @@ public class MARCarousel: UIView {
         scrollView.addSubview(nextImageView)
         scrollView.addSubview(lastImageView)
         
-        addObserver(self, forKeyPath: "images", options: .New, context: &MAR_Context)
+        addObserver(self, forKeyPath: "images", options: .new, context: &MAR_Context)
         
     }
     
     private func beginTimer() {
+        
         
         guard images.count > 1 else {
             return
@@ -130,9 +122,9 @@ public class MARCarousel: UIView {
         
         if timer != nil { stopTimer() }
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: duration, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
         
-        NSRunLoop.currentRunLoop().addTimer(timer!, forMode: NSRunLoopCommonModes)
+        RunLoop.current.add(timer!, forMode: RunLoopMode.commonModes)
         
     }
     
@@ -143,7 +135,7 @@ public class MARCarousel: UIView {
     
     @objc private func updateTime() {
         
-        scrollToSpecifyDirection(.Left)
+        scrollToSpecifyDirection(direction: .Left)
     }
     
     /**
@@ -151,8 +143,8 @@ public class MARCarousel: UIView {
      */
     private func resetImageView() {
         currentImageView.image = images[indexOfCurrent]
-        nextImageView.image = images[getLastOrNextIndex(false)]
-        lastImageView.image = images[getLastOrNextIndex(true)]
+//        nextImageView.image = images[getLastOrNextIndex(false)]
+//        lastImageView.image = images[getLastOrNextIndex(true)]
     }
     
     /**
@@ -183,19 +175,18 @@ public class MARCarousel: UIView {
         
         if direction == .Left {
             
-            self.scrollView.setContentOffset(CGPointMake(self.frame.width * 2, 0), animated: true)
+            self.scrollView.setContentOffset(CGPoint.init(x: self.frame.width * 2, y: 0), animated: true)
             
         }else {
             
-            self.scrollView.setContentOffset(CGPointMake(0, 0), animated: true)
-            
+            self.scrollView.setContentOffset(CGPoint.init(x: 0, y: 0), animated: true)
         }
         
     }
     
     
     // MARK: - Override
-    public override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    public func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutableRawPointer) {
         
         if (context == &MAR_Context) && (keyPath == "images") {
             
@@ -206,12 +197,11 @@ public class MARCarousel: UIView {
                 indexOfCurrent = 0
                 pageIndicator.numberOfPages = newImages.count
                 resetImageView()
-                scrollView.contentOffset = CGPointMake(self.bounds.width, 0)
-                
+                scrollView.contentOffset = CGPoint.init(x: self.bounds.width, y: 0)
             }
             
         }else {
-            super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
+            super.observeValueForKeyPath(keyPath, ofObject: object, change: change as! [NSKeyValueChangeKey : Any]?, context: context)
         }
     }
 

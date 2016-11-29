@@ -12,14 +12,14 @@ class TECleanCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = UIColor.clearColor()
+        backgroundColor = UIColor.clear
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {}
-    override func setHighlighted(highlighted: Bool, animated: Bool) {}
+    override func setSelected(_ selected: Bool, animated: Bool) {}
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {}
 
 }

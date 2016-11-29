@@ -14,8 +14,8 @@ class TEArticleDetailController<ReadType>: UIViewController {
     
     let pageableView: TEPageableView
     
-    private let list: [ReadType]
-    private var index: Int
+    fileprivate let list: [ReadType]
+    fileprivate var index: Int
 
     // MARK: - Life Cycle
     init(list: [ReadType],index: Int) {
@@ -34,7 +34,11 @@ class TEArticleDetailController<ReadType>: UIViewController {
         pageableView.dataSource = self
         pageableView.viewDelegate = self
         view.addSubview(pageableView)
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.white
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {

@@ -18,16 +18,16 @@ class TECardPageView: UIView {
         
         super.init(frame: frame)
         
-        backgroundColor = UIColor.whiteColor()
+        backgroundColor = UIColor.white
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         
-        super.drawRect(rect)
+        super.draw(rect)
         
         // Firsr, remove all of this layer's sublayer
         if shadowLayer != nil {
@@ -35,15 +35,15 @@ class TECardPageView: UIView {
         }
         
         shadowLayer = CALayer()
-        shadowLayer.backgroundColor = UIColor.whiteColor().CGColor
+        shadowLayer.backgroundColor = UIColor.white.cgColor
         shadowLayer.frame = rect
         shadowLayer.shadowOpacity = 0.3
-        shadowLayer.shadowColor = UIColor.blackColor().CGColor
-        shadowLayer.shadowOffset = CGSizeMake(0, 0)
+        shadowLayer.shadowColor = UIColor.black.cgColor
+        shadowLayer.shadowOffset = CGSize(width: 0, height: 0)
         shadowLayer.shadowRadius = 3.0
         shadowLayer.cornerRadius = 5.0
         
-        layer.insertSublayer(shadowLayer, atIndex: 0)
+        layer.insertSublayer(shadowLayer, at: 0)
         
         
     }

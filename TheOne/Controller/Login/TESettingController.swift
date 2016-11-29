@@ -42,29 +42,29 @@ class TESettingController: UITableViewController {
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
     }
     
     // MARK: - Private Method
     private func setupUI() {
         
-        backButton = UIButton(type: .Custom)
-        backButton.setImage(UIImage(named: "back_default_wight"), forState: .Normal)
-        backButton.addTarget(self, action: #selector(closeAction), forControlEvents: .TouchUpInside)
+        backButton = UIButton(type: .custom)
+        backButton.setImage(UIImage(named: "back_default_wight"), for: .normal)
+        backButton.addTarget(self, action: #selector(closeAction), for: .touchUpInside)
         
-        headerView.frame = CGRectMake(0, 0, 0, headerView_H)
+        headerView.frame = CGRect.init(x: 0, y: 0, width: 0, height: headerView_H)
         headerImageView = UIImageView(image: UIImage(named: "personalBackgroundImage"))
-        headerImageView.frame = CGRectMake(0, 0, SCREEN_BOUNDS.width, headerView_H)
-        headerImageView.userInteractionEnabled = true
+        headerImageView.frame = CGRect.init(x: 0, y: 0, width: SCREEN_BOUNDS.width, height: headerView_H)
+        headerImageView.isUserInteractionEnabled = true
         headerView.addSubview(headerImageView)
         
-        loginButton = UIButton(type: .Custom)
-        loginButton.setImage(UIImage(named: "personal"), forState: .Normal)
+        loginButton = UIButton(type: .custom)
+        loginButton.setImage(UIImage(named: "personal"), for: .normal)
         headerImageView.addSubview(loginButton)
         
-        nameTips.textColor = UIColor.whiteColor()
-        nameTips.font = UIFont.systemFontOfSize(14)
+        nameTips.textColor = UIColor.white
+        nameTips.font = UIFont.systemFont(ofSize: 14)
         nameTips.text = "请登录"
         headerImageView.addSubview(nameTips)
         
@@ -90,7 +90,7 @@ class TESettingController: UITableViewController {
         }
         
         // Add Event
-        loginButton.addTarget(self, action: #selector(presentToLoginController), forControlEvents: .TouchUpInside)
+        loginButton.addTarget(self, action: #selector(presentToLoginController), for: .touchUpInside)
         
     }
     
@@ -98,19 +98,19 @@ class TESettingController: UITableViewController {
     // MARK: - Private method
     func closeAction() {
         
-        dismissViewControllerAnimated(true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     func presentToLoginController() {
-        let login = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("TELoginController")
-        presentViewController(login, animated: true, completion: nil)
+        let login = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TELoginController")
+        present(login, animated: true, completion: nil)
     }
 }
 
 extension TESettingController {
     
     // MARK: - UIScrolView Delegate
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
+    func scrollViewDidScroll(scrollView: UIScrollView) {
         
         let offset_y = scrollView.contentOffset.y
         
@@ -118,24 +118,24 @@ extension TESettingController {
             return
         }
         
-        headerImageView.frame = CGRectMake(0, offset_y, SCREEN_BOUNDS.width, headerView_H - offset_y)
+        headerImageView.frame = CGRect.init(x: 0, y: offset_y, width: SCREEN_BOUNDS.width, height: headerView_H - offset_y)
         
     }
     
     // MARK: - UITableView Delegate
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .Default, reuseIdentifier: "cell")
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         
         cell.textLabel?.text = "其他设置"
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
     }
 }

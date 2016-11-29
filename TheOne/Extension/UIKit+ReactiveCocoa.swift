@@ -1,3 +1,4 @@
+
 //
 //  Util.swift
 //  ReactiveTwitterSearch
@@ -21,7 +22,7 @@ struct AssociationKey {
 }
 
 // lazily creates a gettable associated property via the given factory
-func lazyAssociatedProperty<T: AnyObject>(host: AnyObject, key: UnsafePointer<Void>, factory: ()->T) -> T {
+func lazyAssociatedProperty<T: AnyObject>(host: AnyObject, key: UnsafeRawPointer, factory: ()->T) -> T {
   var associatedProperty = objc_getAssociatedObject(host, key) as? T
   
   if associatedProperty == nil {
@@ -31,11 +32,11 @@ func lazyAssociatedProperty<T: AnyObject>(host: AnyObject, key: UnsafePointer<Vo
   return associatedProperty!
 }
 
-func lazyMutableProperty<T>(host: AnyObject, key: UnsafePointer<Void>, setter: (T) -> (), getter: () -> T) -> MutableProperty<T> {
-  return lazyAssociatedProperty(host, key: key) {
+func lazyMutableProperty<T>(host: AnyObject, key: UnsafeRawPointer, setter: @escaping (T) -> (), getter: @escaping () -> T) -> MutableProperty<T> {
+  return lazyAssociatedProperty(host: host, key: key) {
     let property = MutableProperty<T>(getter())
     property.producer
-      .startWithNext { newValue in
+      .startWithValues { newValue in
         setter(newValue)
       }
     return property
@@ -128,13 +129,13 @@ extension UITextField {
 extension UISearchBar: UISearchBarDelegate {
     
     public var rac_text: MutableProperty<String> {
-        return lazyAssociatedProperty(self, key: &AssociationKey.text) {
+        return lazyAssociatedProperty(host: self, key: &AssociationKey.text) {
             
             self.delegate = self
             
             let property = MutableProperty<String>(self.text ?? "")
             property.producer
-                .startWithNext { newValue in
+                .startWithValues { newValue in
                     self.text = newValue
             }
             return property
@@ -148,33 +149,33 @@ extension UISearchBar: UISearchBarDelegate {
 
 extension UISwitch {
     public var rac_on: MutableProperty<Bool> {
-        return lazyAssociatedProperty(self, key: &AssociationKey.on) {
+        return lazyAssociatedProperty(host: self, key: &AssociationKey.on) {
             
-            self.addTarget(self, action: #selector(UITextField.changed), forControlEvents: UIControlEvents.ValueChanged)
+            self.addTarget(self, action: #selector(UITextField.changed), for: UIControlEvents.valueChanged)
             
-            let property = MutableProperty<Bool>(self.on)
+            let property = MutableProperty<Bool>(self.isOn)
             property.producer
-                .startWithNext { newValue in
-                    self.on = newValue
+                .startWithValues { newValue in
+                    self.isOn = newValue
             }
             return property
         }
     }
     
     func changed() {
-        rac_on.value = self.on
+        rac_on.value = self.isOn
     }
 }
 
 extension UIButton {
     public var rac_enabled: MutableProperty<Bool> {
-        return lazyMutableProperty(self, key: &AssociationKey.enabled, setter: { self.enabled = $0 }, getter: { self.enabled })
+        return lazyMutableProperty(host: self, key: &AssociationKey.enabled, setter: { self.isEnabled = $0 }, getter: { self.isEnabled })
     }
 }
 
 extension UIButton {
     public var rac_selected: MutableProperty<Bool> {
-        return lazyMutableProperty(self, key: &AssociationKey.selected, setter: {self.selected = $0}, getter: { self.selected })
+        return lazyMutableProperty(host: self, key: &AssociationKey.selected, setter: {self.isSelected = $0}, getter: { self.isSelected })
     }
 }
 

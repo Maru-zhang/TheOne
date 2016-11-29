@@ -34,6 +34,8 @@ class TEMovieDetailViewModel {
     
     init(movie: TEMovieCardModel) {
         
+        self.movieID = movie.id as Int
+        
         self.movieID     = (movie.id?.toInt())!
         self.title       = ConstantProperty<String>.init(movie.title!)
         

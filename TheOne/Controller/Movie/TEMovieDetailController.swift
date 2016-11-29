@@ -12,22 +12,14 @@ import ReactiveSwift
 
 class TEMovieDetailController: UITableViewController {
     
-    let player: BMPlayer
     let viewModel: TEMovieDetailViewModel
     
     // MARK: - Life Cycle
     
     init(model: TEMovieDetailViewModel) {
         viewModel = model
-        player = BMPlayer()
         super.init(nibName: nil, bundle: nil)
-        player.frame = CGRectMake(0, 0, view.frame.width, view.frame.width * (9 / 16))
         self.title = viewModel.title.value
-        player.backBlock = { [unowned self] in
-            self.player.pause()
-            self.player.removeFromSuperview()
-            UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: .Fade)
-        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -45,15 +37,15 @@ class TEMovieDetailController: UITableViewController {
 
     private func setupUI() {
         
-        tableView.separatorInset = UIEdgeInsetsZero
+        tableView.separatorInset = .zero
         tableView.layoutMargins = UIEdgeInsetsMake(0, 0, 0, 0)
         tableView.estimatedRowHeight = 70
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: String(UITableViewCell))
-        tableView.registerClass(TEMovieHeaderCell.self, forCellReuseIdentifier: String(TEMovieHeaderCell))
-        tableView.registerClass(TEMovieUtilCell.self, forCellReuseIdentifier: String(TEMovieUtilCell))
-        tableView.registerClass(TEMovieStoryCell.self, forCellReuseIdentifier: String(TEMovieStoryCell))
-        tableView.registerClass(TEKeywordCell.self, forCellReuseIdentifier: String(TEKeywordCell))
-        tableView.registerNib(UINib.init(nibName: String(TECommentCell), bundle: nil), forCellReuseIdentifier: String(TECommentCell))
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: String(describing: UITableViewCell()))
+        tableView.register(TEMovieHeaderCell.self, forCellReuseIdentifier: String(describing: TEMovieHeaderCell()))
+        tableView.register(TEMovieUtilCell.self, forCellReuseIdentifier: String(describing: TEMovieUtilCell()))
+        tableView.register(TEMovieStoryCell.self, forCellReuseIdentifier: String(describing: TEMovieStoryCell()))
+        tableView.register(TEKeywordCell.self, forCellReuseIdentifier: String(describing: TEKeywordCell()))
+        tableView.register(UINib.init(nibName: String(describing: TECommentCell()), bundle: nil), forCellReuseIdentifier: String(describing: TECommentCell()))
         
         tableView.es_addInfiniteScrolling { [unowned self] in
             self.viewModel.fetchCommentList()
@@ -63,28 +55,6 @@ class TEMovieDetailController: UITableViewController {
     
     private func setupBinding() {
         
-        combineLatest(viewModel.detail.signal, viewModel.story.signal, viewModel.comments.signal)
-            .filter { (detal, story, comments) -> Bool in
-                return (detal != nil && story != nil && comments.count != 0)
-            }
-            .observeOn(QueueScheduler.mainQueueScheduler)
-            .observeNext { [unowned self] (_, _, _) in
-                self.tableView.reloadData()
-        }
-
-        
-        viewModel.commentsSignal
-            .observeOn(QueueScheduler.mainQueueScheduler)
-            .observeNext { [unowned self] (_) in
-                self.tableView.es_stopLoadingMore()
-                self.tableView.reloadData()
-        }
-        
-        viewModel.commentsSignal
-            .observeOn(QueueScheduler.mainQueueScheduler)
-            .observeCompleted { [unowned self] in
-                self.tableView.es_noticeNoMoreData()
-        }
     }
 }
 
@@ -96,21 +66,17 @@ extension TEMovieDetailController {
             return
         }
         
-        view.window!.addSubview(player)
-        player.playWithURL(NSURL.init(string: (viewModel.detail.value?.video)!)!)
-        UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: .Fade)
-
     }
 }
 
 extension TEMovieDetailController {
     
     // MARK: - DataSource
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 4
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
             return 2
@@ -129,39 +95,41 @@ extension TEMovieDetailController {
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
             if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCellWithIdentifier(String(TEMovieHeaderCell), forIndexPath: indexPath) as! TEMovieHeaderCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TEMovieHeaderCell.self), for: indexPath as IndexPath) as! TEMovieHeaderCell
                 cell.headerDidClick = { [unowned self] in
                     self.showTrailerMovieAction()
                 }
-                cell.configWithEntity(viewModel.detail.value)
+                
+                
+                cell.configWithEntity(entity: viewModel.detail.value)
                 return cell
             }else {
-                return tableView.dequeueReusableCellWithIdentifier(String(TEMovieUtilCell), forIndexPath: indexPath)
+                return tableView.dequeueReusableCell(withIdentifier: String(describing: TEMovieUtilCell.self), for: indexPath as IndexPath)
             }
         case 1:
-            let cell = tableView.dequeueReusableCellWithIdentifier(String(TEMovieStoryCell), forIndexPath: indexPath)  as! TEMovieStoryCell
-            cell.configWithEntity(viewModel.story.value.first!)
+            let cell = tableView.dequeueReusableCell(withIdentifier: String.self(describing: TEMovieStoryCell()), for: indexPath as IndexPath)  as! TEMovieStoryCell
+            cell.configWithEntity(entity: viewModel.story.value.first!)
             return cell
         case 2:
-            let cell = tableView.dequeueReusableCellWithIdentifier(String(TEKeywordCell), forIndexPath: indexPath) as! TEKeywordCell
-            cell.configWithKeyword((viewModel.detail.value?.keywords!)!)
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TEKeywordCell()), for: indexPath as IndexPath) as! TEKeywordCell
+            cell.configWithKeyword(key: (viewModel.detail.value?.keywords!)!)
             return cell
         case 3:
-            let cell = tableView.dequeueReusableCellWithIdentifier(String(TECommentCell), forIndexPath: indexPath) as! TECommentCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TECommentCell.self), for: indexPath as IndexPath) as! TECommentCell
             
-            cell.configWithComment(viewModel.comments.value[indexPath.row])
+            cell.configWithComment(comment: viewModel.comments.value[indexPath.row])
             return cell
         default:
-            return tableView.dequeueReusableCellWithIdentifier(String(UITableViewCell), forIndexPath: indexPath)
+            return tableView.dequeueReusableCell(withIdentifier: String(describing: UITableViewCell()), for: indexPath as IndexPath)
         }
     }
     
     // MARK: - Delegate
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
             return indexPath.row == 0 ? 200 : 40
@@ -172,7 +140,7 @@ extension TEMovieDetailController {
         }
     }
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         case 1:
             return 44
@@ -185,14 +153,14 @@ extension TEMovieDetailController {
         }
     }
 
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch section {
         case 1:
-            return TEConfigure.musicHeaderViewForSection("电影故事")
+            return TEConfigure.musicHeaderViewForSection(title: "电影故事")
         case 2:
-            return TEConfigure.musicHeaderViewForSection("一个电影表")
+            return TEConfigure.musicHeaderViewForSection(title: "一个电影表")
         case 3:
-            return TEConfigure.musicHeaderViewForSection("评论列表")
+            return TEConfigure.musicHeaderViewForSection(title: "评论列表")
         default:
             return nil
         }
@@ -203,15 +171,5 @@ extension TEMovieDetailController {
 extension TEMovieDetailController {
     
     // MARK: - Override
-    override func prefersStatusBarHidden() -> Bool {
-        if player.superview != nil {
-            return true
-        }else {
-            return false
-        }
-    }
     
-    override func preferredStatusBarUpdateAnimation() -> UIStatusBarAnimation {
-        return .Fade
-    }
 }

@@ -22,13 +22,13 @@ class TEMusicBanner: UIView {
     
     override func awakeFromNib() {
         authour.textColor = TEConfigure.author_Highlight
-        Profession.textColor = UIColor.lightGrayColor()
+        Profession.textColor = UIColor.lightGray
         header.layer.cornerRadius = 25
         header.layer.masksToBounds = true
     }
 
-    override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
         
         // Firsr, remove all of this layer's sublayer
         if shadowLayer != nil {
@@ -36,15 +36,15 @@ class TEMusicBanner: UIView {
         }
         
         shadowLayer = CALayer()
-        shadowLayer.backgroundColor = UIColor.whiteColor().CGColor
+        shadowLayer.backgroundColor = UIColor.white.cgColor
         shadowLayer.frame = rect
         shadowLayer.shadowOpacity = 0.3
-        shadowLayer.shadowColor = UIColor.blackColor().CGColor
-        shadowLayer.shadowOffset = CGSizeMake(0, 0)
+        shadowLayer.shadowColor = UIColor.black.cgColor
+        shadowLayer.shadowOffset = CGSize.init(width: 0, height: 0)
         shadowLayer.shadowRadius = 3.0
         shadowLayer.cornerRadius = 5.0
         
-        layer.insertSublayer(shadowLayer, atIndex: 0)
+        layer.insertSublayer(shadowLayer, at: 0)
         
         
     }
@@ -54,7 +54,6 @@ extension TEMusicBanner {
     
     // MARK: - Public Method
     func configWithEntity(entity: TEMusicDetail) {
-        header.kf_setImageWithURL(NSURL.init(string: (entity.author?.web_url)!)!, placeholderImage: UIImage(named: "personal"))
         title.text = entity.title
         authour.text = entity.author?.user_name
         Profession.text = entity.author?.desc
